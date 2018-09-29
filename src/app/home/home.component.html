@@ -1,0 +1,191 @@
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700" rel="stylesheet">
+
+    <header id= "header">
+        <div id="headercontent">
+            <div id="logo">
+                <p id= "placeholder">
+                    Mehr als Pixel.
+                </p>
+            </div>
+            <a id= "git-link" class="header-link" href= "https://bitbucket.org/f_holle/cell-me-more/src/master/"><i class="fa fa-bitbucket"></i></a>
+            
+            <a class= "header-link" href="#B1">About</a>
+            <a class= "header-link" href="#B2">Programme</a>
+            
+        </div>
+    </header>
+    <section id="intro" class="text">
+        <p id= "infotext"> Ein Algorithmus, 12 Inszenierungen.<br>
+Zelluläre Automaten sind Systeme, die aus einfachsten Regeln faszinierende Strukturen erzeugen können.<br>Diese Webseite lädt dazu ein, das Prinzip elementarer zellulärer Automaten zu erkunden.</p>
+        <a id="learn-link" class ="intro-link" href="#B1">Wie funktionieren elementare zelluläre Automaten? <i class="fa fa-arrow-circle-o-right"></i></a>
+        <a id="try-link" class ="intro-link" href="#B2">Erkunden <i class="fa fa-arrow-circle-o-right"></i></a>
+    </section>
+    
+        <!--Links zu den Programmen-->
+    
+    <section id= "program-section">
+        <h1 id="B2">Erkunden</h1>
+        
+        <ul id = "programs">     
+            <div class="program-link-div" *ngFor="let program of programs">
+                <a class="link" id="" routerLink="/program-window/{{program.id}}">
+                    <img src="images/barcode.png" class="link-img">
+                    <span class="overlay"></span>
+                    <span class="overlay-text">{{program.details.name}}<i class="fa fa-arrow-circle-o-right"></i></span>
+                </a>
+            </div>
+        </ul>
+        
+    </section>
+    
+    
+    <section id= "slideshow-section">
+        <h1 id="B1">Wie funktionieren zelluläre Automaten?</h1>
+        
+        <div class= "slideshow-container">
+            <div class="slides">
+                    <div class="slide-element">
+                        <img class= "slide-img" src="images/zellraum.png">
+                        <span class="description">Ein elementarer Zellulärer Automat besteht aus einer Reihe von identischen Elementen – den Zellen.</span>
+                    </div>
+                    <div class= "slide-element">
+                        <img class="slide-img" src="images/zwei-zustaende-neu.gif">
+                        <span class="description">Jede Zelle kann zwei verschiedene Zustände haben:<br>Schwarz oder weiß, 1 oder 0, aktiv oder inaktiv <br>– alles ist denkbar.</span>
+                    </div>
+                    <div class= "slide-element">
+                        <img class="slide-img" src="images/taktung.gif">
+                        <span class="description">Alle Zellen verändern in Takten gleichzeitig ihren Zustand.</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/empty.png">
+                        <span class="description" id="lift02">Wie sich die Zellen verändern<br> wird vom Regelwerk des Automaten bestimmt.</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/empty.png">
+                        <span class="description" id="lift01" >Wie funktioniert das Regelwerk?</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/3zellen-neu.gif">
+                        <span class="description">Jede Zelle hat eine Nachbarschaft, bestehend aus sich selbst und den beiden Zellen links und rechts von ihr. </span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/uebergang-neu.gif">
+                        <span class="description">Der neue Zustand einer Zelle hängt allein <br>vom Zustand ihrer Nachbarschaft ab .</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/achter-neu.png">
+                        <span class="description">Es gibt insgesamt acht verschiedene Möglichkeiten, <br> wie diese aussehen kann.</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/regel.png">
+                        <span class="description" id="lower">Im Regelwerk wird nun festgehalten, welchen neuen Zustand jede Zelle für welchen Fall einnehmen soll.</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/linear.png">
+                        <span class="description" id="lower">Ist das Zellband linear, ist es links und rechts begrenzt.</span>
+                    </div>
+                    <div class="slide-element">
+                        <img class="slide-img" src="images/cyclic.png">
+                        <span class="description" id="lower">Ist es ringförmig, sind die erste und letzte Zelle des Bandes als Nachbarn miteinander verknüpft.</span>
+                    </div>
+                <div class="slide-element">
+                        <img class="slide-img" src="images/empty.png">
+                        <span class="description" id ="lift01">Die Programme auf dieser Seite stellen den Zellraum, die Zellen und deren Zustände auf unterschiedliche Art und Weise dar. Die einfache Darstellung der Zellen als schwarze oder weiße Quadrate im rechten Display dient in jedem Programm als Vergleich.  </span>
+                    </div>
+                <button class="arrow-button display-left" onclick="plusDivs(-1)"><i class="fa fa-angle-left"></i></button>
+                <button class=" arrow-button display-right" onclick="plusDivs(1)"><i class="fa fa-angle-right"></i></button> 
+            </div>
+            
+                <button class="arrow-button display-left" onclick="plusDivs(-1)"><i class="fa fa-angle-left"></i></button>
+                <button class=" arrow-button display-right" onclick="plusDivs(1)"><i class="fa fa-angle-right"></i></button> 
+            
+            <div class="number-button-container">
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(1)">1</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(2)">2</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(3)">3</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(4)">4</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(5)">5</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(6)">6</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(7)">7</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(8)">8</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(9)">9</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(10)">10</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(11)">11</button>
+                <button class="number-button index slide-button-unselected" onclick="currentDiv(12)">12</button>
+            </div>                              
+        </div>
+        <script>
+               //Skript von: https://www.w3schools.com/w3css/w3css_slideshow.asp
+                var slideIndex = 1;
+                showDivs(slideIndex);
+
+                function plusDivs(n) 
+                {
+                  showDivs(slideIndex += n);
+                }
+            
+                function currentDiv(n) 
+                {
+                   showDivs(slideIndex = n);
+                }
+
+                function showDivs(n) 
+                {
+                  var i;
+                  var slides = document.getElementsByClassName("slide-element");
+                  var dots = document.getElementsByClassName("index");
+                  if (n > slides.length) {slideIndex = 1}    
+                  if (n < 1) {slideIndex = slides.length}
+                  for (i = 0; i < slides.length; i++) {
+                     slides[i].style.display = "none";  
+                  }
+                  for (i = 0; i < dots.length; i++) 
+                  {
+                      dots[i].className = dots[i].className.replace(" slide-button-selected", "");
+                  }    
+                  slides[slideIndex-1].style.display = "block"; 
+                  dots[slideIndex-1].className += " slide-button-selected";
+                }
+       </script>
+        
+    </section>
+    
+    <section id= "other">
+        <h2>Über diese Programme</h2>
+        <p id = "license-info">Alle Programme wurden mit p5.js erstellt. P5.js ist eine Javascript-Bibliothek der Processing Foundation.</p>
+    </section>
+    
+    
+    <footer id = "footer">
+        
+      <div id= "footer-content">
+          <h2>Impressum</h2>
+          <p> 
+             Verantwortlich für den Inhalt:
+              <br>
+             <b>Franziska Schneider</b>
+         </p>
+          
+          <p>
+              Anschrift
+              <br>
+              <b>Kaltenhoferstr.23</b>
+              <br>
+              <b>86154 Augsburg</b>
+              <br>
+              <b> Telefon +49 (0) 152 / 216 44 869</b>
+              <br>
+              <b>E-Mail franziska.schneider@me.com</b>
+          </p>
+          
+
+          
+      </div>  
+    </footer>
+    
+    
+
+      

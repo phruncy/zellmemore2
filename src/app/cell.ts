@@ -9,18 +9,16 @@ export class Cell {
   private _formerState: number;
   private _age: number;
   private _position: number;
-  private _leftNeightbour: Cell;
+  private _leftNeighbour: Cell;
   private _rightNeighbour: Cell;
   //private _history: any;
   private _isLastCell: boolean;
-  private _rulset: any;
 
-  constructor(initialState: number, ruleset: any) 
+  constructor(initialState: number) 
   {
     this._state = initialState;
-    this._rulset = ruleset;
     this._age = 0;
-    this._leftNeightbour = null;
+    this._leftNeighbour = null;
     this._rightNeighbour = null;
     //this._history = [];
     this._isLastCell = false;
@@ -51,9 +49,14 @@ export class Cell {
       return this._formerState;
   }
 
+  get leftNeighbour(): Cell
+  {
+    return this._rightNeighbour;
+  }
+
   set leftNeighbour (cell: Cell)
   {
-      this._leftNeightbour = cell;
+      this._leftNeighbour = cell;
   }
 
   set rightNeighbour (cell: Cell)
@@ -64,11 +67,6 @@ export class Cell {
   set isLastCell (value: boolean)
   {
       this._isLastCell = value;
-  }
-
-  set ruleset (rule: any)
-  {
-      this._rulset = rule;
   }
 
   get position(): number
@@ -85,25 +83,27 @@ export class Cell {
   // its state.
   // the string triplet is the binary representation of the
   // states of the related cells that define this cells new state.
-
-  calculateState(left: number, right:number)
+  // *left, right: neighbour cells
+  // *rule: automaton's ruleset in array form
+  calculateState(left: number, right:number, rule: number[])
   {
       let triplet = ""
-      // defines where to look for in the ruleset array
+      // defines where to look for in the rule array
       triplet = triplet + left + this._state + right;
-      const result = this._rulset[parseInt(triplet,2)];
+      const result = rule[parseInt(triplet,2)];
       return result;
   }    
-  generateCellParameters(): void
+  generateCellParameters(rule: number[]): void
   {
       // this is important since the edge cells have different 
       // conditions than the others  
       let left = (this._position == 0) ? 
-        this._leftNeightbour.state : this._leftNeightbour.formerState;
+        this._leftNeighbour.state : this._leftNeighbour.formerState;
       let right = (this._isLastCell) ? 
         this. _rightNeighbour.formerState : this._rightNeighbour.state; 
       this._formerState = this._state;
-      this.calculateState(left, right);  
+      console.log ("left " + left + ", right " + right);
+      this._state = this.calculateState(left, right, rule);  
       this._age ++;  
   }
 

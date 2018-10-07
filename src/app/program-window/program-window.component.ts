@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import * as p5 from 'p5';
-import { AutomatonConfiguration } from '../automaton-configuration';
 import { AutomatonConfigurationService } from '../automaton-configuration.service';
-import { AutomatonService } from '../automaton.service';
-
-
+import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
 
 @Component({
   selector: 'app-program-window',
@@ -18,53 +13,37 @@ import { AutomatonService } from '../automaton.service';
 
 export class ProgramWindowComponent implements OnInit {
 
-  configuration: AutomatonConfiguration;
+  private _selectionDisplayed: boolean = false;
   
   constructor(
     private route: ActivatedRoute,
     private configurationService: AutomatonConfigurationService,
     private location: Location,
-    private automaton: AutomatonService
-  ) { }
-
-  private p5;
+  ) {
+    }
   
-
-  ngOnInit() 
+  get selectionDisplayed(): boolean
   {
-     this.fetchConfiguration();
-     this.p5 = new p5(this.sketch) 
-     this.p5.automaton = this.automaton
+    return this._selectionDisplayed;
+  }
+    
+  ngOnInit()
+  {}  
+
+  toggleSelection()
+  {
+    this._selectionDisplayed = !this._selectionDisplayed;
   }
 
-  private sketch(p: any) 
+  addWidget()
   {
-    p.setup = () =>
-    {
-      p.createCanvas(500,500);
-      console.log(p.automaton);
-      p.testNumber = p.automaton.testing();
-      
-    }
-
-    p.draw= () => 
-    {
-      p.background(100);
-      p.fill(0);
-      if (p.testNumber< p.width)
-      {
-        p.testNumber += 1;
-      }
-      p.rect(20,20,p.testNumber, p.testNumber);
-
-    }
+    console.log("widget added");
   }
 
-   fetchConfiguration() : void
+  removeWidget()
   {
-    const id = +this.route.snapshot.paramMap.get('id');
-    //.getConfiguration() erwartet eine Zahl als Parameter
-    this.configurationService.getConfiguration(id)
-      .subscribe(configuration => this.configuration = configuration);
-  } 
+
+  }
+
+
 }

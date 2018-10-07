@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AutomatonConfiguration } from '../automaton-configuration';
 import { AutomatonConfigurationService } from '../automaton-configuration.service';
 
 @Component({
@@ -12,19 +11,18 @@ import { AutomatonConfigurationService } from '../automaton-configuration.servic
 
 export class HomeComponent implements OnInit {
 
-  programs: AutomatonConfiguration[];
   constructor(
     private configurationService: AutomatonConfigurationService
   ) { }
 
   ngOnInit() {
-    this.fetchConfigurations();
+    //this.fetchConfigurations();
   }
 
-  fetchConfigurations(): void
+/*   fetchConfigurations(): void
   {
     this.configurationService.getConfigurations()
     .subscribe(programs => this.programs = programs);
-  }
+  } */
 
 }

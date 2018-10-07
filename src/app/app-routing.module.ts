@@ -8,13 +8,13 @@ const routes: Routes =
   {path: 'home', component: HomeComponent},
   //Default-Route, wenn Seite geladen wird
   // Route zu einem Programm:
-  {path: 'program-window/:id', component: ProgramWindowComponent},
+  {path: 'program-window', component: ProgramWindowComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
 @NgModule(
   {
-    imports: [ RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
   }
 )

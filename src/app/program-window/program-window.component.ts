@@ -2,11 +2,18 @@ import { Component,
          OnInit, 
          Output, 
          EventEmitter,
+         ViewChild,
+         ViewContainerRef,
+         ComponentFactoryResolver,
+         ComponentRef,
+         ComponentFactory
        } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
 import { VisualizationService } from '../visualization.service';
+
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-program-window',
@@ -17,6 +24,7 @@ import { VisualizationService } from '../visualization.service';
 
 export class ProgramWindowComponent implements OnInit {
 
+  @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
   @Output() onSelectionChange: EventEmitter<void> = new EventEmitter<void>();
   private _selectionDisplayed: boolean = false;
   
@@ -24,6 +32,10 @@ export class ProgramWindowComponent implements OnInit {
     private route: ActivatedRoute,
     private visualizationService: VisualizationService,
     private location: Location,
+    // for dynamic widget loading: allows to create a ComponentFactory.
+    private resolver: ComponentFactoryResolver
+
+
   ) {
     }
   
@@ -53,6 +65,9 @@ export class ProgramWindowComponent implements OnInit {
   addWidget(id: any)
   {
     console.log("widget added with id: " + id);
+    // creates a Factory for a widgetComponent
+    const widgetFactory = this.resolver.resolveComponentFactory(WidgetComponent);
+    const component = this.entry.createComponent(widgetFactory);
   }
 
   removeWidget()

@@ -1,11 +1,10 @@
 import { Injectable, 
           Output, 
           EventEmitter,
-          ComponentFactoryResolver,
-          Inject,
-          ReflectiveInjector } from '@angular/core';
+       } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { WidgetComponent } from './widget/widget.component';
+import { COMPONENTS } from './dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +12,14 @@ import { WidgetComponent } from './widget/widget.component';
 
 export class VisualizationService {
 
-  factoryResolver;
-  rootViewContainer;
   private _visualizationToDisplay: string;
   private _hasChanged = new Subject<void>();
+  private _dictionary = COMPONENTS;
   // program window component subscribes to this
   public hasChanged$ = this._hasChanged.asObservable();
   
-  constructor(@Inject(ComponentFactoryResolver) factoryResover) 
+  constructor() 
   {
-    this.factoryResolver = factoryResover; 
   }
 
   get visualizationToDisplay(): string
@@ -41,16 +38,8 @@ export class VisualizationService {
     this._hasChanged.next();
   }
 
-  setRootViewContainerRef(reference)
+  provideComponent()
   {
-    this.rootViewContainer = reference;
-  }
-
-  addWidgetComponent()
-  {
-    const factory = this.factoryResolver
-                        .resolveComponentFactory(WidgetComponent);
-    const component = factory.create(this.rootViewContainer.parnetInjector);
-    this.rootViewContainer.insert(component.hostView);                    
+    return COMPONENTS[this._visualizationToDisplay];
   }
 }

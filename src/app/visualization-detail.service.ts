@@ -8,8 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class VisualizationDetailService {
 
   constructor(private http: HttpClient) { }
-
-  private _details = 'api/json/visualization-details.json'
   
   //provides the json data asounchronously
   provideVisualizations(): Observable<any>

@@ -1,18 +1,18 @@
 [
     {
-        "id": "001",
+        "id": "v001",
         "name": "Dummy 01",
         "description": "about this dummy01 cool fancy wow such joy amazing 10/10 would buy",
         "thumbnail": "assets/images/thumbnails/dummy.png"
     },
     {
-        "id": "002",
+        "id": "v002",
         "name": "Dummy 02",
         "description": "about this dummy02 cool fancy wow such joy amazing 10/10 would buy",
         "thumbnail": "assets/images/thumbnails/dummy.png"
     },
     {
-        "id": "003",
+        "id": "v003",
         "name": "Dummy 03",
         "description": "about this dummy03 cool fancy wow such joy amazing 10/10 would buy",
         "thumbnail": "assets/images/thumbnails/dummy.png"

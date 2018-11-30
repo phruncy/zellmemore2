@@ -15,24 +15,29 @@ import { Testing02Component } from './testing02/testing02.component';
 import { Testing03Component } from './testing03/testing03.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ProgramWindowComponent,
-    WidgetComponent,
-    VisualizationDetailComponent,
-    VisualizationSelectionComponent,
-    TestingComponent,
-    Testing02Component,
-    Testing03Component
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [AutomatonConfigurationService],
-  bootstrap: [AppComponent],
-  entryComponents: [WidgetComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        ProgramWindowComponent,
+        WidgetComponent,
+        VisualizationDetailComponent,
+        VisualizationSelectionComponent,
+        TestingComponent,
+        Testing02Component,
+        Testing03Component
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule
+    ],
+    providers: [AutomatonConfigurationService],
+    bootstrap: [AppComponent],
+    entryComponents: [
+        WidgetComponent,
+        TestingComponent,
+        Testing02Component,
+        Testing03Component
+    ]
 })
 export class AppModule { }

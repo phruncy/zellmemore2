@@ -4,16 +4,16 @@ import { VisualizationService } from '../visualization.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-visualization-selection',
-  templateUrl: './visualization-selection.component.html',
-  styleUrls: ['./visualization-selection.component.css']
+    selector: 'app-visualization-selection',
+    templateUrl: './visualization-selection.component.html',
+    styleUrls: ['./visualization-selection.component.css']
 })
 export class VisualizationSelectionComponent implements OnInit {
 
   private _visualizations: any[] = [];
   constructor(
-      private visualizationDetailService: VisualizationDetailService,
-      private visualizationService: VisualizationService    
+        private visualizationDetailService: VisualizationDetailService,
+        private visualizationService: VisualizationService    
     ) 
     { }
 

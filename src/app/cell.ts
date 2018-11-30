@@ -11,27 +11,27 @@ export class Cell {
   private _position: number;
   private _leftNeighbour: Cell;
   private _rightNeighbour: Cell;
-  //private _history: any;
+  // private _history: any;
   private _isLastCell: boolean;
 
-  constructor(initialState: number) 
+  constructor(initialState: number)
   {
     this._state = initialState;
     this._age = 0;
     this._leftNeighbour = null;
     this._rightNeighbour = null;
-    //this._history = [];
+    // this._history = [];
     this._isLastCell = false;
   }
 
-  get age() : number
+  get age(): number
   {
       return this._age;
   }
 
   set age(newAge: number)
   {
-      this._age = newAge
+      this._age = newAge;
   }
 
   get state(): number
@@ -87,12 +87,12 @@ export class Cell {
   // *rule: automaton's ruleset in array form
   calculateState(left: number, right:number, rule: number[])
   {
-      let triplet = ""
+      let triplet = "";
       // defines where to look for in the rule array
       triplet = triplet + left + this._state + right;
       const result = rule[parseInt(triplet,2)];
       return result;
-  }    
+  }
   generateCellParameters(rule: number[]): void
   {
       // this is important since the edge cells have different 

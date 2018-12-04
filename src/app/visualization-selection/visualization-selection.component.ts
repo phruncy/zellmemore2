@@ -13,7 +13,7 @@ export class VisualizationSelectionComponent implements OnInit {
   private _visualizations: any[] = [];
   constructor(
         private visualizationDetailService: VisualizationDetailService,
-        private visualizationService: VisualizationService    
+        private visualizationService: VisualizationService
     ) 
     { }
 

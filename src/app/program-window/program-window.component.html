@@ -2,4 +2,5 @@
 <button (click)="toggleSelection()">Add Widget</button>
 <app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
 <button (click)="this.automaton.toggleLoop()">Play</button>
+<button (click)="this.automaton.reset()">Reset</button>
 <div #entry></div>

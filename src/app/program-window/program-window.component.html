@@ -1,6 +1,7 @@
 <h1>Program Window</h1>
-<button (click)="toggleSelection()">Add Widget</button>
-<app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
 <button (click)="this.automaton.toggleLoop()">Play</button>
 <button (click)="this.automaton.reset()">Reset</button>
+<p>{{automaton.cellnumber}} cells</p>
 <div #entry></div>
+<button (click)="toggleSelection()">Add Widget</button>
+<app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>

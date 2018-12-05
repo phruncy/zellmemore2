@@ -27,7 +27,7 @@ export class ProgramWindowComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     @Output() onSelectionChange: EventEmitter<void> = new EventEmitter<void>();
-    private _selectionDisplayed: boolean = false;
+    private _selectionDisplayed = false;
 
     constructor(
         private route: ActivatedRoute,

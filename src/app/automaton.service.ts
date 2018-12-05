@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Cell } from './cell';
 import { AutomatonConfigurationService } from './automaton-configuration.service';
 import { RuleConverterService } from './rule-converter.service';
@@ -7,7 +8,7 @@ import { RuleConverterService } from './rule-converter.service';
 })
 export class AutomatonService {
 
-    /*cLoop properties */
+    /*Loop properties */
     private _generation = 0;
     private _lastFrameTime = 0;
     private _fps = 2;
@@ -22,12 +23,17 @@ export class AutomatonService {
      * 1 = initialsie random
      */
     private _initialState = 0;
-    private _circular = 0; //
+    private _isCircular = 0; //
+
+    /* Communication with views */
+    private _changed = new Subject<void>();
+    public changed$ = this._changed.asObservable();
 
     constructor(
                 private configuration: AutomatonConfigurationService,
                 private converter: RuleConverterService
                 ) {
+        /* function that are called from outside the service */
         this.loop = this.loop.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.changeRule = this.changeRule.bind(this);
@@ -41,6 +47,10 @@ export class AutomatonService {
 
     get cellnumber() {
         return this._cellnumber;
+    }
+
+    get cells(): Cell[] {
+        return this._cells;
     }
 
     loop(timestamp)
@@ -95,21 +105,32 @@ export class AutomatonService {
         console.log(this._generation + '.Generation');
         console.log(this._cells);
         this._generation++;
+        this._changed.next();
     }
 
+    setupCells(cellNumber: number)
+    {
+        /* clear cells[] first */
+        this._cells = [];
+        for (let i = 0; i < cellNumber; i++) {
+            this._cells.push(new Cell(0, i));
+        }
+        this.connectNeighbours();
+        if (this._isCircular) {
+            this.closeRingGrid();
+        } else {
+            this.disconnectsRingGrid();
+        }
+        console.log(this._cells);
+    }
+    
     /* Only executed when Program Window is loaded */
     initialise(): void
     {
         this._cellnumber = 10; // !!!!
         this._ruleset = this.converter.decimalToBinary              (this.configuration.provideStartRule());
-        /* clear cells[] first */
-        this._cells = [];
-        for (let i = 0; i < this._cellnumber; i++) {
-            this._cells.push(new Cell(0, i));
-        }
-        this.connectNeighbours();
+        this.setupCells(this.cellnumber);
         this.initialiseMiddle();
-        console.log(this._cells);
     }
 
     initialiseRandom()
@@ -120,7 +141,6 @@ export class AutomatonService {
     initialiseMiddle()
     {
         const i = Math.floor(this._cells.length / 2);
-        console.log(i);
         this._cells[i].state = 1;
     }
 
@@ -133,6 +153,7 @@ export class AutomatonService {
         } else {
             this.initialiseRandom();
         }
+        this._changed.next();
     }
 
     connectNeighbours()
@@ -155,7 +176,14 @@ export class AutomatonService {
         this._cells[this._cells.length - 1] = this._cells[0];
     }
 
-    disconnectsRingGrid() {}
+    disconnectsRingGrid()
+    {
+        this._cells[0].leftNeighbour = null;
+        this._cells[0].rightNeighbour = null;
+        this._cells[this._cells.length - 1].leftNeighbour = null;
+        this._cells[this._cells.length - 1].rightNeighbour = null;
+    }
+
     changeCellnumber() {}
     changeRule() {}
 

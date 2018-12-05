@@ -19,8 +19,8 @@ import { Testing03Component } from './testing03/testing03.component';
 export class VisualizationService {
 
     private _visualizationToDisplay: string;
-    private _hasChanged = new Subject<void>();
     private _dictionary = COMPONENTS;
+    private _hasChanged = new Subject<void>();
     // program window component subscribes to this
     public hasChanged$ = this._hasChanged.asObservable();
     private visualizationComponents =

@@ -14,7 +14,6 @@ export class RuleConverterService {
   decimalToBinary(number: number): number [] {
         const binary = number.toString(2);
         const binaryRuleset = [];
-        console.log(number);
         for (let i = 0; i < binary.length; i++) {
             binaryRuleset.unshift(parseInt(binary.charAt(i), 10));
         }

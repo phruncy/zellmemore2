@@ -12,8 +12,7 @@ export class AutomatonConfigurationService {
 
   provideStartRule(): number {
     const randomIndex = Math.floor(Math.random() * this._initialNumbers.length);
-    return 90;
-    /* return this._initialNumbers[randomIndex]; */
+    return this._initialNumbers[randomIndex];
   }
 
 /*   //Gibt eine einzelne Configuration zurück

@@ -1,8 +1,10 @@
-<h1>Selection</h1>
-<div class="option-container">
-    <div *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="option">
-        <span class="overlay"></span>
-        <span class="overlay-text">{{option.name}}</span>
-        <img class="thumbnail" src="{{option.thumbnail}}">
-    </div>
+<div class="container">
+        <h1 class="headline">Add a widget:</h1>
+        <div class="option-container">
+            <div *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="option">
+                <img class="thumbnail" src="{{option.thumbnail}}">
+                <span class="overlay"></span>
+                <span class="overlay-text">{{option.name}}</span>
+            </div>
+        </div>
 </div>

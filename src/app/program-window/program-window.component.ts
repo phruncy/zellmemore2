@@ -1,12 +1,13 @@
 import { Component,
-         OnInit, 
-         Output, 
+         OnInit,
+         Output,
          EventEmitter,
          ViewChild,
          ViewContainerRef,
          ComponentFactoryResolver,
          ComponentRef,
-         ComponentFactory
+         ComponentFactory,
+         Renderer2
        } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -15,6 +16,7 @@ import { VisualizationService } from '../visualization.service';
 
 import { WidgetComponent } from '../widget/widget.component';
 import { AutomatonService } from '../automaton.service';
+import { RuleConverterService } from '../rule-converter.service';
 
 @Component({
   selector: 'app-program-window',
@@ -28,6 +30,8 @@ export class ProgramWindowComponent implements OnInit {
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     @Output() onSelectionChange: EventEmitter<void> = new EventEmitter<void>();
     private _selectionDisplayed = false;
+    private _controllerDisplayed = false;
+    private displayedRule: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -35,15 +39,20 @@ export class ProgramWindowComponent implements OnInit {
         private automaton: AutomatonService,
         private location: Location,
         // for dynamic widget loading: allows to create a ComponentFactory.
-        private resolver: ComponentFactoryResolver
-
-
+        private resolver: ComponentFactoryResolver,
+        private converter: RuleConverterService,
+        private renderer: Renderer2 // for adding the class to the widget
     ) {
         }
 
     get selectionDisplayed(): boolean
     {
         return this._selectionDisplayed;
+    }
+
+    get controllerDisplayed(): boolean
+    {
+        return this._controllerDisplayed;
     }
 
     ngOnInit()
@@ -65,6 +74,11 @@ export class ProgramWindowComponent implements OnInit {
         this._selectionDisplayed = !this._selectionDisplayed;
     }
 
+    toggleController()
+    {
+        this._controllerDisplayed = !this._controllerDisplayed;
+    }
+
     addWidget(id: any)
     {
         console.log("widget added with id: " + id);
@@ -72,12 +86,13 @@ export class ProgramWindowComponent implements OnInit {
         const widgetFactory = this.resolver.resolveComponentFactory(WidgetComponent);
         const component = this.entry.createComponent(widgetFactory);
         component.instance.ref = component;
+        this.renderer.addClass(component.location.nativeElement, 'grid-content');
     }
 
     removeWidget()
     {
 
-    }
+    }  
 
 
 }

@@ -5,8 +5,8 @@
  * The widget's content is delivered by the VisualizationService.
  */
 
-import { Component, 
-          OnInit, 
+import { Component,
+          OnInit,
           OnDestroy,
           ViewChild,
           ViewContainerRef,

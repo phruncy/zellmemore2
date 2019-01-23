@@ -1,0 +1,128 @@
+
+                <ul id="controller-menu" class="dropdown">
+                <!-- Checkboxes for rule input -->
+                <li class="dropdown-element">
+                        <div>
+                                <span>rule: </span>
+                        </div>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="111" value="111">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="110" value="110">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="101" value="101">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="100" value="100">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="011" value="011">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="010" value="010">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="001" value="001">
+                                </div>
+                        </span>
+                        <span>
+                                <div class="triplet-label">
+        
+                                </div>
+                                <div class="triplet">
+                                        <input type="checkbox" id="000" value="000">
+                                </div>
+                        </span>
+                </li>
+                <!-- Initial State selection -->
+                <li class="dropdown-element">
+                        <div>
+                                <span>initial state:</span>
+                        </div>
+                        <div>
+                                <label class="radio-container">
+                                        <input type="radio" id ="single-radio" value="single">
+                                        <span class="checkmark"></span>
+                                        single cell
+                                </label>
+                                <label class="radio-container">
+                                                <input type="radio" id="random-radio" value="random">
+                                                <span class="checkmark"></span>
+                                                random
+                                </label>
+                        </div>
+                </li>
+                <!-- number of cells -->
+                <li class="dropdown-element">
+                        <div>
+                                <span>number of cells: </span>
+                        </div>
+                        <div>
+                                <span id="">
+                                        <input type="range" min="10" max="500" step="10" [(ngModel)]="sliderValue" class="slider" id="cellnumber-slider" (change)="automaton.setupCells(this.sliderValue)">
+                                        <label for="cellnumber-slider" id="cellnumber-slider-label">{{this.sliderValue}} cells</label>
+                                </span>
+                        </div>
+                </li>
+                <!-- Array mode -->
+                <li class="dropdown-element">
+                        <label for="array-toggle">circular cell array: </label>
+                        <div id ="array-toggle">
+                                        <label class="switch">
+                                                <input type="checkbox" id="arraytoggle" value="arraytoggled">
+                                                <span class="toggle-slider"></span>
+                                        </label>
+                                        <label id="arraytogglelabel" class= "label">disabled</label>
+                        </div>
+                </li>
+                <!-- speed -->
+                <li class="dropdown-element">
+                        <label for="speed-controller">speed:</label>
+                        <div id="speed-controller">
+                                <select>
+                                        <option id ="option1" class="option" value="1">1</option>
+                                        <option id ="option2" class="option" value="2">2</option>
+                                        <option id ="option3" class="option" value="3">3</option>
+                                        <option id ="option4" class="option" value="4">4</option>
+                                        <option id ="option5" class="option" value="5">5</option>
+                                </select> 
+                        </div>
+                </li>
+        </ul>
+

@@ -1,7 +1,18 @@
-<h1>Program Window</h1>
-<button (click)="this.automaton.toggleLoop()">Play</button>
-<button (click)="this.automaton.reset()">Reset</button>
+<div class="interface">
+        <button (click)="this.automaton.toggleLoop()" class="btn inline">Play</button>
+        <button (click)="this.automaton.reset()" class="btn inline">Reset</button>
+        <div class ="container" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
+                <span class="btn inline" >settings</span>
+                <app-automaton-controller *ngIf="controllerDisplayed"></app-automaton-controller>
+        </div>
+</div>
 <p>{{automaton.cellnumber}} cells</p>
-<div #entry></div>
-<button (click)="toggleSelection()">Add Widget</button>
-<app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
+<p>rule #{{converter.binaryToDecimal(automaton.ruleset)}}</p>
+<!-- This is where the canvases go: -->
+<section class="canvas-display">
+        <main #entry class="dynamic"></main>
+</section>
+<div class="menu">
+        <button (click)="toggleSelection()" class="btn">Add Widget</button>
+        <app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
+</div>

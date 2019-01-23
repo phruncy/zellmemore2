@@ -11,7 +11,7 @@ export class AutomatonService {
     /*Loop properties */
     private _generation = 0;
     private _lastFrameTime = 0;
-    private _fps = 2;
+    private _fps = 3;
     private _isRunning = false;
 
     /* Cell properties */
@@ -37,8 +37,8 @@ export class AutomatonService {
         this.loop = this.loop.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.changeRule = this.changeRule.bind(this);
-        this.changeCellnumber = this.changeCellnumber.bind(this);
         this.generate = this.generate.bind(this);
+        this.setupCells = this.setupCells.bind(this);
     }
 
     get fps() {
@@ -51,6 +51,10 @@ export class AutomatonService {
 
     get cells(): Cell[] {
         return this._cells;
+    }
+
+    get ruleset(): number[] {
+        return this._ruleset;
     }
 
     loop(timestamp)
@@ -108,6 +112,10 @@ export class AutomatonService {
         this._changed.next();
     }
 
+    /*
+     * this is called when initializing the automaton and whenever the cell
+     * number changes
+     */
     setupCells(cellNumber: number)
     {
         /* clear cells[] first */
@@ -119,15 +127,45 @@ export class AutomatonService {
         if (this._isCircular) {
             this.closeRingGrid();
         } else {
-            this.disconnectsRingGrid();
+            this.disconnectRingGrid();
         }
         console.log(this._cells);
+        this._cellnumber = cellNumber;
+        this._changed.next();
     }
-    
+
+    connectNeighbours()
+    {
+        for (let i = 1; i < this._cells.length - 1; i++) {
+            if (this._cells[i].leftNeighbour !== null) {
+                this._cells[i].rightNeighbour = null;
+                this._cells[i].leftNeighbour = null;
+            }
+            this._cells[i].leftNeighbour = this._cells[i - 1];
+            this._cells[i].rightNeighbour = this._cells[i + 1];
+        }
+    }
+
+    closeRingGrid()
+    {
+        this._cells[0].leftNeighbour = this._cells[this._cells.length - 1];
+        this._cells[0].rightNeighbour = this._cells[1];
+        this._cells[this._cells.length - 1].leftNeighbour = this._cells[this._cells.length - 2];
+        this._cells[this._cells.length - 1] = this._cells[0];
+    }
+
+    disconnectRingGrid()
+    {
+        this._cells[0].leftNeighbour = null;
+        this._cells[0].rightNeighbour = null;
+        this._cells[this._cells.length - 1].leftNeighbour = null;
+        this._cells[this._cells.length - 1].rightNeighbour = null;
+    }
+
     /* Only executed when Program Window is loaded */
     initialise(): void
     {
-        this._cellnumber = 10; // !!!!
+        this._cellnumber = 100; // !!!!
         this._ruleset = this.converter.decimalToBinary              (this.configuration.provideStartRule());
         this.setupCells(this.cellnumber);
         this.initialiseMiddle();
@@ -156,35 +194,6 @@ export class AutomatonService {
         this._changed.next();
     }
 
-    connectNeighbours()
-    {
-        for (let i = 1; i < this._cells.length - 1; i++) {
-            if (this._cells[i].leftNeighbour !== null) {
-                this._cells[i].rightNeighbour = null;
-                this._cells[i].leftNeighbour = null;
-            }
-            this._cells[i].leftNeighbour = this._cells[i - 1];
-            this._cells[i].rightNeighbour = this._cells[i + 1];
-        }
-    }
-
-    closeRingGrid()
-    {
-        this._cells[0].leftNeighbour = this._cells[this._cells.length - 1];
-        this._cells[0].rightNeighbour = this._cells[1];
-        this._cells[this._cells.length - 1].leftNeighbour = this._cells[this._cells.length - 2];
-        this._cells[this._cells.length - 1] = this._cells[0];
-    }
-
-    disconnectsRingGrid()
-    {
-        this._cells[0].leftNeighbour = null;
-        this._cells[0].rightNeighbour = null;
-        this._cells[this._cells.length - 1].leftNeighbour = null;
-        this._cells[this._cells.length - 1].rightNeighbour = null;
-    }
-
-    changeCellnumber() {}
     changeRule() {}
 
 

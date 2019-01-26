@@ -8,9 +8,12 @@
 </div>
 <p>{{automaton.cellnumber}} cells</p>
 <p>rule #{{converter.binaryToDecimal(automaton.ruleset)}}</p>
-<!-- This is where the canvases go: -->
+<!-- The Visualizatoion Display Area -->
 <section class="canvas-display">
-        <main #entry class="dynamic"></main>
+        <div>
+                <!-- Widgets go here: -->
+                <app-widget-frame></app-widget-frame>
+        </div>
 </section>
 <div class="menu">
         <button (click)="toggleSelection()" class="btn">Add Widget</button>

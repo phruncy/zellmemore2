@@ -16,6 +16,7 @@ import { Testing03Component } from './testing03/testing03.component';
 import { AutomatonControllerComponent } from './automaton-controller/automaton-controller.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
         Testing02Component,
         Testing03Component,
         AutomatonControllerComponent,
-        FooterComponent
+        FooterComponent,
+        WidgetFrameComponent
     ],
     imports: [
         BrowserModule,

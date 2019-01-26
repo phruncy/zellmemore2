@@ -13,7 +13,4 @@
  * (<app-widget> in this case)
  */
 :host {
-        display: inline-table;
-        width: 300px;
-        margin: 0px;
 }

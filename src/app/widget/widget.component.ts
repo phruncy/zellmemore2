@@ -49,7 +49,6 @@ export class WidgetComponent implements OnInit {
         let visualization = this.service.provideComponent();
         const factory = this.resolver.resolveComponentFactory(visualization);
         const component = this.entry.createComponent(factory);
-        console.log("Hurra, eine Komponente wurde erzeugt.");
     }
 
     remove()

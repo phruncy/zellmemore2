@@ -1,21 +1,25 @@
-<div class="interface">
-        <button (click)="this.automaton.toggleLoop()" class="btn inline">Play</button>
-        <button (click)="this.automaton.reset()" class="btn inline">Reset</button>
-        <div class ="container" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
-                <span class="btn inline" >settings</span>
-                <app-automaton-controller *ngIf="controllerDisplayed"></app-automaton-controller>
+<body class="container">
+        <header class="controller">
+                <button (click)="this.automaton.toggleLoop()" class="btn">Play</button>
+                <button (click)="this.automaton.reset()" class="btn">Reset</button>
+                <div class ="container" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
+                        <span class="" >settings</span>
+                        <app-automaton-controller *ngIf="controllerDisplayed"></app-automaton-controller>
+                </div>
+        </header>
+        <div class="info">
+                <p>{{automaton.cellnumber}} cells</p>
+                <p>rule #{{converter.binaryToDecimal(automaton.ruleset)}}</p>
         </div>
-</div>
-<p>{{automaton.cellnumber}} cells</p>
-<p>rule #{{converter.binaryToDecimal(automaton.ruleset)}}</p>
-<!-- The Visualizatoion Display Area -->
-<section class="canvas-display">
-        <div>
-                <!-- Widgets go here: -->
-                <app-widget-frame></app-widget-frame>
+        <!-- The Visualizatoion Display Area -->
+        <section class="canvas-display">
+                <div>
+                        <!-- Widgets go here: -->
+                        <app-widget-frame>hier ist ihre canvas</app-widget-frame>
+                </div>
+        </section>
+        <div class="menu">
+                <button (click)="toggleSelection()" class="btn">Add Widget</button>
+                <app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
         </div>
-</section>
-<div class="menu">
-        <button (click)="toggleSelection()" class="btn">Add Widget</button>
-        <app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
-</div>
+</body>

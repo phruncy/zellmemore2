@@ -1,0 +1,13 @@
+:host {
+        display: grid;
+        width: 700px;
+        height: 500px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-auto-rows: auto;
+        background-color: bisque;
+}
+
+.empty {
+        /* spans the whole width */
+        grid-column: 1 / -1;
+}

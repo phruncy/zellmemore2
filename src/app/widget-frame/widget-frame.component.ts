@@ -1,10 +1,13 @@
-import { Component, 
+import { Component,
         OnInit,
         ComponentFactoryResolver,
         ViewChild,
-        ViewContainerRef, } from '@angular/core';
+        ViewContainerRef,
+        ElementRef
+       } from '@angular/core';
 import { VisualizationService } from '../visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
+import { SizeService } from '../size.service';
 
 @Component({
   selector: 'app-widget-frame',
@@ -17,7 +20,9 @@ export class WidgetFrameComponent implements OnInit {
 
     constructor(
         private visualizationService: VisualizationService,
-        private resolver: ComponentFactoryResolver
+        private sizeService: SizeService,
+        private resolver: ComponentFactoryResolver,
+        private elRef: ElementRef
     ) { }
 
     ngOnInit() 
@@ -26,6 +31,8 @@ export class WidgetFrameComponent implements OnInit {
         () => {
             this.addWidget(this.visualizationService.visualizationToDisplay);
         });
+        this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
+        console.log("height----" + this.elRef.nativeElement.offsetHeight);
     }
 
     /* Subscription to Visualization Service:

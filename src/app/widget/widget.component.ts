@@ -15,18 +15,28 @@ import { Component,
           ComponentFactory
         } from '@angular/core';
 import { VisualizationService } from '../visualization.service';
+import { AutomatonService } from '../automaton.service';
+import { SizeService } from '../size.service';
+import { faTimesCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-widget',
     templateUrl: './widget.component.html',
     styleUrls: ['./widget.component.css']
 })
-export class WidgetComponent implements OnInit {
+export class WidgetComponent implements OnInit, OnDestroy {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     private _ref: any;
-    constructor(private service: VisualizationService,
-                private resolver: ComponentFactoryResolver
+    private _height: number;
+    private _width: number;
+    faTimesCircle = faTimesCircle;
+    faPlayCircle = faPlayCircle;
+    constructor(
+            private visService: VisualizationService,
+            private sizeService: SizeService,
+            private resolver: ComponentFactoryResolver,
+            private automaton: AutomatonService
         ) {}
 
     set ref(ref: any)
@@ -36,17 +46,24 @@ export class WidgetComponent implements OnInit {
 
     ngOnInit() 
     {
+        this.fetchSize();
         this.fetchComponent();
     }
 
     ngOnDestroy()
     {
-        console.log("Widget has been removed.");
+        console.log('Widget has been removed.');
     }
-    
+
+    fetchSize()
+    {
+        this._height = this.sizeService.provideHeight();
+        this._width = this.sizeService.provideWidth();
+    }
+
     fetchComponent()
     {
-        let visualization = this.service.provideComponent();
+        const visualization = this.visService.provideComponent();
         const factory = this.resolver.resolveComponentFactory(visualization);
         const component = this.entry.createComponent(factory);
     }

@@ -1,12 +1,42 @@
 .widget-container {
-        display: inline;
-        grid-column: 3;
-        box-shadow: 5px;
-        box-shadow: darkgray;
+       position: relative;
+
 }
 
 .btn {
-        display: inline;
+        position: absolute;
+        opacity: 0;
+}
+.remove {
+        top: 10%;
+        left: 10%;
+}
+
+.run-pause {
+        top: 50%;
+        left: 50%;
+        transform: translate (-50% -50%);
+}
+
+.overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0;
+        transition: .5s ease;
+}
+
+.widget-container:hover .overlay {
+        opacity: .4;
+}
+
+.widget-container:hover .btn {
+        opacity: 1;
 }
 
 /* accesses the element that the component is hosted in

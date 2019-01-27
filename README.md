@@ -30,3 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Class Diagram
 
 https://go.gliffy.com/go/share/s2at1va2v5xn33p5ibw6
+
+## Services
+
+SizeService:
+The size service provides the widgets with their correct size. Its provide-Method is called on initiation and on eEstroy of any widget. 

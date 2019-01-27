@@ -1,5 +1,7 @@
 <div class="widget-container">
-        <button type="button" (click)="remove()" class="btn">x</button>
         <div #entry></div>
+        <div class="overlay"></div>
+        <fa-icon [icon]="faPlayCircle" (click)="this.automaton.toggleLoop()" class="btn run-pause">run/ pause</fa-icon>
+        <fa-icon [icon]="faTimesCircle" (click)="remove()" class="btn remove"></fa-icon>
 </div>
 

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProgramWindowComponent } from './program-window/program-window.component';
@@ -38,7 +39,8 @@ import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
         FormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        FontAwesomeModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

@@ -17,6 +17,12 @@ import { SizeService } from '../size.service';
 export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    private _widgetNumber;
+    private _rows;
+    private _columns;
+    private _frameWidth;
+    private _frameHeight;
+    private _gap;
 
     constructor(
         private visualizationService: VisualizationService,
@@ -32,7 +38,7 @@ export class WidgetFrameComponent implements OnInit {
             this.addWidget(this.visualizationService.visualizationToDisplay);
         });
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
-        console.log("height----" + this.elRef.nativeElement.offsetHeight);
+        console.log('height----' + this.elRef.nativeElement.offsetHeight);
     }
 
     /* Subscription to Visualization Service:
@@ -49,4 +55,29 @@ export class WidgetFrameComponent implements OnInit {
         component.instance.ref = component;
     }
 
+    getInterimSize(rows: number): number
+    {
+        return this._frameWidth / (this._widgetNumber / rows);
+    }
+
+    /* calculates the maximum side length for the current number of widgets
+     * @param rows: the number of rows that the widgets will be displayed in
+     *              it is increased by 1 whenever the resulting sidelength for
+     *              the given number of rows is smaller than the resulting 
+     *              sidelength for the given rows + 1.
+     */
+    provideWidgetSize(): number
+    {
+        let rows = 1;
+        let sidelength;
+        while (sidelength = this.getInterimSize(rows) 
+        <= this.getInterimSize(rows + 1) 
+        && this.getInterimSize(rows + 1) <= this._frameHeight) {
+            rows++;
+        }
+        if (sidelength <= this._frameHeight) {
+            return this._frameHeight;
+        }
+        return sidelength;
+    }
 }

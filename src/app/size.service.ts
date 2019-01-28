@@ -14,7 +14,7 @@ export class SizeService {
       this._frameHeight = height;
   }
 
-  provideHeight(): number {
+  provideHeight(rows): number {
         const height = 250;
         return height;
   }
@@ -23,4 +23,8 @@ export class SizeService {
       const width = 250;
       return width;
   }
+
+
+
+
 }

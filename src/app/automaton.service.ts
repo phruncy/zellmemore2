@@ -106,8 +106,6 @@ export class AutomatonService {
                 this._cells[i].age ++;
             }
         }
-        console.log(this._generation + '.Generation');
-        console.log(this._cells);
         this._generation++;
         this._changed.next();
     }
@@ -129,7 +127,6 @@ export class AutomatonService {
         } else {
             this.disconnectRingGrid();
         }
-        console.log(this._cells);
         this._cellnumber = cellNumber;
         this._changed.next();
     }

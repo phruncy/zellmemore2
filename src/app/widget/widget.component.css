@@ -43,4 +43,5 @@
  * (<app-widget> in this case)
  */
 :host {
+        background-color: aqua;
 }

@@ -56,6 +56,7 @@ export class VisualizationService {
         return COMPONENTS[this._visualizationToDisplay];
     }
 
+    /* returns the component for the currently selected id */
     provideComponent() : any
     {
         return this.visualizationComponents[this.visualizationToDisplay];

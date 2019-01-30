@@ -1,9 +1,8 @@
 :host {
-        display: grid;
-        width: 700px;
+        width: 1000px;
         height: 500px;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-auto-rows: auto;
+        display: flex;
+        flex-wrap: wrap;
         background-color: bisque;
 }
 

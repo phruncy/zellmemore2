@@ -1,10 +1,14 @@
+/* Base class for every widget-content-component */
+
 import { OnInit, OnDestroy, HostBinding, Input } from "@angular/core";
 import { AutomatonService } from "../automaton.service";
 import { SizeService } from "../size.service";
+import { Subscription } from "rxjs";
 
 export abstract class ContentBase implements OnInit, OnDestroy {
 
-    private _automatonSubscription;
+    private _generationSub: Subscription;
+    private _numberSub: Subscription;
     /* sets the height */
     @HostBinding('style.width.px') protected widgetWidth ;
     @HostBinding('style.height.px') protected widgetHeight;
@@ -14,9 +18,14 @@ export abstract class ContentBase implements OnInit, OnDestroy {
 
     ngOnInit()
     {
-        this._automatonSubscription = this.automaton.changed$.subscribe(
+        this._generationSub = this.automaton.changed$.subscribe(
             () => {
                 this.update();
+            }
+        );
+        this._numberSub = this.automaton.cellsChanged$.subscribe(
+            () => {
+                this.onResize();
             }
         );
         this.sizeService.sizeChanged$.subscribe (
@@ -30,7 +39,8 @@ export abstract class ContentBase implements OnInit, OnDestroy {
 
     ngOnDestroy()
     {
-        this._automatonSubscription.unsubscribe();
+        this._generationSub.unsubscribe();
+        this._numberSub.unsubscribe();
     }
 
     fetchSize() 

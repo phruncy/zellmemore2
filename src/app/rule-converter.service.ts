@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class RuleConverterService {
    */ 
   decimalToBinary(number: number): number [] {
         const binary = number.toString(2);
+        console.log("number " + number);
         const binaryRuleset = [];
         for (let i = 0; i < binary.length; i++) {
             binaryRuleset.unshift(parseInt(binary.charAt(i), 10));
@@ -20,13 +22,13 @@ export class RuleConverterService {
         while (binaryRuleset.length < 8) {
             binaryRuleset.push(0);
         }
+        console.log("binary " + binaryRuleset);
         return  binaryRuleset;
   }
 
   binaryToDecimal(rule: number[]): number {
-      const inverse = rule.reverse();
       let binary = '';
-      rule.forEach(element => binary = binary + element);
+      rule.forEach(element => binary = element + binary);
       return parseInt(binary, 2);
   }
 }

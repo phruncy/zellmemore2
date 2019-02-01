@@ -39,6 +39,7 @@ export class Testing02Component extends ContentBase implements AfterContentInit 
     {
         this.init();
         this.render();
+        console.log("look i rendered!");
     }
 
     init() {

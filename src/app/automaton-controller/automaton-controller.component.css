@@ -1,3 +1,28 @@
+
 .dropdown {
         margin: 0px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background-color: rgb(20, 17, 37);
+        color: white;
+}
+
+.dropdown-element {
+        margin: 3px;
+        border-bottom-color: white;
+        border-bottom: 1px;
+        border-bottom-style: solid;
+}
+
+.flex {
+        display: flex;
+}
+
+.pointer {
+        cursor:pointer;
+}
+
+.checkbox-outer {
+        margin-left: 3px;
+        margin-right: 3px;
 }

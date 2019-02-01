@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Cell } from './cell';
 import { AutomatonConfigurationService } from './automaton-configuration.service';
 import { RuleConverterService } from './rule-converter.service';
@@ -23,11 +23,13 @@ export class AutomatonService {
      * 1 = initialsie random
      */
     private _initialState = 0;
-    private _isCircular = 0; //
+    private _isCircular = false; //
 
     /* Communication with views */
     private _changed = new Subject<void>();
     public changed$ = this._changed.asObservable();
+    private _cellsChanged = new Subject<void>();
+    public cellsChanged$ = this._changed.asObservable();
 
     constructor(
                 private configuration: AutomatonConfigurationService,
@@ -36,13 +38,20 @@ export class AutomatonService {
         /* function that are called from outside the service */
         this.loop = this.loop.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
-        this.changeRule = this.changeRule.bind(this);
         this.generate = this.generate.bind(this);
         this.setupCells = this.setupCells.bind(this);
     }
 
+    get generation(): number {
+        return this._generation;
+    }
+
     get fps() {
         return this._fps;
+    }
+
+    set fps(fps: number) {
+        this._fps = fps;
     }
 
     get cellnumber() {
@@ -55,6 +64,15 @@ export class AutomatonService {
 
     get ruleset(): number[] {
         return this._ruleset;
+    }
+
+    set ruleset(rule: number[])
+    {
+        this._ruleset = rule;
+    }
+
+    get isCircular(): boolean {
+        return this._isCircular;
     }
 
     loop(timestamp)
@@ -122,13 +140,9 @@ export class AutomatonService {
             this._cells.push(new Cell(0, i));
         }
         this.connectNeighbours();
-        if (this._isCircular) {
-            this.closeRingGrid();
-        } else {
-            this.disconnectRingGrid();
-        }
+        this.setEdges();
         this._cellnumber = cellNumber;
-        this._changed.next();
+        this._cellsChanged.next();
     }
 
     connectNeighbours()
@@ -148,7 +162,7 @@ export class AutomatonService {
         this._cells[0].leftNeighbour = this._cells[this._cells.length - 1];
         this._cells[0].rightNeighbour = this._cells[1];
         this._cells[this._cells.length - 1].leftNeighbour = this._cells[this._cells.length - 2];
-        this._cells[this._cells.length - 1] = this._cells[0];
+        this._cells[this._cells.length - 1].rightNeighbour = this._cells[0];
     }
 
     disconnectRingGrid()
@@ -159,11 +173,28 @@ export class AutomatonService {
         this._cells[this._cells.length - 1].rightNeighbour = null;
     }
 
+    setEdges()
+    {
+        if (this._isCircular) {
+            this.closeRingGrid();
+        } else {
+            this.disconnectRingGrid();
+        }
+    }
+
+    toggleArrayMode() {
+        console.log("getoggelt");
+        this._isCircular = !this._isCircular;
+        this.setEdges();
+    }
+
     /* Only executed when Program Window is loaded */
     initialise(): void
     {
+        this._generation = 0;
         this._cellnumber = 100; // !!!!
-        this._ruleset = this.converter.decimalToBinary              (this.configuration.provideStartRule());
+        this.ruleset = this.converter.decimalToBinary
+            (this.configuration.provideStartRule());
         this.setupCells(this.cellnumber);
         this.initialiseMiddle();
     }
@@ -190,11 +221,6 @@ export class AutomatonService {
         }
         this._changed.next();
     }
-
-    changeRule() {}
-
-
-
 }
 
 

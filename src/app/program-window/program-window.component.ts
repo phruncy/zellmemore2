@@ -42,7 +42,7 @@ export class ProgramWindowComponent implements OnInit {
 
     ngOnInit()
     {
-        this.automaton.initialise();
+        //this.automaton.initialise();
     }
 
     toggleSelection()

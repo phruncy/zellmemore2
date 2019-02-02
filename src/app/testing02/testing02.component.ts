@@ -39,13 +39,24 @@ export class Testing02Component extends ContentBase implements AfterContentInit 
     {
         this.init();
         this.render();
-        console.log("look i rendered!");
+    }
+
+    onNumberChange()
+    {
+        this._blockSize = this.getBlocksize();
+        this.render();
+        console.log("Hey i changed numbers");
+    }
+
+    getBlocksize(): number
+    {
+        return Math.floor(this.widgetWidth / this.automaton.cellnumber);
     }
 
     init() {
         this.canvas.nativeElement.height = this.widgetHeight;
         this.canvas.nativeElement.width = this.widgetWidth;
-        this._blockSize = Math.floor(this.widgetWidth / this.automaton.cellnumber);
+        this._blockSize = this.getBlocksize();
     }
 
     render()

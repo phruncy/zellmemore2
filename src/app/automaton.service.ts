@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, config } from 'rxjs';
 import { Cell } from './cell';
 import { AutomatonConfigurationService } from './automaton-configuration.service';
 import { RuleConverterService } from './rule-converter.service';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +12,8 @@ export class AutomatonService {
     /*Loop properties */
     private _generation = 0;
     private _lastFrameTime = 0;
-    private _fps = 3;
     private _isRunning = false;
+    private _fps: number;
 
     /* Cell properties */
     private _cells: Cell[];
@@ -22,24 +23,47 @@ export class AutomatonService {
      * 0 = initialise only Middle Cell
      * 1 = initialsie random
      */
-    private _initialState = 0;
-    private _isCircular = false; //
+    private _initState;
+    private _isCircular: boolean; //
 
     /* Communication with views */
     private _changed = new Subject<void>();
     public changed$ = this._changed.asObservable();
     private _cellsChanged = new Subject<void>();
-    public cellsChanged$ = this._changed.asObservable();
+    public cellsChanged$ = this._cellsChanged.asObservable();
+    private _ready = new Subject<void>();
+    public ready$ = this._ready.asObservable();
+
+    private _config: any;
 
     constructor(
                 private configuration: AutomatonConfigurationService,
-                private converter: RuleConverterService
+                private converter: RuleConverterService,
+                private http: HttpClient
                 ) {
         /* function that are called from outside the service */
         this.loop = this.loop.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.generate = this.generate.bind(this);
         this.setupCells = this.setupCells.bind(this);
+        this.http.get('../assets/json/automaton-config.json').subscribe(
+            data => {
+                this._config = data;
+                this._fps = this._config.fps;
+                this._cellnumber = this._config.cellNumber;
+                this._initState = this._config.stateConfiguration;
+                this._isCircular = this._config.circular;
+                this._ruleset =
+                    this.converter.decimalToBinary(
+                        parseInt(
+                            this._config.startRules[
+                                Math.floor(
+                                    Math.random() * this._config.startRules.length)], 10));
+                this.setupCells(this._cellnumber);
+                this._ready.next();
+                console.log(this._ruleset);
+            }
+        );
     }
 
     get generation(): number {
@@ -75,6 +99,15 @@ export class AutomatonService {
         return this._isCircular;
     }
 
+    get initState(): number {
+        return this._initState;
+    }
+    
+    set initState(state: number) {
+        this._initState = state;
+        this.reset();
+    }
+
     loop(timestamp)
     {
         if (timestamp < this._lastFrameTime + (1000 / this._fps)) {
@@ -92,10 +125,8 @@ export class AutomatonService {
 
     toggleLoop(): void
     {
+        this._isRunning = !this._isRunning;
         if (this._isRunning) {
-            this._isRunning = false;
-        } else {
-            this._isRunning = true;
             requestAnimationFrame(this.loop);
         }
     }
@@ -142,7 +173,18 @@ export class AutomatonService {
         this.connectNeighbours();
         this.setEdges();
         this._cellnumber = cellNumber;
+        this.setupState();
         this._cellsChanged.next();
+    }
+
+    setupState() 
+    {
+        if (this._initState === 0) {
+            const i = Math.floor(this._cells.length / 2);
+            this._cells[i].state = 1;
+        } else {
+            this._cells.forEach(cell => cell.state = Math.round(Math.random()));
+        }
     }
 
     connectNeighbours()
@@ -157,68 +199,31 @@ export class AutomatonService {
         }
     }
 
-    closeRingGrid()
-    {
-        this._cells[0].leftNeighbour = this._cells[this._cells.length - 1];
-        this._cells[0].rightNeighbour = this._cells[1];
-        this._cells[this._cells.length - 1].leftNeighbour = this._cells[this._cells.length - 2];
-        this._cells[this._cells.length - 1].rightNeighbour = this._cells[0];
-    }
-
-    disconnectRingGrid()
-    {
-        this._cells[0].leftNeighbour = null;
-        this._cells[0].rightNeighbour = null;
-        this._cells[this._cells.length - 1].leftNeighbour = null;
-        this._cells[this._cells.length - 1].rightNeighbour = null;
-    }
-
     setEdges()
     {
         if (this._isCircular) {
-            this.closeRingGrid();
+            this._cells[0].leftNeighbour = this._cells[this._cells.length - 1];
+            this._cells[0].rightNeighbour = this._cells[1];
+            this._cells[this._cells.length - 1].leftNeighbour = this._cells[this._cells.length - 2];
+            this._cells[this._cells.length - 1].rightNeighbour = this._cells[0];
         } else {
-            this.disconnectRingGrid();
+            this._cells[0].leftNeighbour = null;
+            this._cells[0].rightNeighbour = null;
+            this._cells[this._cells.length - 1].leftNeighbour = null;
+            this._cells[this._cells.length - 1].rightNeighbour = null;
         }
     }
 
     toggleArrayMode() {
-        console.log("getoggelt");
         this._isCircular = !this._isCircular;
         this.setEdges();
-    }
-
-    /* Only executed when Program Window is loaded */
-    initialise(): void
-    {
-        this._generation = 0;
-        this._cellnumber = 100; // !!!!
-        this.ruleset = this.converter.decimalToBinary
-            (this.configuration.provideStartRule());
-        this.setupCells(this.cellnumber);
-        this.initialiseMiddle();
-    }
-
-    initialiseRandom()
-    {
-        this._cells.forEach(cell => cell.state = Math.round(Math.random()));
-    }
-
-    initialiseMiddle()
-    {
-        const i = Math.floor(this._cells.length / 2);
-        this._cells[i].state = 1;
     }
 
     reset(): void
     {
         this._cells.forEach(cell => cell.reset());
         this._generation = 0;
-        if (this._initialState === 0) {
-            this.initialiseMiddle();
-        } else {
-            this.initialiseRandom();
-        }
+        this.setupState();
         this._changed.next();
     }
 }

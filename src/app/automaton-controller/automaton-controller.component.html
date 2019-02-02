@@ -20,18 +20,10 @@
                         <div>
                                 <span>initial state:</span>
                         </div>
-                        <div>
-                                <label class="radio-container">
-                                        <input type="radio" id ="single-radio" value="single">
-                                        <span class="checkmark"></span>
-                                        single cell
-                                </label>
-                                <label class="radio-container">
-                                                <input type="radio" id="random-radio" value="random">
-                                                <span class="checkmark"></span>
-                                                random
-                                </label>
-                        </div>
+                        <form [formGroup]="form">
+                                <input type="radio" formControlName="state" value="0" class="pointer"> single cell
+                                <input type="radio" formControlName="state" value="1" class="pointer"> random
+                        </form>
                 </li>
                 <!-- number of cells -->
                 <li class="dropdown-element">

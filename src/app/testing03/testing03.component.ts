@@ -25,5 +25,9 @@ export class Testing03Component extends ContentBase {
       console.log('testing03 resized');
   }
 
+  onNumberChange() {
+      
+  }
+
 
 }

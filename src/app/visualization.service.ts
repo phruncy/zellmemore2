@@ -1,8 +1,4 @@
 import { Injectable, 
-          Output, 
-          EventEmitter,
-          Component,
-          Type,
        } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { WidgetComponent } from './widget/widget.component';

@@ -18,6 +18,11 @@ export abstract class ContentBase implements OnInit, OnDestroy {
 
     ngOnInit()
     {
+        this.automaton.ready$.subscribe(
+            () => {
+                this.setup();
+            }
+        )
         this._generationSub = this.automaton.changed$.subscribe(
             () => {
                 this.update();
@@ -25,7 +30,8 @@ export abstract class ContentBase implements OnInit, OnDestroy {
         );
         this._numberSub = this.automaton.cellsChanged$.subscribe(
             () => {
-                this.onResize();
+                console.log("triggered");
+                this.onNumberChange();
             }
         );
         this.sizeService.sizeChanged$.subscribe (
@@ -51,4 +57,6 @@ export abstract class ContentBase implements OnInit, OnDestroy {
 
     abstract update();
     abstract onResize();
+    abstract onNumberChange();
+    abstract setup();
 }

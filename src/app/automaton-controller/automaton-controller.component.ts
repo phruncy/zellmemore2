@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
 import { AutomatonService } from '../automaton.service';
 import { RuleConverterService } from '../rule-converter.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-automaton-controller',
@@ -12,6 +13,10 @@ export class AutomatonControllerComponent implements OnInit {
     @Input() private slider;
     @Input() private speed;
     @Input() decimal;
+    /* radio button form group */
+    form = new FormGroup ({
+        state: new FormControl(''),
+    });
     private labeltext: String;
 
     private BOXES = [
@@ -30,29 +35,38 @@ export class AutomatonControllerComponent implements OnInit {
         private converter: RuleConverterService
         ) { }
 
-    ngOnInit() {
-        this.slider = this.automaton.cellnumber;
-        this.speed = this.automaton.fps;
-        this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
-        console.log(this.slider);
-        this.setLabel();
+        ngOnInit() {
+        this.automaton.ready$.subscribe(
+            () => {
+                this.slider = this.automaton.cellnumber;
+                this.speed = this.automaton.fps;
+                this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
+                this.setLabel();
+                this.form.setValue({state: this.automaton.initState.toString()});
+            }
+        );
+        /* connects the radio button control to the automaton */
+        this.form.valueChanges.subscribe (
+            () => {
+                this.automaton.initState = parseInt(this.form.value.state, 10);
+            }
+        );
     }
 
     /* sets the digit in the ruleset at the given index to active or inactive, depending on the checkbox state */
     updateRule(index: number, checked: boolean) {
         this.automaton.ruleset[index] = checked ? 1 : 0;
         this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
-        console.log(this.decimal);
     }
 
     updateDecimal()
     {
         this.automaton.ruleset = this.converter.decimalToBinary(parseInt(this.decimal, 10));
-        console.log(this.automaton.ruleset);
     }
 
+    /* sets the 'Array-Mode' label */
     setLabel() {
-        this.labeltext = 
+        this.labeltext =
             this.automaton.isCircular ? 'enabled' : 'disabled';
     }
 

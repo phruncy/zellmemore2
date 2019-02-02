@@ -16,7 +16,7 @@ import { Testing02Component } from './testing02/testing02.component';
 import { Testing03Component } from './testing03/testing03.component';
 import { AutomatonControllerComponent } from './automaton-controller/automaton-controller.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 
 @NgModule({
@@ -37,6 +37,7 @@ import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,

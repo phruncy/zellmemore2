@@ -18,6 +18,8 @@ import { AutomatonControllerComponent } from './automaton-controller/automaton-c
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
+import { MatSnackBarModule } from '@angular/material';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +34,8 @@ import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
         Testing03Component,
         AutomatonControllerComponent,
         FooterComponent,
-        WidgetFrameComponent
+        WidgetFrameComponent,
+        PopupComponent
     ],
     imports: [
         BrowserModule,
@@ -41,7 +44,8 @@ import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        MatSnackBarModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],
@@ -49,7 +53,8 @@ import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
         WidgetComponent,
         TestingComponent,
         Testing02Component,
-        Testing03Component
+        Testing03Component,
+        PopupComponent
     ]
 })
 export class AppModule { }

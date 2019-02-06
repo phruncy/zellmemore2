@@ -45,12 +45,11 @@ export class Testing02Component extends ContentBase implements AfterContentInit 
     {
         this._blockSize = this.getBlocksize();
         this.render();
-        console.log("Hey i changed numbers");
     }
 
     getBlocksize(): number
     {
-        return Math.floor(this.widgetWidth / this.automaton.cellnumber);
+        return (this.widgetWidth / this.automaton.cellnumber);
     }
 
     init() {

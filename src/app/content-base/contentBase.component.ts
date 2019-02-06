@@ -25,7 +25,6 @@ export abstract class ContentBase implements OnInit, OnDestroy {
         );
         this._numberSub = this.automaton.cellsChanged$.subscribe(
             () => {
-                console.log("triggered");
                 this.onNumberChange();
             }
         );

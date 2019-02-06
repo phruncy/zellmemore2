@@ -1,5 +1,4 @@
 import { Component,
-         OnInit,
        } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -7,6 +6,7 @@ import { VisualizationSelectionComponent } from '../visualization-selection/visu
 import { VisualizationService } from '../visualization.service';
 import { AutomatonService } from '../automaton.service';
 import { RuleConverterService } from '../rule-converter.service';
+import { faTimes, faPlay, faUndo, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-program-window',
@@ -15,11 +15,14 @@ import { RuleConverterService } from '../rule-converter.service';
 }
 )
 
-export class ProgramWindowComponent implements OnInit {
+export class ProgramWindowComponent {
 
     private _selectionDisplayed = false;
     private _controllerDisplayed = false;
-    private displayedRule: number;
+    private faTimes = faTimes;
+    private faPlay = faPlay;
+    private faUndo = faUndo;
+    private faAngleLeft = faAngleLeft;
 
     constructor(
         private route: ActivatedRoute,
@@ -38,11 +41,6 @@ export class ProgramWindowComponent implements OnInit {
     get controllerDisplayed(): boolean
     {
         return this._controllerDisplayed;
-    }
-
-    ngOnInit()
-    {
-        //this.automaton.initialise();
     }
 
     toggleSelection()

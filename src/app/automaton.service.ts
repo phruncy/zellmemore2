@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject, config } from 'rxjs';
+import { Subject, config, throwError } from 'rxjs';
 import { Cell } from './cell';
-import { AutomatonConfigurationService } from './automaton-configuration.service';
 import { RuleConverterService } from './rule-converter.service';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -37,15 +36,15 @@ export class AutomatonService {
     private _config: any;
 
     constructor(
-                private configuration: AutomatonConfigurationService,
                 private converter: RuleConverterService,
                 private http: HttpClient
                 ) {
-        /* function that are called from outside the service */
+        /* functions that are called from outside the service */
         this.loop = this.loop.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.generate = this.generate.bind(this);
         this.setupCells = this.setupCells.bind(this);
+        /* load configuration */
         this.http.get('../assets/json/automaton-config.json').subscribe(
             data => {
                 this._config = data;
@@ -80,6 +79,14 @@ export class AutomatonService {
 
     get cellnumber() {
         return this._cellnumber;
+    }
+
+    set cellnumber(cells: number) {
+        if (!((cells >= 0) && (cells <= 500))) {
+            const error = new Error('Invalid Number Input');
+            throw error;
+        }
+        this._cellnumber = cells;
     }
 
     get cells(): Cell[] {
@@ -165,6 +172,13 @@ export class AutomatonService {
      */
     setupCells(cellNumber: number)
     {
+        try {
+            this.cellnumber = cellNumber;
+        } catch (error) {
+            console.log(error);
+            console.log(this._cellnumber);
+            throw new Error('Invalid Cell number.');
+        }
         /* clear cells[] first */
         this._cells = [];
         for (let i = 0; i < cellNumber; i++) {
@@ -172,7 +186,6 @@ export class AutomatonService {
         }
         this.connectNeighbours();
         this.setEdges();
-        this._cellnumber = cellNumber;
         this.setupState();
         this._cellsChanged.next();
     }

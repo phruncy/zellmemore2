@@ -45,5 +45,10 @@
  * (<app-widget> in this case)
  */
 :host {
-        background-color: white;
+}
+
+.btn {
+        cursor: pointer;
+        font-size: 20px;
+
 }

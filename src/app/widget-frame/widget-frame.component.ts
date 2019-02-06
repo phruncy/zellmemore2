@@ -1,11 +1,11 @@
 import { Component,
         OnInit,
-        AfterViewInit,
         ComponentFactoryResolver,
         ViewChild,
         ViewContainerRef,
         ElementRef,
-        ChangeDetectorRef
+        ChangeDetectorRef,
+        HostListener
        } from '@angular/core';
 import { VisualizationService } from '../visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
@@ -16,7 +16,7 @@ import { SizeService } from '../size.service';
   templateUrl: './widget-frame.component.html',
   styleUrls: ['./widget-frame.component.css']
 })
-export class WidgetFrameComponent implements OnInit, AfterViewInit {
+export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
 
@@ -37,9 +37,12 @@ export class WidgetFrameComponent implements OnInit, AfterViewInit {
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
 
-    ngAfterViewInit()
+    @HostListener('window:resize', ['$event']) onResize()
     {
+        this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
+
+
 
     /* Subscription to Visualization Service:
     * a new widget is added whenever the selected visualization changes

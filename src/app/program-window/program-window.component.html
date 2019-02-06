@@ -1,25 +1,31 @@
 <body class="container">
         <header class="controller">
-                <button (click)="this.automaton.toggleLoop()" class="btn">Play</button>
-                <button (click)="this.automaton.reset()" class="btn">Reset</button>
-                <div class ="container" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
-                        <span class="" >settings</span>
-                        <app-automaton-controller ></app-automaton-controller>
+                <button (click)="this.automaton.toggleLoop()" class="btn play">
+                        <fa-icon [icon]="faPlay"></fa-icon>
+                </button>
+                <button (click)="this.automaton.reset()" class="btn reset">
+                        <fa-icon [icon]="faUndo" class="reset-icon"></fa-icon>
+                </button>
+                <div class ="dropdown" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
+                        <span class="btn settings" >
+                                settings 
+                                <fa-icon [icon]="faAngleLeft" class="settings-icon">        
+                                </fa-icon>
+                        </span>
+                        <app-automaton-controller class="settings-content"></app-automaton-controller>
                 </div>
         </header>
-        <div class="info">
-                <p>{{automaton.cellnumber}} cells</p>
-                <p>rule #</p>
-        </div>
         <!-- The Visualizatoion Display Area -->
         <section class="canvas-display">
-                <div>
-                        <!-- Widgets go here: -->
-                        <app-widget-frame></app-widget-frame>
-                </div>
+                <!-- Widgets go here: -->
+                <app-widget-frame></app-widget-frame>
         </section>
-        <div class="menu">
-                <button (click)="toggleSelection()" class="btn">Add Widget</button>
+        <div class="menu" [class.active]="this._selectionDisplayed">
+                <div>
+                        <button (click)="toggleSelection()" class="dropdown-btn">
+                                <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="this._selectionDisplayed"></fa-icon>
+                        </button>
+                </div>
                 <app-visualization-selection *ngIf="selectionDisplayed"></app-visualization-selection>
         </div>
 </body>

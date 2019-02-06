@@ -13,6 +13,9 @@ export class RuleConverterService {
    * (meaning 1 is at index 0 and 128 is at index 7) 
    */ 
   decimalToBinary(number: number): number [] {
+        if (!((number >= 0) && (number <= 255))) {
+            throw new Error('invalid rule input');
+        }
         const binary = number.toString(2);
         const binaryRuleset = [];
         for (let i = 0; i < binary.length; i++) {

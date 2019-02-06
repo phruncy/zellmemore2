@@ -23,6 +23,7 @@ export class SizeService {
   setFrameSize(width: number, height: number) {
       this._frameWidth = width;
       this._frameHeight = height;
+      this.changeWidgetSize();
   }
 
   decreaseWidgetNumber()
@@ -38,34 +39,30 @@ export class SizeService {
       console.log("widgets: " + this._widgetNumber + ", size: " + this._widgetSize);
   }
 
-  private getInterimSize(rows: number): number
-    {
-        return this._frameWidth / Math.ceil(this._widgetNumber / rows);
-    }
-
-  private getInterimTotal(rows: number): number
-  {
-      return this.getInterimSize(rows) * rows;
-  }  
-
     /* calculates the maximum side length for the current number of widgets
      * @param rows: the number of rows that the widgets will be displayed in
      *              it is increased by 1 whenever the resulting sidelength for
      *              the given number of rows is smaller than the resulting 
      *              sidelength for the given rows + 1.
      */
+
+    private getInterimSize(rows) {
+        const w = this._frameWidth / Math.ceil(this._widgetNumber / rows);
+        if ((w * rows) > this._frameHeight) {
+            return this._frameHeight / rows;
+        }
+        return w;
+    }
+    
     private changeWidgetSize()
     {
         let rows = 1;
         let sidelength;
-        while (((sidelength = this.getInterimSize(rows)) <= this.getInterimSize(rows + 1)) && (this.getInterimTotal(rows + 1) <= this._frameHeight)) {
+        while ((sidelength = this.getInterimSize(rows)) 
+            < this.getInterimSize(rows + 1)) {
             rows++;
         }
-        if (sidelength >= this._frameHeight) {
-            this._widgetSize = this._frameHeight;
-        } else {
-            this._widgetSize = sidelength;
-        }
+        this._widgetSize = Math.floor(sidelength);
         this._sizeChanged.next();
     }
 }

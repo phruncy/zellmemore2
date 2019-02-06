@@ -31,6 +31,9 @@ export class WidgetComponent implements OnInit, OnDestroy {
     /* binds the width/height properties to the width/height variables. type is 'string'! */
     @HostBinding('style.width.px') private _width = '300';
     @HostBinding('style.height.px') private _height = '300';
+    @HostBinding('style.margin-right.px') private _marginRight;
+    @HostBinding('style.margin-bottom.px') private _marginBottom;
+
     private _ref: any;
     /* icon references */
     faTimesCircle = faTimesCircle;
@@ -59,6 +62,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
                 }
         );
         this.sizeService.increaseWidgetNumber();
+        this.fetchSize();
         this.fetchComponent();
     }
 
@@ -83,6 +87,8 @@ export class WidgetComponent implements OnInit, OnDestroy {
     fetchSize() {
         this._width = this.sizeService.widgetSize.toString();
         this._height = this._width;
+        this._marginRight = this.sizeService.margin;
+        this._marginBottom = this.sizeService.margin;
     }
 
     remove()

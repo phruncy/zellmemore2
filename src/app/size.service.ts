@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,17 @@ export class SizeService {
     private _frameWidth;
     private _widgetNumber = 0;
     private _widgetSize = 250;
+    public margin = 3; // default
     /* informs listeners (widgets) about change in widget size */
     private _sizeChanged = new Subject<void>();
     public sizeChanged$ = this._sizeChanged.asObservable();
-    constructor() { }
+    
+    constructor(private http: HttpClient) {
+        this.http.get('../assets/json/ui.json').subscribe((data: any) => {
+            const config = data;
+            this.margin = config.widgetMargin;
+        });
+    }
 
     get widgetSize(): number
     {
@@ -47,11 +55,12 @@ export class SizeService {
      */
 
     private getInterimSize(rows) {
-        const w = this._frameWidth / Math.ceil(this._widgetNumber / rows);
-        if ((w * rows) > this._frameHeight) {
-            return this._frameHeight / rows;
+        const w = (this._frameWidth - 
+            (this._widgetNumber / rows) * this.margin) / Math.ceil(this._widgetNumber / rows);
+        if ((w * rows + rows * this.margin) > this._frameHeight) {
+            return (this._frameHeight - this.margin) / rows;
         }
-        return w;
+        return Math.floor(w) - 1;
     }
     
     private changeWidgetSize()

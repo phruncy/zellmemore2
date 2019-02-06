@@ -1,6 +1,5 @@
 {
         "minWidgetSize": 100,
         "minFrameHeight": 100,
-        "widgetMargin": 3
-
+        "widgetMargin": 5
 }

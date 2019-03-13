@@ -237,7 +237,7 @@ export class AutomatonService {
         this._cells.forEach(cell => cell.reset());
         this._generation = 0;
         this.setupState();
-        this._changed.next();
+        this._cellsChanged.next();
     }
 }
 

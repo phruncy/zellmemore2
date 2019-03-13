@@ -8,8 +8,8 @@ import { Subscription } from "rxjs";
 export abstract class ContentBase implements OnInit, OnDestroy {
 
     private _generationSub: Subscription;
-    private _numberSub: Subscription;
-    /* sets the height */
+    private _resetSub: Subscription;
+    /* sets the size */
     @HostBinding('style.width.px') protected widgetWidth ;
     @HostBinding('style.height.px') protected widgetHeight;
 
@@ -23,9 +23,10 @@ export abstract class ContentBase implements OnInit, OnDestroy {
                 this.update();
             }
         );
-        this._numberSub = this.automaton.cellsChanged$.subscribe(
+        
+        this._resetSub = this.automaton.cellsChanged$.subscribe(
             () => {
-                this.onNumberChange();
+                this.onReset();
             }
         );
         this.sizeService.sizeChanged$.subscribe (
@@ -40,7 +41,7 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     ngOnDestroy()
     {
         this._generationSub.unsubscribe();
-        this._numberSub.unsubscribe();
+        this._resetSub.unsubscribe();
     }
 
     fetchSize() 
@@ -51,5 +52,5 @@ export abstract class ContentBase implements OnInit, OnDestroy {
 
     abstract update();
     abstract onResize();
-    abstract onNumberChange();
+    abstract onReset();
 }

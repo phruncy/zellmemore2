@@ -12,8 +12,6 @@ import { SizeService } from '../size.service';
 export class Testing02Component extends ContentBase implements AfterContentInit {
     @ViewChild('defaultCanvas')canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
-
-    private blockMatrix: number[][];
     private _blockSize: number;
 
     constructor(protected automaton: AutomatonService,
@@ -41,7 +39,7 @@ export class Testing02Component extends ContentBase implements AfterContentInit 
         this.render();
     }
 
-    onNumberChange()
+    onReset()
     {
         this._blockSize = this.getBlocksize();
         this.render();

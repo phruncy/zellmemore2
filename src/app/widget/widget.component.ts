@@ -18,7 +18,7 @@ import { Component,
 import { VisualizationService } from '../visualization.service';
 import { AutomatonService } from '../automaton.service';
 import { SizeService } from '../size.service';
-import { faTimesCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-widget',
@@ -38,6 +38,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
     /* icon references */
     faTimesCircle = faTimesCircle;
     faPlayCircle = faPlayCircle;
+    faExpand = faExpand;
     constructor(
             private visService: VisualizationService,
             private sizeService: SizeService,
@@ -94,6 +95,11 @@ export class WidgetComponent implements OnInit, OnDestroy {
     remove()
     {
         this._ref.destroy();
+    }
+
+    toggleFullscreen()
+    {
+        console.log("fullscreen");
     }
 }
 

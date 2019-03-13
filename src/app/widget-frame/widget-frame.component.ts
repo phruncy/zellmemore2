@@ -51,7 +51,6 @@ export class WidgetFrameComponent implements OnInit {
     */
     addWidget(id: any)
     {
-        console.log('widget added with id: ' + id);
         // creates a Factory for a widget component
         const widgetFactory = this.resolver.resolveComponentFactory(WidgetComponent);
         const component = this.entry.createComponent(widgetFactory);

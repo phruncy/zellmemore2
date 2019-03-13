@@ -7,6 +7,8 @@ import { COMPONENTS } from './dictionary';
 import { TestingComponent } from './testing/testing.component';
 import { Testing02Component } from './testing02/testing02.component';
 import { Testing03Component } from './testing03/testing03.component';
+import { VizDefaultComponent } from './viz-default/viz-default.component';
+import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,10 @@ export class VisualizationService {
     public hasChanged$ = this._hasChanged.asObservable();
     private visualizationComponents =
     {
-        "v001": TestingComponent,
+        "v001": VizDefaultComponent,
         "v002": Testing02Component,
-        "v003": Testing03Component
+        "v003": Testing03Component,
+        "v004": VizPunchcardComponent
     };
 
     constructor() 
@@ -42,13 +45,22 @@ export class VisualizationService {
      */
     set visualizationToDisplay(id: string)
     {
-        this._visualizationToDisplay = id;
+        if (!(id in this.visualizationComponents)) {
+            const unknownComponent = new Error('This component doesnt exist yet.');
+            throw unknownComponent;
+        }
+        try {
+            this._visualizationToDisplay = id;
+        } catch (error) {
+            console.log(error);
+        }
         // tells program window about value change
         this._hasChanged.next();
     }
 
     provideComponentId()
     {
+        
         return COMPONENTS[this._visualizationToDisplay];
     }
 

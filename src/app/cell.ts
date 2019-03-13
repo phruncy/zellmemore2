@@ -8,7 +8,6 @@ export class Cell {
   private _state: number;
   private _formerState: number;
   private _age: number;
-  private _position: number;
   private _leftNeighbour: Cell;
   private _rightNeighbour: Cell;
   private _id;
@@ -74,14 +73,14 @@ export class Cell {
       this._rightNeighbour = cell;
   }
 
-  get position(): number
+  get id(): number
   {
-      return this._position;
+      return this._id;
   }
 
-  set position(position: number)
+  set id(newId: number)
   {
-      this._position = position;
+      this._id = newId;
   }
 
 

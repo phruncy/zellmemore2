@@ -3,3 +3,8 @@ body {
         font-family: sans-serif;
         margin: 0;
 }
+
+html {
+        /* prevents the scrollbar from adding up to the page width */
+        overflow-y: scroll;
+}

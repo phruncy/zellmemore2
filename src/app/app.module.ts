@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 import { MatSnackBarModule } from '@angular/material';
 import { PopupComponent } from './popup/popup.component';
+import { VizDefaultComponent } from './viz-default/viz-default.component';
+import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +37,9 @@ import { PopupComponent } from './popup/popup.component';
         AutomatonControllerComponent,
         FooterComponent,
         WidgetFrameComponent,
-        PopupComponent
+        PopupComponent,
+        VizDefaultComponent,
+        VizPunchcardComponent
     ],
     imports: [
         BrowserModule,
@@ -51,10 +55,11 @@ import { PopupComponent } from './popup/popup.component';
     bootstrap: [AppComponent],
     entryComponents: [
         WidgetComponent,
-        TestingComponent,
+        VizDefaultComponent,
         Testing02Component,
         Testing03Component,
-        PopupComponent
+        PopupComponent,
+        VizPunchcardComponent
     ]
 })
 export class AppModule { }

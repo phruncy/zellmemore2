@@ -60,7 +60,6 @@ export class AutomatonService {
                                     Math.random() * this._config.startRules.length)], 10));
                 this.setupCells(this._cellnumber);
                 this._ready.next();
-                console.log(this._ruleset);
             }
         );
     }

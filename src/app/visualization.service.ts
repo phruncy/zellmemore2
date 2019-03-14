@@ -9,6 +9,9 @@ import { Testing02Component } from './testing02/testing02.component';
 import { Testing03Component } from './testing03/testing03.component';
 import { VizDefaultComponent } from './viz-default/viz-default.component';
 import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
+import { VizThreadsComponent } from './viz-threads/viz-threads.component';
+import { VizFrequencyComponent } from './viz-frequency/viz-frequency.component';
+import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +28,10 @@ export class VisualizationService {
     {
         "v001": VizDefaultComponent,
         "v002": Testing02Component,
-        "v003": Testing03Component,
-        "v004": VizPunchcardComponent
+        "v003": VizFrequencyComponent,
+        "v004": VizPunchcardComponent,
+        "v005": VizThreadsComponent,
+        "v007": VizVortexComponent
     };
 
     constructor() 

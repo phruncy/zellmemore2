@@ -22,6 +22,9 @@ import { MatSnackBarModule } from '@angular/material';
 import { PopupComponent } from './popup/popup.component';
 import { VizDefaultComponent } from './viz-default/viz-default.component';
 import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
+import { VizThreadsComponent } from './viz-threads/viz-threads.component';
+import { VizFrequencyComponent } from './viz-frequency/viz-frequency.component';
+import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +42,10 @@ import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
         WidgetFrameComponent,
         PopupComponent,
         VizDefaultComponent,
-        VizPunchcardComponent
+        VizPunchcardComponent,
+        VizThreadsComponent,
+        VizFrequencyComponent,
+        VizVortexComponent
     ],
     imports: [
         BrowserModule,
@@ -57,9 +63,11 @@ import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
         WidgetComponent,
         VizDefaultComponent,
         Testing02Component,
-        Testing03Component,
+        VizFrequencyComponent,
         PopupComponent,
-        VizPunchcardComponent
+        VizPunchcardComponent,
+        VizThreadsComponent,
+        VizVortexComponent
     ]
 })
 export class AppModule { }

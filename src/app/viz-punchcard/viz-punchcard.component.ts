@@ -33,38 +33,7 @@ export class VizPunchcardComponent extends ContentBase implements AfterContentIn
 
         ngAfterContentInit() {
             this.initValues();
-            const sketch = (s) => {
-                s.setup = () => {
-                    s.createCanvas(this.widgetWidth, this.widgetHeight);
-                    s.automaton = this.automaton;
-                    s.noStroke();
-                    s.fill(0);
-                    console.log(s.automaton);
-                };
-
-                s.draw = () => {
-                    s.background(255);
-                    if (this.automaton.isCircular) {
-                        s.push();
-                        s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
-                        this.automaton.cells.forEach(cell => {
-                            s.push();
-                            s.rotate(this._segmentSize * cell.id);
-                            //
-                            s.translate(0, this._radius + this.getAmplitude(cell));
-                            s.ellipse(0, 0, this._dotSize, this._dotSize);
-                            s.pop();
-                        });
-                        s.pop();
-                    } else {
-                        this.automaton.cells.forEach( cell => {
-                            // amplitude has to be subtracted since the coordinate origin is at the top!
-                            s.ellipse(this.getLinearX(cell), this._linePosition - this.getAmplitude(cell), this._dotSize, this._dotSize);
-                        });
-                    }
-                };
-            };
-            this._p5 = new p5(sketch, this.container.nativeElement);
+            this.createP5();
           }
 
         onReset()
@@ -100,5 +69,38 @@ export class VizPunchcardComponent extends ContentBase implements AfterContentIn
                 return this._amplitude;
             }
             return - this._amplitude;
+        }
+
+        createP5() {
+            const sketch = (s) => {
+                s.setup = () => {
+                    s.createCanvas(this.widgetWidth, this.widgetHeight);
+                    s.noStroke();
+                    s.fill(0);
+                };
+
+                s.draw = () => {
+                    s.background(255);
+                    if (this.automaton.isCircular) {
+                        s.push();
+                        s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
+                        this.automaton.cells.forEach(cell => {
+                            s.push();
+                            s.rotate(this._segmentSize * cell.id);
+                            //
+                            s.translate(0, this._radius + this.getAmplitude(cell));
+                            s.ellipse(0, 0, this._dotSize +2, this._dotSize +2);
+                            s.pop();
+                        });
+                        s.pop();
+                    } else {
+                        this.automaton.cells.forEach( cell => {
+                            // amplitude has to be subtracted since the coordinate origin is at the top!
+                            s.ellipse(this.getLinearX(cell), this._linePosition - this.getAmplitude(cell), this._dotSize, this._dotSize);
+                        });
+                    }
+                };
+            };
+            this._p5 = new p5(sketch, this.container.nativeElement);
         }
 }

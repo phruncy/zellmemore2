@@ -5,7 +5,8 @@
         ], 
         "stateConfiguration" : "0",
         "cellNumber": "50",
-        "circular": false
+        "circular": false,
+        "stateHistorySize": 100
 }
 
         

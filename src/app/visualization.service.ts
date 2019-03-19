@@ -4,14 +4,17 @@ import { Observable, Subject } from 'rxjs';
 import { WidgetComponent } from './widget/widget.component';
 import { COMPONENTS } from './dictionary';
 /* All Visualization Components */
-import { TestingComponent } from './testing/testing.component';
 import { Testing02Component } from './testing02/testing02.component';
-import { Testing03Component } from './testing03/testing03.component';
 import { VizDefaultComponent } from './viz-default/viz-default.component';
 import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
 import { VizThreadsComponent } from './viz-threads/viz-threads.component';
 import { VizFrequencyComponent } from './viz-frequency/viz-frequency.component';
 import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
+import { VizSignalsComponent } from './viz-signals/viz-signals.component';
+import { VizWaves01Component } from './viz-waves01/viz-waves01.component';
+import { VizWaves02Component } from './viz-waves02/viz-waves02.component';
+import { VizWaves03Component } from './viz-waves03/viz-waves03.component';
+import { VizWaves04Component } from './viz-waves04/viz-waves04.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,6 @@ import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
 export class VisualizationService {
 
     private _visualizationToDisplay: string;
-    private _dictionary = COMPONENTS;
     private _hasChanged = new Subject<void>();
     // program window component subscribes to this
     public hasChanged$ = this._hasChanged.asObservable();
@@ -31,7 +33,12 @@ export class VisualizationService {
         "v003": VizFrequencyComponent,
         "v004": VizPunchcardComponent,
         "v005": VizThreadsComponent,
-        "v007": VizVortexComponent
+        "v006": VizSignalsComponent,
+        "v007": VizVortexComponent,
+        "v009": VizWaves01Component,
+        "v010": VizWaves02Component,
+        "v011": VizWaves03Component,
+        "v012": VizWaves04Component
     };
 
     constructor() 
@@ -51,7 +58,7 @@ export class VisualizationService {
     set visualizationToDisplay(id: string)
     {
         if (!(id in this.visualizationComponents)) {
-            const unknownComponent = new Error('This component doesnt exist yet.');
+            const unknownComponent = new Error('Oops, this component doesn\'t exist.');
             throw unknownComponent;
         }
         try {
@@ -65,7 +72,6 @@ export class VisualizationService {
 
     provideComponentId()
     {
-        
         return COMPONENTS[this._visualizationToDisplay];
     }
 

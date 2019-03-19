@@ -13,8 +13,7 @@ export class Cell {
   private _id;
   // private _history: any;
 
-  constructor(initialState: number, id: number)
-  {
+  constructor(initialState: number, id: number) {
     this._state = initialState;
     this._formerState = initialState;
     this._age = 0;
@@ -24,43 +23,35 @@ export class Cell {
     // this._history = [];
   }
 
-  get age(): number
-  {
+  get age(): number {
       return this._age;
   }
 
-  set age(newAge: number)
-  {
+  set age(newAge: number) {
       this._age = newAge;
   }
 
-  get state(): number
-  {
+  get state(): number {
       return this._state;
   }
 
-  set state(state)
-  {
+  set state(state) {
       this._state = state;
   }
 
-  get formerState(): number
-  {
+  get formerState(): number {
       return this._formerState;
   }
 
-  set formerState(newState)
-  {
+  set formerState(newState) {
       this._formerState = newState;
   }
 
-  get leftNeighbour(): Cell
-  {
+  get leftNeighbour(): Cell {
     return this._leftNeighbour;
   }
 
-  set leftNeighbour (cell: Cell)
-  {
+  set leftNeighbour (cell: Cell) {
       this._leftNeighbour = cell;
   }
 
@@ -68,24 +59,20 @@ export class Cell {
       return this._rightNeighbour;
   }
 
-  set rightNeighbour (cell: Cell)
-  {
+  set rightNeighbour (cell: Cell) {
       this._rightNeighbour = cell;
   }
 
-  get id(): number
-  {
+  get id(): number {
       return this._id;
   }
 
-  set id(newId: number)
-  {
+  set id(newId: number) {
       this._id = newId;
   }
 
 
-  reset(): void
-  {
+  reset(): void {
       this._state = 0;
       this._age = 0;
       this._formerState = 0;

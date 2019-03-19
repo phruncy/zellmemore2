@@ -32,7 +32,7 @@
                 </div>
                 <div>
                         <span id="">
-                                <input type="range" min="10" max="500" step="10" [(ngModel)]="slider" class="slider" id="cellnumber-slider" (change)="updateCellNumber(this.slider)" class="pointer">
+                                <input type="range" min="10" max="300" step="10" [(ngModel)]="slider" class="slider" id="cellnumber-slider" (change)="updateCellNumber(this.slider)" class="pointer">
                                 <label for="cellnumber-slider" id="cellnumber-slider-label">{{this.slider}} cells</label>
                         </span>
                 </div>
@@ -52,7 +52,7 @@
         <li class="dropdown-element">
                 <label for="speed-controller">speed:</label>
                 <div id="speed-controller">
-                        <input type="range" min="1" max="40" step="1" [(ngModel)]="speed" (change)="this.automaton.fps = this.speed" class="pointer"> generations per second
+                        <input type="range" min="1" max="30" step="1" [(ngModel)]="speed" (change)="this.automaton.fps = this.speed" class="pointer"> generations per second
                 </div>
         </li>
 </ul>

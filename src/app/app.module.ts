@@ -25,6 +25,11 @@ import { VizPunchcardComponent } from './viz-punchcard/viz-punchcard.component';
 import { VizThreadsComponent } from './viz-threads/viz-threads.component';
 import { VizFrequencyComponent } from './viz-frequency/viz-frequency.component';
 import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
+import { VizSignalsComponent } from './viz-signals/viz-signals.component';
+import { VizWaves01Component } from './viz-waves01/viz-waves01.component';
+import { VizWaves02Component } from './viz-waves02/viz-waves02.component';
+import { VizWaves03Component } from './viz-waves03/viz-waves03.component';
+import { VizWaves04Component } from './viz-waves04/viz-waves04.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +50,12 @@ import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
         VizPunchcardComponent,
         VizThreadsComponent,
         VizFrequencyComponent,
-        VizVortexComponent
+        VizVortexComponent,
+        VizSignalsComponent,
+        VizWaves01Component,
+        VizWaves02Component,
+        VizWaves03Component,
+        VizWaves04Component
     ],
     imports: [
         BrowserModule,
@@ -67,7 +77,12 @@ import { VizVortexComponent } from './viz-vortex/viz-vortex.component';
         PopupComponent,
         VizPunchcardComponent,
         VizThreadsComponent,
-        VizVortexComponent
+        VizVortexComponent,
+        VizSignalsComponent,
+        VizWaves01Component,
+        VizWaves02Component,
+        VizWaves03Component,
+        VizWaves04Component
     ]
 })
 export class AppModule { }

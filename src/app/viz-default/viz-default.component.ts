@@ -64,7 +64,6 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
   render()
   {
       this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
-      console.log("called");
       for (let row = 0; row < this.blockMatrix.length; row++) {
           this.blockMatrix[row].forEach(
               (state, index) => {

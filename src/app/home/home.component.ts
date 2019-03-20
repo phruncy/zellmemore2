@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AutomatonConfigurationService } from '../automaton-configuration.service';
+import { AutomatonConfigurationService } from '../services/automaton-configuration.service';
 
 @Component({
   selector: 'app-home',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { VisualizationDetailService } from '../visualization-detail.service';
-import { VisualizationService } from '../visualization.service';
+import { VisualizationDetailService } from '../services/visualization-detail.service';
+import { VisualizationService } from '../services/visualization.service';
 import { Observable } from 'rxjs';
 
 @Component({

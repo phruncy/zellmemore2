@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, ViewContainerRef } from '@angular/core';
-import { AutomatonService } from '../automaton.service';
-import { RuleConverterService } from '../rule-converter.service';
+import { AutomatonService } from '../services/automaton.service';
+import { RuleConverterService } from '../services/rule-converter.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import { MessengerService } from '../messenger.service';
+import { MessengerService } from '../services/messenger.service';
 
 @Component({
   selector: 'app-automaton-controller',

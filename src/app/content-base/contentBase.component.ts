@@ -1,8 +1,8 @@
 /* Base class for every widget-content-component */
 
 import { OnInit, OnDestroy, HostBinding, Input } from "@angular/core";
-import { AutomatonService } from "../automaton.service";
-import { SizeService } from "../size.service";
+import { AutomatonService } from "../services/automaton.service";
+import { SizeService } from "../services/size.service";
 import { Subscription } from "rxjs";
 
 export abstract class ContentBase implements OnInit, OnDestroy {

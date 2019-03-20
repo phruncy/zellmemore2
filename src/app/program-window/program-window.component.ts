@@ -3,9 +3,9 @@ import { Component,
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
-import { VisualizationService } from '../visualization.service';
-import { AutomatonService } from '../automaton.service';
-import { RuleConverterService } from '../rule-converter.service';
+import { VisualizationService } from '../services/visualization.service';
+import { AutomatonService } from '../services/automaton.service';
+import { RuleConverterService } from '../services/rule-converter.service';
 import { faTimes, faPlay, faUndo, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

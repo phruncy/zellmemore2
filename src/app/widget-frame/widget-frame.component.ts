@@ -7,9 +7,9 @@ import { Component,
         ChangeDetectorRef,
         HostListener
        } from '@angular/core';
-import { VisualizationService } from '../visualization.service';
+import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
-import { SizeService } from '../size.service';
+import { SizeService } from '../services/size.service';
 
 @Component({
   selector: 'app-widget-frame',

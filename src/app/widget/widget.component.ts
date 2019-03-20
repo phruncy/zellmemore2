@@ -13,12 +13,15 @@ import { Component,
           ComponentFactoryResolver,
           ComponentRef,
           ComponentFactory,
-          HostBinding
+          HostBinding,
+          Input
         } from '@angular/core';
-import { VisualizationService } from '../visualization.service';
-import { AutomatonService } from '../automaton.service';
-import { SizeService } from '../size.service';
+import { VisualizationService } from '../services/visualization.service';
+import { AutomatonService } from '../services/automaton.service';
+import { SizeService } from '../services/size.service';
 import { faTimesCircle, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
+import { VisualizationDetailService } from '../services/visualization-detail.service';
+
 
 @Component({
     selector: 'app-widget',
@@ -33,6 +36,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;
     @HostBinding('style.margin-bottom.px') private _marginBottom;
+    @Input() _title = 'widget name';
 
     private _ref: any;
     /* icon references */
@@ -41,6 +45,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
     faExpand = faExpand;
     constructor(
             private visService: VisualizationService,
+            private details: VisualizationDetailService,
             private sizeService: SizeService,
             private resolver: ComponentFactoryResolver,
             private automaton: AutomatonService
@@ -71,7 +76,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
     ngOnDestroy()
     {
         this.sizeService.decreaseWidgetNumber();
-        console.log('Widget has been removed.');
     }
 
     /* Component is fetched from the visualization service's dictionary 
@@ -83,6 +87,12 @@ export class WidgetComponent implements OnInit, OnDestroy {
         const visualization = this.visService.provideComponent();
         const factory = this.resolver.resolveComponentFactory(visualization);
         const component = this.entry.createComponent(factory);
+        this.details.provideVisualizations().subscribe (
+            data => {
+                this._title = data.find(
+                    obj => obj.id === this.visService.visualizationToDisplay).name;
+            }
+        );
     }
 
     fetchSize() {

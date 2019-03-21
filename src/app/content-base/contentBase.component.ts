@@ -23,7 +23,7 @@ export abstract class ContentBase implements OnInit, OnDestroy {
                 this.update();
             }
         );
-        
+
         this._resetSub = this.automaton.cellsChanged$.subscribe(
             () => {
                 this.onReset();
@@ -48,6 +48,7 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     {
         this.widgetWidth = this.sizeService.widgetSize.toString();
         this.widgetHeight = this.widgetWidth;
+        console.log("new size was fetched from child. New size: " + this.widgetWidth);
     }
 
     abstract update();

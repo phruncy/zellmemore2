@@ -32,6 +32,8 @@ export class AutomatonService {
     public cellsChanged$ = this._cellsChanged.asObservable();
     private _ready = new Subject<void>();
     public ready$ = this._ready.asObservable();
+    private _modeChanged = new Subject<void>();
+    public modeChanged$ =  this._modeChanged.asObservable();
 
     private _config: any;
 
@@ -114,6 +116,10 @@ export class AutomatonService {
         this.reset();
     }
 
+    get isRunning(): boolean {
+        return this._isRunning;
+    }
+
     loop(timestamp)
     {
         if (timestamp < this._lastFrameTime + (1000 / this._fps)) {
@@ -186,6 +192,7 @@ export class AutomatonService {
         this.connectNeighbours();
         this.setEdges();
         this.setupState();
+        this._generation = 0;
         this._cellsChanged.next();
     }
 
@@ -229,6 +236,7 @@ export class AutomatonService {
     toggleArrayMode() {
         this._isCircular = !this._isCircular;
         this.setEdges();
+        this._modeChanged.next();
     }
 
     reset(): void

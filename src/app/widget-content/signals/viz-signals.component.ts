@@ -5,6 +5,7 @@ import * as p5 from 'p5';
 import { SizeService } from '../../services/size.service';
 import { AutomatonService } from '../../services/automaton.service';
 import { Agent } from '../../utils/agent';
+import { ColorService } from 'src/app/color.service';
 
 @Component({
   selector: 'app-viz-signals',
@@ -24,12 +25,17 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
     private _gap: number; // gap between the dots
     private _segment: number; // angle between the dots in circular mode
     private _agents: Agent[] = [];
+    private _colorCounter: number; // the current rendering color
 
     constructor(
                 protected automaton: AutomatonService,
-                protected size: SizeService
+                protected size: SizeService,
+                protected colors: ColorService
                 ) {
         super(automaton, size);
+        this.automaton.modeChanged$.subscribe(
+            () => {this._p5.background(0);}
+        );
     }
 
     ngAfterContentInit() 
@@ -37,8 +43,16 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
         this.init();
         this.createP5();
     }
-s
+
     update() {
+        const color = this.colors.palette[this._colorCounter];
+        console.log(this._colorCounter);
+        if (this._colorCounter < 7) {
+            this._colorCounter++;
+        } else {
+            this._colorCounter = 0;
+        }
+        this._p5.fill(color[0], color[1], color[2]);
         this.automaton.cells.forEach((cell, index) => {
                 this._agents[index].target = this.getTargetPosition(cell.state);
         });
@@ -68,7 +82,7 @@ s
             }
             s.draw = () =>
             {
-                s.background(0, 20);
+                // s.background(0, 20);
                 this.moveAgents();
                 if (this.automaton.isCircular) {
                     s.push();
@@ -110,6 +124,7 @@ s
         this.automaton.cells.forEach(cell => {
             this._agents.push(new Agent(cell.id, this.getTargetPosition(cell.state)));
         });
+        this._colorCounter = Math.floor(Math.random() * 7);
     }
 
     getTargetPosition(state: number): number {

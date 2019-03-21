@@ -13,7 +13,7 @@ import { VisualizationSelectionComponent } from './visualization-selection/visua
 import { HttpClientModule } from '@angular/common/http';
 import { Testing02Component } from './widget-content/barcodes/testing02.component';
 import { AutomatonControllerComponent } from './automaton-controller/automaton-controller.component';
-import { FooterComponent } from './footer/footer.component';
+import { CustomFooterComponent } from './custom-footer/custom-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 import { MatSnackBarModule } from '@angular/material';
@@ -28,6 +28,8 @@ import { VizWaves01Component } from './widget-content/waves01/viz-waves01.compon
 import { VizWaves02Component } from './widget-content/waves02/viz-waves02.component';
 import { VizWaves03Component } from './widget-content/waves03/viz-waves03.component';
 import { VizWaves04Component } from './widget-content/waves04/viz-waves04.component';
+import { StatusDisplayComponent } from './status-display/status-display.component';
+
 
 @NgModule({
     declarations: [
@@ -39,7 +41,6 @@ import { VizWaves04Component } from './widget-content/waves04/viz-waves04.compon
         VisualizationSelectionComponent,
         Testing02Component,
         AutomatonControllerComponent,
-        FooterComponent,
         WidgetFrameComponent,
         PopupComponent,
         VizDefaultComponent,
@@ -51,7 +52,9 @@ import { VizWaves04Component } from './widget-content/waves04/viz-waves04.compon
         VizWaves01Component,
         VizWaves02Component,
         VizWaves03Component,
-        VizWaves04Component
+        VizWaves04Component,
+        StatusDisplayComponent,
+        CustomFooterComponent
     ],
     imports: [
         BrowserModule,

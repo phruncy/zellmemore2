@@ -34,12 +34,13 @@ body {
 }
 
 .btn {
-        background-color: rgb(255, 55, 20);
+        background-color: rgb(30, 30, 30);
         border: none;
         cursor: pointer;
         width: 50px;
         height: 30px;
         margin: 5px 5px 0px 5px;
+        text-align: center;
 
 }
 
@@ -52,7 +53,7 @@ body {
         position: relative;
         display: inline-block;
         left: calc(50% - 15px);
-        background-color: rgb(255, 55, 20);
+        background-color: rgb(30, 30, 30);
         transition: background-color 0.1s linear;
         width: 30px;
         height: 30px;
@@ -94,15 +95,23 @@ body {
 
 }
 
+.play-icon {
+        color:white;
+        display: inline-block;
+}
+
 .btn.play:hover .play-icon {
         color: white;
+        transition: font-size 0.2s linear;
 }
 
 .reset-icon {
         display: inline-block;
+        color: white;
         transform: rotate(0deg);
-        font-size: 20px;
+        font-size: 16px;
         transition: transform 0.2s ease-out;
+        display: inline-block;
 }
 
 .btn.reset:hover .reset-icon,
@@ -114,12 +123,15 @@ body {
 
 .btn.settings {
         width: 80px;
+        color: white;
+        text-align: center;
 }
 
 .settings-icon {
         display:inline-block;
         transform: rotate(0deg);
         transition: all 0.2s ease-out;
+        color: white;
 }
 .dropdown:hover .settings-icon,
 .settings-icon:active {
@@ -142,6 +154,11 @@ body {
         transition: max-height 0.2s ease-out;
 
 
+}
+
+.centered-label {
+        display: inline-block;
+        padding: 5px;
 }
 
 

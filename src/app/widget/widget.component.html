@@ -1,8 +1,8 @@
-<div class="widget-container">
+<div class="widget-container" #fullscreen (document:webkitfullscreenchange)="this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;" (click)= "this.automaton.toggleLoop()">
         <div #entry></div>
         <div class="overlay"></div>
         <div class="label fade-in">{{_title}}</div>
-        <fa-icon [icon]="faPlayCircle" (click)="this.automaton.toggleLoop()" class="btn run-pause fade-in">run/ pause</fa-icon>
+        <!-- <fa-icon [icon]="faPlayCircle" (click)="this.automaton.toggleLoop()" class="btn run-pause fade-in">run/ pause</fa-icon> -->
         <fa-icon [icon]="faTimesCircle" (click)="remove()" class="btn remove fade-in"></fa-icon>
         <div>
                 <fa-icon [icon]="faExpand" (click)="toggleFullscreen()" class="btn fullscreen fade-in"></fa-icon>

@@ -14,7 +14,8 @@ import { Component,
           ComponentRef,
           ComponentFactory,
           HostBinding,
-          Input
+          Input,
+          ElementRef
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -32,6 +33,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     /* binds the width/height properties to the width/height variables. type is 'string'! */
+    @ViewChild('fullscreen') container; // reference to  container-div
     @HostBinding('style.width.px') private _width = '300';
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;
@@ -48,7 +50,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
             private details: VisualizationDetailService,
             private sizeService: SizeService,
             private resolver: ComponentFactoryResolver,
-            private automaton: AutomatonService
+            private automaton: AutomatonService,
         ) {}
 
     set ref(ref: any)
@@ -109,7 +111,13 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
     toggleFullscreen()
     {
-        console.log("fullscreen");
+        console.log(this.container);
+        if (this.container.nativeElement.webkitRequestFullscreen) {
+            this.container.nativeElement.webkitRequestFullscreen();
+        } else {
+            throw new Error('No fullscreen available');
+        }
+        //this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;
     }
 }
 

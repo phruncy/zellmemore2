@@ -5,6 +5,7 @@ import { Agent } from '../../utils/agent';
 import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
 import { ContentBase } from '../../content-base/contentBase.component';
+import { ColorService } from 'src/app/color.service';
 
 @Component({
   selector: 'app-viz-waves03',
@@ -26,12 +27,17 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
 
     private _centerX: number; // circle center in circular mode
     private _centerY: number;
+    private _colorCounter: number;
 
     constructor(
                 protected automaton: AutomatonService,
-                protected size: SizeService
+                protected size: SizeService,
+                protected colors: ColorService
                 ) {
         super(automaton, size);
+        this.automaton.modeChanged$.subscribe(
+            () => {this._p5.background(255);}
+        );
     }
 
     ngAfterContentInit() 
@@ -40,6 +46,14 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
         this.createP5();
     }
     update() {
+        const color = this.colors.palette[this._colorCounter];
+        console.log(this._colorCounter);
+        if (this._colorCounter < 7) {
+            this._colorCounter++;
+        } else {
+            this._colorCounter = 0;
+        }
+        this._p5.stroke(color[0], color[1], color[2]);
         this.automaton.cells.forEach((cell, index) => {
                 this._agents[index].target = this.getTargetPosition(cell.state);
         });
@@ -48,12 +62,12 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
     onResize() {
         this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
         this.init();
-        this._p5.background(0);
+        this._p5.background(255);
     }
 
     onReset() {
         this.init();
-        this._p5.background(0);
+        this._p5.background(255);
     }
 
     // contains the p5 instance
@@ -71,10 +85,12 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
             s.draw = () =>
             {
                 this.moveAgents();
-                // move circle Center to mousePosition
-                this._centerX += (s.mouseX - this._centerX) * 0.003;
-                this._centerY += (s.mouseY - this._centerY) * 0.003;
-                this._baseline += (s.mouseY - this._baseline) * 0.003;
+                // let drawing follow the mouse movement
+                if (this.automaton.isRunning) {
+                    this._centerX += (s.mouseX - this._centerX) * 0.003;
+                    this._centerY += (s.mouseY - this._centerY) * 0.003;
+                    this._baseline += (s.mouseY - this._baseline) * 0.003;
+                }
                 // circular rendering
                 if (this.automaton.isCircular) {
                     s.push();
@@ -119,7 +135,7 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
         this._linearGap = (this.widgetWidth - 2 * this._margin) /
                             this.automaton.cellnumber;
         this._radius = (this.widgetWidth - 2 * this._margin - 2 *
-                             this._amplitude) / 3.5;
+                             this._amplitude) / 4;
         this._segment = (Math.PI * 2) / this.automaton.cellnumber;
         // initialize agents with current automaton state
         this._agents = [];
@@ -129,6 +145,7 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
         });
         this._centerX = this.widgetWidth / 2;
         this._centerY = this.widgetHeight / 2;
+        this._colorCounter = Math.floor(Math.random() * 7);
     }
 
     getTargetPosition(state: number): number {

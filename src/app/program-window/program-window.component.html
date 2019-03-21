@@ -8,9 +8,11 @@
                 </button>
                 <div class ="dropdown" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
                         <div class="btn settings" >
-                                settings 
-                                <fa-icon [icon]="faAngleLeft" class="settings-icon">        
-                                </fa-icon>
+                                <div class="centered-label">
+                                        settings 
+                                        <fa-icon [icon]="faAngleLeft" class="settings-icon">        
+                                        </fa-icon>
+                                </div>
                         </div>
                         <app-automaton-controller class="settings-content"></app-automaton-controller>
                 </div>
@@ -28,4 +30,7 @@
                 </div>
                 <app-visualization-selection *ngIf="selectionDisplayed" class="menu-content"></app-visualization-selection>
         </div>
+        <footer>
+                <app-custom-footer></app-custom-footer>
+        </footer>
 </body>

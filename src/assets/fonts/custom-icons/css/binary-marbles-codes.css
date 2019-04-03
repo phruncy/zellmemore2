@@ -1,0 +1,4 @@
+
+.icon-circle-thin:before { content: '\30'; } /* '0' */
+.icon-circle:before { content: '\31'; } /* '1' */
+.icon-angle-down:before { content: '\64'; } /* 'd' */

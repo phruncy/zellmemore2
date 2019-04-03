@@ -1,2 +1,6 @@
 <div #entry class ="empty">        
 </div>
+<div class="animated" [class.active]="(this.sizeService.widgetNumber === 0)">
+        Click to add visualizations<br>
+        <fa-icon [icon]="faAngleDown"></fa-icon>
+</div>

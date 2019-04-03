@@ -1,17 +1,22 @@
-
 .dropdown {
         margin: 0px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        background-color: rgb(20, 17, 37);
+        padding: 4px 15px 4px 20px;
+        background-color: rgb(30, 30, 30);
         color: white;
+        list-style: none;
+        font-size: 14px;
+        font-weight: 100;
 }
 
 .dropdown-element {
-        margin: 3px;
+        padding: 10px 0px 10px 0px;
         border-bottom-color: white;
         border-bottom: 1px;
         border-bottom-style: solid;
+}
+
+.dropdown-element.last {
+        border-bottom-style: none;
 }
 
 .flex {
@@ -22,7 +27,33 @@
         cursor:pointer;
 }
 
-.checkbox-outer {
-        margin-left: 3px;
-        margin-right: 3px;
+.highlighted {
+        font-weight: 500;
+        display: inline-block;
+}
+
+.settings-unit {
+        display: inline-block;
+}
+
+.settings-unit.textinput {
+        box-sizing: content-box;
+        background: none;
+        color: white;
+        border-style: none;
+}
+
+.settings-unit.checkbox-outer {
+        text-align: center;
+        margin: 0px 7px 0px 7px;
+}
+
+.checkbox-inner {
+        display: block;
+}
+
+.checkbox-inner.icons {
+        font-family: 'binary-marbles';
+        font-stretch: expanded;
+        font-size: 12px;
 }

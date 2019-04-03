@@ -10,6 +10,7 @@ import { Component,
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-widget-frame',
@@ -19,13 +20,14 @@ import { SizeService } from '../services/size.service';
 export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    private faAngleDown = faAngleDown;
 
     constructor(
         private visualizationService: VisualizationService,
         private sizeService: SizeService,
         private resolver: ComponentFactoryResolver,
         private elRef: ElementRef,
-        private cd: ChangeDetectorRef
+        private cd: ChangeDetectorRef,
     ) { }
 
     ngOnInit() 

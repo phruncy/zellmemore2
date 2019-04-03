@@ -4,6 +4,7 @@ import { RuleConverterService } from '../services/rule-converter.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { MessengerService } from '../services/messenger.service';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-automaton-controller',
@@ -22,6 +23,7 @@ export class AutomatonControllerComponent implements OnInit {
         state: new FormControl(''),
     });
     private labeltext: String;
+    private faAngleDown = faAngleDown;
 
     private BOXES = [
         { id: '111', value: 7, tag: 'a box'},

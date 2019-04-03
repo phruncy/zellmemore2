@@ -33,6 +33,11 @@ export class SizeService {
         return this._fullscreenActive;
     }
 
+    get widgetNumber(): number
+    {
+        return this._widgetNumber;
+    }
+
     set fullscreenActive(value: boolean) {
         this._fullscreenActive = value;
         this.fullScreen();
@@ -76,7 +81,7 @@ export class SizeService {
         }
         return Math.floor(w) - 1;
     }
-    
+
     private changeWidgetSize()
     {
         let rows = 1;

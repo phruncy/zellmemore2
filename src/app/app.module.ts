@@ -16,7 +16,7 @@ import { AutomatonControllerComponent } from './automaton-controller/automaton-c
 import { CustomFooterComponent } from './custom-footer/custom-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule, MatTooltipModule } from '@angular/material';
 import { PopupComponent } from './popup/popup.component';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
@@ -29,6 +29,8 @@ import { VizWaves02Component } from './widget-content/waves02/viz-waves02.compon
 import { VizWaves03Component } from './widget-content/waves03/viz-waves03.component';
 import { VizWaves04Component } from './widget-content/waves04/viz-waves04.component';
 import { StatusDisplayComponent } from './status-display/status-display.component';
+import 'hammerjs';
+import { ChaosComponent } from './widget-content/chaos/chaos.component';
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { StatusDisplayComponent } from './status-display/status-display.componen
         VizWaves03Component,
         VizWaves04Component,
         StatusDisplayComponent,
-        CustomFooterComponent
+        CustomFooterComponent,
+        ChaosComponent
     ],
     imports: [
         BrowserModule,
@@ -64,7 +67,8 @@ import { StatusDisplayComponent } from './status-display/status-display.componen
         BrowserAnimationsModule,
         HttpClientModule,
         FontAwesomeModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatTooltipModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],
@@ -81,7 +85,8 @@ import { StatusDisplayComponent } from './status-display/status-display.componen
         VizWaves01Component,
         VizWaves02Component,
         VizWaves03Component,
-        VizWaves04Component
+        VizWaves04Component,
+        ChaosComponent
     ]
 })
 export class AppModule { }

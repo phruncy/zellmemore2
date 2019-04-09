@@ -2,21 +2,26 @@ import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, ViewContain
 import { AutomatonService } from '../services/automaton.service';
 import { RuleConverterService } from '../services/rule-converter.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 import { MessengerService } from '../services/messenger.service';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 
 @Component({
   selector: 'app-automaton-controller',
   templateUrl: './automaton-controller.component.html',
-  styleUrls: ['./automaton-controller.component.css']
+  styleUrls: ['./automaton-controller.component.css'],
+  providers: [
+      {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
+  ]
 })
 export class AutomatonControllerComponent implements OnInit {
 
     @Input() private slider;
     @Input() private speed;
     @Input() decimal;
-    @ViewChild('popup-container', {read: ViewContainerRef}) private popupContainer: ViewContainerRef;
+    @ViewChild('popup-container', {read: ViewContainerRef})
+    private popupContainer: ViewContainerRef;
 
     /* radio button form group */
     form = new FormGroup ({

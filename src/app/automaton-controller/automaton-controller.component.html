@@ -3,7 +3,7 @@
         <!-- Checkboxes for rule input -->
         <li class="dropdown-element">
                 <div class="flex">
-                        <div class="highlighted">
+                        <div class="highlighted" matTooltip="rule">
                                 <span>rule: </span>
                         </div>
                         <input [(ngModel)]="decimal" (input)="this.updateDecimal()" class="settings-unit textinput">
@@ -20,7 +20,7 @@
         </li>
         <!-- Initial State selection -->
         <li class="dropdown-element">
-                <div class="highlighted">
+                <div class="highlighted" matTooltip="">
                         <span>initial state:</span>
                 </div>
                 <form [formGroup]="form" class="settings-unit">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="settings-unit">
                         <span id="">
-                                <input type="range" min="10" max="300" step="10" [(ngModel)]="slider" class="slider" id="cellnumber-slider" (change)="updateCellNumber(this.slider)" class="pointer">
+                                <input type="range" min="10" max="300" step="10" [(ngModel)]="slider" class="slider" id="cellnumber-slider" (change)="updateCellNumber(this.slider)" class="pointer range">
                                 <label for="cellnumber-slider" id="cellnumber-slider-label">{{this.slider}} cells</label>
                         </span>
                 </div>
@@ -59,7 +59,10 @@
                         speed:
                 </label>
                 <div id="speed-controller" class="settings-unit">
-                        <input type="range" min="1" max="30" step="1" [(ngModel)]="speed" (change)="this.automaton.fps = this.speed" class="pointer"> {{this.automaton.fps}}
+                        <input type="range" min="1" max="30" step="1" [(ngModel)]="speed" (change)="this.automaton.fps = this.speed" class="pointer range"> 
+                        <span matTooltip="generations per second" class="highlighted">
+                                {{this.automaton.fps}}
+                        </span>
                 </div>
         </li>
 </ul>

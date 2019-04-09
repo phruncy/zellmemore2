@@ -10,7 +10,7 @@ import { Component,
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-widget-frame',
@@ -21,6 +21,7 @@ export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     private faAngleDown = faAngleDown;
+    private faPlusCircle = faPlusCircle;
 
     constructor(
         private visualizationService: VisualizationService,

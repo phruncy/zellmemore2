@@ -13,6 +13,7 @@ import { VizWaves01Component } from '../widget-content/waves01/viz-waves01.compo
 import { VizWaves02Component } from '../widget-content/waves02/viz-waves02.component';
 import { VizWaves03Component } from '../widget-content/waves03/viz-waves03.component';
 import { VizWaves04Component } from '../widget-content/waves04/viz-waves04.component';
+import { ChaosComponent } from '../widget-content/chaos/chaos.component';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,7 @@ export class VisualizationService {
         "v005": VizThreadsComponent,
         "v006": VizSignalsComponent,
         "v007": VizVortexComponent,
+        "v008": ChaosComponent,
         "v009": VizWaves01Component,
         "v010": VizWaves02Component,
         "v011": VizWaves03Component,

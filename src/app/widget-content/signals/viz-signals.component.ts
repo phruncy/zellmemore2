@@ -46,7 +46,6 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
 
     update() {
         const color = this.colors.palette[this._colorCounter];
-        console.log(this._colorCounter);
         if (this._colorCounter < 7) {
             this._colorCounter++;
         } else {

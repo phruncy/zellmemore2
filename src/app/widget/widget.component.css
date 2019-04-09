@@ -17,10 +17,40 @@
         left: 5px;
 }
 
+/* Play Button */
+.favicon-outer {
+        width: 100%;
+        padding-top: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+}
 .run-pause {
+        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate (-50% -50%);
+        transform: translate(-50%, -40%);
+        font-size: 60px;
+        visibility: hidden;
+        opacity: 0;
+        cursor: pointer;
+        color: gray;
+}
+.widget-container:hover .run-pause.active {
+        visibility: visible;
+        opacity: 1;
+        animation: fade 0.3s;
+}
+
+@keyframes fade {
+        0% {
+                opacity: 0; 
+        }
+        100% {
+                opacity: .8;
+        }
 }
 
 /* the fullscreen button */
@@ -52,7 +82,7 @@
 }
 
 .widget-container:hover .overlay {
-        opacity: .7;
+        opacity: .8;
 }
 
 .fade-in {
@@ -60,7 +90,7 @@
         color: white;
 }
 
-.widget-container:hover .fade-in {
+.widget-container:hover .fade-in, .run-pause {
         opacity: 1;
 }
 
@@ -77,5 +107,5 @@
         text-align: center;
         width: 100%;
         position: absolute;
-        top: 5px;
+        top: 6px;
 }

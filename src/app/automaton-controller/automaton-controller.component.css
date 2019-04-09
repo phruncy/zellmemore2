@@ -1,5 +1,5 @@
 .dropdown {
-        margin: 0px;
+        margin: 0 0 0 2.5px;
         padding: 4px 15px 4px 20px;
         background-color: rgb(30, 30, 30);
         color: white;
@@ -27,9 +27,14 @@
         cursor:pointer;
 }
 
+.pointer.range {
+        margin: 0 10px 0 10px;
+}
+
 .highlighted {
         font-weight: 500;
         display: inline-block;
+        cursor: default;
 }
 
 .settings-unit {
@@ -41,6 +46,8 @@
         background: none;
         color: white;
         border-style: none;
+        max-width: 40px;
+        margin: 0;
 }
 
 .settings-unit.checkbox-outer {

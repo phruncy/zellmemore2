@@ -4,7 +4,6 @@
  * Visualization property is reassigned.
  * The widget's content is delivered by the VisualizationService.
  */
-
 import { Component,
           OnInit,
           OnDestroy,
@@ -20,14 +19,18 @@ import { Component,
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
-import { faTimesCircle, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
-
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 
 @Component({
     selector: 'app-widget',
     templateUrl: './widget.component.html',
-    styleUrls: ['./widget.component.css']
+    styleUrls: ['./widget.component.css'],
+    providers: [
+        {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
+    ]
 })
 export class WidgetComponent implements OnInit, OnDestroy {
 
@@ -42,7 +45,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
     private _ref: any;
     /* icon references */
-    faTimesCircle = faTimesCircle;
+    faTimes = faTimes;
     faPlayCircle = faPlayCircle;
     faExpand = faExpand;
     constructor(

@@ -5,7 +5,8 @@
 
 .option-container {
         padding: 2px;
-        background: rgb(192, 192, 192)
+        background: rgb(192, 192, 192);
+        margin: 2% 0 2% 0;
 }
 
 .option {

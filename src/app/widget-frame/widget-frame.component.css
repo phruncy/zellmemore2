@@ -16,6 +16,7 @@
 .animated {
         display: none;
         text-align: center;
+        cursor: default;
 }
 
 .animated.active {
@@ -41,4 +42,10 @@
                 -ms-transform: translate(0, 10px);
                 
         }
+}
+
+.faPlusCircle {
+        font-size: 12px;
+        padding: 7px;
+        margin-bottom: 3px;
 }

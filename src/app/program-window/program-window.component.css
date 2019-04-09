@@ -11,22 +11,24 @@ body {
 .info {
         display: flex;
 }
-
+/* CONTROLLER AREA */
 .stats {
         margin: 5px 0px 0px 10px;
         padding: 5px;
         text-align: center;
 }
 
+/* /// WIDGET FRAME AREA /// */
 .canvas-display {
         width: 100%;
         height: 80vh;
         margin-top: 10px;
 }
-
+ /* /// SELECTION MENU /// */
 .menu {
         position: absolute;
         bottom: 4px;
+        transition: bottom 0.2s ease-in-out;
         z-index: 1;
         display: inline-block;
         width: 100%; /* for positioning content at the center */
@@ -42,6 +44,7 @@ body {
 
 .menu-content{
         max-height: 0;
+        transition: max-height 0.2s ease-in-out;
         overflow: hidden;
         display: inline-block;
         padding: 0 2% 0 2%;
@@ -87,7 +90,7 @@ body {
         transition: background-color 0.1s linear;
         width: 30px;
         height: 30px;
-        margin: 5px;
+        margin: 7px;
         border-radius: 50%;
         border-style: none;
         cursor: pointer;

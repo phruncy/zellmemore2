@@ -1,13 +1,69 @@
 /*  */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 /* You can add global styles to this file, and also import other style files */
+
+/* custom icon font */
 @font-face {
         font-family: binary-marbles;
         src: url(assets/fonts/custom-icons/font/binary-marbles.ttf) format("truetype");
 }
 
+/* nunito-sans-200 - latin */
+@font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Nunito Sans ExtraLight'), local('NunitoSans-ExtraLight'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      /* nunito-sans-regular - latin */
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Nunito Sans Regular'), local('NunitoSans-Regular'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      /* nunito-sans-italic - latin */
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Nunito Sans Italic'), local('NunitoSans-Italic'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      /* nunito-sans-600 - latin */
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Nunito Sans SemiBold'), local('NunitoSans-SemiBold'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      /* nunito-sans-700 - latin */
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Nunito Sans Bold'), local('NunitoSans-Bold'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      /* nunito-sans-800 - latin */
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 800;
+        src: local('Nunito Sans ExtraBold'), local('NunitoSans-ExtraBold'),
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+             url('assets/fonts/Nunito-Sans/nunito-sans-v4-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
 body {
-        font-family: sans-serif;
+        font-family: 'Nunito Sans';
         margin: 0;
 }
 

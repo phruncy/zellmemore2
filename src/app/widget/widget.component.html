@@ -5,8 +5,10 @@
         </div>
         <div class="overlay" [class.active]= "this.automaton.isRunning"></div>
         <div class="label fade-in">{{_title}}</div>
-        <fa-icon [icon]="faTimes" (click)="remove()" class="btn remove fade-in"></fa-icon>
-        <div>
+        <div class="left-align">
+                <fa-icon [icon]="faTimes" (click)="remove()" class="btn remove fade-in"></fa-icon>
+        </div>
+        <div class="right-align">
                 <fa-icon [icon]="faExpand" (click)="toggleFullscreen()" class="btn fullscreen fade-in"></fa-icon>
         </div>
 </div>

@@ -83,11 +83,16 @@ export class AutomatonService {
     }
 
     set cellnumber(cells: number) {
-        if (!((cells >= 0) && (cells <= 500))) {
-            const error = new Error('Invalid Number Input');
-            throw error;
+        try {
+            if (!((cells >= 0) && (cells <= 300))) {
+                const error = new Error('Not a valid number');
+                throw error;
+            }
+            this._cellnumber = cells;
+            this.setupCells(cells);
+        } catch {
+            this.cellnumber = this.cellnumber;
         }
-        this._cellnumber = cells;
     }
 
     get cells(): Cell[] {
@@ -107,13 +112,29 @@ export class AutomatonService {
         return this._isCircular;
     }
 
-    get initState(): number {
+    set isCircular(value: boolean) {
+        this._isCircular = value;
+        this.setEdges();
+        this._modeChanged.next();
+    }
+
+    get initState(): String {
         return this._initState;
     }
-    
-    set initState(state: number) {
-        this._initState = state;
-        this.reset();
+
+    set initState(state: String) {
+        console.log("triggered");
+        try {
+            if (!(state === '0' || state === '1')) {
+                throw new Error("Invalid State");
+            }
+            this._initState = state;
+            this.reset();
+        } catch (error) {
+            console.log(error);
+            console.log("ppuuu");
+            return;
+        }
     }
 
     get isRunning(): boolean {
@@ -177,13 +198,13 @@ export class AutomatonService {
      */
     setupCells(cellNumber: number)
     {
-        try {
+        /* try {
             this.cellnumber = cellNumber;
         } catch (error) {
             console.log(error);
             console.log(this._cellnumber);
             throw new Error('Invalid Cell number.');
-        }
+        } */
         /* clear cells[] first */
         this._cells = [];
         for (let i = 0; i < cellNumber; i++) {
@@ -198,7 +219,7 @@ export class AutomatonService {
 
     setupState() 
     {
-        if (this._initState === 0) {
+        if (this._initState === "0") {
             const i = Math.floor(this._cells.length / 2);
             this._cells[i].state = 1;
         } else {

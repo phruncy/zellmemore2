@@ -1,0 +1,25 @@
+<div class="">
+        <div class="label">
+                <span>rule: </span>
+        </div>
+        <mat-form-field class="label">
+                <input matInput [(ngModel)]="decimal" (input)="this.updateDecimal()" class="textinput">
+        </mat-form-field>
+        <span *ngFor="let box of BOXES" class="checkbox-outer">
+                <div class="checkbox-wrapper icons">
+                        <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
+                </div>
+                <div class ="checkbox-wrapper icons">
+                        <span>d</span>
+                </div>
+                <div class="checkbox-wrapper">
+                        <mat-checkbox 
+                                id="{{box.id}}"
+                                value="{{box.value}}"
+                                [(checked)]="this.automaton.ruleset[box.value]"
+                                (change)="this.updateRule(box.value, !this.automaton.ruleset[box.value])"
+                        ></mat-checkbox>
+                </div>
+        </span>
+</div>
+<div #popupContainer></div>

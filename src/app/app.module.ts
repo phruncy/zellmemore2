@@ -12,11 +12,16 @@ import { VisualizationDetailComponent } from './visualization-detail/visualizati
 import { VisualizationSelectionComponent } from './visualization-selection/visualization-selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Testing02Component } from './widget-content/barcodes/testing02.component';
-import { AutomatonControllerComponent } from './automaton-controller/automaton-controller.component';
+import { AutomatonControllerComponent } from './controls-ui/automaton-controller/automaton-controller.component';
 import { CustomFooterComponent } from './custom-footer/custom-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 import { MatSnackBarModule, MatTooltipModule } from '@angular/material';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
 import { PopupComponent } from './popup/popup.component';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
@@ -31,6 +36,11 @@ import { VizWaves04Component } from './widget-content/waves04/viz-waves04.compon
 import { StatusDisplayComponent } from './status-display/status-display.component';
 import 'hammerjs';
 import { ChaosComponent } from './widget-content/chaos/chaos.component';
+import { RuleControlComponent } from './rule-control/rule-control.component';
+import { SpeedControlComponent } from './controls-ui/speed-control/speed-control.component';
+import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.component';
+import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';
+import { StateControlComponent } from './controls-ui/state-control/state-control.component';
 
 
 @NgModule({
@@ -57,7 +67,12 @@ import { ChaosComponent } from './widget-content/chaos/chaos.component';
         VizWaves04Component,
         StatusDisplayComponent,
         CustomFooterComponent,
-        ChaosComponent
+        ChaosComponent,
+        RuleControlComponent,
+        SpeedControlComponent,
+        EdgeControlComponent,
+        CellsControlComponent,
+        StateControlComponent
     ],
     imports: [
         BrowserModule,
@@ -68,7 +83,12 @@ import { ChaosComponent } from './widget-content/chaos/chaos.component';
         HttpClientModule,
         FontAwesomeModule,
         MatSnackBarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatInputModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

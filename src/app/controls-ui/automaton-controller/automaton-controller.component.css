@@ -1,0 +1,33 @@
+.dropdown {
+        margin: 0 0 0 2.5px;
+        padding: 4px 15px 4px 20px;
+        background-color: rgb(30, 30, 30);
+        color: white;
+        list-style: none;
+        font-weight: 100;
+}
+
+.dropdown-element {
+        padding: 5px 0 5px 0;
+        border-bottom-color: white;
+        border-bottom: 1px;
+        border-bottom-style: solid;
+}
+
+.dropdown-element.last {
+        border-bottom-style: none;
+}
+
+.flex {
+        display: flex;
+}
+
+.pointer {
+        cursor:pointer;
+}
+
+.settings-unit {
+        display: inline-block;
+        max-width: 200px;
+        margin: 0 10px 0 10px;
+}

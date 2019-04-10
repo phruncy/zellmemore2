@@ -1,0 +1,7 @@
+<label for ="state-control">initial state: </label>
+<div class="settings-unit" id="state-control">
+        <mat-select class="settings-unit" [(ngModel)]="this.automaton.initState" disableRipple>
+                <mat-option value="0">a single active cell</mat-option>
+                <mat-option value="1">random distribution</mat-option>
+        </mat-select>
+</div>

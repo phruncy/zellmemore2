@@ -1,0 +1,14 @@
+<label for="speed-controller" class="highlighted">
+                speed:
+</label>
+<div id="speed-controller" class="settings-unit">
+        <mat-slider
+                class="range"
+                [min]="_speedMin"
+                [max]="_speedMax"
+                [(ngModel)]="this.automaton.fps">
+        </mat-slider>
+        <span matTooltip="generations per second" class="highlighted">
+                {{this.automaton.fps}}
+        </span>
+</div>

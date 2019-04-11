@@ -57,5 +57,9 @@ export class ProgramWindowComponent {
     {
         this._controllerDisplayed = !this._controllerDisplayed;
     }
+
+    hideController() {
+        this._controllerDisplayed = false;
+    }
 }
 

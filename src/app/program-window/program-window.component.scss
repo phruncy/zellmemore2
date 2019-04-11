@@ -1,6 +1,8 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
 
+$controllerHeight: 50px;
+
 body {
         background-color:  white;
 }
@@ -19,6 +21,26 @@ body {
         margin: 5px 0px 0px 10px;
         padding: 5px;
         text-align: center;
+}
+
+.controller-wrapper {
+        display: block;
+        height: $controllerHeight;
+        width: 100%;
+}
+
+.settings-content {
+        display: inline-block;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+
+}
+.settings-content.active {
+        display:inline-block;
+        max-height: 300px;
+        transition: max-height 0.2s ease-out;
 }
 
 /* /// WIDGET FRAME AREA /// */
@@ -54,14 +76,14 @@ body {
 }
 
 .menu-content.active {
-        max-height: 300px;
+        max-height: $controllerHeight;
         transition: max-height 0.2s ease-in-out;
 }
 
 .controller {
         display: flex;
         grid-area: h;
-        margin: 0 0 12px 0; 
+        margin: 0 0 7px 0; 
 }
 
 .btn {
@@ -171,25 +193,9 @@ body {
         transition: all 0.2s ease-out;
         color: white;
 }
-.dropdown:hover .settings-icon,
-.settings-icon:active {
+.settings-icon.active {
         transform: rotate(-90deg);
         transition: transform 0.2s ease-out
-}
-
-.settings-content {
-        display: inline-block;
-        max-height: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: 1;
-
-}
-
-.dropdown:hover .settings-content {
-        display:inline-block;
-        max-height: 300px;
-        transition: max-height 0.2s ease-out;
 }
 
 .centered-label {

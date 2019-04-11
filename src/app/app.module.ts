@@ -11,6 +11,7 @@ import { WidgetComponent } from './widget/widget.component';
 import { VisualizationDetailComponent } from './visualization-detail/visualization-detail.component';
 import { VisualizationSelectionComponent } from './visualization-selection/visualization-selection.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { Testing02Component } from './widget-content/barcodes/testing02.component';
 import { AutomatonControllerComponent } from './controls-ui/automaton-controller/automaton-controller.component';
 import { CustomFooterComponent } from './custom-footer/custom-footer.component';
@@ -77,6 +78,7 @@ import { StateControlComponent } from './controls-ui/state-control/state-control
     imports: [
         BrowserModule,
         FormsModule,
+        ClickOutsideModule,
         ReactiveFormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,

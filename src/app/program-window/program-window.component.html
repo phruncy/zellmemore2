@@ -7,20 +7,22 @@
                         <button (click)="this.automaton.reset()" class="btn reset" matTooltip="reset">
                                 <fa-icon [icon]="faUndo" class="reset-icon"></fa-icon>
                         </button>
-                        <div class ="dropdown" (mouseover)="this.toggleController()" (mouseleave)= "this.toggleController()" >
-                                <div class="btn settings" >
+                        <div class ="dropdown">
+                                <div class="btn settings" (click)="this.toggleController()" >
                                         <div class="centered-label">
                                                 settings 
-                                                <fa-icon [icon]="faAngleLeft" class="settings-icon">        
+                                                <fa-icon [icon]="faAngleLeft" class="settings-icon" [class.active]="_controllerDisplayed">        
                                                 </fa-icon>
                                         </div>
                                 </div>
-                                <app-automaton-controller class="settings-content"></app-automaton-controller>
                         </div>
                         <div class ="stats">
                                 <app-status-display></app-status-display>
                         </div>
                 </header>
+                <div class="controller-wrapper">
+                        <app-automaton-controller class="settings-content" [class.active]="_controllerDisplayed"></app-automaton-controller>
+                </div>
                 <!-- The Visualizatoion Display Area -->
                 <section class="canvas-display">
                         <!-- Widgets go here: -->

@@ -1,3 +1,6 @@
+@import 'src/styles/global/colors';
+@import 'src/styles/global/margins';
+
 body {
         background-color:  white;
 }
@@ -5,7 +8,7 @@ body {
 .container {
         height: 100%;
         border: none;
-        padding: 2%;
+        padding: $globalMargin;
 
 }
 .info {
@@ -47,7 +50,7 @@ body {
         transition: max-height 0.2s ease-in-out;
         overflow: hidden;
         display: inline-block;
-        padding: 0 2% 0 2%;
+        padding: 0 $globalMargin 0 $globalMargin;
 }
 
 .menu-content.active {
@@ -62,7 +65,7 @@ body {
 }
 
 .btn {
-        background-color: rgb(30, 30, 30);
+        background-color: $background;
         border: none;
         cursor: pointer;
         width: 50px;
@@ -102,7 +105,7 @@ body {
 }
 
 .dropdown-btn:hover {
-        background-color: rgb(0, 223, 223);
+        background-color: $highlight;
         transition: all 0.1s linear;
 }
 
@@ -111,7 +114,7 @@ body {
         position: absolute;
         left: calc(50% - 7px);
         top: calc(50% - 10px);
-        color: white;
+        color: $fontNegative;
         font-size: 20px;
         -webkit-transform:rotate(10deg);
         -moz-transform:rotate(10deg);

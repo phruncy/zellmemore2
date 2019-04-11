@@ -4,7 +4,7 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 @Component({
   selector: 'app-cells-control',
   templateUrl: './cells-control.component.html',
-  styleUrls: ['./cells-control.component.css']
+  styleUrls: ['./cells-control.component.scss']
 })
 export class CellsControlComponent implements OnInit {
 

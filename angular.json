@@ -25,7 +25,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/p5/lib/p5.min.js"]
+            "scripts": [
+              "./node_modules/p5/lib/p5.min.js"
+            ],
+            "stylePreprocessorOptions": {
+                    "includePaths": [
+                            "./styles/"
+                    ]
+            }
           },
           "configurations": {
             "production": {
@@ -123,5 +130,10 @@
       }
     }
   },
-  "defaultProject": "zellmemore"
+  "defaultProject": "zellmemore",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

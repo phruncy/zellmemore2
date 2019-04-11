@@ -13,7 +13,7 @@ import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 @Component({
   selector: 'app-program-window',
   templateUrl: './program-window.component.html',
-  styleUrls: ['./program-window.component.css'],
+  styleUrls: ['./program-window.component.scss'],
   providers: [
       {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
   ]

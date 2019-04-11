@@ -4,7 +4,7 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 @Component({
   selector: 'app-edge-control',
   templateUrl: './edge-control.component.html',
-  styleUrls: ['./edge-control.component.css']
+  styleUrls: ['./edge-control.component.scss']
 })
 export class EdgeControlComponent implements OnInit {
 

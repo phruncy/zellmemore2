@@ -5,7 +5,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-automaton-controller',
   templateUrl: './automaton-controller.component.html',
-  styleUrls: ['./automaton-controller.component.css'],
+  styleUrls: ['./automaton-controller.component.scss'],
 })
 export class AutomatonControllerComponent implements OnInit {
 

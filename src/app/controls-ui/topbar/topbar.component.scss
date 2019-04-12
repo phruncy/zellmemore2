@@ -1,0 +1,85 @@
+@import 'src/styles/global/colors';
+@import 'src/styles/controller/controller';
+
+
+/* // BUTTONS // */
+.btn {
+        display: inline-block;
+        background-color: $background;
+        border: none;
+        cursor: pointer;
+        width: 50px;
+        height: 30px;
+        margin: 5px 2.5px 0px 2.5px;
+        text-align: center;
+}
+
+.btn.settings {
+        width: 80px;
+}
+
+.icon {
+        color: $fontNegative;
+        display: inline-block;
+}
+
+.icon.reset {
+        display: inline-block;
+        transform: rotate(0deg);
+        font-size: 16px;
+        transition: transform 0.2s ease-out;
+        display: inline-block;
+}
+
+.btn.reset-animated:hover .icon.reset,
+.icon.reset:active {
+        transform:rotate(-45deg);
+        transition: transform 0.3s ease-out;
+}
+
+.icon.settings {
+        display:inline-block;
+        transform: rotate(0deg);
+        transition: all 0.2s ease-out;
+        padding: 2px;
+}
+
+.icon.settings.active {
+        transform: rotate(-90deg);
+        transition: transform 0.2s ease-out
+}
+
+.icon.settings-label {
+        padding: 5px;
+}
+
+/* //STATS// */
+
+.stats {
+        display: inline-block;
+        margin: 5px 0px 0px 10px;
+        padding: 5px;
+        text-align: center;
+}
+
+/* //DROPDOWN// */
+
+.controller-wrapper {
+        display: block;
+        height: $controllerHeight;
+        width: 100%;
+}
+
+.controller {
+        display: inline-block;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+}
+
+.controller.active {
+        display: inline-block;
+        max-height: 300px;
+        transition: max-height 0.2s ease-out;
+}

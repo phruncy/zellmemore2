@@ -1,0 +1,32 @@
+<div class="toprow-wrapper">
+        <button 
+                (click)="automaton.toggleLoop()" 
+                class="btn" 
+                matTooltip="Run/Pause">
+                <fa-icon [icon]="faPlay" class="play icon"></fa-icon>
+        </button>
+        <button 
+                (click)="automaton.reset()" 
+                class="btn reset-animated" 
+                matTooltip="reset">
+                <fa-icon [icon]="faUndo" class="reset icon"></fa-icon>
+        </button>
+        <div 
+                class="btn settings" 
+                (click)="toggleController()">
+                <div class="icon settings-label">
+                        settings 
+                        <fa-icon [icon]="faAngleLeft" class="settings icon" [class.active]="_controllerDisplayed">    
+                        </fa-icon>
+                </div>
+        </div>
+        <div class ="stats">
+                <app-status-display></app-status-display>
+        </div>
+</div>
+<div class="controller-wrapper">
+        <app-automaton-controller 
+                class="controller" 
+                [class.active]="_controllerDisplayed">
+        </app-automaton-controller>
+</div>

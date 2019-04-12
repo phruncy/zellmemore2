@@ -1,41 +1,22 @@
 <body>
         <div class= "container">
-                <header class="controller">
-                        <button (click)="this.automaton.toggleLoop()" class="btn play" matTooltip="Run/Pause">
-                                <fa-icon [icon]="faPlay" class="play-icon"></fa-icon>
-                        </button>
-                        <button (click)="this.automaton.reset()" class="btn reset" matTooltip="reset">
-                                <fa-icon [icon]="faUndo" class="reset-icon"></fa-icon>
-                        </button>
-                        <div class ="dropdown">
-                                <div class="btn settings" (click)="this.toggleController()" >
-                                        <div class="centered-label">
-                                                settings 
-                                                <fa-icon [icon]="faAngleLeft" class="settings-icon" [class.active]="_controllerDisplayed">        
-                                                </fa-icon>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class ="stats">
-                                <app-status-display></app-status-display>
-                        </div>
-                </header>
-                <div class="controller-wrapper">
-                        <app-automaton-controller class="settings-content" [class.active]="_controllerDisplayed"></app-automaton-controller>
+                <!-- The controller -->
+                <div>
+                        <app-topbar></app-topbar>
                 </div>
-                <!-- The Visualizatoion Display Area -->
+                <!-- Widgets go here: -->
                 <section class="canvas-display">
-                        <!-- Widgets go here: -->
                         <app-widget-frame></app-widget-frame>
                 </section>
-        </div>   
-        <div class="menu" [class.active]="this._selectionDisplayed">
+        </div>
+        <!-- the selection dropup -->   
+        <div class="menu" [class.active]="_selectionDisplayed">
                         <div class="button-container">
                                 <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu">
-                                        <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="this._selectionDisplayed"></fa-icon>
+                                        <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon>
                                 </button>
                         </div>
-                        <app-visualization-selection class="menu-content" [class.active]="this._selectionDisplayed"></app-visualization-selection>
+                        <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>
                 </div>     
         <footer>
                 <app-custom-footer></app-custom-footer>

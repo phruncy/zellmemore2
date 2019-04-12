@@ -23,7 +23,6 @@ import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 export class ProgramWindowComponent {
 
     private _selectionDisplayed = false;
-    private _controllerDisplayed = false;
     private faTimes = faTimes;
     private faPlay = faPlay;
     private faUndo = faUndo;
@@ -43,23 +42,9 @@ export class ProgramWindowComponent {
         return this._selectionDisplayed;
     }
 
-    get controllerDisplayed(): boolean
-    {
-        return this._controllerDisplayed;
-    }
-
     toggleSelection()
     {
         this._selectionDisplayed = !this._selectionDisplayed;
-    }
-
-    toggleController()
-    {
-        this._controllerDisplayed = !this._controllerDisplayed;
-    }
-
-    hideController() {
-        this._controllerDisplayed = false;
     }
 }
 

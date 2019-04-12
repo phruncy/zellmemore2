@@ -42,6 +42,7 @@ import { SpeedControlComponent } from './controls-ui/speed-control/speed-control
 import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.component';
 import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';
 import { StateControlComponent } from './controls-ui/state-control/state-control.component';
+import { TopbarComponent } from './controls-ui/topbar/topbar.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { StateControlComponent } from './controls-ui/state-control/state-control
         SpeedControlComponent,
         EdgeControlComponent,
         CellsControlComponent,
-        StateControlComponent
+        StateControlComponent,
+        TopbarComponent
     ],
     imports: [
         BrowserModule,

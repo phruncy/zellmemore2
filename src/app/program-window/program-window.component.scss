@@ -13,35 +13,6 @@ body {
         padding: $globalMargin;
 
 }
-.info {
-        display: flex;
-}
-/* CONTROLLER AREA */
-.stats {
-        margin: 5px 0px 0px 10px;
-        padding: 5px;
-        text-align: center;
-}
-
-.controller-wrapper {
-        display: block;
-        height: $controllerHeight;
-        width: 100%;
-}
-
-.settings-content {
-        display: inline-block;
-        max-height: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: 1;
-
-}
-.settings-content.active {
-        display:inline-block;
-        max-height: 300px;
-        transition: max-height 0.2s ease-out;
-}
 
 /* /// WIDGET FRAME AREA /// */
 .canvas-display {
@@ -78,28 +49,6 @@ body {
 .menu-content.active {
         max-height: 600px;
         transition: max-height 0.2s ease-in-out;
-}
-
-.controller {
-        display: flex;
-        grid-area: h;
-        margin: 0 0 7px 0; 
-}
-
-.btn {
-        background-color: $background;
-        border: none;
-        cursor: pointer;
-        width: 50px;
-        height: 30px;
-        margin: 5px 2.5px 0px 2.5px;
-        text-align: center;
-
-}
-
-.btn:active {
-	position:relative;
-	top:1px;
 }
 
 /* for positioning the "+"-button in the center of the screen */
@@ -152,55 +101,6 @@ body {
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
 
-}
-
-.play-icon {
-        color:white;
-        display: inline-block;
-}
-
-.btn.play:hover .play-icon {
-        color: white;
-        transition: font-size 0.2s linear;
-}
-
-.reset-icon {
-        display: inline-block;
-        color: white;
-        transform: rotate(0deg);
-        font-size: 16px;
-        transition: transform 0.2s ease-out;
-        display: inline-block;
-}
-
-.btn.reset:hover .reset-icon,
-.reset-icon:active {
-        transform:rotate(-45deg);
-        transition: transform 0.3s ease-out;
-        color: white;
-}
-
-.btn.settings {
-        width: 80px;
-        color: white;
-        text-align: center;
-        margin: 5px 2.5px 0 2.5px;
-}
-
-.settings-icon {
-        display:inline-block;
-        transform: rotate(0deg);
-        transition: all 0.2s ease-out;
-        color: white;
-}
-.settings-icon.active {
-        transform: rotate(-90deg);
-        transition: transform 0.2s ease-out
-}
-
-.centered-label {
-        display: inline-block;
-        padding: 5px;
 }
 
 footer {

@@ -1,8 +1,26 @@
 @import 'src/styles/global/colors';
 
-$controllerHeight: 100px;
+$controllerHeight: 60px;
+$toprowHeight: 30px;
 
 .settings-unit {
+        display: flex;
+        max-width: 250px;
+        margin: 0;
+}
+
+.slider-wrapper {
+        height: $toprowHeight;
+        display: flex;
+}
+
+.select-wrapper {
+        display: flex;
+        height: $toprowHeight;
+}
+
+.tag {
         display: inline-block;
-        max-width: 220px;
+        position: relative;
+        margin-right: 10px;
 }

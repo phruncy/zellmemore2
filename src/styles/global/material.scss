@@ -1,7 +1,20 @@
 .mat-slider.mat-slider-horizontal {
         min-width: 80px;
+        padding: 0;
+}
+
+.mat-slider {
+        height: 100%;
 }
 
 .mat-menu-panel.ng-trigger.ng-trigger-transformMenu {
         max-width: 430px;
+}
+
+.mat-form-field-wrapper {
+        padding-bottom: 10px;
+}
+
+.mat-select-trigger {
+        max-width: 140px;
 }

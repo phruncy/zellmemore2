@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AutomatonService } from '../services/automaton.service';
+import { AutomatonService } from 'src/app/services/automaton.service';
 
 @Component({
   selector: 'app-status-display',

@@ -2,7 +2,7 @@
 @import 'src/styles/global/colors';
 
 .wrapper{
-        margin: 0 15px 0 0;
+        margin: 7px 15px 7px 0;
         color: $fontDefault;
         display: flex;
 }
@@ -11,8 +11,8 @@
         padding: 0 10px 0 10px;
         border-right-color: $backgroundLight;
         border-right-style: solid;
-        border-right-width: 2px;
-        max-width: 150px;
+        border-right-width: 1.5px;
+        max-width: 200px;
 
 }
 

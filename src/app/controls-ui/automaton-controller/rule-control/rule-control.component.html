@@ -1,10 +1,10 @@
 
 <div (click)="toggleBoxes()" mat-button [matMenuTriggerFor]="boxes">
-        <div class="label">
+        <div class="rule-label">
                 <span>rule: </span>
         </div>
 
-        <mat-form-field class="label">
+        <mat-form-field class="rule-label">
                 <input matInput [(ngModel)]="decimal" (input)="this.updateDecimal()" class="textinput">
         </mat-form-field>
         <span>

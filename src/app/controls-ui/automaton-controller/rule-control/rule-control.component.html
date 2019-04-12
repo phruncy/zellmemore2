@@ -1,5 +1,5 @@
 
-<div (click)="toggleBoxes()">
+<div (click)="toggleBoxes()" mat-button [matMenuTriggerFor]="boxes">
         <div class="label">
                 <span>rule: </span>
         </div>
@@ -12,24 +12,26 @@
                 </fa-icon>
         </span>
 </div>
-<!-- The checkboxes-input -->
-<div class="dropdown" [class.active]="_boxesDisplayed">
-        <span *ngFor="let box of BOXES" class="checkbox-outer">
-                <div class="checkbox-wrapper icons">
-                        <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
-                </div>
-                <div class ="checkbox-wrapper icons">
-                        <span>d</span>
-                </div>
-                <div class="checkbox-wrapper">
-                        <mat-checkbox 
-                                id="{{box.id}}"
-                                value="{{box.value}}"
-                                [(checked)]="this.automaton.ruleset[box.value]"
-                                (change)="this.updateRule(box.value, !this.automaton.ruleset[box.value])"
-                        ></mat-checkbox>
-                </div>
-        </span>
-</div>
+<mat-menu #boxes="matMenu" >
+        <!-- The checkboxes-input -->
+        <div class="dropdown" [class.active]="_boxesDisplayed">
+                <span *ngFor="let box of BOXES" class="checkbox-outer">
+                        <div class="checkbox-wrapper icons">
+                                <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
+                        </div>
+                        <div class ="checkbox-wrapper icons">
+                                <span>d</span>
+                        </div>
+                        <div class="checkbox-wrapper">
+                                <mat-checkbox 
+                                        id="{{box.id}}"
+                                        value="{{box.value}}"
+                                        [(checked)]="this.automaton.ruleset[box.value]"
+                                        (change)="this.updateRule(box.value, !this.automaton.ruleset[box.value])"
+                                ></mat-checkbox>
+                        </div>
+                </span>
+        </div>
+</mat-menu>
 
 <div #popupContainer></div>

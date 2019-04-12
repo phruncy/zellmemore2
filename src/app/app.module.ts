@@ -18,11 +18,12 @@ import { CustomFooterComponent } from './custom-footer/custom-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
 import { MatSnackBarModule, MatTooltipModule } from '@angular/material';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatInputModule} from '@angular/material/input';
+import { MatSliderModule} from '@angular/material/slider';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSelectModule} from '@angular/material/select';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatInputModule} from '@angular/material/input';
+import { MatMenuModule} from '@angular/material/menu';
 import { PopupComponent } from './popup/popup.component';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
@@ -92,7 +93,8 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
         MatSlideToggleModule,
         MatSelectModule,
         MatCheckboxModule,
-        MatInputModule
+        MatInputModule,
+        MatMenuModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

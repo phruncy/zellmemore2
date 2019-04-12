@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { RuleConverterService } from 'src/app/services/rule-converter.service';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -7,7 +7,8 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-rule-control',
   templateUrl: './rule-control.component.html',
-  styleUrls: ['./rule-control.component.scss']
+  styleUrls: ['./rule-control.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RuleControlComponent implements OnInit {
 

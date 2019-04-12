@@ -2,12 +2,11 @@
 <div class="settings-unit" id="cells-control">
         <span id="">
                 <label for="cellnumber-slider" id="cellnumber-slider-label">{{this.automaton.cellnumber}} cells</label>
-                <mat-slider
-                        class="settings-unit"
+                <mat-slider                 
                         [min]="_cellsMin"
                         [max]="_cellsMax"
                         [(ngModel)]="this.automaton.cellnumber"
-                        step="_step"
+                        [step]="_step"
                 ></mat-slider>
         </span>
 </div>

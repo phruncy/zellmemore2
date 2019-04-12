@@ -1,5 +1,6 @@
 @import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
+@import 'src/styles/global/material';
 
 .label {
         display: inline-block;
@@ -20,15 +21,9 @@
 }
 
 .dropdown {
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: all 0.2s ease-in-out;
-}
-
-.dropdown.active {
         max-height: $controllerHeight;
         opacity: 1;
+        overflow: hidden;
         transition: all 0.2s ease-in-out;
 }
 
@@ -52,6 +47,7 @@
 
 .cell-icon {
         color: $fontDefault;
+        font-weight: 200;
 }
 
 .cell-icon.active {

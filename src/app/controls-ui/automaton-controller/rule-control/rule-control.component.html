@@ -12,9 +12,9 @@
                 </fa-icon>
         </span>
 </div>
-<mat-menu #boxes="matMenu" >
+<mat-menu #boxes="matMenu" class="test">
         <!-- The checkboxes-input -->
-        <div class="dropdown" [class.active]="_boxesDisplayed">
+        <div class="dropdown">
                 <span *ngFor="let box of BOXES" class="checkbox-outer">
                         <div class="checkbox-wrapper icons">
                                 <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>

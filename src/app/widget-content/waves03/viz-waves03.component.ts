@@ -79,7 +79,7 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
                 s.createCanvas(this.widgetWidth, this.widgetHeight);
                 s.noFill();
                 s.stroke(0);
-                s.strokeWeight(1);
+                s.strokeWeight(.5, 15);
                 s.background(255);
             }
             s.draw = () =>

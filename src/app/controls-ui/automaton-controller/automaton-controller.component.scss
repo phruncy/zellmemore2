@@ -1,28 +1,21 @@
 @import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
 
-.dropdown {
-        margin: 0 0 0 2.5px;
-        padding: 4px 15px 4px 20px;
-        background-color: $background;
-        color: $fontNegative;
-        list-style: none;
-        font-weight: 100;
+.wrapper{
+        margin: 0 15px 0 0;
+        color: $fontDefault;
+        display: flex;
 }
 
 .dropdown-element {
-        padding: 5px 0 5px 0;
-        border-bottom-color: $fontNegative;
-        border-bottom: 1px;
-        border-bottom-style: solid;
+        padding: 0;
+        border-right-color: $fontDefault;
+        border-right: 1px;
+        border-right-style: solid;
 }
 
 .dropdown-element.last {
-        border-bottom-style: none;
-}
-
-.flex {
-        display: flex;
+        border-right-style: none;
 }
 
 .pointer {

@@ -37,7 +37,7 @@ import { VizWaves04Component } from './widget-content/waves04/viz-waves04.compon
 import { StatusDisplayComponent } from './status-display/status-display.component';
 import 'hammerjs';
 import { ChaosComponent } from './widget-content/chaos/chaos.component';
-import { RuleControlComponent } from './rule-control/rule-control.component';
+import { RuleControlComponent } from './controls-ui/automaton-controller/rule-control/rule-control.component';
 import { SpeedControlComponent } from './controls-ui/speed-control/speed-control.component';
 import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.component';
 import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';

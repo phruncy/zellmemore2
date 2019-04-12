@@ -1,10 +1,19 @@
-<div class="">
+
+<div (click)="toggleBoxes()">
         <div class="label">
                 <span>rule: </span>
         </div>
+
         <mat-form-field class="label">
                 <input matInput [(ngModel)]="decimal" (input)="this.updateDecimal()" class="textinput">
         </mat-form-field>
+        <span>
+                <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="_boxesDisplayed">    
+                </fa-icon>
+        </span>
+</div>
+<!-- The checkboxes-input -->
+<div class="dropdown" [class.active]="_boxesDisplayed">
         <span *ngFor="let box of BOXES" class="checkbox-outer">
                 <div class="checkbox-wrapper icons">
                         <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
@@ -22,4 +31,5 @@
                 </div>
         </span>
 </div>
+
 <div #popupContainer></div>

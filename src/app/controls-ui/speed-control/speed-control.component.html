@@ -1,6 +1,6 @@
-<label for="speed-controller" class="highlighted">
+<!-- <label for="speed-controller" class="highlighted">
                 speed:
-</label>
+</label> -->
 <div id="speed-controller" class="settings-unit">
         <mat-slider
                 class="range"
@@ -9,6 +9,6 @@
                 [(ngModel)]="this.automaton.fps">
         </mat-slider>
         <span matTooltip="generations per second" class="highlighted">
-                {{this.automaton.fps}}
+                {{this.automaton.fps}} fps 
         </span>
 </div>

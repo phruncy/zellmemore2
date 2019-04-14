@@ -1,13 +1,11 @@
 <div class="settings-unit">
-        <span class="tag">
-                circular cell array: 
-        </span>
+        <span class="tag">connect edges</span>
         <div id ="array-toggle" class="settings-unit">
                 <mat-slide-toggle
                         class="range"
                         [checked]="this.automaton.isCircular"
                         (change)="this.toggle()"
                 ></mat-slide-toggle>
-                <label id="arraytogglelabel" class= "label">{{this.labeltext}}</label>
+<!--                 <label id="arraytogglelabel" class= "label">{{this.labeltext}}</label> -->
         </div>
 </div>

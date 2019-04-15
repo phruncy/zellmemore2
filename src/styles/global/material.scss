@@ -18,3 +18,12 @@
 .mat-select-trigger {
         max-width: 140px;
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+        position: static;
+}
+
+

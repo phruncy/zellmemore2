@@ -64,4 +64,8 @@ export class RuleControlComponent implements OnInit {
         this._boxesDisplayed = !this._boxesDisplayed;
     }
 
+    setIcon(value: boolean) {
+        this._boxesDisplayed = value;
+    }
+
 }

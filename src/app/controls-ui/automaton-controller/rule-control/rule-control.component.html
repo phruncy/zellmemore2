@@ -1,5 +1,5 @@
 
-<div (click)="toggleBoxes()" mat-button [matMenuTriggerFor]="boxes" class="settings-unit">
+<div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="setIcon(true)" (menuClosed)="setIcon(false)">
         <div class="rule-label">
                 <span>rule: </span>
         </div>
@@ -14,7 +14,7 @@
 </div>
 <mat-menu #boxes="matMenu" class="test">
         <!-- The checkboxes-input -->
-        <div class="dropdown">
+        <div class="dropdown" (click)="$event.stopPropagation()">
                 <span *ngFor="let box of BOXES" class="checkbox-outer">
                         <div class="checkbox-wrapper icons">
                                 <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>

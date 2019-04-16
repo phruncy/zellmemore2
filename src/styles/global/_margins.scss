@@ -1,11 +1,18 @@
-@import 'src/styles/controller/controller';
-
 $globalMargin: 2%;
 $buttonMargin: 5px;
+
+// Controller
 $settingsUnitPaddingTop: 5px;
 $settingsUnitPaddingSides: 10px;
-
+$controllerHeight: 45px;
+$toprowHeight: 30px;
 $iconButtonWidth: 50px;
 $topbarButtonHeight: 30px;
 $controllerOffset: 2 * ($iconButtonWidth + $buttonMargin);
 $matSliderOffset: - (31 - $settingsUnitPaddingTop) / 2;
+
+// Height distribution
+$selectZoneHeight: 7vh;
+
+//menu
+$selectMenuActiveHeight: 500px;

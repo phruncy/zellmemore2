@@ -8,16 +8,17 @@
                 <section class="canvas-display">
                         <app-widget-frame></app-widget-frame>
                 </section>
-        </div>
-        <!-- the selection dropup -->   
-        <div class="menu" [class.active]="_selectionDisplayed">
+                        <!-- the selection dropup -->   
+                <div class="menu" [class.active]="_selectionDisplayed">
                         <div class="button-container">
                                 <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu">
                                         <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon>
                                 </button>
                         </div>
                         <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>
-                </div>     
+                </div> 
+        </div>
+    
         <footer>
                 <app-custom-footer></app-custom-footer>
         </footer>

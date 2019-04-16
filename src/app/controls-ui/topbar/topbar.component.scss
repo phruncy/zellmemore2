@@ -84,11 +84,7 @@
 /* //DROPDOWN// */
 
 .controller-wrapper {
-        display: block;
         height: $controllerHeight;
-        width: 100%;
-        position: relative;
-        left: $controllerOffset;
         font-weight: $topbarFontWeight;
 }
 
@@ -96,7 +92,8 @@
         display: inline-block;
         max-height: 0;
         overflow: hidden;
-        position: absolute;
+        position: relative;
+        left: $controllerOffset;
         z-index: 1;
 }
 

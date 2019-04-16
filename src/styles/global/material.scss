@@ -1,0 +1,51 @@
+@import 'src/styles/global/margins';
+
+// custom typography settings
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+        $font-family: 'Nunito Sans'
+);
+
+@include angular-material-typography($custom-typography);
+
+// Material Design Overrides
+.mat-slider.mat-slider-horizontal {
+        min-width: 80px;
+        padding: 0;
+}
+
+.mat-slider {
+        height: 100%;
+        top: $matSliderOffset;
+}
+
+.mat-menu-panel.ng-trigger.ng-trigger-transformMenu {
+        max-width: 430px;
+        position: relative;
+        top: $buttonMargin;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+        border-top: none;
+        padding: 0.3em 0;
+}
+
+.mat-select-trigger {
+        width: 140px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+        position: static;
+}
+
+.mat-slide-toggle {
+        position: relative;
+        bottom: 3px;
+}
+
+
+

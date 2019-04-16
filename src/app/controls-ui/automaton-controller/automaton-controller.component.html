@@ -1,23 +1,22 @@
-<ul id="controller-menu" class="dropdown">
+<div class="wrapper">
         <!-- Checkboxes for rule input -->
-        <li class="dropdown-element">
+        <div class="dropdown-element first">
                 <app-rule-control></app-rule-control>
-        </li>
-        <!-- Initial State selection -->
-        <li class="dropdown-element">
-                <app-state-control></app-state-control>
-        </li>
+        </div>
         <!-- number of cells -->
-        <li class="dropdown-element">
+        <div class="dropdown-element">
                 <app-cells-control></app-cells-control>
-        </li>
+        </div>
         <!-- Array mode -->
-        <li class="dropdown-element">
+        <div class="dropdown-element">
                 <app-edge-control></app-edge-control>
-        </li>
+        </div>
+        <!-- Initial State selection -->
+        <div class="dropdown-element">
+                <app-state-control></app-state-control>
+        </div>
         <!-- speed -->
-        <li class="dropdown-element last">
+        <div class="dropdown-element last">
                 <app-speed-control></app-speed-control>
-        </li>
-</ul>
-
+        </div>
+</div>

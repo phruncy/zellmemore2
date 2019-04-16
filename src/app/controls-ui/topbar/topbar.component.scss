@@ -1,0 +1,107 @@
+@import 'src/styles/global/colors';
+@import 'src/styles/controller/controller';
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
+
+.toprow-wrapper {
+        height: $toprowHeight;
+        vertical-align: top;
+        font-weight: $topbarFontWeight;
+}
+/* // BUTTONS // */
+.btn.button-wrapper {
+        display: inline-block;
+        font-family: 'Nunito Sans';
+        font-size: $default;
+}
+
+.btn {
+        display: table-cell;
+        vertical-align: middle;
+        background-color: $background;
+        border: none;
+        cursor: pointer;
+        width: $iconButtonWidth;
+        height: $topbarButtonHeight;
+        margin-right: $buttonMargin;
+        text-align: center;
+}
+
+.btn.settings {
+        width: 90px;
+}
+
+.icon {
+        color: $fontNegative;
+        display: inline-block;
+}
+
+.icon.reset {
+        display: inline-block;
+        transform: rotate(0deg);
+        font-size: 16px;
+        transition: transform 0.2s ease-out;
+        display: inline-block;
+}
+
+.btn.reset-animated {
+        padding: 3px 0;
+}
+
+.btn.reset-animated:hover .icon.reset,
+.icon.reset:active {
+        transform:rotate(-45deg);
+        transition: transform 0.3s ease-out;
+}
+
+.icon.settings {
+        display:inline-block;
+        transform: rotate(0deg);
+        transition: all 0.2s ease-out;
+        padding: 2px;
+}
+
+.icon.settings.active {
+        transform: rotate(-90deg);
+        transition: transform 0.2s ease-out
+}
+
+.icon.settings-label {
+        display: block;
+        margin: 3px;
+        font-weight: $topbarFontWeight;
+}
+
+/* //STATS// */
+
+.stats {
+        display: inline-block;
+        margin: 0;
+        padding: 5px;
+        text-align: center;
+}
+
+/* //DROPDOWN// */
+
+.controller-wrapper {
+        display: block;
+        height: $controllerHeight;
+        width: 100%;
+        position: relative;
+        left: $controllerOffset;
+        font-weight: $topbarFontWeight;
+}
+
+.controller {
+        display: inline-block;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+}
+
+.controller.active {
+        display: inline-block;
+        max-height: $controllerHeight;
+        transition: max-height 0.2s ease-out;
+}

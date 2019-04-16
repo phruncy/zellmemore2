@@ -1,0 +1,37 @@
+
+<div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="setIcon(true)" (menuClosed)="setIcon(false)">
+        <div class="rule-label">
+                <span>rule: </span>
+        </div>
+
+        <mat-form-field class="rule-label">
+                <input matInput [(ngModel)]="decimal" (input)="this.updateDecimal()" class="textinput">
+        </mat-form-field>
+        <span>
+                <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="_boxesDisplayed">    
+                </fa-icon>
+        </span>
+</div>
+<mat-menu #boxes="matMenu" class="test">
+        <!-- The checkboxes-input -->
+        <div class="dropdown" (click)="$event.stopPropagation()">
+                <span *ngFor="let box of BOXES" class="checkbox-outer">
+                        <div class="checkbox-wrapper icons">
+                                <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
+                        </div>
+                        <div class ="checkbox-wrapper icons">
+                                <span>d</span>
+                        </div>
+                        <div class="checkbox-wrapper">
+                                <mat-checkbox 
+                                        id="{{box.id}}"
+                                        value="{{box.value}}"
+                                        [(checked)]="this.automaton.ruleset[box.value]"
+                                        (change)="this.updateRule(box.value, !this.automaton.ruleset[box.value])"
+                                ></mat-checkbox>
+                        </div>
+                </span>
+        </div>
+</mat-menu>
+
+<div #popupContainer></div>

@@ -22,7 +22,7 @@ export class EdgeControlComponent implements OnInit {
   /* sets the 'Array-Mode' label */
     setLabel() {
     this.labeltext =
-        this.automaton.isCircular ? 'enabled' : 'disabled';
+        this.automaton.isCircular ? 'on' : 'off';
     }
 
     toggle() {

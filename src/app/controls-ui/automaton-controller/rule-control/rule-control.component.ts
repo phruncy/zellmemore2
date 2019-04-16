@@ -1,17 +1,21 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild } from '@angular/core';
-import { AutomatonService } from '../services/automaton.service';
-import { RuleConverterService } from '../services/rule-converter.service';
-import { MessengerService } from '../services/messenger.service';
+import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AutomatonService } from 'src/app/services/automaton.service';
+import { RuleConverterService } from 'src/app/services/rule-converter.service';
+import { MessengerService } from 'src/app/services/messenger.service';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-rule-control',
   templateUrl: './rule-control.component.html',
-  styleUrls: ['./rule-control.component.css']
+  styleUrls: ['./rule-control.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RuleControlComponent implements OnInit {
 
     @Input() decimal;
     @ViewChild('popupContainer') private popupContainer: ViewContainerRef;
+    private _boxesDisplayed = false;
+    private faAngleLeft = faAngleLeft;
 
     private BOXES = [
         { id: '111', value: 7, iconValues: [1, 1, 1]},
@@ -55,5 +59,13 @@ export class RuleControlComponent implements OnInit {
         const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer);
     }
   }
+
+    toggleBoxes() {
+        this._boxesDisplayed = !this._boxesDisplayed;
+    }
+
+    setIcon(value: boolean) {
+        this._boxesDisplayed = value;
+    }
 
 }

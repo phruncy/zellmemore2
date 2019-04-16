@@ -1,15 +1,18 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/controller/controller';
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
 
 .toprow-wrapper {
         height: $toprowHeight;
         vertical-align: top;
+        font-weight: $topbarFontWeight;
 }
 /* // BUTTONS // */
 .btn.button-wrapper {
         display: inline-block;
         font-family: 'Nunito Sans';
-        font-size: 13px;
+        font-size: $default;
 }
 
 .btn {
@@ -18,9 +21,9 @@
         background-color: $background;
         border: none;
         cursor: pointer;
-        width: 50px;
-        height: 30px;
-        margin-right: 5px;
+        width: $iconButtonWidth;
+        height: $topbarButtonHeight;
+        margin-right: $buttonMargin;
         text-align: center;
 }
 
@@ -39,6 +42,10 @@
         font-size: 16px;
         transition: transform 0.2s ease-out;
         display: inline-block;
+}
+
+.btn.reset-animated {
+        padding: 3px 0;
 }
 
 .btn.reset-animated:hover .icon.reset,
@@ -60,7 +67,9 @@
 }
 
 .icon.settings-label {
-        padding: 5px;
+        display: block;
+        margin: 3px;
+        font-weight: $topbarFontWeight;
 }
 
 /* //STATS// */
@@ -78,6 +87,9 @@
         display: block;
         height: $controllerHeight;
         width: 100%;
+        position: relative;
+        left: $controllerOffset;
+        font-weight: $topbarFontWeight;
 }
 
 .controller {
@@ -90,6 +102,6 @@
 
 .controller.active {
         display: inline-block;
-        max-height: 300px;
+        max-height: $controllerHeight;
         transition: max-height 0.2s ease-out;
 }

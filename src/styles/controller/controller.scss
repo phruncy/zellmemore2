@@ -1,13 +1,13 @@
 @import 'src/styles/global/colors';
 
-$controllerHeight: 60px;
+$controllerHeight: 45px;
 $toprowHeight: 30px;
 
 .settings-unit {
         display: flex;
         max-width: 250px;
         margin: 0;
-        font-weight: 700;
+        text-align: center;
 }
 
 .slider-wrapper {
@@ -17,11 +17,15 @@ $toprowHeight: 30px;
 
 .select-wrapper {
         display: flex;
-        height: $toprowHeight;
+        /* height: $toprowHeight; */
 }
 
 .tag {
         display: inline-block;
         position: relative;
         margin-right: 10px;
+}
+
+:host {
+        margin: auto;
 }

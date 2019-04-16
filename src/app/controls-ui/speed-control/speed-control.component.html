@@ -2,12 +2,12 @@
         <span matTooltip="generations per second" class="tag">
                 {{this.automaton.fps}} fps 
         </span>
-        <div class="slider-wrapper">
+<!--         <div class="slider-wrapper"> -->
                 <mat-slider
                         class="range"
                         [min]="_speedMin"
                         [max]="_speedMax"
                         [(ngModel)]="this.automaton.fps">
                 </mat-slider>
-        </div>
+<!--         </div> -->
 </div>

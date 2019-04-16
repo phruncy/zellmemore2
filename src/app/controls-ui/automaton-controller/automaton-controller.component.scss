@@ -1,23 +1,27 @@
 @import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
+@import 'src/styles/global/margins';
 
 .wrapper{
-        margin: 15px 10px 10px 0px;
+        margin: 10px 10px 10px 0px;
         color: $fontDefault;
         display: flex;
 }
 
 .dropdown-element {
-        padding: 0 10px 0 10px;
+        padding: $settingsUnitPaddingTop $settingsUnitPaddingSides 0;
         border-right-color: $backgroundLight;
         border-right-style: solid;
         border-right-width: 1.5px;
         max-width: 200px;
-
 }
 
 .dropdown-element.last {
         border-right-style: none;
+}
+
+.dropdown-element.first {
+        padding-left: 1px;
 }
 
 .pointer {

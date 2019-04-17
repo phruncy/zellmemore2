@@ -42,15 +42,16 @@
 .checkbox-wrapper.icons {
         font-family: 'binary-marbles';
         font-size: 13px;
+        color: $fontLight;
 }
 
 
 .cell-icon {
-        color: $fontDefault;
+        color: $fontLight;
         font-weight: 200;
 }
 
 .cell-icon.active {
-        color: rgb(255, 215, 64);
+        color: $accent;
         font-size: 13px;
 }

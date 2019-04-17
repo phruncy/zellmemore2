@@ -10,19 +10,25 @@ body {
         height: 100%;
         border: none;
         padding: $globalMargin;
-
+        padding-bottom: 0;
 }
 
 /* /// WIDGET FRAME AREA /// */
 .canvas-display {
         width: 100%;
-        height: 700px;
         margin-top: 10px;
+        min-height: $widgetAreaMinHeight;
+        height: calc(97vh - 155px);
 }
  /* /// SELECTION MENU /// */
 .menu {
         position: absolute;
-        bottom: 4px;
+        bottom: 0;
+        padding: $plusButtonPadding;
+        margin: $plusButtonMargin auto;
+        left: 50%;
+        transform: translateX(- 50%);
+        max-width: $selectMenuMaxWidth;
         transition: bottom 0.2s ease-in-out;
         z-index: 1;
 }
@@ -39,7 +45,7 @@ body {
         max-height: 0;
         transition: max-height 0.2s ease-in-out;
         overflow: hidden;
-        display: inline-block;
+        display: block;
         padding: 0 $globalMargin 0 $globalMargin;
 }
 
@@ -58,9 +64,8 @@ body {
         display: inline-block;
         background-color: rgb(30, 30, 30);
         transition: background-color 0.1s linear;
-        width: 30px;
-        height: 30px;
-        margin: 7px;
+        width: $plusButtonSize;
+        height: $plusButtonSize;
         border-radius: 50%;
         border-style: none;
         cursor: pointer;

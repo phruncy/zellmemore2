@@ -1,4 +1,4 @@
-$globalMargin: 2%;
+$globalMargin: 30px;
 $buttonMargin: 5px;
 
 // Controller
@@ -6,13 +6,18 @@ $settingsUnitPaddingTop: 5px;
 $settingsUnitPaddingSides: 10px;
 $controllerHeight: 45px;
 $toprowHeight: 30px;
+$topbarTotalHeight: $controllerHeight + $toprowHeight;
 $iconButtonWidth: 50px;
 $topbarButtonHeight: 30px;
 $controllerOffset: 2 * ($iconButtonWidth + $buttonMargin);
 $matSliderOffset: - (31 - $settingsUnitPaddingTop) / 2;
 
-// Height distribution
-$selectZoneHeight: 7vh;
+// widgetArea
+$widgetAreaMinHeight: 200px;
 
 //menu
+$plusButtonSize: 30px;
 $selectMenuActiveHeight: 500px;
+$selectMenuMaxWidth: 1024px;
+$plusButtonMargin: 1.5vh;
+$plusButtonPadding: 10px;

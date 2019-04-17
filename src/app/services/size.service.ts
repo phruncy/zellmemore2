@@ -66,14 +66,17 @@ export class SizeService {
         this.changeWidgetSize();
     }
 
-    /* calculates the maximum side length for the current number of widgets
+    /* 
+     * calculates the side length for the current number of widgets in the
+     * given number of rows based on the frameWidth.
+     * if the result exceeds the frameHeight, the maximum widget size based on * the frame height is returned instead.
      * @param rows: the number of rows that the widgets will be displayed in
      *              it is increased by 1 whenever the resulting sidelength for
      *              the given number of rows is smaller than the resulting 
      *              sidelength for the given rows + 1.
      */
 
-    private getInterimSize(rows) {
+    private getInterimSize(rows): number {
         const w = (this._frameWidth - 
             (this._widgetNumber / rows) * this.margin) / Math.ceil(this._widgetNumber / rows);
         if ((w * rows + rows * this.margin) > this._frameHeight) {

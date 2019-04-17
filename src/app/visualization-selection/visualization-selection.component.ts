@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
     selector: 'app-visualization-selection',
     templateUrl: './visualization-selection.component.html',
-    styleUrls: ['./visualization-selection.component.css']
+    styleUrls: ['./visualization-selection.component.scss']
 })
 export class VisualizationSelectionComponent implements OnInit {
 

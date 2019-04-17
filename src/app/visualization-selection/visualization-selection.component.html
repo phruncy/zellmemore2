@@ -1,10 +1,22 @@
 <div class="container blur">
-        <h1 class="headline">Add a widget:</h1>
-        <div class="option-container">
-            <div *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="option">
-                <img class="thumbnail" src="{{option.thumbnail}}">
-                <span class="overlay"></span>
-                <span class="overlay-text">{{option.name}}</span>
-            </div>
+        <div class="container-inner">
+                <h1 class="headline">Add a widget:</h1>
+                <!-- <div class="option-container">
+                    <div *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="option">
+                        <img class="thumbnail" src="{{option.thumbnail}}">
+                        <span class="overlay"></span>
+                        <span class="overlay-text">{{option.name}}</span>
+                    </div>
+                </div> -->
+                <mat-card *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="mat-card">
+                        <mat-card-header>
+                                <mat-card-title>{{option.name}}</mat-card-title>
+                        </mat-card-header>
+                        <img class="thumbnail" src="{{option.thumbnail}}">
+                        <mat-card-content>{{option.description}}</mat-card-content>
+                        <mat-card-actions>
+                                <button mat-button>ADD</button>
+                        </mat-card-actions>
+                </mat-card>
         </div>
 </div>

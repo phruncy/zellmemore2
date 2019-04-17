@@ -1,6 +1,9 @@
+@import 'src/styles/global/margins';
 
 .container {
         display: block;
+        max-height: $menuInnerHeightMax;
+        overflow: scroll;
 }
 
 .option-container {
@@ -43,5 +46,9 @@
 .headline {
         font-size: 20px;
         margin: 3px;
+}
+
+.mat-card {
+        margin: $selectionTileMargin;
 }
 

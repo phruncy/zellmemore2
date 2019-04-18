@@ -47,7 +47,7 @@ body {
 
 .menu-content{
         max-height: 0;
-        transition: max-height 0.2s ease-in-out;
+        transition: max-height 0.3s ease-out;
         overflow: hidden;
         display: block;
         padding: 0 $globalMargin 0 $globalMargin;
@@ -55,7 +55,7 @@ body {
 
 .menu-content.active {
         max-height: $selectMenuActiveHeight;
-        transition: max-height 0.2s ease-in-out;
+        transition: max-height 0.3s ease-out;
 }
 
 /* for positioning the "+"-button in the center of the screen */

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { VisualizationService } from '../services/visualization.service';
 import { Observable } from 'rxjs';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-visualization-selection',
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs';
 export class VisualizationSelectionComponent implements OnInit {
 
   private _visualizations: any[] = [];
+  private faPlusCircle = faPlusCircle;
   constructor(
         private visualizationDetailService: VisualizationDetailService,
         private visualizationService: VisualizationService

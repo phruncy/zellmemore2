@@ -46,6 +46,7 @@ import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.co
 import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';
 import { StateControlComponent } from './controls-ui/state-control/state-control.component';
 import { TopbarComponent } from './controls-ui/topbar/topbar.component';
+import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
         EdgeControlComponent,
         CellsControlComponent,
         StateControlComponent,
-        TopbarComponent
+        TopbarComponent,
+        SelectionTileComponent
     ],
     imports: [
         BrowserModule,

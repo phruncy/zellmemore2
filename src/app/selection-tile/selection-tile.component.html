@@ -1,0 +1,13 @@
+<mat-card class="mat-card">
+        <mat-card-header>
+                <mat-card-title>{{name}}</mat-card-title>
+        </mat-card-header>
+        <div mat-card-image class="image-container">
+                <span class="overlay">
+                        <button mat-icon-button color="accent" class="btn" (click)="selectVisualizationToDisplay(id)">
+                                <fa-icon [icon]="faPlusCircle" class="icon"></fa-icon>
+                        </button>               
+                </span>
+                <img  class="thumbnail" src="{{thumbnail}}">
+        </div>
+</mat-card>

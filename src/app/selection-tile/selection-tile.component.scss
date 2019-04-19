@@ -1,0 +1,47 @@
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
+@import 'src/styles/global/colors';
+
+.mat-card {
+        margin: $selectionTileMargin;
+        width: $matCardMaxWidth;
+        display: inline-block;
+}
+
+.image-container {
+        position: relative;
+}
+
+.overlay {
+        background: $overlay;
+        position: absolute;
+        top: 0;
+        bottom: 5px;
+        left: 0px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;       
+}
+
+.overlay:hover {
+        opacity: 1;
+        transition: opacity 0.2s ease-out;
+}
+
+.thumbnail {
+
+        width: 100%;
+}
+
+.btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.2s ease-out;
+        z-index: 1;
+}
+
+.icon {
+        font-size: $iconSize;
+}

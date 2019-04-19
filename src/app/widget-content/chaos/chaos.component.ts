@@ -43,6 +43,7 @@ export class ChaosComponent extends ContentBase implements AfterContentInit {
 
     onReset()
     {
+        this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
         this._blockSize = this.getBlocksize();
         this._maxDisplayableGenerations = Math.floor(this.widgetWidth / this._blockSize);
         this.render();

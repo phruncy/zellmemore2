@@ -40,8 +40,27 @@
         transform: translate(-50%, -50%);
         transition: opacity 0.2s ease-out;
         z-index: 1;
+        color: $highlight;
 }
 
 .icon {
         font-size: $iconSize;
+}
+
+.check-wrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: right;
+}
+.check {
+        visibility: hidden;
+        color: $highlight;
+        margin: 5px 5px 5px 5px;
+        display: inline-block;
+}
+
+.check.active {
+        visibility: visible;
 }

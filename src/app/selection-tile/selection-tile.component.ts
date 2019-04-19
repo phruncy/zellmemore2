@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { AutomatonService } from '../services/automaton.service';
+import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationService } from '../services/visualization.service';
 
 @Component({
@@ -14,6 +13,7 @@ export class SelectionTileComponent implements OnInit {
     @Input() name: string;
     @Input() thumbnail;
     private faPlusCircle = faPlusCircle;
+    private faCheckCircle = faCheckCircle;
     constructor(private visualizationService: VisualizationService) { }
 
   ngOnInit() {

@@ -1,18 +1,7 @@
 @import 'src/styles/global/margins';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/colors';
 
 .container {
         display: block;
         max-height: $menuInnerHeightMax;
         overflow: scroll;
-}
-
- .option {
-        display: inline-flex;
-        position: relative;
-        margin: 2px;
-        width: 100px;
-        height: 70px;
-        cursor: pointer;
 }

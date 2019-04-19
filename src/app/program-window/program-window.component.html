@@ -1,3 +1,4 @@
+<div class="window-overlay" [class.active]="_selectionDisplayed"></div>
 <body>
         <div class= "container">
                 <!-- The controller -->
@@ -8,7 +9,8 @@
                 <section class="canvas-display">
                         <app-widget-frame></app-widget-frame>
                 </section>
-                        <!-- the selection dropup -->   
+                <!-- selection background overlay --> 
+                <!-- the selection dropup -->   
                 <div class="menu" [class.active]="_selectionDisplayed">
                         <div class="button-container">
                                 <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu">
@@ -16,7 +18,7 @@
                                 </button>
                         </div>
                         <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>
-                </div> 
+                </div>
         </div>
         <footer>
                 <app-custom-footer></app-custom-footer>

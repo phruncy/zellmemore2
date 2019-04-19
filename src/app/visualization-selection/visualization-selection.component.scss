@@ -1,5 +1,6 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
+@import 'src/styles/global/colors';
 
 .container {
         display: block;
@@ -17,7 +18,7 @@
 }
 
 .overlay {
-        background: rgba(151, 151, 151, 0.5);
+        background: $overlay;
         position: absolute;
         top: 0;
         bottom: 5px;

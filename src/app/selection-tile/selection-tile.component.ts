@@ -21,7 +21,6 @@ export class SelectionTileComponent implements OnInit {
         this.visualizationService.$activeComponentsChanged.subscribe(
             () => {
                 this._isActive = this.checkIsActive(this.id);
-                console.log(this._isActive);
             }
         );
     }
@@ -36,7 +35,6 @@ export class SelectionTileComponent implements OnInit {
 
     checkIsActive(id: string): boolean
     {
-        console.log(this.visualizationService.activeComponents);
         return this.visualizationService.activeComponents.includes(id);
     }
 }

@@ -27,6 +27,8 @@ export class VisualizationService {
     // program window component subscribes to this
     public hasChanged$ = this._hasChanged.asObservable();
     // list of all displayed visualizations in the DOM
+    private _activeComponentsChanged = new Subject<void>();
+    public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
     private _activeComponents = [];
     private visualizationComponents =
     {
@@ -73,6 +75,14 @@ export class VisualizationService {
         this._hasChanged.next();
     }
 
+    get activeComponents() {
+        return this._activeComponents;
+    }
+
+    getComponentById (id) {
+        return this.visualizationComponents[id];
+    }
+
     /* returns the component for the currently selected id */
     provideComponent() : any
     {
@@ -80,23 +90,25 @@ export class VisualizationService {
     }
 
     addToActive(component: ContentBase) {
-        this._activeComponents.push(component);
+        const id = this.visualizationToDisplay;
+        this._activeComponents.push(id);
         const sub = component.$onDestroy.subscribe(
             () => {
-                this.removeFromActive(component);
+                this.removeFromActive(id);
                 sub.unsubscribe();
             }
         );
         console.log(this._activeComponents);
+        this._activeComponentsChanged.next();
     }
 
-    removeFromActive(component: ContentBase) {
-        const index = this._activeComponents.indexOf(component);
+    removeFromActive(id: string) {
+        const index = this._activeComponents.indexOf(id);
         if (index === 0) {
             this._activeComponents.shift();
         } else {
-            this._activeComponents = this._activeComponents.splice(index, 1);
+            this._activeComponents.splice(index, 1);
         }
-        console.log(this._activeComponents);
+        this._activeComponentsChanged.next();
     }
 }

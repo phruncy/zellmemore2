@@ -14,17 +14,29 @@ export class SelectionTileComponent implements OnInit {
     @Input() thumbnail;
     private faPlusCircle = faPlusCircle;
     private faCheckCircle = faCheckCircle;
+    private _isActive = false;
     constructor(private visualizationService: VisualizationService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.visualizationService.$activeComponentsChanged.subscribe(
+            () => {
+                this._isActive = this.checkIsActive(this.id);
+                console.log(this._isActive);
+            }
+        );
+    }
 
     // tells the visualization service which option was selected
-    // function is called whenever a DOM Element associated with a 
-    // _visualization-Object is clicked 
+    // function is called whenever a DOM Element associated with a
+    // _visualization-Object is clicked
     selectVisualizationToDisplay(id: string)
     {
         this.visualizationService.visualizationToDisplay = id;
     }
 
+    checkIsActive(id: string): boolean
+    {
+        console.log(this.visualizationService.activeComponents);
+        return this.visualizationService.activeComponents.includes(id);
+    }
 }

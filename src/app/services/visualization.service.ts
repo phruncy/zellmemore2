@@ -25,6 +25,8 @@ export class VisualizationService {
     private _hasChanged = new Subject<void>();
     // program window component subscribes to this
     public hasChanged$ = this._hasChanged.asObservable();
+    // list of all displayed visualizations in the DOM
+    private _activeComponents = [];
     private visualizationComponents =
     {
         "v001": VizDefaultComponent,
@@ -74,5 +76,20 @@ export class VisualizationService {
     provideComponent() : any
     {
         return this.visualizationComponents[this.visualizationToDisplay];
+    }
+
+    addToActive(component: any) {
+        this._activeComponents.push(component.instance);
+        console.log(this._activeComponents);
+    }
+
+    removeFromActive(component: any) {
+        const index = this._activeComponents.indexOf(component);
+        if (index === 0) {
+            this._activeComponents.shift();
+        } else {
+            this._activeComponents = this._activeComponents.splice(index, 1);
+        }
+        console.log(this._activeComponents);
     }
 }

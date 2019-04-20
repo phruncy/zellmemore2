@@ -48,7 +48,6 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     {
         this.widgetWidth = this.sizeService.widgetSize.toString();
         this.widgetHeight = this.widgetWidth;
-        console.log("new size was fetched from child. New size: " + this.widgetWidth);
     }
 
     abstract update();

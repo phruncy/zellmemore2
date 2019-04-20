@@ -14,6 +14,7 @@ import { VizWaves02Component } from '../widget-content/waves02/viz-waves02.compo
 import { VizWaves03Component } from '../widget-content/waves03/viz-waves03.component';
 import { VizWaves04Component } from '../widget-content/waves04/viz-waves04.component';
 import { ChaosComponent } from '../widget-content/chaos/chaos.component';
+import { ContentBase } from '../content-base/contentBase.component';
 
 @Injectable({
   providedIn: 'root'
@@ -78,12 +79,18 @@ export class VisualizationService {
         return this.visualizationComponents[this.visualizationToDisplay];
     }
 
-    addToActive(component: any) {
-        this._activeComponents.push(component.instance);
+    addToActive(component: ContentBase) {
+        this._activeComponents.push(component);
+        const sub = component.$onDestroy.subscribe(
+            () => {
+                this.removeFromActive(component);
+                sub.unsubscribe();
+            }
+        );
         console.log(this._activeComponents);
     }
 
-    removeFromActive(component: any) {
+    removeFromActive(component: ContentBase) {
         const index = this._activeComponents.indexOf(component);
         if (index === 0) {
             this._activeComponents.shift();

@@ -23,6 +23,7 @@ import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-ico
 import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
+import { ContentBase } from '../content-base/contentBase.component';
 
 @Component({
     selector: 'app-widget',
@@ -44,7 +45,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
     @Input() _title = 'widget name';
 
     private _ref: any;
-    private _content;
     /* icon references */
     faTimes = faTimes;
     faPlayCircle = faPlayCircle;
@@ -82,7 +82,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
     ngOnDestroy()
     {
         this.sizeService.decreaseWidgetNumber();
-        this.visService.removeFromActive(this._content.instance);
     }
 
     /* Component is fetched from the visualization service's dictionary 
@@ -93,14 +92,14 @@ export class WidgetComponent implements OnInit, OnDestroy {
     {
         const visualization = this.visService.provideComponent();
         const factory = this.resolver.resolveComponentFactory(visualization);
-        this._content = this.entry.createComponent(factory);
+        const component = this.entry.createComponent(factory);
         this.details.provideVisualizations().subscribe (
             data => {
                 this._title = data.find(
                     obj => obj.id === this.visService.visualizationToDisplay).name;
             }
         );
-        this.visService.addToActive(this._content);
+        this.visService.addToActive(component.instance as ContentBase);
     }
 
     fetchSize() {

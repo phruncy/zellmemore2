@@ -1,10 +1,11 @@
-<div class="container blur">
-        <h1 class="headline">Add a widget:</h1>
-        <div class="option-container">
-            <div *ngFor="let option of visualizations" (click)="selectVisualizationToDisplay(option.id)" class="option">
-                <img class="thumbnail" src="{{option.thumbnail}}">
-                <span class="overlay"></span>
-                <span class="overlay-text">{{option.name}}</span>
-            </div>
+<h1 class="headline">Add a widget:</h1>
+<div class="container">
+        <div class="container-inner">
+                <app-selection-tile 
+                        *ngFor="let option of visualizations" 
+                        [id]="option.id" 
+                        [name]="option.name"
+                        [thumbnail]="option.thumbnail">
+                </app-selection-tile>
         </div>
 </div>

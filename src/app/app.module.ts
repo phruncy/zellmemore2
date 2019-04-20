@@ -24,6 +24,8 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule} from '@angular/material/input';
 import { MatMenuModule} from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { PopupComponent } from './popup/popup.component';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
@@ -44,6 +46,7 @@ import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.co
 import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';
 import { StateControlComponent } from './controls-ui/state-control/state-control.component';
 import { TopbarComponent } from './controls-ui/topbar/topbar.component';
+import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 
 
 @NgModule({
@@ -76,7 +79,8 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
         EdgeControlComponent,
         CellsControlComponent,
         StateControlComponent,
-        TopbarComponent
+        TopbarComponent,
+        SelectionTileComponent
     ],
     imports: [
         BrowserModule,
@@ -94,7 +98,9 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
         MatSelectModule,
         MatCheckboxModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatCardModule,
+        MatButtonModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

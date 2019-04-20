@@ -1,0 +1,7 @@
+@import 'src/styles/global/margins';
+
+.container {
+        display: block;
+        max-height: $menuInnerHeightMax;
+        overflow: scroll;
+}

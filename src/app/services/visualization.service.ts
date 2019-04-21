@@ -98,7 +98,6 @@ export class VisualizationService {
                 sub.unsubscribe();
             }
         );
-        console.log(this._activeComponents);
         this._activeComponentsChanged.next();
     }
 

@@ -47,6 +47,8 @@ import { CellsControlComponent } from './controls-ui/cells-control/cells-control
 import { StateControlComponent } from './controls-ui/state-control/state-control.component';
 import { TopbarComponent } from './controls-ui/topbar/topbar.component';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { TopicWrapperComponent } from './homepage/topic-wrapper/topic-wrapper.component';
 
 
 @NgModule({
@@ -80,7 +82,9 @@ import { SelectionTileComponent } from './selection-tile/selection-tile.componen
         CellsControlComponent,
         StateControlComponent,
         TopbarComponent,
-        SelectionTileComponent
+        SelectionTileComponent,
+        ImpressumComponent,
+        TopicWrapperComponent
     ],
     imports: [
         BrowserModule,

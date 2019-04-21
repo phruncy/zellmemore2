@@ -127,10 +127,11 @@ body {
 
 footer {
         position: absolute;
-        bottom: 0;
+        bottom: $globalMargin;
         transform: translateY(100%); /* move element below screen */
         display: block;
         width: 100%;
+        z-index: 0;
 }
 
 

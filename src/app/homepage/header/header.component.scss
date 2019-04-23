@@ -1,0 +1,26 @@
+@import 'src/styles/global/margins';
+@import 'src/styles/global/colors';
+@import 'src/styles/global/typo';
+
+.container-outer {
+        margin: $globalMargin 0;
+        border-top-style: solid;
+}
+
+.container-inner {
+        margin: $globalMargin;
+        margin-top: 0;
+}
+
+.topic {
+        display: inline-block;
+        font-size: $default;
+        color: $fontNegative;
+        background: $background;
+        height: $topbarButtonHeight;
+        padding: 5px;
+}
+
+.topic.float-right {
+        float: right;
+}

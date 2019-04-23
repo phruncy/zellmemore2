@@ -48,8 +48,7 @@ import { StateControlComponent } from './controls-ui/state-control/state-control
 import { TopbarComponent } from './controls-ui/topbar/topbar.component';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { ImpressumComponent } from './impressum/impressum.component';
-import { TopicWrapperComponent } from './homepage/topic-wrapper/topic-wrapper.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './homepage/header/header.component';
 
 
 @NgModule({
@@ -85,7 +84,6 @@ import { HeaderComponent } from './header/header.component';
         TopbarComponent,
         SelectionTileComponent,
         ImpressumComponent,
-        TopicWrapperComponent,
         HeaderComponent
     ],
     imports: [

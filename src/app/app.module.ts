@@ -49,6 +49,7 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { TopicWrapperComponent } from './homepage/topic-wrapper/topic-wrapper.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { TopicWrapperComponent } from './homepage/topic-wrapper/topic-wrapper.co
         TopbarComponent,
         SelectionTileComponent,
         ImpressumComponent,
-        TopicWrapperComponent
+        TopicWrapperComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,

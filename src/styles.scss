@@ -1,11 +1,12 @@
 /* Custom Angular Material Color Theme */
 @import "./styles/global/fonts.css";
 @import "./styles/global/zellmemore-mat-theme";
+@import "./styles/global/typo";
 /* You can add global styles to this file, and also import other style files */
 
 body {
         font-family: 'Nunito Sans';
-        font-size: 13px;
+        font-size: $default;
         margin: 0;
 }
 

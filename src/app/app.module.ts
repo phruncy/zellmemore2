@@ -27,6 +27,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PopupComponent } from './popup/popup.component';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
 import { VizThreadsComponent } from './widget-content/threads/viz-threads.component';
@@ -52,6 +53,7 @@ import { HeaderComponent } from './homepage/header/header.component';
 import { AboutComponent } from './homepage/about/about.component';
 import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+
 
 
 @NgModule({
@@ -111,6 +113,7 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
         MatMenuModule,
         MatCardModule,
         MatButtonModule,
+        ScrollDispatchModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

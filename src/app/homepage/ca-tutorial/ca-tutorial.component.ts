@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-ca-tutorial',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaTutorialComponent implements OnInit {
 
-  constructor() { }
+    constructor(private scrollDispatcher: ScrollDispatcher) { }
 
-  ngOnInit() {
-  }
+    @ViewChild('container') _container: ElementRef;
+    private _scrollable: CdkScrollable[];
 
+    ngOnInit() {
+        this._scrollable = this.scrollDispatcher.getAncestorScrollContainers(this._container);
+        this.scrollDispatcher.scrolled().subscribe(
+            () => {
+                this.onScroll();
+            }
+        );
+        console.log(this._scrollable);
+     }
+
+    onScroll(): void {
+    }
 }

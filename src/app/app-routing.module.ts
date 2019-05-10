@@ -3,6 +3,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProgramWindowComponent} from './program-window/program-window.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 const routes: Routes =
 [
@@ -11,12 +12,16 @@ const routes: Routes =
   // Route zu einem Programm:
   {path: 'program-window', component: ProgramWindowComponent},
   {path: 'impressum', component: ImpressumComponent},
+  {path: 'data-disclaimer', component: DisclaimerComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule(
   {
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {
+        anchorScrolling: 'enabled'
+    }
+        )],
     exports: [RouterModule]
   }
 )

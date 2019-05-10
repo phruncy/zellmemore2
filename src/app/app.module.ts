@@ -49,6 +49,9 @@ import { TopbarComponent } from './controls-ui/topbar/topbar.component';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { HeaderComponent } from './homepage/header/header.component';
+import { AboutComponent } from './homepage/about/about.component';
+import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 
 @NgModule({
@@ -84,7 +87,10 @@ import { HeaderComponent } from './homepage/header/header.component';
         TopbarComponent,
         SelectionTileComponent,
         ImpressumComponent,
-        HeaderComponent
+        HeaderComponent,
+        AboutComponent,
+        CaTutorialComponent,
+        DisclaimerComponent
     ],
     imports: [
         BrowserModule,
@@ -104,7 +110,7 @@ import { HeaderComponent } from './homepage/header/header.component';
         MatInputModule,
         MatMenuModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

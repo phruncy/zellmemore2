@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { AutomatonConfigurationService } from '../services/automaton-configuration.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { AutomatonConfigurationService } from '../services/automaton-configurati
 
 export class HomeComponent implements OnInit {
 
-  constructor(
+    constructor(
     private configurationService: AutomatonConfigurationService
   ) { }
 

@@ -3,6 +3,9 @@ $secondaryMargin: 10%;
 $buttonMargin: 5px;
 $globalCornerRadius: 4px;
 
+// screen widths
+$maxWindowWidth: 1366px;
+
 // Controller
 $settingsUnitPaddingTop: 5px;
 $settingsUnitPaddingSides: 10px;
@@ -28,4 +31,5 @@ $selectionTileMargin: 2px;
 $matCardMaxWidth: 150px;
 
 //homepage
-$sectionGap: 30px;
+$sectionGap: 50px;
+$headerMenuItemHeight: 25px;

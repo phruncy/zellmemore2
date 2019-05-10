@@ -1,22 +1,30 @@
-<app-header></app-header>
-<div class="section">
-        <h1>One Algorithm, 12 depictions:<br>
-                Cellular automata are systems <br>capable of producing
-                fascinating structures <br>from simple rules.
-                This website invites you <br>to visually explore the principle
-                <br>of elementary cellular automata.</h1>
-                <a routerLink="/program-window">Explore</a>
+<div class="outer-container">
+        <app-header></app-header>
+        <div class="section">
+                <h1 class="landing-text">One Algorithm, 12 depictions:<br>
+                        Cellular automata are systems capable of producing<br>
+                        fascinating structures from simple rules.<br>
+                        This website invites you to visually explore the principle
+                        <br>of elementary cellular automata.</h1>
+                        <div class="landing-link-wrapper">
+                                <div  class="landing-link"><a routerLink="/program-window">Explore</a></div>
+                                <div class="landing-link"><a routerLink="/home" [fragment]="'tutorial-anchor'">What are Cellular automata?</a></div>
+                        </div>
+        </div>
+        <section class="section">
+                <h1>About Cellular Automata</h1>
+                <div>Cellular automata are awesome and super useful. See how they work:</div>
+                <app-ca-tutorial></app-ca-tutorial>
+        </section>
+        <section class="section" id="tutorial-anchor">
+                <h1>About this Project</h1>
+                <app-about></app-about>
+        </section>
+        
+        <footer>
+                <app-custom-footer></app-custom-footer>
+        </footer> 
 </div>
-<section class="section">
-        <h1>About Cellular Automata</h1>
-</section>
-<section class="section">
-        <h1>About this Project</h1>
-</section>
-
-<footer>
-        <app-custom-footer></app-custom-footer>
-</footer>
 
     
 

@@ -4,6 +4,11 @@
         src: url(src/assets/fonts/custom-icons/font/binary-marbles.ttf) format("truetype");
 }
 
+@font-face {
+        font-family: github-icon;
+        src: url(src/assets/fonts/github-icon/font/github-icon.ttf) format("truetype");
+}
+
 /* nunito-sans-200 - latin */
 @font-face {
         font-family: 'Nunito Sans';

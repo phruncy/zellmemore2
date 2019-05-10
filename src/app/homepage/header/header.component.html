@@ -1,16 +1,25 @@
 <div class="container-outer">
         <div class="container-inner">
-                <div class="topic">Zellmemore</div>
-                <div class="topic float-right">
-                        <a>About</a>
+                <div class="topic">
+                        <div class="topic-inner"><a routerLink="/home">Zellmemore.</a></div>
                 </div>
                 <div class="topic float-right">
-                        <a href="https://bitbucket.org/f_holle/zellmemore/src/master/" matTooltip="project repository">
-                                a
-                        </a>
+                        <div class="topic-inner">
+                                <a routerLink="/home" [fragment]="'tutorial-anchor'">About</a>
+                        </div>
                 </div>
                 <div class="topic float-right">
-                        <a routerLink="/program-window">Explore</a>
+                        <div class="topic-inner">
+                                <a class="github-icon link" href="https://bitbucket.org/f_holle/zellmemore/src/master/" matTooltip="project repository">
+                                        g
+                                </a>
+                        </div>
+                </div>
+                <div class="topic float-right">
+                        <div class="topic-inner">
+                                <a routerLink="/program-window">Explore</a>
+                        </div>
+
                 </div>
         </div>
 </div>

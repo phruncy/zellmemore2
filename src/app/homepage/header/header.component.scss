@@ -5,6 +5,8 @@
 .container-outer {
         margin: $globalMargin 0;
         border-top-style: solid;
+        font-size: $menuItemsFontSize;
+        font-weight: $topbarFontWeight;      
 }
 
 .container-inner {
@@ -14,13 +16,33 @@
 
 .topic {
         display: inline-block;
-        font-size: $default;
         color: $fontNegative;
         background: $background;
-        height: $topbarButtonHeight;
-        padding: 5px;
+        height: $headerMenuItemHeight;
+        padding: 5px 15px;
+        cursor: pointer;
+        margin-left: $buttonMargin;
+        border-style: solid;
+        border-top-style: none;
+}
+
+.topic:hover {
+        color: $fontDefault;
+        font-weight: $topbarFontWeight;
+        background: none;
 }
 
 .topic.float-right {
         float: right;
+}
+
+.topic-inner {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+}
+
+.github-icon {
+        font-family: github-icon;
+        font-size: 26px;
 }

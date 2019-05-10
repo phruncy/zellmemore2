@@ -1,0 +1,14 @@
+@import 'src/styles/global/typo';
+@import 'src/styles/global/margins';
+
+.link {
+        font-weight: bold;
+}
+
+.links-wrapper {
+        margin-top: $sectionGap;
+}
+
+:host {
+        font-size: inherit;
+}

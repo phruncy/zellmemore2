@@ -17,3 +17,8 @@ html {
 footer {
         margin: 0;
 }
+
+a:hover, a:visited, a:link, a:active, a:any-link {
+        text-decoration: none;
+        color: inherit;
+}

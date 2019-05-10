@@ -2,8 +2,37 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
 
+.outer-container {
+        max-width: $maxWindowWidth;
+        align-content: center;
+        margin: auto;
+        margin-top: 50px;
+}
+
+h1 {
+        font-size: $h1;
+        margin-top: $sectionGap;
+}
+
+.landing-text {
+        font-weight: 400;
+        margin-top: 130px;
+}
+
+.landing-link {
+        font-size: $homepageLinks;
+        font-weight: bold;
+        margin-top: 10px;
+}
+
+.landing-link-wrapper {
+        margin-top: 50px
+}
+
 .section {
-        margin: 0 $secondaryMargin;
+        padding-left: $secondaryMargin;
+        padding-right: $secondaryMargin;
         padding-bottom: $sectionGap;
         border-bottom-style: solid;
+        font-size: $homepageText;
 }

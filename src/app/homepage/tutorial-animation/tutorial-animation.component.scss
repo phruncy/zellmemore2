@@ -1,0 +1,55 @@
+@import 'src/styles/global/mixins';
+
+$largeCellSize: 75px;
+
+@mixin cellShape($color) {
+        border-style: solid;
+        border-color: $color;
+        border-radius: 50%;
+}
+
+/// Outer container ///
+.animation-container {
+        position: relative;
+}
+
+/// positions elements ///
+.cell-wrapper {
+}
+
+.centered {
+        @include centerByTranslationX();
+}
+
+/// shape and colour of elements ///
+.cell {
+        @include cellShape(black);
+}
+
+.cell.large {
+        width: $largeCellSize;
+        height: $largeCellSize;
+}
+
+#large-middle-wrapper {
+        opacity: 0;
+        animation: fade-in 1s ease-out 2s 1 forwards;
+}
+
+#large-middle {
+        animation: switch-state 2s ease-in-out  2s infinite;
+        background-color: black;
+}
+
+@keyframes fade-in {
+        from {opacity: 0};
+        to {opacity: 1}
+}
+
+@keyframes switch-state {
+        0% {background: black}
+        25% {background: black}
+        50% {background: none}
+        75% {background: none}
+        100% {background: black}
+}

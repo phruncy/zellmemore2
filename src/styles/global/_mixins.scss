@@ -1,0 +1,15 @@
+@mixin overlay($background) {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: inherit;
+        background: $background;
+}
+
+@mixin centerByTranslationX() {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+}

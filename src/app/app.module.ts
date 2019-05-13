@@ -53,6 +53,7 @@ import { HeaderComponent } from './homepage/header/header.component';
 import { AboutComponent } from './homepage/about/about.component';
 import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutorial-animation.component';
 
 
 
@@ -92,7 +93,8 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
         HeaderComponent,
         AboutComponent,
         CaTutorialComponent,
-        DisclaimerComponent
+        DisclaimerComponent,
+        TutorialAnimationComponent
     ],
     imports: [
         BrowserModule,

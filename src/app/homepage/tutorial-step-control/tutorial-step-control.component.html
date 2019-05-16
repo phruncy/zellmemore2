@@ -1,0 +1,13 @@
+<div class="controls">
+                <button (click)="previousStep()" class="btn" matRipple> back </button>
+                <div 
+                        *ngFor="let step of steps; let i = index" 
+                        class="step-marker" 
+                        [class.active]="_activeStep === (i + 1)"
+                        (click)="goToStep(i + 1)"
+                        matRipple
+                        [matRippleCentered]="true"
+                        matRippleUnbounded="true"
+                >{{index}}</div>
+                <button (click)="nextStep()" class="btn" matRipple> next </button>
+        </div>

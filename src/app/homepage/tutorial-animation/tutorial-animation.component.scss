@@ -1,21 +1,14 @@
 @import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
 
 $largeCellSize: 75px;
-
-@mixin cellShape($color) {
-        border-style: solid;
-        border-color: $color;
-        border-radius: 50%;
-}
+$smallCellSize: 30px;
 
 /// Outer container ///
 .animation-container {
         position: relative;
 }
 
-/// positions elements ///
-.cell-wrapper {
-}
 
 .centered {
         @include centerByTranslationX();
@@ -23,7 +16,15 @@ $largeCellSize: 75px;
 
 /// shape and colour of elements ///
 .cell {
-        @include cellShape(black);
+        @include roundShape(black);
+}
+
+.cell-wrapper {
+        display: inline-block;
+}
+
+.multiple-cells-wrapper {
+        text-align: center;
 }
 
 .cell.large {
@@ -31,25 +32,7 @@ $largeCellSize: 75px;
         height: $largeCellSize;
 }
 
-#large-middle-wrapper {
-        opacity: 0;
-        animation: fade-in 1s ease-out 2s 1 forwards;
-}
-
-#large-middle {
-        animation: switch-state 2s ease-in-out  2s infinite;
-        background-color: black;
-}
-
-@keyframes fade-in {
-        from {opacity: 0};
-        to {opacity: 1}
-}
-
-@keyframes switch-state {
-        0% {background: black}
-        25% {background: black}
-        50% {background: none}
-        75% {background: none}
-        100% {background: black}
+.cell.small {
+        width: $smallCellSize;
+        height: $smallCellSize;
 }

@@ -26,6 +26,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 import { PopupComponent } from './popup/popup.component';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
@@ -54,6 +55,7 @@ import { AboutComponent } from './homepage/about/about.component';
 import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutorial-animation.component';
+import { TutorialStepControlComponent } from './homepage/tutorial-step-control/tutorial-step-control.component';
 
 
 
@@ -94,7 +96,8 @@ import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutori
         AboutComponent,
         CaTutorialComponent,
         DisclaimerComponent,
-        TutorialAnimationComponent
+        TutorialAnimationComponent,
+        TutorialStepControlComponent
     ],
     imports: [
         BrowserModule,
@@ -115,7 +118,8 @@ import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutori
         MatMenuModule,
         MatCardModule,
         MatButtonModule,
-        ScrollDispatchModule
+        ScrollDispatchModule,
+        MatRippleModule,
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

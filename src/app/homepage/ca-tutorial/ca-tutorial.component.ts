@@ -13,12 +13,7 @@ export class CaTutorialComponent implements OnInit {
     @ViewChild(CdkScrollable) _scrollable: CdkScrollable;
 
     ngOnInit() {
-        this.scrollDispatcher.scrolled().subscribe(
-            () => {
-                this.onClick();
-            }
-        );
-     }
+    }
 
     onClick(): void {
         console.log(this._scrollable.measureScrollOffset('top'));

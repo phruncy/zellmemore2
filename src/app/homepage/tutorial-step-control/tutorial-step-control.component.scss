@@ -1,0 +1,30 @@
+@import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
+
+.controls {
+        text-align: center;
+}
+
+.step-marker {
+        @include roundShape(white);
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        background: $accent;
+        cursor: pointer;
+        opacity: .6;
+        border: none;
+        margin: 0 5px;
+}
+
+.step-marker.active {
+        opacity: 1;
+}
+
+.btn {
+        border-radius: 10px;
+        border: none;
+        background: $accent;
+        color: $fontNegative;
+        cursor: pointer;
+}

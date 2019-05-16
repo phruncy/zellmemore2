@@ -13,3 +13,9 @@
         left: 50%;
         transform: translateX(-50%);
 }
+
+@mixin roundShape($color) {
+        border-style: solid;
+        border-color: $color;
+        border-radius: 50%;
+}

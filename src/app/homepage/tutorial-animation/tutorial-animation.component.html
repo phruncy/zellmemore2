@@ -1,5 +1,23 @@
 <div class="animation-container">
+        <app-tutorial-step-control 
+                [_activeStep]="_tutorialStep" 
+                (activeStepChange)="_tutorialStep = $event"
+                [steps]="steps">
+        </app-tutorial-step-control>
         <div class="cell-wrapper centered" id="large-middle-wrapper">
-                <div class="cell large" id="large-middle"></div>
+                <div 
+                        [@changeState]="isBlack ? 'one' : 'zero'" 
+                        class="cell large" 
+                        id="large-middle"></div>
         </div>
+        <div class="multiple-cells-wrapper" *ngIf="_tutorialStep === 2">
+                <div *ngFor="let cell of multipleCells" 
+                        class="cell-wrapper">
+                        <div 
+                                class="cell small"
+                                [style.background]="cell === 1 ? 'black' : none">
+                        </div>
+                </div>
+        </div>
+        <p>active Step parent {{_tutorialStep}}</p>
 </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ViewContainerRef } from '@angular/core';
 import { Animations } from './animations';
 import { ScrollDispatcher } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
+import { VizWaves04Component } from 'src/app/widget-content/waves04/viz-waves04.component';
 
 @Component({
   selector: 'app-tutorial-animation',
@@ -14,6 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class TutorialAnimationComponent implements OnInit {
 
+    @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
     private isBlack = false;
     private _tutorialStep: number;
     private steps = [

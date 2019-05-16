@@ -9,7 +9,7 @@
         text-align: center;
 }
 
-.container {
+.app-tutorial-container {
         height: 430px;
         position: relative; // necessary for overlay!
 }
@@ -19,16 +19,8 @@
         overflow: scroll;
 }
 
-.animation-layer {
-        @include overlay(rgba(0, 0, 0, 0.1));
-        width: 100%;
-        text-align: center;
-        color: white;
-}
-
 .content {
         background: $accent;
-        height: 700px;
         overflow: scroll;
 }
 

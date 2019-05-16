@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tutorial-step-control',
@@ -10,6 +11,9 @@ export class TutorialStepControlComponent implements OnInit {
     @Input() private _activeStep: number;
     @Output() activeStepChange = new EventEmitter();
     @Input() steps: number[];
+
+    faAngleDown = faAngleDown;
+    faAngleUp = faAngleUp;
     constructor() { }
 
     set activeStep(step: number) {

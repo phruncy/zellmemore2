@@ -4,14 +4,28 @@
 $largeCellSize: 75px;
 $smallCellSize: 30px;
 
+:host ::ng-deep {
+        height: 100%;
+}
+
 /// Outer container ///
 .animation-container {
         position: relative;
+        height: 100%;
+        overflow: scroll;
 }
 
 
 .centered {
         @include centerByTranslationX();
+}
+
+/// step format ///
+
+.step-element {
+        height: 100%;
+        background: $accent;
+        display: block;
 }
 
 /// shape and colour of elements ///
@@ -35,4 +49,17 @@ $smallCellSize: 30px;
 .cell.small {
         width: $smallCellSize;
         height: $smallCellSize;
+}
+
+#0 {
+        background: black;
+}
+#1 {
+        background: red;
+}
+#2 {
+        background: blue;
+}
+#3 {
+        background: greenyellow;
 }

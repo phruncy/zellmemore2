@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef } from '@angular/core';
 import { Animations } from './animations';
 import { ScrollDispatcher } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
@@ -16,6 +16,8 @@ import { VizWaves04Component } from 'src/app/widget-content/waves04/viz-waves04.
 export class TutorialAnimationComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    @ViewChild('step-01') step01: TemplateRef<any>;
+    @ViewChild('step-02') step02: TemplateRef<any>;
     private isBlack = false;
     private _tutorialStep: number;
     private steps = [
@@ -59,5 +61,9 @@ export class TutorialAnimationComponent implements OnInit {
         } else {
             this._scrollSubscription.unsubscribe();
         }
+    }
+
+    addStep() {
+        return;
     }
 }

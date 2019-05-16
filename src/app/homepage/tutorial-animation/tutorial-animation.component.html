@@ -1,21 +1,6 @@
 <div class="animation-container" cdkScrollable>
         <ng-container #entry></ng-container>
         <div class="step-element" id="0"></div>
-        <div class="step-element cell-wrapper centered" id="1">
-                <div 
-                        [@changeState]="isBlack ? 'one' : 'zero'" 
-                        class="cell large">
-                </div>
-        </div>
-        <div class="step-element multiple-cells-wrapper" id="2">
-                <div *ngFor="let cell of multipleCells" 
-                        class="cell-wrapper">
-                        <div 
-                                class="cell small"
-                                [style.background]="cell === 1 ? 'black' : none">
-                        </div>
-                </div>
-        </div>
 </div>
 <app-tutorial-step-control 
                 [_activeStep]="_tutorialStep" 
@@ -23,3 +8,25 @@
                 [steps]="steps">
 </app-tutorial-step-control>
 <p>active Step parent {{_tutorialStep}}</p>
+<button (click)="addStep()">add</button>
+
+<!-- step templates -->
+<ng-template #step-01>
+                <div class="step-element cell-wrapper centered">
+                        <div 
+                                [@changeState]="isBlack ? 'one' : 'zero'" 
+                                class="cell large">
+                        </div>
+                </div>
+</ng-template>
+<ng-template #step-02>
+                <div class="step-element multiple-cells-wrapper" id="2">
+                        <div *ngFor="let cell of multipleCells" 
+                                class="cell-wrapper">
+                                <div 
+                                        class="cell small"
+                                        [style.background]="cell === 1 ? 'black' : none">
+                                </div>
+                        </div>
+                </div>
+</ng-template>

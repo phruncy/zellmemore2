@@ -6,6 +6,7 @@ $smallCellSize: 30px;
 
 :host ::ng-deep {
         height: 100%;
+        position: relative;
 }
 
 /// Outer container ///
@@ -24,8 +25,9 @@ $smallCellSize: 30px;
 
 .step-element {
         height: 100%;
-        background: $accent;
+        background: white;
         display: block;
+        position: relative;
 }
 
 /// shape and colour of elements ///
@@ -35,6 +37,7 @@ $smallCellSize: 30px;
 
 .cell-wrapper {
         display: inline-block;
+        top: 50%;
 }
 
 .multiple-cells-wrapper {
@@ -51,15 +54,25 @@ $smallCellSize: 30px;
         height: $smallCellSize;
 }
 
-#0 {
-        background: black;
+.btn {
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background: $accent; 
+        cursor: pointer;
+        color: $fontNegative;
+        text-align: center;
 }
-#1 {
-        background: red;
+
+.btn-wrapper {
+        width: auto;
+        text-align: center;
 }
-#2 {
-        background: blue;
-}
-#3 {
-        background: greenyellow;
+
+.text {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
 }

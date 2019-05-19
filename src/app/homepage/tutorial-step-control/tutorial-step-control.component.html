@@ -8,7 +8,7 @@
                         (click)="goToStep(i + 1)"
                         matRipple
                         [matRippleCentered]="true"
-                        matRippleUnbounded="true"
+                        [matRippleUnbounded]="true"
                 >{{index}}</div>
                 <button (click)="nextStep()" class="btn" matRipple matTooltip="next">
                         <fa-icon [icon]="faAngleDown"></fa-icon>

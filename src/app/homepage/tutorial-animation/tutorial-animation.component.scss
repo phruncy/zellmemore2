@@ -1,7 +1,7 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 
-$largeCellSize: 75px;
+$largeCellSize: 100px;
 $smallCellSize: 30px;
 
 :host ::ng-deep {
@@ -37,7 +37,7 @@ $smallCellSize: 30px;
 
 .cell-wrapper {
         display: inline-block;
-        top: 50%;
+        animation: tiny-jump 1s ease-out 0.5s infinite;
 }
 
 .multiple-cells-wrapper {
@@ -47,6 +47,7 @@ $smallCellSize: 30px;
 .cell.large {
         width: $largeCellSize;
         height: $largeCellSize;
+        animation: state-switch 1s ease-out 0.5s infinite alternate forwards;
 }
 
 .cell.small {
@@ -75,4 +76,17 @@ $smallCellSize: 30px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+}
+
+@keyframes state-switch {
+        0% {background: black};
+        33% {background: black};
+        66% {background: none};
+        100% {background: none};
+}
+
+@keyframes tiny-jump {
+        0% {transform: translateY(0)};
+        66% {transform: translateY(5%)};
+        100% {transform: translateY(0)};
 }

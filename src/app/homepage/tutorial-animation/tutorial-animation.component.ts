@@ -12,7 +12,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./tutorial-animation.component.scss'],
   animations: [
     Animations.changeState,
-    Animations.fadeIn,
+    //Animations.fadeIn,
   ]
 })
 export class TutorialAnimationComponent implements OnInit {
@@ -85,5 +85,6 @@ export class TutorialAnimationComponent implements OnInit {
         const stepToAdd = stepEntry.step.createEmbeddedView(this);
         this.entry.insert(stepToAdd);
         this._currentTotalSteps++;
+        this.tutorialStep += 1;
     }
 }

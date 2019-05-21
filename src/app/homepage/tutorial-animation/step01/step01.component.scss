@@ -1,0 +1,34 @@
+@import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
+@import '../tutorial-animation-mixins.scss';
+
+$largeCellSize: 100px;
+
+@keyframes state-switch {
+        0% {background: black};
+        33% {background: black};
+        66% {background: none};
+        100% {background: none};
+}
+
+@keyframes tiny-jump {
+        0% {transform: translateY(0)};
+        66% {transform: translateY(5%)};
+        100% {transform: translateY(0)};
+}
+
+.cell-wrapper {
+        display: inline-block;
+        animation: tiny-jump 1s ease-out 0.5s infinite;
+}
+
+.cell.large {
+        @include roundShape(black);
+        width: $largeCellSize;
+        height: $largeCellSize;
+        animation: state-switch 1s ease-out 0.5s infinite alternate forwards;
+}
+
+.centered {
+        @include centerByTranslationX();
+}

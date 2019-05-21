@@ -3,8 +3,13 @@ import { Animations } from './animations';
 import { ScrollDispatcher } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
 import { _MatChipListMixinBase } from '@angular/material';
-import { Step } from './step';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { Step01Component } from './step01/step01.component';
+import { Step02Component } from './step02/step02.component';
+import { Step03Component } from './step03/step03.component';
+import { Step04Component } from './step04/step04.component';
+import { Step05Component } from './step05/step05.component';
+import { Step06Component } from './step06/step06.component';
 
 @Component({
   selector: 'app-tutorial-animation',
@@ -18,73 +23,50 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 export class TutorialAnimationComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
-    @ViewChild('step01') step01: TemplateRef<any>;
-    @ViewChild('step02') step02: TemplateRef<any>;
-    @ViewChild('step03') step03: TemplateRef<any>;
-    @ViewChild('step04') step04: TemplateRef<any>;
-    @ViewChild('step05') step05: TemplateRef<any>;
-    @ViewChild('step06') step06: TemplateRef<any>;
 
     private faAngleDown = faAngleDown;
     private isBlack = false;
     private _tutorialStep: number;
     private _currentTotalSteps = 0;
-    private steps: Step[];
-    private multipleCells = [];
+    private steps: any[];
     private _scrollSubscription: Subscription;
     
-    constructor(
-                private scrollDispatcher: ScrollDispatcher,
-                private zone: NgZone) {
-                    this._tutorialStep = 0;
-                }
+    constructor() {}
 
-        set tutorialStep(step: number) {
-            this._tutorialStep = step;
+    set tutorialStep(step: number) {
+        if (step > this.steps.length) {
+            return;
+        }    
+        this._tutorialStep = step;
             console.log(step);
-        }
+    }
+
+    get tutorialStep() {
+        return this._tutorialStep;
+    }
 
     ngOnInit() {
+        this._tutorialStep = 0;
         this.steps = [
-            {step: this.step01, name: 'What is a cell?'},
-            {step: this.step02, name: 'What is an automaton?'},
-            {step: this.step03, name: 'What is a cell?'},
-            {step: this.step04, name: 'What is an automaton?'},
-            {step: this.step05, name: 'What is a cell?'},
-            {step: this.step06, name: 'What is an automaton?'}
+            {step: Step01Component, active: false},
+            {step: Step02Component, active: false},
+            {step: Step03Component, active: false},
+            {step: Step04Component, active: false},
+            {step: Step05Component, active: false},
+            {step: Step06Component, active: false}
         ];
-        this._scrollSubscription = this.scrollDispatcher.scrolled(100).subscribe(
-          () => {
-            console.log("scrolled");
-            this.zone.run<void>(
-                () => {
-                    this.addTwoSmallCellsToAnimation();
-                });
-        });
     }
 
     triggerChange() {
         this.isBlack = !this.isBlack;
     }
 
-    addTwoSmallCellsToAnimation() {
-        if (this.multipleCells.length < 17) {
-            this.multipleCells.push(Math.round(Math.random()));
-            this.multipleCells.unshift(Math.round(Math.random()));
-        } else {
-            this._scrollSubscription.unsubscribe();
-        }
+    addStep() {
+        this.steps[this._tutorialStep].active = true;
+        this.tutorialStep++;
+        this._currentTotalSteps++;
     }
 
-    addStep(stepId) {
-        const stepEntry = this.steps[stepId];
-        if (this._currentTotalSteps >= this.steps.length) {
-            console.log('already existent');
-            return;
-        }
-        const stepToAdd = stepEntry.step.createEmbeddedView(this);
-        this.entry.insert(stepToAdd);
-        this._currentTotalSteps++;
-        this.tutorialStep += 1;
-    }
+
+
 }

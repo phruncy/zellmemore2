@@ -56,6 +56,12 @@ import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.componen
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutorial-animation.component';
 import { TutorialStepControlComponent } from './homepage/tutorial-step-control/tutorial-step-control.component';
+import { Step01Component } from './homepage/tutorial-animation/step01/step01.component';
+import { Step02Component } from './homepage/tutorial-animation/step02/step02.component';
+import { Step03Component } from './homepage/tutorial-animation/step03/step03.component';
+import { Step04Component } from './homepage/tutorial-animation/step04/step04.component';
+import { Step05Component } from './homepage/tutorial-animation/step05/step05.component';
+import { Step06Component } from './homepage/tutorial-animation/step06/step06.component';
 
 
 
@@ -97,7 +103,13 @@ import { TutorialStepControlComponent } from './homepage/tutorial-step-control/t
         CaTutorialComponent,
         DisclaimerComponent,
         TutorialAnimationComponent,
-        TutorialStepControlComponent
+        TutorialStepControlComponent,
+        Step01Component,
+        Step02Component,
+        Step03Component,
+        Step04Component,
+        Step05Component,
+        Step06Component
     ],
     imports: [
         BrowserModule,

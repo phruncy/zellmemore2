@@ -11,13 +11,14 @@ export class TutorialStepControlComponent implements OnInit {
     @Input() private _activeStep: number;
     @Output() activeStepChange = new EventEmitter();
     @Input() steps: number[];
+    @Input() unlockedSteps: number;
 
     faAngleDown = faAngleDown;
     faAngleUp = faAngleUp;
     constructor() { }
 
     set activeStep(step: number) {
-        if (step > this.steps.length || step < 1) {
+        if (step > this.unlockedSteps || step < 1) {
             console.log('invalid step count');
             return;
         }

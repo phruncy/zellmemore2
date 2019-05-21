@@ -2,51 +2,27 @@
         <div class="step-element" id="0">
                 <h2 class="text">What are cellular automata?</h2>
         </div>
-        <ng-container #entry></ng-container>
+        <app-step01 *ngIf="_tutorialStep === 1"></app-step01>
+        <app-step02 *ngIf="_tutorialStep === 2"></app-step02>
+        <app-step03 *ngIf="_tutorialStep === 3"></app-step03>
+        <app-step04 *ngIf="_tutorialStep === 4"></app-step04>
+        <app-step05 *ngIf="_tutorialStep === 5"></app-step05>
+        <app-step06 *ngIf="_tutorialStep === 6"></app-step06>
 </div>
 <app-tutorial-step-control 
                 [_activeStep]="_tutorialStep" 
                 (activeStepChange)="_tutorialStep = $event"
-                [steps]="steps">
+                [steps]="steps"
+                [unlockedSteps]="_currentTotalSteps">
 </app-tutorial-step-control>
 <div class="btn-wrapper">
         <div 
-                (click)="addStep(_currentTotalSteps)" 
                 class="btn centered" 
+                (click)=addStep();
                 matRipple 
                 [matRippleUnbounded]="true"
                 [matRippleCentered]="true">
                 <fa-icon [icon]="faAngleDown"></fa-icon>
         </div>
 </div>
-
-<!-- step templates -->
-<ng-template #step01>
-                <div class="step-element">
-                        <div class="cell-wrapper centered">
-                                <div 
-                                        class="cell large">
-                                </div>
-                        </div>
-                        <div class="text">ajnkjnkjnkjn</div>
-                </div>
-</ng-template>
-<ng-template #step02>
-                <div class="step-element multiple-cells-wrapper" id="2">
-                        <div *ngFor="let cell of multipleCells" 
-                                class="cell-wrapper">
-                                <div 
-                                        class="cell small"
-                                        [style.background]="cell === 1 ? 'black' : none">
-                                </div>
-                        </div>
-                </div>
-</ng-template>
-
-<ng-template #step03>step03</ng-template>
-<ng-template #step04>step04</ng-template>
-<ng-template #step05>step05</ng-template>
-<ng-template #step06>
-        <p>The programs on this website depict the cell room, cells and their states in different ways. The simple visualization as black and white squares on the right display serves as comparison.</p>
-        <a routerLink="/programm-window">go</a>
-</ng-template>
+<p> Tutorial Step: {{_tutorialStep}}</p>

@@ -1,16 +1,35 @@
 <div class="controls">
-                <button (click)="previousStep()" class="btn" matRipple matTooltip="previous">                 <fa-icon [icon]="faAngleUp"></fa-icon> 
+                <button 
+                        *ngIf="_activeStep > 0"        
+                        (click)="previousStep()" 
+                        class="btn" 
+                        matRipple 
+                        [matRippleUnbounded]="true"
+                        [matRippleCentered]="true"
+                        matTooltip="previous">
+                        <fa-icon [icon]="faAngleUp"></fa-icon> 
                 </button>
                 <div 
-                        *ngFor="let step of steps; let i = index" 
-                        class="step-marker" 
-                        [class.active]="_activeStep === (i + 1)"
-                        (click)="goToStep(i + 1)"
+                        *ngFor="let step of steps; let i = index"
+                        class="step-marker-outer">
+                        <div 
+                                *ngIf="step.active === true"
+                                class="step-marker" 
+                                [class.active]="_activeStep === (i + 1)"
+                                (click)="goToStep(i + 1)"
+                                matRipple
+                                [matRippleCentered]="true"
+                                [matRippleUnbounded]="true">
+                        </div> 
+                </div>
+                <button 
+                        *ngIf="_activeStep > 0"
+                        (click)="nextStep()" 
+                        class="btn" 
                         matRipple
+                        [matRippleUnbounded]="true" 
                         [matRippleCentered]="true"
-                        [matRippleUnbounded]="true"
-                >{{index}}</div>
-                <button (click)="nextStep()" class="btn" matRipple matTooltip="next">
+                        matTooltip="next">
                         <fa-icon [icon]="faAngleDown"></fa-icon>
                 </button>
         </div>

@@ -1,0 +1,15 @@
+@import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
+@import '../tutorial-animation-mixins.scss';
+
+.cell{
+        @include roundShape(black);
+        width: 1rem;
+        height: 1rem;
+        margin: .5%;
+        display: inline-flex;
+}
+
+.multiple-cells-wrapper {
+        text-align: center;
+}

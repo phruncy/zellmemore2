@@ -25,12 +25,12 @@ export class TutorialAnimationComponent implements OnInit {
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
 
     private faAngleDown = faAngleDown;
-    private isBlack = false;
+    private _activeStepDescription = 0;
     private _tutorialStep: number;
     private _currentTotalSteps = 0;
     private steps: any[];
     private _scrollSubscription: Subscription;
-    
+
     constructor() {}
 
     set tutorialStep(step: number) {
@@ -61,8 +61,21 @@ export class TutorialAnimationComponent implements OnInit {
         this.isBlack = !this.isBlack;
     }
 
+    forwardDescription() {
+        if (this._tutorialStep === 0) {
+            this.addStep();
+            return;
+        }
+        this._activeStepDescription++;
+    }
+
     addStep() {
+        if (this._tutorialStep >= this.steps.length) {
+            return;
+        }
+        console.log("step was added");
         this.steps[this._tutorialStep].active = true;
+        this._activeStepDescription = 0;
         this.tutorialStep++;
         this._currentTotalSteps++;
     }

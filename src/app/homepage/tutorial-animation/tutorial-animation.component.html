@@ -1,28 +1,32 @@
-<div class="animation-container" cdkScrollable>
-        <div class="step-element" id="0">
-                <h2 class="text">What are cellular automata?</h2>
+<div class="fucking-container">
+        <div class="animation-container" cdkScrollable>
+                <div *ngIf="_tutorialStep === 0"
+                        class="step-element">
+                        <h2 class="text">What are cellular automata?</h2>
+                </div>
+                <app-step01 *ngIf="_tutorialStep === 1" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step01>
+                <app-step02 *ngIf="_tutorialStep === 2" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step02>
+                <app-step03 *ngIf="_tutorialStep === 3" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
+                <app-step04 *ngIf="_tutorialStep === 4" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
+                <app-step05 *ngIf="_tutorialStep === 5" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
+                <app-step06 *ngIf="_tutorialStep === 6" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
         </div>
-        <app-step01 *ngIf="_tutorialStep === 1"></app-step01>
-        <app-step02 *ngIf="_tutorialStep === 2"></app-step02>
-        <app-step03 *ngIf="_tutorialStep === 3"></app-step03>
-        <app-step04 *ngIf="_tutorialStep === 4"></app-step04>
-        <app-step05 *ngIf="_tutorialStep === 5"></app-step05>
-        <app-step06 *ngIf="_tutorialStep === 6"></app-step06>
-</div>
-<app-tutorial-step-control 
-                [_activeStep]="_tutorialStep" 
-                (activeStepChange)="_tutorialStep = $event"
-                [steps]="steps"
-                [unlockedSteps]="_currentTotalSteps">
-</app-tutorial-step-control>
-<div class="btn-wrapper">
-        <div 
-                class="btn centered" 
-                (click)=addStep();
-                matRipple 
-                [matRippleUnbounded]="true"
-                [matRippleCentered]="true">
-                <fa-icon [icon]="faAngleDown"></fa-icon>
+        <div class="step-control-wrapper">
+                <app-tutorial-step-control 
+                                [_activeStep]="_tutorialStep" 
+                                (activeStepChange)="_tutorialStep = $event"
+                                [steps]="steps"
+                                [unlockedSteps]="_currentTotalSteps">
+                </app-tutorial-step-control>
+        </div>
+        <div class="btn-wrapper">
+                <div 
+                        class="btn centered" 
+                        (click)=forwardDescription();
+                        matRipple 
+                        [matRippleUnbounded]="true"
+                        [matRippleCentered]="true">
+                        <fa-icon [icon]="faAngleDown"></fa-icon>
+                </div>
         </div>
 </div>
-<p> Tutorial Step: {{_tutorialStep}}</p>

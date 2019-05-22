@@ -1,3 +1,9 @@
-<p>
-  step02 works!
-</p>
+<div class="step-element">
+        <div class="multiple-cells-wrapper">
+                <div 
+                        *ngFor="let cell of cells"
+                        class="cell"
+                        [style.background]="cell === 1 ? 'black' : none"></div>
+        </div>
+        <div class="description">{{descriptions[_activeDescription]}}</div>
+</div>

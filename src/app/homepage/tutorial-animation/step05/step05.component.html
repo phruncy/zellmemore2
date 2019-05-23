@@ -1,6 +1,15 @@
 <div class="step-element">
-        <p>
-          step05 works!
-        </p>
+        <div class="graphics-container upper">
+                <div 
+                        class="trio"
+                        *ngFor="let trio of trios">
+                        <div class="trio-label">{{trio.id}}</div>
+                        <div class="cell-trio-container">
+                                <div class="cell" [style.background]="trio.left === 1 ? 'black' : 'none'"></div>
+                                <div class="cell" [style.background]="trio.middle === 1 ? 'black' : 'none'"></div>
+                                <div class="cell" [style.background]="trio.right === 1 ?'black' : 'none'"></div>
+                        </div>
+                </div>
+        </div>
         <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
 </div>

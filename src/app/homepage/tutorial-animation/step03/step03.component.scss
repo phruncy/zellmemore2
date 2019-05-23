@@ -9,15 +9,10 @@ $gapMobile: 15px;
 $gapDesktop: 40px;
 $cellContainerMobile: 35px;
 $cellContainerDesktop: 85px;
-$graphicsContainerMobile: 40px;
-$graphicsContainerDesktop: 90px;
 
 .graphics-container {
         width: 100%;
         text-align: center;
-        height: $graphicsContainerMobile;
-        margin-top: 30px;
-        margin-bottom: 30px;
 }
 
 .cell-container {
@@ -25,26 +20,51 @@ $graphicsContainerDesktop: 90px;
         width: $cellContainerMobile;
         height: $cellContainerMobile;
         margin-left: $gapMobile;
-        vertical-align: center;
+        vertical-align: bottom;
         text-align: center;
+        position: relative;
 }
 
 .cell{
         @include roundShape('black');
-        display: inline-block; 
+        display: inline-block;
+        width: 90%;
+        height: 90%; 
+        position: absolute;
+        bottom: 0;
+        left: 0;
 }
 
-#cell1 {
+#cell1.active {
         animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
 }
 
-#cell2 {
+#cell2.active {
         animation: state-switch-trio 1.5s ease-in-out infinite alternate-reverse forwards;
 }
 
-#cell3 {
+#cell3.active {
         animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
 }
+
+/// step 1 animation ///
+
+.background-circle {
+        width: 0;
+        height: 0;
+        background: $accent;
+}
+
+.background-circle.active {
+        animation: expanding-cricle 1s ease-out forwards;
+}
+
+@keyframes expanding-circle {
+        from { width: 0%; height: 0%; }
+        to { width: 100%; height: 100% }
+}
+
+
 
 @media only screen and (min-width: $breakpointMobile) {
         .cell {
@@ -57,8 +77,5 @@ $graphicsContainerDesktop: 90px;
                 height: $cellContainerDesktop;
                 margin-left: $gapDesktop;
         }
-
-        .graphics-container {
-                height: $graphicsContainerDesktop;
-        }
 }
+

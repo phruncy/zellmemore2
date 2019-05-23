@@ -2,7 +2,9 @@
         <div class="animation-container" cdkScrollable>
                 <div *ngIf="_tutorialStep === 0"
                         class="step-element">
-                        <h2 class="text">What are cellular automata?</h2>
+                        <div class="h-container">
+                                <h2 class="text">What are cellular automata?</h2>
+                        </div>
                 </div>
                 <div 
                         *ngIf="_tutorialStep === 1"

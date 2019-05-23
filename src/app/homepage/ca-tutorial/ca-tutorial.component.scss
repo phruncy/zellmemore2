@@ -23,32 +23,3 @@
         background: $accent;
         overflow: scroll;
 }
-
-.mousey-wrapper {        
-        @include centerByTranslationX();
-}
-
-.mousey {
-        @include animated-mouse-border(2px);
-        display: inline-block;
-        width: 30px;
-        height: 50px;
-        margin: 0;
-}
-
-.scrolley {
-        @include animated-mouse-border(0);
-        display: inline-block;
-        width: 3px;
-        height: 12px;
-        background-color: $fontLight;
-        position: relative;
-        animation: scrollme 2.5s ease-out 1s infinite;
-}
-
-@keyframes scrollme {
-        0% {top: 0; opacity: 1;}
-        25% {top:0; opacity: 1;}
-        50% {opacity: 1;}
-        100% {top: 15px; opacity: 0;}
-}

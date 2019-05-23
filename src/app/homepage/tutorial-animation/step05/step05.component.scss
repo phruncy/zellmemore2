@@ -1,3 +1,28 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
+@import 'src/styles/global/margins';
+
+.cell {
+        @include roundShape('black');
+        display: inline-block;
+        width: $smallCellSizeMobile;
+        height: $smallCellSizeMobile
+}
+
+.trio {
+        display: inline-block;
+        margin: 5px;
+}
+
+.trio-label {
+        text-align: center;
+        margin: 4px;
+}
+
+@media only screen and (min-width: $breakpointMobile) {
+        .cell {
+                width: $smallCellSizeDesktop;
+                height: $smallCellSizeDesktop;
+        }
+}

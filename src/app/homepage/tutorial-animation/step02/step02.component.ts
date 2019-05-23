@@ -20,8 +20,6 @@ export class Step02Component extends Step implements OnInit {
 
     private cells = [
         {state : 'active'},
-        {state : 'inactive'},
-        {state : 'active'}
     ];
 
     constructor() {

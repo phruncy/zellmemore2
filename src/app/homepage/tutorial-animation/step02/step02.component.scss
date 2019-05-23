@@ -1,15 +1,23 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
+@import 'src/styles/global/margins';
 
 .cell{
         @include roundShape(black);
-        width: 1rem;
-        height: 1rem;
+        width: $smallCellSizeMobile;
+        height: $smallCellSizeMobile;
         margin: .5%;
         display: inline-flex;
 }
 
 .multiple-cells-wrapper {
         text-align: center;
+}
+
+@media only screen and (min-width: $breakpointMobile) {
+        .cell {
+                width: $smallCellSizeDesktop;
+                height: $smallCellSizeDesktop;
+        }
 }

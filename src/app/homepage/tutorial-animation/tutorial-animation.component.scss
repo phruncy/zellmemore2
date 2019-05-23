@@ -1,5 +1,6 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
+@import 'src/styles/global/margins';
 
 $largeCellSize: 100px;
 $smallCellSize: 30px;
@@ -19,11 +20,6 @@ $smallCellSize: 30px;
 .animation-container {
         position: relative;
         height: 100%;
-}
-
-
-.centered {
-        @include centerByTranslationX();
 }
 
 /// step format ///
@@ -46,27 +42,27 @@ $smallCellSize: 30px;
 }
 
 /// shape and colour of elements ///
-.btn {
-        border: none;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        background: $accent; 
-        cursor: pointer;
-        color: $fontNegative;
+.h-container {
+        width: 100%;
         text-align: center;
+        height: 100%;
+        vertical-align: middle;
+        padding: auto;
 }
 
 .btn-wrapper {
         width: 100%;
-        text-align: center;
         position: absolute;
         bottom: 5%;
+        text-align: center;
 }
 
 .text {
         display: inline-block;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        .step-control-wrapper {
+                transform: translate(-100%, -50%);
+        }
 }

@@ -2,6 +2,9 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
 
+$tutorialOffsetMobile: 15px;
+$tutoialOffsetDesktop: 35px;
+
 .outer-container {
         max-width: $maxWindowWidth;
         align-content: center;
@@ -20,6 +23,20 @@
         margin-top: 10px;
 }
 
+.tutorial-wrapper {
+        padding-left: $tutorialOffsetMobile;
+        padding-right: $tutorialOffsetMobile;
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        box-sizing: border-box;
+}
+
+.tutorial-outer-wrapper {
+        text-align: center;
+        width: 100%;
+}
 
 
 .landing-link-wrapper {
@@ -42,5 +59,9 @@
         }
         .outer-container {
                 margin-top: 50px;
+        }
+        .tutorial-wrapper {
+                margin-left: $tutoialOffsetDesktop;
+                margin-right: $tutoialOffsetDesktop;
         }
 }

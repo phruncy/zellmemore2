@@ -1,23 +1,64 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
+@import 'src/styles/global/margins';
 
 $cellSizeMobile: 30px;
 $cellSizeDesktop: 80px;
+$gapMobile: 15px;
+$gapDesktop: 40px;
+$cellContainerMobile: 35px;
+$cellContainerDesktop: 85px;
+$graphicsContainerMobile: 40px;
+$graphicsContainerDesktop: 90px;
+
+.graphics-container {
+        width: 100%;
+        text-align: center;
+        height: $graphicsContainerMobile;
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
 
 .cell-container {
-        width: 100%;
+        display: inline-block;
+        width: $cellContainerMobile;
+        height: $cellContainerMobile;
+        margin-left: $gapMobile;
+        vertical-align: center;
+        text-align: center;
 }
 
 .cell{
         @include roundShape('black');
-        width: $cellSizeMobile;
-        height: $cellSizeMobile;
+        display: inline-block; 
 }
 
-@media only screen and (min-width: 420px) {
+#cell1 {
+        animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
+}
+
+#cell2 {
+        animation: state-switch-trio 1.5s ease-in-out infinite alternate-reverse forwards;
+}
+
+#cell3 {
+        animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
+}
+
+@media only screen and (min-width: $breakpointMobile) {
         .cell {
                 width: $cellSizeDesktop;
                 height: $cellSizeDesktop;
+        }
+
+        .cell-container {
+                width: $cellContainerDesktop;
+                height: $cellContainerDesktop;
+                margin-left: $gapDesktop;
+        }
+
+        .graphics-container {
+                height: $graphicsContainerDesktop;
         }
 }

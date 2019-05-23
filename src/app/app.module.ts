@@ -62,6 +62,7 @@ import { Step03Component } from './homepage/tutorial-animation/step03/step03.com
 import { Step04Component } from './homepage/tutorial-animation/step04/step04.component';
 import { Step05Component } from './homepage/tutorial-animation/step05/step05.component';
 import { Step06Component } from './homepage/tutorial-animation/step06/step06.component';
+import { StepFinalComponent } from './homepage/tutorial-animation/step-final/step-final.component';
 
 
 
@@ -109,7 +110,8 @@ import { Step06Component } from './homepage/tutorial-animation/step06/step06.com
         Step03Component,
         Step04Component,
         Step05Component,
-        Step06Component
+        Step06Component,
+        StepFinalComponent
     ],
     imports: [
         BrowserModule,

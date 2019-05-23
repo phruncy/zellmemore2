@@ -8,6 +8,7 @@ import { Step03Component } from './step03/step03.component';
 import { Step04Component } from './step04/step04.component';
 import { Step05Component } from './step05/step05.component';
 import { Step06Component } from './step06/step06.component';
+import { StepFinalComponent } from './step-final/step-final.component';
 
 @Component({
     selector: 'app-tutorial-animation',
@@ -58,7 +59,8 @@ export class TutorialAnimationComponent implements OnInit {
             {step: Step03Component, active: false},
             {step: Step04Component, active: false},
             {step: Step05Component, active: false},
-            {step: Step06Component, active: false}
+            {step: Step06Component, active: false},
+            {step: StepFinalComponent, active: false}
         ];
     }
 

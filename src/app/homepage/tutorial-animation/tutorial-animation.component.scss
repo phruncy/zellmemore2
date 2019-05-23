@@ -43,7 +43,6 @@ $smallCellSize: 30px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: 5%;
 }
 
 /// shape and colour of elements ///
@@ -59,8 +58,10 @@ $smallCellSize: 30px;
 }
 
 .btn-wrapper {
-        width: auto;
+        width: 100%;
         text-align: center;
+        position: absolute;
+        bottom: 5%;
 }
 
 .text {

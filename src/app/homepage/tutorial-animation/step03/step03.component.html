@@ -1,12 +1,14 @@
-<div class="graphics-container">
-        <div class="cell-container">
-                <div class="cell"></div>
+<div class="step-element">
+        <div class="graphics-container">
+                <div class="cell-container">
+                        <div class="cell" id="cell1"></div>
+                </div>
+                <div class="cell-container">
+                        <div class="cell" id="cell2"></div>
+                </div>
+                <div class="cell-container">
+                        <div class="cell" id="cell3"></div>
+                </div>
         </div>
-        <div class="cell-container">
-                <div class="cell"></div>
-        </div>
-        <div class="cell-container">
-                <div class="cell"></div>
-        </div>
+        <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
 </div>
-<div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>

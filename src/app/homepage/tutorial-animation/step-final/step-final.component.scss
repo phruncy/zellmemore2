@@ -1,0 +1,14 @@
+@import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
+@import '../tutorial-animation-mixins.scss';
+@import 'src/styles/global/margins';
+
+.btn-container {
+        margin-top: 30px;
+        text-align: center;
+}
+
+.btn {
+        color: $fontNegative;
+        display: inline-block;
+}

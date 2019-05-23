@@ -1,5 +1,5 @@
 <div class="controls">
-                <button 
+<!--                 <button 
                         *ngIf="_activeStep > 0"        
                         (click)="previousStep()" 
                         class="btn" 
@@ -8,7 +8,7 @@
                         [matRippleCentered]="true"
                         matTooltip="previous">
                         <fa-icon [icon]="faAngleUp"></fa-icon> 
-                </button>
+                </button> -->
                 <div 
                         *ngFor="let step of steps; let i = index"
                         class="step-marker-outer">
@@ -22,7 +22,7 @@
                                 [matRippleUnbounded]="true">
                         </div> 
                 </div>
-                <button 
+<!--                 <button 
                         *ngIf="_activeStep > 0"
                         (click)="nextStep()" 
                         class="btn" 
@@ -31,5 +31,5 @@
                         [matRippleCentered]="true"
                         matTooltip="next">
                         <fa-icon [icon]="faAngleDown"></fa-icon>
-                </button>
+                </button> -->
         </div>

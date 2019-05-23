@@ -40,6 +40,12 @@
                         [@slideInOut]>
                         <app-step06 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
                 </div>
+                <div
+                        *ngIf="_tutorialStep === 7"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step-final [activeDescription]="_activeStepDescription"></app-step-final>
+                </div>
         </div>
         <div class="step-control-wrapper">
                 <app-tutorial-step-control 
@@ -49,14 +55,12 @@
                                 [unlockedSteps]="_currentTotalSteps">
                 </app-tutorial-step-control>
         </div>
-        <div class="btn-wrapper">
-                <div 
-                        class="btn centered" 
-                        (click)=forwardDescription();
-                        matRipple 
-                        [matRippleUnbounded]="true"
-                        [matRippleCentered]="true">
+        <div class="btn-wrapper" *ngIf="_tutorialStep !== steps.length">
+                <button 
+                        mat-button
+                        color="accent"
+                        (click)=forwardDescription();>
                         <fa-icon [icon]="faAngleDown"></fa-icon>
-                </div>
+                </button>
         </div>
 </div>

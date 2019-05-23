@@ -2,11 +2,12 @@
 @import "./styles/global/fonts.css";
 @import "./styles/global/zellmemore-mat-theme";
 @import "./styles/global/typo";
+@import 'src/styles/global/margins';
 /* You can add global styles to this file, and also import other style files */
 
 body {
         font-family: 'Nunito Sans';
-        font-size: $default;
+        font-size: $defaultMobile;
         margin: 0;
 }
 
@@ -22,4 +23,10 @@ footer {
 a:hover, a:visited, a:link, a:active, a:any-link {
         text-decoration: none;
         color: inherit;
+}
+
+@media only screen and (min-width: $breakpointMobile) {
+        body {
+                font-size: $default;
+        }
 }

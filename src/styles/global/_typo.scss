@@ -1,11 +1,32 @@
+@import 'src/styles/global/margins';
+
 $default: 15px;
+$defaultMobile: 18px;
 $topbarFontWeight: 500;
 $topbarHoverFontWeight: 700;
 $iconSize: 36px;
 $h1: 36px;
+$h1mobile: 26px;
 $h2: 30px;
+$h2mobile: 18px;
 $menuItemsFontSize: 15px;
 $homepageLinks: 20px;
-$homepageText: 15px;
+$homepageLinksMobile: 24px;
 $menuItemsLineHeight: 15px;
+
+h1 {
+        font-size: $h1;
+        margin-top: $sectionGap;
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        h1 {
+                font-size: $h1mobile;
+                margin-top: $sectionGapMobile;
+        }
+        
+        h2 {
+                font-size: $h2mobile;
+        }
+}
 

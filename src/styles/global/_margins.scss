@@ -1,6 +1,7 @@
 $globalMargin: 30px;
 $secondaryMargin: 10%;
 $buttonMargin: 5px;
+$buttonMarginMobile: 2px;
 $globalCornerRadius: 4px;
 
 // screen widths
@@ -32,4 +33,8 @@ $matCardMaxWidth: 150px;
 
 //homepage
 $sectionGap: 50px;
+$sectionGapMobile: 35px;
 $headerMenuItemHeight: 25px;
+
+//breakpoints
+$breakpointMobile: 420px;

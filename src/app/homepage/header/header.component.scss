@@ -6,7 +6,8 @@
         margin: $globalMargin 0;
         border-top-style: solid;
         font-size: $menuItemsFontSize;
-        font-weight: $topbarFontWeight;      
+        font-weight: $topbarFontWeight;
+        background: $background;      
 }
 
 .container-inner {
@@ -22,18 +23,13 @@
         padding: 5px 15px;
         cursor: pointer;
         margin-left: $buttonMargin;
-        border-style: solid;
-        border-top-style: none;
+        vertical-align: top;
 }
 
 .topic:hover {
         color: $fontDefault;
         font-weight: $topbarFontWeight;
         background: none;
-}
-
-.topic.float-right {
-        float: right;
 }
 
 .topic-inner {
@@ -45,4 +41,18 @@
 .github-icon {
         font-family: github-icon;
         font-size: 26px;
+}
+
+@media only screen and (min-width: $breakpointMobile) {
+        .topic {
+                margin-left: $buttonMargin;
+                border-style: solid;
+                border-top-style: none;
+        }
+        .topic.float-right {
+                float: right;
+        }
+        .container-outer {
+                background: none;
+        }
 }

@@ -27,8 +27,8 @@ body {
         padding: $plusButtonPadding;
         padding-bottom: 0;
         margin: $plusButtonMargin auto;
-        left: 50%;
-        transform: translateX(- 50%);
+        left: 23%;
+        right: 23%;
         max-width: $selectMenuMaxWidth;
         transition: bottom 0.2s ease-in-out;
         z-index: 1000;

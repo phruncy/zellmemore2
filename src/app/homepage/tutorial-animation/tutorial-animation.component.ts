@@ -1,6 +1,4 @@
 import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef} from '@angular/core';
-import { ScrollDispatcher } from '@angular/cdk/overlay';
-import { Subscription } from 'rxjs';
 import { _MatChipListMixinBase } from '@angular/material';
 import {trigger, state, style, animate, transition } from '@angular/animations';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -18,13 +16,15 @@ import { Step06Component } from './step06/step06.component';
     animations: [
         trigger('slideInOut', [
             transition(':enter', [
-                style({transform: 'translateY(-100%)'}),
-                animate('200ms ease-in', style({transform: 'translateY(0%)'}))
+                style({
+                    transform: 'translateY(10%)',
+                    opacity: 0}),
+                animate('600ms ease-in-out', style({
+                    transform: 'translateY(0%)',
+                    opacity: 1,
+                    maxHeight: '100%'}))
             ]),
-            transition(':leave', [
-                animate('5s ease-in', style({transform: 'translateY(-100%'}) )
-            ])
-        ]) 
+        ])
     ]
 })
 export class TutorialAnimationComponent implements OnInit {
@@ -36,7 +36,6 @@ export class TutorialAnimationComponent implements OnInit {
     private _tutorialStep: number;
     private _currentTotalSteps = 0;
     private steps: any[];
-    private _scrollSubscription: Subscription;
 
     constructor() {}
 
@@ -79,6 +78,7 @@ export class TutorialAnimationComponent implements OnInit {
         this._activeStepDescription = 0;
         this.tutorialStep++;
         this._currentTotalSteps++;
+        console.log('step: ' + this._tutorialStep);
     }
 
 

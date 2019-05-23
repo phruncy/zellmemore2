@@ -4,12 +4,42 @@
                         class="step-element">
                         <h2 class="text">What are cellular automata?</h2>
                 </div>
-                <app-step01 *ngIf="_tutorialStep === 1" (completion)="addStep()" [activeDescription]="_activeStepDescription" [@slideInOut]></app-step01>
-                <app-step02 *ngIf="_tutorialStep === 2" (completion)="addStep()" [activeDescription]="_activeStepDescription" [@slideInOut]></app-step02>
-                <app-step03 *ngIf="_tutorialStep === 3" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
-                <app-step04 *ngIf="_tutorialStep === 4" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
-                <app-step05 *ngIf="_tutorialStep === 5" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
-                <app-step06 *ngIf="_tutorialStep === 6" (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
+                <div 
+                        *ngIf="_tutorialStep === 1"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step01 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step01>
+                </div>
+                <div
+                        *ngIf="_tutorialStep === 2"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step02 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step02>
+                </div>
+                <div
+                        *ngIf="_tutorialStep === 3"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step03 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
+                </div>
+                <div
+                        *ngIf="_tutorialStep === 4"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step04 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
+                </div>
+                <div
+                        *ngIf="_tutorialStep === 5"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step05 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
+                </div>
+                <div 
+                        *ngIf="_tutorialStep === 6"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
+                        <app-step06 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
+                </div>
         </div>
         <div class="step-control-wrapper">
                 <app-tutorial-step-control 

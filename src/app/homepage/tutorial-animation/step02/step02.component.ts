@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Step } from '../step';
-import {trigger, state, style, animate, transition } from '@angular/animations'; 
+import {trigger, state, style, animate, transition } from '@angular/animations';
+import { animations } from '../animations'; 
 
 @Component({
   selector: 'app-step02',
@@ -12,6 +13,7 @@ import {trigger, state, style, animate, transition } from '@angular/animations';
             state('inactive', style ({background: 'white'})),
             transition('active <=> inactive', [animate('1s ease-in-out')]),
         ]),
+        animations.slideInDescription
     ]
 })
 export class Step02Component extends Step implements OnInit {

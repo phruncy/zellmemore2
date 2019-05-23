@@ -7,6 +7,6 @@
                         (@changeState.done)="toggleState(i)"
                         ></div>
         </div>
-        <div class="description">{{descriptions[_activeDescription]}}</div>
+        <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
 </div>
 

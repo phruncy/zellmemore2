@@ -1,10 +1,9 @@
 import { Input, Output, EventEmitter } from '@angular/core';
-
 export abstract class Step {
 
     @Output() completion = new EventEmitter(true);
-    private _activeDescription = 0;
-    private descriptions: string[];
+    protected _activeDescription = 0;
+    protected descriptions: string[];
 
     constructor() {}
 

@@ -1,9 +1,12 @@
 <div class="step-element">
         <div class="multiple-cells-wrapper">
                 <div 
-                        *ngFor="let cell of cells"
+                        *ngFor="let cell of cells; let i = index"
                         class="cell"
-                        [style.background]="cell === 1 ? 'black' : none"></div>
+                        [@changeState]="cell.state"
+                        (@changeState.done)="toggleState(i)"
+                        ></div>
         </div>
         <div class="description">{{descriptions[_activeDescription]}}</div>
 </div>
+

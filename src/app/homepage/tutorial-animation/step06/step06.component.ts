@@ -8,12 +8,12 @@ import { Step } from '../step';
 })
 export class Step06Component extends Step implements OnInit {
 
-    private descriptions = [
+    constructor() {
+      super();
+      this.descriptions = [
         'test 1',
         'test 2'
     ];
-    constructor() {
-      super();
     }
 
     ngOnInit() {

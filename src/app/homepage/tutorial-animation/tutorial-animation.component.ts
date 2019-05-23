@@ -1,8 +1,8 @@
-import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef, ViewRef } from '@angular/core';
-import { Animations } from './animations';
+import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef} from '@angular/core';
 import { ScrollDispatcher } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
 import { _MatChipListMixinBase } from '@angular/material';
+import {trigger, state, style, animate, transition } from '@angular/animations';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { Step01Component } from './step01/step01.component';
 import { Step02Component } from './step02/step02.component';
@@ -12,13 +12,20 @@ import { Step05Component } from './step05/step05.component';
 import { Step06Component } from './step06/step06.component';
 
 @Component({
-  selector: 'app-tutorial-animation',
-  templateUrl: './tutorial-animation.component.html',
-  styleUrls: ['./tutorial-animation.component.scss'],
-  animations: [
-    Animations.changeState,
-    //Animations.fadeIn,
-  ]
+    selector: 'app-tutorial-animation',
+    templateUrl: './tutorial-animation.component.html',
+    styleUrls: ['./tutorial-animation.component.scss'],
+    animations: [
+        trigger('slideInOut', [
+            transition(':enter', [
+                style({transform: 'translateY(-100%)'}),
+                animate('200ms ease-in', style({transform: 'translateY(0%)'}))
+            ]),
+            transition(':leave', [
+                animate('5s ease-in', style({transform: 'translateY(-100%'}) )
+            ])
+        ]) 
+    ]
 })
 export class TutorialAnimationComponent implements OnInit {
 
@@ -36,9 +43,8 @@ export class TutorialAnimationComponent implements OnInit {
     set tutorialStep(step: number) {
         if (step > this.steps.length) {
             return;
-        }    
+        }
         this._tutorialStep = step;
-            console.log(step);
     }
 
     get tutorialStep() {
@@ -57,10 +63,6 @@ export class TutorialAnimationComponent implements OnInit {
         ];
     }
 
-    triggerChange() {
-        this.isBlack = !this.isBlack;
-    }
-
     forwardDescription() {
         if (this._tutorialStep === 0) {
             this.addStep();
@@ -73,7 +75,6 @@ export class TutorialAnimationComponent implements OnInit {
         if (this._tutorialStep >= this.steps.length) {
             return;
         }
-        console.log("step was added");
         this.steps[this._tutorialStep].active = true;
         this._activeStepDescription = 0;
         this.tutorialStep++;

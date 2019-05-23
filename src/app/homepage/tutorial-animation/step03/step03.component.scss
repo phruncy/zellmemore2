@@ -1,3 +1,23 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
+
+$cellSizeMobile: 30px;
+$cellSizeDesktop: 80px;
+
+.cell-container {
+        width: 100%;
+}
+
+.cell{
+        @include roundShape('black');
+        width: $cellSizeMobile;
+        height: $cellSizeMobile;
+}
+
+@media only screen and (min-width: 420px) {
+        .cell {
+                width: $cellSizeDesktop;
+                height: $cellSizeDesktop;
+        }
+}

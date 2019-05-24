@@ -19,7 +19,7 @@ body {
         width: 100%;
         margin-top: 10px;
         min-height: $widgetAreaMinHeight;
-        height: calc(97vh - 155px);
+        height: calc(95vh - 155px);
 }
  /* /// SELECTION MENU /// */
 .menu {
@@ -82,7 +82,7 @@ body {
 }
 
 .dropdown-btn:hover {
-        background-color: $highlight;
+        background-color: $accent;
         transition: all 0.1s linear;
 }
 

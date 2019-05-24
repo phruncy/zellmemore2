@@ -13,7 +13,7 @@
                 <!-- the selection dropup -->   
                 <div class="menu" [class.active]="_selectionDisplayed">
                         <div class="button-container">
-                                <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu">
+                                <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
                                         <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon>
                                 </button>
                         </div>

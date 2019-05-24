@@ -5,3 +5,15 @@
         max-height: $menuInnerHeightMax;
         overflow: scroll;
 }
+
+.container-inner {
+        text-align: center;
+}
+
+.selection-tile {
+        display:inline-block;
+}
+
+.headline {
+        margin-top: 30px;
+}

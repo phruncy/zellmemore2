@@ -43,7 +43,7 @@ body {
         border-top-right-radius: $globalCornerRadius;
 }
 
-.menu-content{
+.menu-content {
         max-height: 0;
         transition: max-height 0.3s ease-out;
         overflow: hidden;
@@ -135,7 +135,20 @@ footer {
 }
 
 
-
+@media only screen and (min-height: $breakpointMobile) {
+        .menu {
+                max-width: 100%;
+                left: 0;
+                right: 0;
+        }
+        
+        .menu-content.active {
+                max-height: $selectMenuActiveHeightMobile;
+        }
+        .menu-content {
+                padding: 0 $globalMarginMobile 0 $globalMarginMobile;
+        }
+}
 
 
 

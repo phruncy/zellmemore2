@@ -43,7 +43,6 @@ export class VisualizationService {
         "v009": VizWaves01Component,
         "v010": VizWaves02Component,
         "v011": VizWaves03Component,
-        "v012": VizWaves04Component
     };
 
     constructor() 

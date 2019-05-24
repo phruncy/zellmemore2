@@ -1,11 +1,12 @@
 $globalMargin: 30px;
+$globalMarginMobile: 1rem;
 $secondaryMargin: 10%;
 $buttonMargin: 5px;
 $buttonMarginMobile: 2px;
 $globalCornerRadius: 4px;
 
 // screen widths
-$maxWindowWidth: 1366px;
+$maxWindowWidth: 1280px;
 
 // Controller
 $settingsUnitPaddingTop: 5px;
@@ -24,7 +25,8 @@ $widgetAreaMinHeight: 200px;
 //menu
 $plusButtonSize: 30px;
 $selectMenuActiveHeight: 400px;
-$selectMenuMaxWidth: 1024px;
+$selectMenuActiveHeightMobile: 300px;
+$selectMenuMaxWidth: 860px;
 $plusButtonMargin: 1.5vh;
 $plusButtonPadding: 10px;
 $menuInnerHeightMax: 300px;

@@ -17,6 +17,7 @@
         display: none;
         text-align: center;
         cursor: default;
+        padding: 80px;
 }
 
 .animated.active {
@@ -26,6 +27,7 @@
         animation-iteration-count: infinite;
         animation-direction: alternate-reverse;
         animation-timing-function: ease-in;
+        cursor: pointer;
 }
 
 @keyframes bounce {

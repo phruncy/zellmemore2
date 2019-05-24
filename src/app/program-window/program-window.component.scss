@@ -135,7 +135,7 @@ footer {
 }
 
 
-@media only screen and (min-height: $breakpointMobile) {
+@media only screen and (max-height: $breakpointMobile) {
         .menu {
                 max-width: 100%;
                 left: 0;

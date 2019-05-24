@@ -5,7 +5,9 @@ import { Component,
         ViewContainerRef,
         ElementRef,
         ChangeDetectorRef,
-        HostListener
+        HostListener,
+        Output,
+        EventEmitter
        } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
@@ -20,6 +22,7 @@ import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    @Output() clickAnimated = new EventEmitter();
     private faAngleDown = faAngleDown;
     private faPlusCircle = faPlusCircle;
 

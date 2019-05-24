@@ -1,6 +1,15 @@
 $smallCellSizeMobile: 8px;
 $smallCellSizeDesktop: 15px;
 
+$nextStepDelay: 0.3s;
+
+@mixin absolute-centered() {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+}
+
 @keyframes state-switch {
         0% {background: black; width: 100px; height: 100px};
         33% {background: black; width: 100px; height: 100px};
@@ -10,11 +19,11 @@ $smallCellSizeDesktop: 15px;
 }
 
 @keyframes state-switch-trio {
-        0% {background: black; height: 90%};
-        33% {background: black; height: 90%};
-        50%  {height: 87%}
-        66% {background: none; height: 90%};
-        100% {background: none; height: 90%};
+        0% {background: black; height: 100%};
+        40% {background: black; height: 100%};
+        50%  {height: 97%}
+        60% {background: white; height: 100%};
+        100% {background: white; height: 100%};
 }
 
 .step-element {

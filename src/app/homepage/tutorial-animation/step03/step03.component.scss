@@ -3,12 +3,12 @@
 @import '../tutorial-animation-mixins.scss';
 @import 'src/styles/global/margins';
 
-$cellSizeMobile: 30px;
-$cellSizeDesktop: 80px;
-$gapMobile: 15px;
-$gapDesktop: 40px;
-$cellContainerMobile: 35px;
-$cellContainerDesktop: 85px;
+$gapMobile: 8px;
+$gapDesktop: 20px;
+$cellContainerMobile: 50px;
+$cellContainerDesktop: 90px;
+$expandingCircleDuration: .3s;
+$stateChangeDuration: 1.5s;
 
 .graphics-container {
         width: 100%;
@@ -19,7 +19,7 @@ $cellContainerDesktop: 85px;
         display: inline-block;
         width: $cellContainerMobile;
         height: $cellContainerMobile;
-        margin-left: $gapMobile;
+        margin: $gapMobile;
         vertical-align: bottom;
         text-align: center;
         position: relative;
@@ -27,55 +27,141 @@ $cellContainerDesktop: 85px;
 
 .cell{
         @include roundShape('black');
+        @include absolute-centered();
         display: inline-block;
-        width: 90%;
-        height: 90%; 
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        width: 100%;
+        height: 100%; 
+        background: white;
+        z-index: 1;
 }
 
-#cell1.active {
-        animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
+.black {
+        background: black;
 }
 
-#cell2.active {
-        animation: state-switch-trio 1.5s ease-in-out infinite alternate-reverse forwards;
+
+#cell2.animate-step02 {
+        animation: state-switch-trio $stateChangeDuration ease-in-out infinite reverse forwards;
 }
 
-#cell3.active {
-        animation: state-switch-trio 1.5s ease-in-out infinite alternate forwards;
-}
 
 /// step 1 animation ///
 
 .background-circle {
-        width: 0;
-        height: 0;
+        @include absolute-centered();
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
         background: $accent;
 }
 
-.background-circle.active {
-        animation: expanding-cricle 1s ease-out forwards;
+.background-circle.animate-step01 {
+        animation: expanding-circle $expandingCircleDuration ease-out forwards;
+}
+
+.background-circle.animate-step02 {
+        animation: expanding-circle-inner-repeat $stateChangeDuration ease-out infinite;
+}
+
+.background-circle.outer.animate-step01 {
+        animation: expanding-circle $expandingCircleDuration ease-out $expandingCircleDuration forwards;
+}
+
+.background-circle.outer.animate-step02 {
+        animation: expanding-circle-repeat $stateChangeDuration ease-out infinite; 
+}
+
+.connector {
+        height: 10%;
+        width: 0px;
+        border-radius: 5px;
+        background: $accent;
+        position: absolute;
+        top: 50%;
+}
+
+.connector.left {
+        left: 0;
+        transform: translate(-100%, -50%);
+}
+
+.connector.right {
+        right: 0;
+        transform: translate(100%, -50%);
+}       
+
+.connector.animate-step01 {
+        animation: expand-connector $expandingCircleDuration ease-out .2s forwards;
+}
+
+.signal {
+        height: 10%;
+        width: 20%;
+        top: 50%;
+        border-radius: 5px;
+        position: absolute;
+        background: $accent;
+}
+
+.signal.right {
+        left: 0;
+        transform: translate(0%, -50%);
+}
+
+.signal.left {
+        right: 0;
+        transform: translate(0%, -50%);
+}
+
+.signal.right.animate-step02 {
+        animation: send-signal-right $stateChangeDuration ease-in-out infinite
+}
+
+.signal.left.animate-step02 {
+        animation: send-signal-left $stateChangeDuration ease-in-out infinite
 }
 
 @keyframes expanding-circle {
-        from { width: 0%; height: 0%; }
-        to { width: 100%; height: 100% }
+        from { width: 90%; height: 90%; }
+        to { width: 120%; height: 120% }
 }
 
+@keyframes expanding-circle-repeat {
+        0% { width: 90%; height: 90%; }
+        30% { width: 120%; height: 120%; }
+        100% { width: 120%; height: 120% }
+}
 
+@keyframes expanding-circle-inner-repeat {
+        0% { width: 90%; height: 90%; }
+        20% { width: 90%; height: 90%; }
+        80% { width: 120%; height: 120%; }
+        100% { width: 120%; height: 120%; }
+}
+
+@keyframes expand-connector {
+        from { width: 0px }
+        to { width: 45px }
+}
+
+@keyframes send-signal-left {
+        0% {transform: translate(0%, -50%);}
+        65% {transform: translate(300%, -50%);}
+        100% {transform: translate(300%, -50%);}
+}
+
+@keyframes send-signal-right {
+        0% {transform: translate(0%, -50%);}
+        65% {transform: translate(-300%, -50%);}
+        100% {transform: translate(-300%, -50%);}
+}
 
 @media only screen and (min-width: $breakpointMobile) {
-        .cell {
-                width: $cellSizeDesktop;
-                height: $cellSizeDesktop;
-        }
 
         .cell-container {
                 width: $cellContainerDesktop;
                 height: $cellContainerDesktop;
-                margin-left: $gapDesktop;
+                margin: $gapDesktop;
         }
 }
 

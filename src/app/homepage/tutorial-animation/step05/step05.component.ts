@@ -26,11 +26,10 @@ export class Step05Component extends Step implements OnInit {
     constructor() {
         super();
         this.descriptions = [
-            'test 1',
-            'test 2'
+            'Fortunately, there are only eight possible configurations for three cells: ',
+            'A complete ruleset contains an instruction for the middle cell for each of these configurations.'
         ];
      }
-
     ngOnInit() {
     }
 }

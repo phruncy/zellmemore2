@@ -15,8 +15,9 @@ export class Step03Component extends Step implements OnInit {
     constructor() {
         super();
         this.descriptions = [
-            'test 1',
-            'test 2'
+            'To understand the ruleset, pick out a trio of three cells.',
+            'The left and right cells are the middle cell\'s neighbourhood. In an elementary cellular automaton, a cell determines its next state solely by its own current state and the states of its neighbours.',
+            'The ruleset defines which state the middle cell is going to have for any combination of states.',
         ];
     }
 

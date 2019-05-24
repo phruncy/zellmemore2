@@ -27,6 +27,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 import { PopupComponent } from './popup/popup.component';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
@@ -132,8 +133,8 @@ import { StepFinalComponent } from './homepage/tutorial-animation/step-final/ste
         MatMenuModule,
         MatCardModule,
         MatButtonModule,
-        ScrollDispatchModule,
         MatRippleModule,
+        MatDividerModule
     ],
     providers: [AutomatonConfigurationService],
     bootstrap: [AppComponent],

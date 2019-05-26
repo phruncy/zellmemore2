@@ -9,6 +9,7 @@
         height: $smallCellSizeMobile;
         margin: .5%;
         display: inline-flex;
+        border-width: $cellBorder;
 }
 
 .multiple-cells-wrapper {

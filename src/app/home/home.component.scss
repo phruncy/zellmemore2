@@ -7,9 +7,9 @@ $tutoialOffsetDesktop: 35px;
 
 .outer-container {
         max-width: $maxWindowWidth;
-        align-content: center;
         margin: auto;
         margin-top: 30px;
+        text-align: center;
 }
 
 .landing-text {
@@ -23,7 +23,9 @@ $tutoialOffsetDesktop: 35px;
         margin-top: 10px;
 }
 
-.tutorial-wrapper {
+.tutorial-wrapper 
+/// v Basti wars
+{
         padding-left: $tutorialOffsetMobile;
         padding-right: $tutorialOffsetMobile;
         max-width: 800px;
@@ -44,10 +46,12 @@ $tutoialOffsetDesktop: 35px;
 }
 
 .section {
-        padding-left: $secondaryMargin;
-        padding-right: $secondaryMargin;
         padding-bottom: $sectionGap;
+        padding: auto;
         border-bottom-style: solid;
+        max-width: $maxTextWidth;
+        text-align: left;
+        display: inline-block;
 }
 
 @media only screen and (min-width: $breakpointMobile) {

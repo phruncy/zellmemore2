@@ -11,5 +11,13 @@
                                 <div class="cell" [style.background]="trio.right === 1 ?'black' : 'none'"></div>
                         </div>
                 </div>
+                <div    *ngIf="_activeDescription === 1">
+                        <div    *ngFor="let trio of trios"
+                                class="trio">
+                                <div class="cell invisible"></div>
+                                <div class="cell target"></div>
+                                <div class="cell invisible"></div>
+                        </div>
+                </div>
         </div>
 </div>

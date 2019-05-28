@@ -1,10 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { animations } from 'src/app/homepage/animations';
 
 @Component({
   selector: 'app-tutorial-step-control',
   templateUrl: './tutorial-step-control.component.html',
-  styleUrls: ['./tutorial-step-control.component.scss']
+  styleUrls: ['./tutorial-step-control.component.scss'],
+  animations: [
+    animations.slideInDescription
+  ]
 })
 export class TutorialStepControlComponent implements OnInit {
 

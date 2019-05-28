@@ -18,5 +18,8 @@ $largeCellSize: 100px;
         @include roundShape(black);
         width: $largeCellSize;
         height: $largeCellSize;
-        animation: state-switch 1.5s ease-out 0.5s infinite alternate forwards;
+}
+
+.cell.large.animated {
+        animation: state-switch 1.5s ease-out 0.2s infinite alternate forwards;
 }

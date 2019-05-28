@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Step } from '../step';
 import {trigger, state, style, animate, transition } from '@angular/animations';
-import { animations } from '../animations'; 
+import { animations } from 'src/app/homepage/animations';
 
 @Component({
   selector: 'app-step02',
@@ -25,8 +25,9 @@ export class Step02Component extends Step implements OnInit {
     constructor() {
         super();
         this.descriptions = [
-            'test 1',
-            'test 2'
+            'Now let\s put a bunch of them in a row.',
+            'The cells all change their state in discrete intervals. Each time step is a new generation in the automaton\'s lifecyle.',
+            'This change does not happen randomly, but follows a specific ruleset.'
         ];
      }
 

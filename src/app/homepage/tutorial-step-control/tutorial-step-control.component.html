@@ -1,35 +1,16 @@
 <div class="controls">
-<!--                 <button 
-                        *ngIf="_activeStep > 0"        
-                        (click)="previousStep()" 
-                        class="btn" 
-                        matRipple 
-                        [matRippleUnbounded]="true"
-                        [matRippleCentered]="true"
-                        matTooltip="previous">
-                        <fa-icon [icon]="faAngleUp"></fa-icon> 
-                </button> -->
+        <div 
+                *ngFor="let step of steps; let i = index"
+                class="step-marker-outer">
                 <div 
-                        *ngFor="let step of steps; let i = index"
-                        class="step-marker-outer">
-                        <div 
-                                *ngIf="step.active === true"
-                                class="step-marker" 
-                                [class.active]="_activeStep === (i + 1)"
-                                (click)="goToStep(i + 1)"
-                                matRipple
-                                [matRippleCentered]="true"
-                                [matRippleUnbounded]="true">
-                        </div> 
-                </div>
-<!--                 <button 
-                        *ngIf="_activeStep > 0"
-                        (click)="nextStep()" 
-                        class="btn" 
+                        *ngIf="step.active === true"
+                        class="step-marker" 
+                        [class.active]="_activeStep === (i + 1)"
+                        (click)="goToStep(i + 1)"
                         matRipple
-                        [matRippleUnbounded]="true" 
                         [matRippleCentered]="true"
-                        matTooltip="next">
-                        <fa-icon [icon]="faAngleDown"></fa-icon>
-                </button> -->
+                        [matRippleUnbounded]="true"
+                        [@slideInDescription]>
+                </div> 
         </div>
+</div>

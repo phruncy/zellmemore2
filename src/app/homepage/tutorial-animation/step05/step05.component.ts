@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Step } from '../step';
-import { animations } from '../animations';
+import { animations } from 'src/app/homepage/animations';
 
 @Component({
     selector: 'app-step05',

@@ -57,7 +57,6 @@ export class TutorialAnimationComponent implements OnInit {
             {step: Step01Component, active: false},
             {step: Step02Component, active: false},
             {step: Step03Component, active: false},
-            {step: Step04Component, active: false},
             {step: Step05Component, active: false},
             {step: Step06Component, active: false},
             {step: StepFinalComponent, active: false}

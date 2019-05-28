@@ -1,10 +1,12 @@
 <div class="step-element">
         <div class="cell-wrapper centered">
                 <div 
-                        class="cell large">
+                        class="cell large"
+                        [style.background]="'black'"
+                        [class.animated]="_activeDescription >= 1">
                 </div>
         </div>
-        <div class="description-wrapper" [@slideInDescription]="_activeDescription">
+        <div class="description" [@slideInDescription]="_activeDescription">
                 <p>{{descriptions[_activeDescription]}}</p>
         </div>
 </div>

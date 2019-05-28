@@ -3,12 +3,14 @@
 @import 'src/styles/global/typo';
 
 $tutorialOffsetMobile: 15px;
-$tutoialOffsetDesktop: 35px;
+$tutorialOffsetDesktop: 35px;
+$paddingSides: 4rem;
+$paddingSidesMobile: 2rem;
 
 .outer-container {
         max-width: $maxWindowWidth;
         margin: auto;
-        margin-top: 30px;
+        margin-top: 0;
         text-align: center;
 }
 
@@ -26,8 +28,6 @@ $tutoialOffsetDesktop: 35px;
 .tutorial-wrapper 
 /// v Basti wars
 {
-        padding-left: $tutorialOffsetMobile;
-        padding-right: $tutorialOffsetMobile;
         max-width: 800px;
         width: 100%;
         text-align: center;
@@ -36,8 +36,9 @@ $tutoialOffsetDesktop: 35px;
 }
 
 .tutorial-outer-wrapper {
+        padding-left: $tutorialOffsetMobile;
+        padding-right: $tutorialOffsetMobile;
         text-align: center;
-        width: 100%;
 }
 
 
@@ -47,25 +48,31 @@ $tutoialOffsetDesktop: 35px;
 
 .section {
         padding-bottom: $sectionGap;
-        padding: auto;
+        padding-left: $paddingSidesMobile;
+        padding-right: $paddingSidesMobile;
         border-bottom-style: solid;
+        box-sizing: border-box;
         max-width: $maxTextWidth;
+        width: 100%;
         text-align: left;
         display: inline-block;
 }
 
 @media only screen and (min-width: $breakpointMobile) {
+        .section {
+                padding-left: $paddingSides;
+                padding-right: $paddingSides;
+        }
         .landing-text {
                 margin-top: 130px;
         }
         .landing-link {
                 font-size: $homepageLinks;
         }
+        .landing-link-wrapper {
+                margin-top: 50px
+        }
         .outer-container {
                 margin-top: 50px;
-        }
-        .tutorial-wrapper {
-                margin-left: $tutoialOffsetDesktop;
-                margin-right: $tutoialOffsetDesktop;
         }
 }

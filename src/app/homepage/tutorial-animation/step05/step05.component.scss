@@ -20,8 +20,21 @@
         margin: 4px;
 }
 
+.target-container {
+        display: inline-block;
+}
+
+.invisible {
+        display: inline-block;
+        border-color: white;
+}
+
 @media only screen and (min-width: $breakpointMobile) {
         .cell {
+                width: $smallCellSizeDesktop;
+                height: $smallCellSizeDesktop;
+        }
+        .invisible {
                 width: $smallCellSizeDesktop;
                 height: $smallCellSizeDesktop;
         }

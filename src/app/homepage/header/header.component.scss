@@ -3,60 +3,62 @@
 @import 'src/styles/global/typo';
 
 .container-outer {
-        margin: $globalMargin 0;
-        border-top-style: solid;
-        font-size: $menuItemsFontSize;
-        font-weight: $topbarFontWeight;
-        background: $background;      
-}
-
-.container-inner {
-        margin: $globalMargin;
-        margin-top: 0;
+  margin: 0;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  border-top-style: solid;
+  font-size: $menuItemsFontSize;
+  font-weight: $topbarFontWeight;
+  background: $background;
 }
 
 .topic {
-        display: inline-block;
-        color: $fontNegative;
-        background: $background;
-        height: $headerMenuItemHeight;
-        padding: 5px 15px;
-        cursor: pointer;
-        margin-left: $buttonMargin;
-        vertical-align: top;
+  display: inline-block;
+  color: $fontNegative;
+  background: $background;
+  height: $headerMenuItemHeight;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin-left: $buttonMargin;
+  vertical-align: top;
 }
 
 .topic:hover {
-        color: $fontDefault;
-        font-weight: $topbarFontWeight;
-        background: none;
+  color: $fontDefault;
+  font-weight: $topbarFontWeight;
+  background: none;
 }
 
 .topic-inner {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .topic.float-left {
-        float: left;
+  float: left;
 }
 
 .github-icon {
-        font-family: github-icon;
-        font-size: 26px;
+  font-family: github-icon;
+  font-size: 26px;
 }
 
 @media only screen and (min-width: $breakpointMobile) {
-        .topic {
-                margin-left: $buttonMargin;
-                border-style: solid;
-                border-top-style: none;
-        }
-        .topic.float-right {
-                float: right;
-        }
-        .container-outer {
-                background: none;
-        }
+  .topic {
+    margin-left: $buttonMargin;
+    border-style: solid;
+    border-top-style: none;
+  }
+
+  .topic.float-right {
+    float: right;
+  }
+
+  .container-outer {
+    background: none;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

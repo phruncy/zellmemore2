@@ -28,22 +28,16 @@
                         *ngIf="_tutorialStep === 4"
                         class="step-element-wrapper"
                         [@slideInOut]>
-                        <app-step04 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 5"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
                         <app-step05 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
                 </div>
                 <div 
-                        *ngIf="_tutorialStep === 6"
+                        *ngIf="_tutorialStep === 5"
                         class="step-element-wrapper"
                         [@slideInOut]>
                         <app-step06 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
                 </div>
                 <div
-                        *ngIf="_tutorialStep === 7"
+                        *ngIf="_tutorialStep === 6"
                         class="step-element-wrapper"
                         [@slideInOut]>
                         <app-step-final [activeDescription]="_activeStepDescription"></app-step-final>

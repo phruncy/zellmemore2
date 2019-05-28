@@ -11,6 +11,15 @@ export const animations = {
                 opacity: 1,
                 maxHeight: '100%'}))
         ]),
+        transition(':enter', [
+            style({
+                transform: 'translateX(20%)',
+                opacity: 0}),
+            animate('600ms ease-in-out', style({
+                transform: 'translateX(0%)',
+                opacity: 1,
+                maxHeight: '100%'}))
+        ])
     ])
 };
 

@@ -1,9 +1,9 @@
 /* Base class for every widget-content-component */
 
-import { OnInit, OnDestroy, HostBinding, Input } from "@angular/core";
-import { AutomatonService } from "../services/automaton.service";
-import { SizeService } from "../services/size.service";
-import { Subscription, Subject } from "rxjs";
+import { OnInit, OnDestroy, HostBinding, Input } from '@angular/core';
+import { AutomatonService } from '../services/automaton.service';
+import { SizeService } from '../services/size.service';
+import { Subscription, Subject } from 'rxjs';
 
 export abstract class ContentBase implements OnInit, OnDestroy {
 
@@ -18,8 +18,7 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     constructor(protected automaton: AutomatonService,
                 protected sizeService: SizeService) {}
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this._generationSub = this.automaton.changed$.subscribe(
             () => {
                 this.update();

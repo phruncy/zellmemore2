@@ -1,25 +1,27 @@
 <div class="step-element">
         <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
         <div class="graphics-container upper">
-                <div 
-                        class="trio"
-                        *ngFor="let trio of trios">
-                        <div class="trio-label">{{trio.id}}</div>
-                        <div class="cell-trio-container">
-                                <div class="cell" [style.background]="trio.left === 1 ? 'black' : 'white'"></div>
-                                <div class="cell" [style.background]="trio.middle === 1 ? 'black' : 'white'" [class.animated-middle]="_activeDescription === 1"></div>
-                                <div class="cell" [style.background]="trio.right === 1 ?'black' : 'white'"></div>
-                        </div>
+                <div class="container-inner">
                         <div 
-                                class="arrow"
-                                [class.animated]="_activeDescription === 1">
-                        </div>
-                        <div    *ngIf="_activeDescription === 1"
-                                class="trio target"
-                                [@dropdownCell]>
-                                <div class="background cell target" [class.animated]="_activeDescription === 1"></div>
-                                <div class="cell target"></div>
-                                <div class="foreground cell target" [class.animated]="_activeDescription === 1">?</div>
+                                class="trio"
+                                *ngFor="let trio of trios">
+                                <div class="trio-label">{{trio.id}}</div>
+                                <div class="cell-trio-container">
+                                        <div class="cell" [style.background]="trio.left === 1 ? 'black' : 'white'"></div>
+                                        <div class="cell" [style.background]="trio.middle === 1 ? 'black' : 'white'" [class.animated-middle]="_activeDescription === 1"></div>
+                                        <div class="cell" [style.background]="trio.right === 1 ?'black' : 'white'"></div>
+                                </div>
+                                <div 
+                                        class="arrow"
+                                        [class.animated]="_activeDescription === 1">
+                                </div>
+                                <div    *ngIf="_activeDescription === 1"
+                                        class="trio target"
+                                        [@dropdownCell]>
+                                        <div class="background cell target" [class.animated]="_activeDescription === 1"></div>
+                                        <div class="cell target"></div>
+                                        <div class="foreground cell target" [class.animated]="_activeDescription === 1">?</div>
+                                </div>
                         </div>
                 </div>
         </div>

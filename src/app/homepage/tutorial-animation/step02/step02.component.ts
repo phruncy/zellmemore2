@@ -27,7 +27,6 @@ export class Step02Component extends Step implements OnInit {
         this.descriptions = [
             'Now let\s align a bunch of them one-dimensionally in a row.',
             'The cells all change their state in discrete intervals. Each time step is a new generation in the automaton\'s lifecyle.',
-            'This change does not happen randomly, but follows a specific ruleset.'
         ];
      }
 

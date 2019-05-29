@@ -1,22 +1,24 @@
 <div class="step-element">
-        <div 
-                class="multiple-cells-wrapper upper step01"
-                *ngIf="_activeDescription === 1">
+        <div class="upper container">
                 <div 
-                        *ngFor="let cell of cells; let i = index"
-                        class="cell"
-                        [@changeState]="cell.state"
-                        (@changeState.done)="toggleState(i)"
-                        ></div>
-        </div>
-        <div 
-                class="multiple-cells-wrapper upper step02"
-                *ngIf="_activeDescription === 0">
+                        class="multiple-cells-wrapper step01"
+                        *ngIf="_activeDescription === 1">
+                        <div 
+                                *ngFor="let cell of cells; let i = index"
+                                class="cell"
+                                [@changeState]="cell.state"
+                                (@changeState.done)="toggleState(i)"
+                                ></div>
+                </div>
                 <div 
-                        *ngFor="let cell of cells; let i = index"
-                        class="cell"
-                        [style.background]="cell.state === 'active' ? 'black' : 'white'"
-                        ></div>
+                        class="multiple-cells-wrapper step02"
+                        *ngIf="_activeDescription === 0">
+                        <div 
+                                *ngFor="let cell of cells; let i = index"
+                                class="cell"
+                                [style.background]="cell.state === 'active' ? 'black' : 'white'"
+                                ></div>
+                </div>
         </div>
         <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
 </div>

@@ -1,12 +1,22 @@
 <div class="step-element">
         <div class="graphics-container">
                 <div class="multiple-cells-wrapper">
+                        <div class="connector" *ngIf="_activeDescription === 2" [class.animated]="_activeDescription === 2"></div>
+                        <div class="edges01" *ngIf="_activeDescription === 1 || _activeDescription === 0">
+                                <fa-icon [icon]="icon"></fa-icon>
+                                ...  
+                        </div>
+                        <div class="cell edges" *ngIf="_activeDescription === 2" [@slideInOut]></div>
                         <div 
                                 *ngFor="let cell of cells; let i = index"
                                 class="cell"
                                 [@changeState]="cell.state"
                                 (@changeState.done)="toggleState(i)"
                         ></div>
+                        <div class="edges01" *ngIf="_activeDescription === 0 || _activeDescription === 1" >
+                                ... <fa-icon [icon]=icon></fa-icon>
+                        </div>
+                        <div class="cell edges" *ngIf="_activeDescription === 2" [@slideInOut]></div>
                 </div>
         </div>
         <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>

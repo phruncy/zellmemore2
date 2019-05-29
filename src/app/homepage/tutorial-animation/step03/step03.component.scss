@@ -13,6 +13,12 @@ $stateChangeDuration: 1.5s;
 .graphics-container {
         width: 100%;
         text-align: center;
+        position: relative;
+}
+
+.cells-wrapper-inner {
+        width: 100%;
+        @include absolute-centered();
 }
 
 .cell-container {

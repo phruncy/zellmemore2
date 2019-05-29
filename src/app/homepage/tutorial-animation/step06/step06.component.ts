@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 import {trigger, state, animate, style, transition } from '@angular/animations';
+import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-step06',
@@ -14,10 +15,15 @@ import {trigger, state, animate, style, transition } from '@angular/animations';
             state('inactive', style ({background: 'white'})),
             transition('active <=> inactive', [animate('1s ease-in-out')]),
         ]),
-        animations.slideInDescription
+        animations.slideInDescription,
+        animations.slideInOut
   ]
 })
 export class Step06Component extends Step implements OnInit {
+
+    faInfinity = faInfinity;
+    faQuestion = faQuestion;
+    private _icon: any;
 
     private cells = [
         {state : 'active'},
@@ -31,6 +37,13 @@ export class Step06Component extends Step implements OnInit {
         'The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.',
         'The second version connects the two marginal cells with each other, thus creating a boundless ring-like structure.'
     ];
+    }
+
+    get icon() {
+        if (this._activeDescription === 0) {
+            return this.faInfinity;
+        }
+        return this.faQuestion;
     }
 
     ngOnInit() {

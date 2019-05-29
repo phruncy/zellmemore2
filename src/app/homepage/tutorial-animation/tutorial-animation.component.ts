@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef} from '@angular/core';
 import { _MatChipListMixinBase } from '@angular/material';
-import {trigger, state, style, animate, transition } from '@angular/animations';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { Step01Component } from './step01/step01.component';
 import { Step02Component } from './step02/step02.component';
@@ -9,23 +8,14 @@ import { Step04Component } from './step04/step04.component';
 import { Step05Component } from './step05/step05.component';
 import { Step06Component } from './step06/step06.component';
 import { StepFinalComponent } from './step-final/step-final.component';
+import { animations } from '../animations';
 
 @Component({
     selector: 'app-tutorial-animation',
     templateUrl: './tutorial-animation.component.html',
     styleUrls: ['./tutorial-animation.component.scss'],
     animations: [
-        trigger('slideInOut', [
-            transition(':enter', [
-                style({
-                    transform: 'translateY(10%)',
-                    opacity: 0}),
-                animate('600ms ease-in-out', style({
-                    transform: 'translateY(0%)',
-                    opacity: 1,
-                    maxHeight: '100%'}))
-            ]),
-        ])
+        animations.slideInOut
     ]
 })
 export class TutorialAnimationComponent implements OnInit {
@@ -57,6 +47,7 @@ export class TutorialAnimationComponent implements OnInit {
         this.steps = [
             {step: Step01Component, active: false},
             {step: Step02Component, active: false},
+            {step: Step04Component, active: false},
             {step: Step03Component, active: false},
             {step: Step05Component, active: false},
             {step: Step06Component, active: false},

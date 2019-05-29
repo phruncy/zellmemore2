@@ -1,52 +1,54 @@
 <div class="step-element">
         <div class="graphics-container upper">
-                <div class="cell-container">
-                        <div 
-                                class="signal left" 
-                                [class.animate-step02]="_activeDescription >= 2">
+                <div class="cells-wrapper-inner">
+                        <div class="cell-container">
+                                <div 
+                                        class="signal left" 
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="background-circle outer" [class.animate-step01]="_activeDescription === 1"
+                                        [class.animate-step02]="_activeDescription >= 2"></div>
+                                <div 
+                                        class="cell black" 
+                                        id="cell1">
+                                </div>
                         </div>
-                        <div 
-                                class="background-circle outer" [class.animate-step01]="_activeDescription === 1"
-                                [class.animate-step02]="_activeDescription >= 2"></div>
-                        <div 
-                                class="cell black" 
-                                id="cell1">
+                        <div class="cell-container">
+                                <div 
+                                        class="connector left" 
+                                        [class.animate-step01]="_activeDescription === 1"
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="connector right" 
+                                        [class.animate-step01]="_activeDescription === 1"
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="background-circle" 
+                                        [class.animate-step01]="_activeDescription === 1"
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="cell" 
+                                        id="cell2" 
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
                         </div>
-                </div>
-                <div class="cell-container">
-                        <div 
-                                class="connector left" 
-                                [class.animate-step01]="_activeDescription === 1"
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                        <div 
-                                class="connector right" 
-                                [class.animate-step01]="_activeDescription === 1"
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                        <div 
-                                class="background-circle" 
-                                [class.animate-step01]="_activeDescription === 1"
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                        <div 
-                                class="cell" 
-                                id="cell2" 
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                </div>
-                <div class="cell-container">
-                        <div 
-                                class="signal right" 
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                        <div 
-                                class="background-circle outer" [class.animate-step01]="_activeDescription === 1" 
-                                [class.animate-step02]="_activeDescription >= 2">
-                        </div>
-                        <div 
-                                class="cell" 
-                                id="cell3">
+                        <div class="cell-container">
+                                <div 
+                                        class="signal right" 
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="background-circle outer" [class.animate-step01]="_activeDescription === 1" 
+                                        [class.animate-step02]="_activeDescription >= 2">
+                                </div>
+                                <div 
+                                        class="cell" 
+                                        id="cell3">
+                                </div>
                         </div>
                 </div>
         </div>

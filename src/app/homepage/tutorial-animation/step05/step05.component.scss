@@ -8,6 +8,16 @@ $smallCellContainerSizeMobile: $smallCellSizeMobile +4px;
 $arrowSizeDesktop: 40px;
 $arrowSizeMobile: 30px;
 
+.graphics-container.upper {
+        position:relative;
+        width: 100%;
+}
+
+.container-inner {
+        @include absolute-centered();
+        width: 100%;
+}
+
 .cell {
         @include roundShape('black');
         display: inline-block;
@@ -44,6 +54,8 @@ $arrowSizeMobile: 30px;
 .trio {
         display: inline-block;
         margin: 5px;
+        margin-left: 7px;
+        margin-right: 7px;
         position: relative;
 }
 

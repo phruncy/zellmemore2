@@ -15,8 +15,7 @@ export class Step04Component extends Step implements OnInit {
     constructor() {
         super();
         this.descriptions = [
-            'test 1',
-            'test 2'
+            'This change does not happen randomly, but follows a specific ruleset.'
         ];
     }
 

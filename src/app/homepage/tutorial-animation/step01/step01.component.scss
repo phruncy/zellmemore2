@@ -14,8 +14,8 @@ $largeCellSize: 100px;
 
 .cell.large {
         display: inline-block;
-        position: relative;
         @include roundShape(black);
+        @include absolute-centered();
         width: $largeCellSize;
         height: $largeCellSize;
 }

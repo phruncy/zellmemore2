@@ -14,6 +14,14 @@
 
 .multiple-cells-wrapper {
         text-align: center;
+        width: 100%;
+        @include absolute-centered();
+}
+
+
+.upper.container {
+        position: relative;
+        width: 100%;
 }
 
 @media only screen and (min-width: $breakpointMobile) {

@@ -1,6 +1,7 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
+@import './tutorial-animation-mixins.scss';
 
 $largeCellSize: 100px;
 $smallCellSize: 30px;
@@ -48,6 +49,7 @@ $smallCellSize: 30px;
         height: 100%;
         vertical-align: middle;
         padding: auto;
+        position: relative;
 }
 
 .btn-wrapper {
@@ -59,6 +61,7 @@ $smallCellSize: 30px;
 
 .text {
         display: inline-block;
+        @include absolute-centered;
 }
 
 @media only screen and (max-width: $breakpointMobile) {

@@ -1,12 +1,13 @@
 @import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
+@import 'src/styles/global/margins';
 
 .cell{
         @include roundShape(black);
-        width: 1rem;
-        height: 1rem;
-        margin: .5%;
+        width: $smallCellSizeMobile;
+        height: $smallCellSizeMobile;
+        margin: .2rem;
         display: inline-flex;
 }
 
@@ -21,3 +22,47 @@
         position: relative;
         height: 60%;
 }
+
+.edges01 {
+        display: inline-block;
+        color: $accent;
+        font-size: 18px;
+        margin-left: 5px;
+        margin-right: 5px;
+}
+
+.cell.edges {
+        background: $accent;
+}
+
+.connector {
+        width: 0%;
+        @include absolute-centered;
+        height: 4px;
+        border-radius: 2px;
+        background: $accent;
+        z-index: -2;
+}
+
+.connector.animated {
+        animation: expand-line 0.5s ease-out forwards;
+}
+
+@keyframes expand-line {
+        from {width: 0%;}
+        to {width: 77%;}
+}
+
+@media only screen and (min-width: $breakpointMobile) {
+        .cell {
+                width: $smallCellSizeDesktop;
+                height: $smallCellSizeDesktop;
+        }
+
+        .cell-edge-container {
+                position: relative;
+                width: $smallCellSizeDesktop;
+                height: $smallCellSizeDesktop;
+        }
+}
+

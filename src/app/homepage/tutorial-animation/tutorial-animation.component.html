@@ -3,7 +3,10 @@
                 <div *ngIf="_tutorialStep === 0"
                         class="step-element">
                         <div class="h-container">
-                                <h2 class="text">What are cellular automata?</h2>
+                                <div class="text">
+                                        <h2>What are cellular automata?</h2>
+                                        <p>fucking description.</p>
+                                </div>
                         </div>
                 </div>
                 <div 
@@ -22,22 +25,28 @@
                         *ngIf="_tutorialStep === 3"
                         class="step-element-wrapper"
                         [@slideInOut]>
-                        <app-step03 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
+                        <app-step04 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
                 </div>
                 <div
                         *ngIf="_tutorialStep === 4"
                         class="step-element-wrapper"
                         [@slideInOut]>
+                        <app-step03 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
+                </div>
+                <div
+                        *ngIf="_tutorialStep === 5"
+                        class="step-element-wrapper"
+                        [@slideInOut]>
                         <app-step05 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
                 </div>
                 <div 
-                        *ngIf="_tutorialStep === 5"
+                        *ngIf="_tutorialStep === 6"
                         class="step-element-wrapper"
                         [@slideInOut]>
                         <app-step06 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
                 </div>
                 <div
-                        *ngIf="_tutorialStep === 6"
+                        *ngIf="_tutorialStep === 7"
                         class="step-element-wrapper"
                         [@slideInOut]>
                         <app-step-final [activeDescription]="_activeStepDescription"></app-step-final>

@@ -3,6 +3,7 @@
 $smallCellSizeMobile: 8px;
 $smallCellSizeDesktop: 18px;
 $cellBorder: 1.5px;
+$maxDescriptionWidth: 420px;
 
 $nextStepDelay: 0.3s;
 
@@ -47,7 +48,7 @@ $nextStepDelay: 0.3s;
         padding-right: 1rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        max-width: 420px;
+        max-width: $maxDescriptionWidth;
         display: inline-block;
         text-align: left;
 }

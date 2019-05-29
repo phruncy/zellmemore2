@@ -9,6 +9,7 @@ $paddingSidesMobile: 2.5rem;
 
 body {
         line-height: 1.5;
+        font-size: $defaultMobile;
 }
 
 .outer-container {
@@ -55,6 +56,7 @@ body {
         padding-left: $paddingSidesMobile;
         padding-right: $paddingSidesMobile;
         border-bottom-style: solid;
+        border-bottom-width: $borderWidth;
         box-sizing: border-box;
         max-width: $maxTextWidth;
         width: 100%;

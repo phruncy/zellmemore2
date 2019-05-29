@@ -87,10 +87,7 @@ body {
 }
 
 .plus-icon {
-        display: flex;
-        position: absolute;
-        left: calc(50% - 7px);
-        top: calc(50% - 10px);
+        display: inline-block;
         color: $fontNegative;
         font-size: 20px;
         -webkit-transform:rotate(10deg);
@@ -106,6 +103,13 @@ body {
         transition-property: all;
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
+}
+
+.plus-icon-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
 }
 
 .window-overlay {

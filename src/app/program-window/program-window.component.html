@@ -14,7 +14,7 @@
                 <div class="menu" [class.active]="_selectionDisplayed">
                         <div class="button-container">
                                 <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
-                                        <fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon>
+                                        <div class="plus-icon-container"><fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon></div>
                                 </button>
                         </div>
                         <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>

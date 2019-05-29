@@ -28,7 +28,7 @@ export class Step05Component extends Step implements OnInit {
     constructor() {
         super();
         this.descriptions = [
-            'Fortunately, there are only eight possible configurations for three cells: ',
+            'Fortunately, there are only eight possible configurations for a set of three cells: ',
             'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.'
         ];
      }

@@ -32,13 +32,14 @@ $nextStepDelay: 0.3s;
 .step-element {
         width: 100%;
         height: 100%;
-        padding: 10%;
+        padding: 2%;
         box-sizing: border-box;
         position: relative;
+        overflow: scroll;
 }
 
 .upper {
-        height: 60%;
+        height: 50%;
 }
 
 .description {
@@ -46,7 +47,7 @@ $nextStepDelay: 0.3s;
         padding-right: 1rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        max-width: 400px;
+        max-width: 420px;
         display: inline-block;
         text-align: left;
 }
@@ -73,6 +74,12 @@ $nextStepDelay: 0.3s;
         .description {
                 padding-left: 2rem;
                 padding-right: 2rem;
+        }
+        .step-element {
+                padding: 10%;
+        }
+        .upper {
+                height: 60%;
         }
 }
 

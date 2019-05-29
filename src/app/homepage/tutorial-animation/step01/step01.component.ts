@@ -16,7 +16,7 @@ export class Step01Component extends Step implements OnInit {
         super();
         this.descriptions = [
             'A cellular automaton consists of identical elements that are called cells.',
-            'In a elementary cellular automaton, a cell may have one of two different states at a distinct time: black or white, 1 or 0, active or inactive – anything is possible. Let\'s go for the black and white example here.'
+            'In an elementary cellular automaton, a cell may have one of two distinguishable state: black or white, 1 or 0, active or inactive – anything is possible. Let\'s go for the black and white example here.'
         ];
     }
 

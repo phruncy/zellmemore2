@@ -3,6 +3,8 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 
+
+
 .toprow-wrapper {
         height: $toprowHeight;
         vertical-align: top;
@@ -13,21 +15,21 @@
 .btn.button-wrapper {
         display: inline-block;
         font-family: 'Nunito Sans';
-        font-size: $default;
+        font-size: $program;
 }
 
 .settings {
-        font-size: $default;
+        font-size: $program;
 }
 
 .play-button {
-        font-size: $default;
+        font-size: $program;
 }
 
 .icon {
         color: $fontDefault;
         display: inline-block;
-        font-size: $default;
+        font-size: $program;
 }
 
 .icon.play {

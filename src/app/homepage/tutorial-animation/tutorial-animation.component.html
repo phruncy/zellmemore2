@@ -60,12 +60,22 @@
                                 [unlockedSteps]="_currentTotalSteps">
                 </app-tutorial-step-control>
         </div>
-        <div class="btn-wrapper" *ngIf="_tutorialStep !== steps.length">
-                <button 
-                        mat-button
-                        color="accent"
-                        (click)=forwardDescription();>
-                        <fa-icon [icon]="faAngleDown"></fa-icon>
-                </button>
+        <div class="direction-control">
+                <div class="btn-wrapper" *ngIf="_tutorialStep !== 0">
+                        <button
+                                mat-button
+                                color="accent"
+                                (click)="goBackInDescription()">
+                                <fa-icon [icon]="faAngleUp"></fa-icon>
+                        </button>
+                </div>
+                <div class="btn-wrapper" *ngIf="_tutorialStep !== steps.length">
+                        <button 
+                                mat-button
+                                color="accent"
+                                (click)=forwardDescription();>
+                                <fa-icon [icon]="faAngleDown"></fa-icon>
+                        </button>
+                </div>
         </div>
 </div>

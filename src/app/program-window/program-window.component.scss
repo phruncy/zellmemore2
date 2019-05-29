@@ -113,6 +113,12 @@ body {
         transform: translate(-50%, -50%);
 }
 
+.home {
+        position: absolute;
+        bottom: 2.0vh;
+        margin-bottom: 2.5vH;
+}
+
 .window-overlay {
         visibility: hidden;
         background: $overlay;
@@ -133,15 +139,18 @@ body {
 
 footer {
         position: absolute;
-        bottom: $globalMargin;
-        transform: translateY(100%); /* move element below screen */
+        bottom: 0;
         display: block;
         width: 100%;
         z-index: 0;
 }
 
 
-@media only screen and (max-height: $breakpointMobile) {
+@media only screen and (max-width: $breakpointMobile) {
+        .container {
+                padding: $globalMarginMobile;
+        }
+        
         .menu {
                 max-width: 100%;
                 left: 0;

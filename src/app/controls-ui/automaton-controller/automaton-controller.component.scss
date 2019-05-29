@@ -25,3 +25,28 @@
 .pointer {
         cursor:pointer;
 }
+
+.mobile-divider {
+        display: none;
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        .dropdownelement {
+                display: block;
+        }
+        .wrapper {
+                display: inline-block;
+                margin-top: 0px;
+                background: white;
+                box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                width: 97%;
+        }
+        .dropdown-element {
+                margin: 10px;
+        }
+        .mobile-divider {
+                display: block;
+        }
+
+}

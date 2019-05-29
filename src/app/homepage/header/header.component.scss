@@ -3,11 +3,10 @@
 @import 'src/styles/global/typo';
 
 .container-outer {
-  padding-top: .5rem;
+  padding-top: 1rem;
   padding-bottom: .5rem;
   font-size: $menuItemsFontSize;
   font-weight: $topbarFontWeight;
-  background: $background;
   text-align: center;
   font-family: 'Nunito Sans';
 }
@@ -31,6 +30,10 @@
         float: right;
 }
 
+.btn {
+        font-family: 'Nunito Sans';
+        font-size: $default;
+}
 @media only screen and (min-width: $breakpointMobile) {
   .container-outer {
     background: none;

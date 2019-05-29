@@ -49,8 +49,6 @@ body {
 }
 
 .tutorial-outer-wrapper {
-        padding-left: $tutorialOffsetMobile;
-        padding-right: $tutorialOffsetMobile;
         text-align: center;
         background: $backgroundUltraLight;
 }
@@ -65,7 +63,8 @@ body {
         max-width: $maxTextWidth;
         width: 100%;
         text-align: left;
-        display: inline-block;
+        display: block;
+        margin: auto;
 }
 
 .section.top {

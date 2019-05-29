@@ -13,7 +13,7 @@ export class MessengerService {
 
   openPopUp(message, _duration, container: ViewContainerRef) {
     this.snackBar.openFromComponent(
-        PopupComponent, {data: message, duration: _duration}
+        PopupComponent, {data: message, duration: _duration, verticalPosition: 'bottom'}
         );
 }
 }

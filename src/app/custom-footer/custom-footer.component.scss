@@ -3,10 +3,11 @@
 
 .container {
         display: block;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 7px;
+        padding-bottom: 7px;
         text-align: center;
         width: 100%;
+        box-sizing: border-box;
 }
 
 .link {

@@ -19,6 +19,13 @@
                         </div>
                         <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>
                 </div>
+                <button 
+                        class="home"
+                        mat-button 
+                        routerLink="/home"
+                        mat-tooltip="to homepage">
+                        <fa-icon [icon]="faHome"></fa-icon>
+                </button>
         </div>
         <footer>
                 <app-custom-footer></app-custom-footer>

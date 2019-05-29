@@ -15,5 +15,11 @@
 }
 
 .headline {
-        margin-top: 30px;
+        margin-top: 25px;
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        .headline {
+                margin-top: 10px;
+        }
 }

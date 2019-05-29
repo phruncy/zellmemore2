@@ -6,7 +6,7 @@ import { VisualizationSelectionComponent } from '../visualization-selection/visu
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
 import { RuleConverterService } from '../services/rule-converter.service';
-import { faTimes, faPlay, faUndo, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faPlay, faUndo, faAngleLeft, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 
@@ -26,6 +26,7 @@ export class ProgramWindowComponent {
     private faTimes = faTimes;
     private faPlay = faPlay;
     private faUndo = faUndo;
+    private faHome = faHome;
     private faAngleLeft = faAngleLeft;
 
     constructor(

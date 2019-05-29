@@ -70,4 +70,11 @@ $smallCellSize: 30px;
         .step-control-wrapper {
                 transform: translate(-100%, -50%);
         }
+        .text {
+                display: inline-block;
+                text-align: left;
+                max-width: $maxDescriptionWidth;
+                position: relative;
+                padding: 1rem;
+        }
 }

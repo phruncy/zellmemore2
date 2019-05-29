@@ -1,5 +1,5 @@
 $globalMargin: 30px;
-$globalMarginMobile: 1rem;
+$globalMarginMobile: .75rem;
 $globalTop: 20px;
 $secondaryMargin: 10%;
 $buttonMargin: 5px;
@@ -14,6 +14,7 @@ $maxTextWidth: 1024px;
 $settingsUnitPaddingTop: 5px;
 $settingsUnitPaddingSides: 10px;
 $controllerHeight: 47px;
+$controllerHeightMobile: 300px;
 $toprowHeight: 30px;
 $topbarTotalHeight: $controllerHeight + $toprowHeight;
 $iconButtonWidth: 50px;

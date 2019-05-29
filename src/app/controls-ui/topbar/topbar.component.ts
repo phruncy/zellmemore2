@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
-import { faPlay, faUndo, faAngleLeft, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-topbar',
@@ -13,11 +13,12 @@ export class TopbarComponent implements OnInit {
     private faPause = faPause;
     private faUndo = faUndo;
     private faAngleLeft = faAngleLeft;
-    private _controllerDisplayed = true;
+    private _controllerDisplayed: boolean;
 
     constructor(private automaton: AutomatonService) { }
 
     ngOnInit() {
+        this._controllerDisplayed = window.innerWidth > 420 ? true : false;
     }
 
     toggleController()

@@ -108,3 +108,21 @@
         max-height: $controllerHeight;
         transition: max-height 0.2s ease-out;
 }
+
+@media only screen and (max-width: $breakpointMobile) {
+        .controller-wrapper {
+                height: $controllerHeightMobile;
+                position: absolute;
+                width: 90%;
+        }
+        .controller {
+                left: 0;
+                width: 100%;
+        }
+        .controller.active {
+                max-height: $controllerHeightMobile;
+                max-width: 100%;
+        }
+}
+
+

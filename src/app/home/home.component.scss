@@ -7,6 +7,10 @@ $tutorialOffsetDesktop: 35px;
 $paddingSides: 4rem;
 $paddingSidesMobile: 2.5rem;
 
+body {
+        line-height: 1.5;
+}
+
 .outer-container {
         max-width: $maxWindowWidth;
         margin: auto;

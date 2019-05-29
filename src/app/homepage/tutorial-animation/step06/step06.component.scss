@@ -3,6 +3,8 @@
 @import '../tutorial-animation-mixins.scss';
 @import 'src/styles/global/margins';
 
+$strokeWidth: 4px;
+
 .cell{
         @include roundShape(black);
         width: $smallCellSizeMobile;
@@ -33,12 +35,14 @@
 
 .cell.edges {
         background: $accent;
+        border-color: $accent;
 }
+
 
 .connector {
         width: 0%;
         @include absolute-centered;
-        height: 4px;
+        height: $strokeWidth;
         border-radius: 2px;
         background: $accent;
         z-index: -2;
@@ -48,9 +52,44 @@
         animation: expand-line 0.5s ease-out forwards;
 }
 
+/// cicular connector;
+
+.connector-circular-container {
+        width: 90%;
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -2%);
+        z-index: -3;
+}
+
+.connector-circular {
+        fill: none;
+        stroke: $accent;
+        stroke-width: 6px;
+        stroke-dasharray: 1200px;
+        animation: dash 1s ease-in-out;
+}
+
+#connector02 {
+        overflow: visible;
+}
+
 @keyframes expand-line {
         from {width: 0%;}
         to {width: 77%;}
+}
+
+@keyframes expand-border {
+        0% {border-width: 1.5px}
+        50%{border-width: 5px}
+        100% {border-width: 1.5px}
+}
+
+@keyframes dash {
+        from {stroke-dashoffset: 1200px;}
+        to {stroke-dashoffset: 0px;}
 }
 
 @media only screen and (min-width: $breakpointMobile) {

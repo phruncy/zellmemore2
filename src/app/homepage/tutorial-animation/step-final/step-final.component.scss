@@ -12,3 +12,12 @@
         color: $fontNegative;
         display: inline-block;
 }
+
+.container {
+        position: absolute;
+        @include absolute-centered();
+}
+
+.description.centered {
+        text-align: center;
+}

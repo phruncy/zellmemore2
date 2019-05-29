@@ -12,4 +12,12 @@
 
 .multiple-cells-wrapper {
         text-align: center;
+        width: 100%;
+        position: absolute;
+        @include absolute-centered();
+}
+
+.graphics-container {
+        position: relative;
+        height: 60%;
 }

@@ -28,7 +28,7 @@ export class Step06Component extends Step implements OnInit {
       this.descriptions = [
         'In theory, cellular automata may have an infinite width, so that each cell will always have two adjacent neighbours.',
         'Practically, there are two ways to deal with a finite number of cells. ',
-        'The first option treats the first and last cells as edges with only one neighbour. They remain forever static.',
+        'The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.',
         'The second version connects the two marginal cells with each other, thus creating a boundless ring-like structure.'
     ];
     }

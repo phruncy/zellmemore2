@@ -46,7 +46,7 @@
         <div class="step-control-wrapper">
                 <app-tutorial-step-control 
                                 [_activeStep]="_tutorialStep" 
-                                (activeStepChange)="_tutorialStep = $event"
+                                (activeStepChange)="tutorialStep = $event"
                                 [steps]="steps"
                                 [unlockedSteps]="_currentTotalSteps">
                 </app-tutorial-step-control>

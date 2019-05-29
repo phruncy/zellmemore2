@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
+
 @Component({
     selector: 'app-step05',
     templateUrl: './step05.component.html',
     styleUrls: ['./step05.component.scss'],
     animations: [
-        animations.slideInDescription
+        animations.slideInDescription,
+        animations.dropdownCell
     ]
 })
 export class Step05Component extends Step implements OnInit {
@@ -27,7 +29,7 @@ export class Step05Component extends Step implements OnInit {
         super();
         this.descriptions = [
             'Fortunately, there are only eight possible configurations for three cells: ',
-            'A complete ruleset contains an instruction for the middle cell for each of these configurations.'
+            'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.'
         ];
      }
     ngOnInit() {

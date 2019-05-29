@@ -1,11 +1,13 @@
 <div class="step-element">
-        <div class="multiple-cells-wrapper upper">
-                <div 
-                        *ngFor="let cell of cells; let i = index"
-                        class="cell"
-                        [@changeState]="cell.state"
-                        (@changeState.done)="toggleState(i)"
-                ></div>
+        <div class="graphics-container">
+                <div class="multiple-cells-wrapper">
+                        <div 
+                                *ngFor="let cell of cells; let i = index"
+                                class="cell"
+                                [@changeState]="cell.state"
+                                (@changeState.done)="toggleState(i)"
+                        ></div>
+                </div>
         </div>
         <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
 </div>

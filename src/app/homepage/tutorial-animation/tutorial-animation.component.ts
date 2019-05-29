@@ -44,6 +44,7 @@ export class TutorialAnimationComponent implements OnInit {
         if (step > this.steps.length) {
             return;
         }
+        this._activeStepDescription = 0;
         this._tutorialStep = step;
     }
 

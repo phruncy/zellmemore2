@@ -1,8 +1,12 @@
 @import 'src/styles/global/typo';
 @import 'src/styles/global/margins';
+@import 'src/styles/global/colors';
 
 .link {
         font-weight: bold;
+        color: $accent;
+        margin-top: 4px;
+        cursor: pointer;
 }
 
 .links-wrapper {

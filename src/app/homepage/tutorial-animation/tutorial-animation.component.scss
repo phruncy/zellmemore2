@@ -26,7 +26,6 @@ $smallCellSize: 30px;
 /// step format ///
 .step-element {
         height: 100%;
-        background: white;
         display: block;
         position: relative;
 }
@@ -64,6 +63,7 @@ $smallCellSize: 30px;
         display: inline-block;
         text-align: left;
         max-width: $maxDescriptionWidth;
+        @include absolute-centered();
 }
 
 @media only screen and (max-width: $breakpointMobile) {

@@ -4,30 +4,38 @@
 
 $tutorialOffsetMobile: 15px;
 $tutorialOffsetDesktop: 35px;
-$paddingSides: 4rem;
+$paddingSides: 3rem;
 $paddingSidesMobile: 2.5rem;
 
 body {
-        line-height: 1.5;
         font-size: $defaultMobile;
 }
 
 .outer-container {
-        max-width: $maxWindowWidth;
         margin: auto;
         margin-top: 0;
         text-align: center;
+        line-height: 1.6;
 }
 
 .landing-text {
         font-weight: 400;
-        margin-top: 70px;
+        margin-top: 50px;
+        margin-bottom: 0px;
+}
+
+.landing-text.colored {
+        color: $accent;
 }
 
 .landing-link {
         font-size: $homepageLinksMobile;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 7px;
+}
+
+.landing-link-wrapper {
+        margin-top: 30px
 }
 
 .tutorial-wrapper 
@@ -44,11 +52,7 @@ body {
         padding-left: $tutorialOffsetMobile;
         padding-right: $tutorialOffsetMobile;
         text-align: center;
-}
-
-
-.landing-link-wrapper {
-        margin-top: 50px
+        background: $backgroundUltraLight;
 }
 
 .section {
@@ -64,21 +68,30 @@ body {
         display: inline-block;
 }
 
+.section.top {
+        border-top-width: $borderWidth;
+        border-top-style: solid;
+}
+
+.section.last {
+        border-bottom-style: none;
+}
+
 @media only screen and (min-width: $breakpointMobile) {
         .section {
                 padding-left: $paddingSides;
                 padding-right: $paddingSides;
         }
         .landing-text {
-                margin-top: 110px;
+                margin-top: 50px;
         }
         .landing-link {
                 font-size: $homepageLinks;
         }
         .landing-link-wrapper {
-                margin-top: 50px
+                margin-top: 30px
         }
         .outer-container {
-                margin-top: 50px;
+                margin-top: 40px;
         }
 }

@@ -3,10 +3,14 @@
 
 .container {
         display: block;
-        padding: 5px $globalMargin;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        width: 100%;
 }
 
 .link {
         color: $fontLight;
         margin: 0 10px $buttonMargin 0;
 }
+

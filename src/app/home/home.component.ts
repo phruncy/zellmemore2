@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AutomatonConfigurationService } from '../services/automaton-configuration.service';
+import { faArrowCircleRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +10,9 @@ import { AutomatonConfigurationService } from '../services/automaton-configurati
 
 export class HomeComponent implements OnInit {
 
-    constructor(
-    private configurationService: AutomatonConfigurationService
-  ) { }
+    private faArrowAltCircleRight = faChevronRight;
+    
+    constructor() { }
 
   ngOnInit() {
   }

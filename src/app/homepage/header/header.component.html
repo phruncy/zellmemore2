@@ -1,25 +1,28 @@
 <div class="container-outer">
         <div class="container-inner">
-                <div class="topic float-left">
-                        <div class="topic-inner"><a routerLink="/home">Zellmemore.</a></div>
-                </div>
-                <div class="topic float-right">
-                        <div class="topic-inner">
-                                <a routerLink="/home" [fragment]="'tutorial-anchor'">About</a>
-                        </div>
-                </div>
-                <div class="topic float-right">
-                        <div class="topic-inner">
-                                <a class="github-icon link" href="https://bitbucket.org/f_holle/zellmemore/src/master/" matTooltip="project repository">
-                                        g
-                                </a>
-                        </div>
-                </div>
-                <div class="topic float-right">
-                        <div class="topic-inner">
-                                <a routerLink="/program-window">Explore</a>
-                        </div>
-
-                </div>
+                <button 
+                        class="left"
+                        mat-button 
+                        routerLink="/home">Zellmemore.
+                </button>
+                <a 
+                        class="github-icon link right"
+                        mat-button 
+                        href="https://bitbucket.org/f_holle/zellmemore/src/master/" 
+                        matTooltip="project repository">g
+                </a>
+                <button 
+                        class="right"
+                        mat-button 
+                        routerLink="/home"
+                        [fragment]="'tutorial-anchor'">About
+                </button> 
+                <button 
+                        class="right"
+                        mat-button 
+                        routerLink="/program-window">Explore
+                </button>      
         </div>
 </div>
+<mat-divider></mat-divider>
+

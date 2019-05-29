@@ -3,41 +3,19 @@
 @import 'src/styles/global/typo';
 
 .container-outer {
-  margin: 0;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  border-top-style: solid;
-  border-top-width: $borderWidth;
   font-size: $menuItemsFontSize;
   font-weight: $topbarFontWeight;
   background: $background;
+  text-align: center;
+  font-family: 'Nunito Sans';
 }
 
-.topic {
-  display: inline-block;
-  color: $fontNegative;
-  background: $background;
-  height: $headerMenuItemHeight;
-  padding: 5px 15px;
-  cursor: pointer;
-  margin-left: $buttonMargin;
-  vertical-align: top;
-}
-
-.topic:hover {
-  color: $fontDefault;
-  font-weight: $topbarFontWeight;
-  background: none;
-}
-
-.topic-inner {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.topic.float-left {
-  float: left;
+.container-inner {
+        max-width: $maxWindowWidth;
+        width: 100%;
+        display: inline-block;
 }
 
 .github-icon {
@@ -45,21 +23,19 @@
   font-size: 26px;
 }
 
+.left {
+        float: left;
+}
+
+.right {
+        float: right;
+}
+
 @media only screen and (min-width: $breakpointMobile) {
-  .topic {
-    margin-left: $buttonMargin;
-    border-style: solid;
-    border-top-style: none;
-  }
-
-  .topic.float-right {
-    float: right;
-  }
-
   .container-outer {
     background: none;
     margin: 0;
-    padding-top: 0;
+    padding-top: 20px;
     padding-bottom: 0;
   }
 }

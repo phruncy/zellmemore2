@@ -1,17 +1,17 @@
+<app-header></app-header>
 <div class="outer-container">
-        <app-header></app-header>
-        <div class="section">
-                <h1 class="landing-text">One Algorithm, 12 depictions:<br>
-                        Cellular automata are systems capable of producing
-                        fascinating structures from simple rules.
-                        This website invites you to visually explore the principle of elementary cellular automata.</h1>
-                        <div class="landing-link-wrapper">
-                                <div  class="landing-link"><a routerLink="/program-window">Explore</a></div>
-                                <div class="landing-link"><a routerLink="/home" [fragment]="'tutorial-anchor'">What are Cellular automata?</a></div>
-                        </div>
+        <div class="section top">
+                <h1 class="landing-text colored">One Algorithm, 12 depictions:
+                Cellular automata are systems capable of producing
+                fascinating structures from simple rules.</h1>
+                <h3 class="landing-text">These mathematical models of self organizing systems evolve by repeatedly applying the same algorithm on themselves. Despite – or due to ? – being so simple, their behaviour is of intriguing complexity. This website invites you to visually explore the principle of elementary cellular automata.</h3>
+                <div class="landing-link-wrapper">
+                        <div  class="landing-link"><a routerLink="/program-window">Explore <fa-icon [icon]="faArrowAltCircleRight"></fa-icon></a></div>
+                        <div class="landing-link"><a routerLink="/home" [fragment]="'tutorial-anchor'">What are Cellular automata? <fa-icon [icon]="faArrowAltCircleRight"></fa-icon></a></div>
+                </div>
         </div>
         <section class="section">
-                <h1>About Cellular Automata</h1>
+                <h1>About Elementary Cellular Automata</h1>
                 <mat-divider></mat-divider>
                 <div class="tutorial-outer-wrapper">
                         <div class="tutorial-wrapper">
@@ -20,7 +20,7 @@
                 </div>
                 <mat-divider></mat-divider>
         </section>
-        <section class="section" id="tutorial-anchor">
+        <section class="section last" id="tutorial-anchor">
                 <h1>About this Project</h1>
                 <app-about></app-about>
         </section>

@@ -18,7 +18,7 @@
     "@angular-devkit/core" "0.7.5"
     rxjs "^6.0.0"
 
-"@angular-devkit/build-angular@^0.13.8":
+"@angular-devkit/build-angular@^0.13.9":
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.13.9.tgz#92ef7b55a1aa055b2f5c8ffed4bdb04df86db678"
   integrity sha512-onh07LhdxotDFjja0KKsDWNCwgpM/ymuRr5h0e+vT4AgklP2Uioz1CpzVOgxPIKkdVdGR9QgDinVsWAmY90J8g==
@@ -5719,6 +5719,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0.tgz#d647e029b5854617f994c82fe57a4c6747b352da"
+  integrity sha512-2MgLQr1zvks8+Kip4T6hcJdiBhV+SIvxguoWjhwtSpNPTp/5e09HJbgclCwR/nW0yWzhubM+6Q0prl8G5RuoBA==
+  dependencies:
+    tslib "^1.9.0"
+
 rxjs@6.3.3:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
@@ -7317,10 +7324,10 @@ yargs@^7.0.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-yarn@^1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.15.2.tgz#7a064ca81ca34235f16376ad2f796ed432f9e285"
-  integrity sha512-DhqaGe2FcYKduO42d2hByXk7y8k2k42H3uzYdWBMTvcNcgWKx7xCkJWsVAQikXvaEQN2GyJNrz8CboqUmaBRrw==
+yarn@^1.22.0:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.0.tgz#acf82906e36bcccd1ccab1cfb73b87509667c881"
+  integrity sha512-KMHP/Jq53jZKTY9iTUt3dIVl/be6UPs2INo96+BnZHLKxYNTfwMmlgHTaMWyGZoO74RI4AIFvnWhYrXq2USJkg==
 
 yeast@0.1.2:
   version "0.1.2"

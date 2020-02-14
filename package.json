@@ -32,7 +32,7 @@
     "ng-click-outside": "^4.0.0",
     "p5": "^0.7.1",
     "rxjs": "6.0.0",
-    "yarn": "^1.15.2",
+    "yarn": "^1.22.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

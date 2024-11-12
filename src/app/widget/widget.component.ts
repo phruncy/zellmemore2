@@ -21,7 +21,7 @@ import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ContentBase } from '../content-base/contentBase.component';
 
@@ -35,9 +35,9 @@ import { ContentBase } from '../content-base/contentBase.component';
 })
 export class WidgetComponent implements OnInit, OnDestroy {
 
-    @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
     /* binds the width/height properties to the width/height variables. type is 'string'! */
-    @ViewChild('fullscreen') container; // reference to  container-div
+    @ViewChild('fullscreen', { static: true }) container; // reference to  container-div
     @HostBinding('style.width.px') private _width = '300';
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;

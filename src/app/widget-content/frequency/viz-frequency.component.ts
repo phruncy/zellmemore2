@@ -14,7 +14,7 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
 export class VizFrequencyComponent extends ContentBase implements AfterContentInit, P5Animated {
 
     _p5: p5;
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: true }) container: ElementRef;
 
     private _barWidth: number;
     private _history: number[];

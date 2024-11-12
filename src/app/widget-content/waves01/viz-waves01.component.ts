@@ -13,7 +13,7 @@ import { ContentBase } from '../../content-base/contentBase.component';
 })
 export class VizWaves01Component extends ContentBase implements AfterContentInit, P5Animated {
 
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
 
     private _amplitude: number; // absolute spatial difference between 0 and 1 states

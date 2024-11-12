@@ -10,7 +10,7 @@ export class CaTutorialComponent implements OnInit {
 
     constructor(private scrollDispatcher: ScrollDispatcher) { }
 
-    @ViewChild(CdkScrollable) _scrollable: CdkScrollable;
+    @ViewChild(CdkScrollable, { static: false }) _scrollable: CdkScrollable;
 
     ngOnInit() {
     }

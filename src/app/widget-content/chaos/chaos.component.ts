@@ -11,7 +11,7 @@ import { SizeService } from 'src/app/services/size.service';
 })
 export class ChaosComponent extends ContentBase implements AfterContentInit {
 
-    @ViewChild('defaultCanvas')canvas: ElementRef;
+    @ViewChild('defaultCanvas', { static: true })canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
 
     private _randomized: number[] = [];

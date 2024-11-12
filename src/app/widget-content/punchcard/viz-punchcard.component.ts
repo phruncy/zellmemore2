@@ -11,7 +11,7 @@ import * as p5 from 'p5';
 })
 export class VizPunchcardComponent extends ContentBase implements AfterContentInit {
 
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: true }) container: ElementRef;
     private _p5: p5;
     private _dotSize = 10;
     private _dotGap: number;

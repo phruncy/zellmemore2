@@ -17,7 +17,8 @@ import { AutomatonControllerComponent } from './controls-ui/automaton-controller
 import { CustomFooterComponent } from './custom-footer/custom-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetFrameComponent } from './widget-frame/widget-frame.component';
-import { MatSnackBarModule, MatTooltipModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSliderModule} from '@angular/material/slider';
 import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatSelectModule} from '@angular/material/select';
@@ -64,6 +65,7 @@ import { Step04Component } from './homepage/tutorial-animation/step04/step04.com
 import { Step05Component } from './homepage/tutorial-animation/step05/step05.component';
 import { Step06Component } from './homepage/tutorial-animation/step06/step06.component';
 import { StepFinalComponent } from './homepage/tutorial-animation/step-final/step-final.component';
+import { WidgetDirective } from './utils/widget.directive';
 
 
 
@@ -112,7 +114,8 @@ import { StepFinalComponent } from './homepage/tutorial-animation/step-final/ste
         Step04Component,
         Step05Component,
         Step06Component,
-        StepFinalComponent
+        StepFinalComponent,
+        WidgetDirective
     ],
     imports: [
         BrowserModule,

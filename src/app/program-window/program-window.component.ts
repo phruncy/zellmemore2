@@ -7,7 +7,7 @@ import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
 import { RuleConverterService } from '../services/rule-converter.service';
 import { faTimes, faPlay, faUndo, faAngleLeft, faHome } from '@fortawesome/free-solid-svg-icons';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 
 @Component({

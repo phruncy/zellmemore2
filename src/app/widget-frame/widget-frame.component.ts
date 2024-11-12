@@ -21,7 +21,7 @@ import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class WidgetFrameComponent implements OnInit {
 
-    @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
     @Output() clickAnimated = new EventEmitter();
     private faAngleDown = faAngleDown;
     private faPlusCircle = faPlusCircle;

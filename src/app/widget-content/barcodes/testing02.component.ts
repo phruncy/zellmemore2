@@ -10,7 +10,7 @@ import { SizeService } from '../../services/size.service';
   styleUrls: ['./testing02.component.css']
 })
 export class Testing02Component extends ContentBase implements AfterContentInit {
-    @ViewChild('defaultCanvas')canvas: ElementRef;
+    @ViewChild('defaultCanvas', { static: true })canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
     private _blockSize: number;
 

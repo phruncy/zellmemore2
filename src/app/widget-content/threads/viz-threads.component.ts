@@ -12,7 +12,7 @@ import { P5Animated } from '../../utils/p5-animated';
 })
 export class VizThreadsComponent extends ContentBase implements AfterContentInit, P5Animated {
 
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
     private _dotSize = 10;
     private _dotGap: number;

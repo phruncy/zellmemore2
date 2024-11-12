@@ -10,7 +10,7 @@ import { CellMatrixService } from '../../services/cell-matrix.service';
   styleUrls: ['./viz-vortex.component.css']
 })
 export class VizVortexComponent extends ContentBase implements AfterContentInit {
-    @ViewChild('canvas') canvas: ElementRef;
+    @ViewChild('canvas', { static: true }) canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
 
     private _radiusMax: number;

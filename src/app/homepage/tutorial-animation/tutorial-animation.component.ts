@@ -20,7 +20,7 @@ import { animations } from '../animations';
 })
 export class TutorialAnimationComponent implements OnInit {
 
-    @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
+    @ViewChild('entry', { read: ViewContainerRef, static: false }) entry: ViewContainerRef;
 
     private faAngleDown = faAngleDown;
     private faAngleUp = faAngleUp;

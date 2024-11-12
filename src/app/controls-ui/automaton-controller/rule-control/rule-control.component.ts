@@ -13,7 +13,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 export class RuleControlComponent implements OnInit {
 
     @Input() decimal;
-    @ViewChild('popupContainer') private popupContainer: ViewContainerRef;
+    @ViewChild('popupContainer', { static: true }) private popupContainer: ViewContainerRef;
     private _boxesDisplayed = false;
     private faAngleLeft = faAngleLeft;
 

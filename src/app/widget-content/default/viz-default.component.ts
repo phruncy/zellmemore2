@@ -10,7 +10,7 @@ import { SizeService } from '../../services/size.service';
 })
 export class VizDefaultComponent extends ContentBase implements AfterContentInit {
 
-    @ViewChild('defaultCanvas')canvas: ElementRef;
+    @ViewChild('defaultCanvas', { static: true })canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
 
     private blockMatrix: number[][] = [];

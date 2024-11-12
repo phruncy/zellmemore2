@@ -9,12 +9,10 @@ import { Component,
           OnDestroy,
           ViewChild,
           ViewContainerRef,
-          ComponentFactoryResolver,
-          ComponentRef,
-          ComponentFactory,
+          //ComponentFactoryResolver,
+          //ComponentRef,
           HostBinding,
           Input,
-          ElementRef
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -53,7 +51,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
             private visService: VisualizationService,
             private details: VisualizationDetailService,
             private sizeService: SizeService,
-            private resolver: ComponentFactoryResolver,
+            //private resolver: ComponentFactoryResolver,
             private automaton: AutomatonService,
         ) {}
 
@@ -91,8 +89,8 @@ export class WidgetComponent implements OnInit, OnDestroy {
     fetchComponent()
     {
         const visualization = this.visService.provideComponent();
-        const factory = this.resolver.resolveComponentFactory(visualization);
-        const component = this.entry.createComponent(factory);
+        //const factory = this.resolver.resolveComponentFactory(visualization);
+        const component = this.entry.createComponent(visualization);
         this.details.provideVisualizations().subscribe (
             data => {
                 this._title = data.find(

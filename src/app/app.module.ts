@@ -10,7 +10,7 @@ import { AutomatonConfigurationService } from './services/automaton-configuratio
 import { WidgetComponent } from './widget/widget.component';
 import { VisualizationDetailComponent } from './visualization-detail/visualization-detail.component';
 import { VisualizationSelectionComponent } from './visualization-selection/visualization-selection.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { Testing02Component } from './widget-content/barcodes/testing02.component';
 import { AutomatonControllerComponent } from './controls-ui/automaton-controller/automaton-controller.component';
@@ -67,8 +67,7 @@ import { WidgetDirective } from './utils/widget.directive';
 
 
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         HomeComponent,
         ProgramWindowComponent,
@@ -115,14 +114,12 @@ import { WidgetDirective } from './utils/widget.directive';
         StepFinalComponent,
         WidgetDirective
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         FormsModule,
         ClickOutsideModule,
         ReactiveFormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        HttpClientModule,
         FontAwesomeModule,
         MatSnackBarModule,
         MatTooltipModule,
@@ -135,9 +132,5 @@ import { WidgetDirective } from './utils/widget.directive';
         MatCardModule,
         MatButtonModule,
         MatRippleModule,
-        MatDividerModule
-    ],
-    providers: [AutomatonConfigurationService],
-    bootstrap: [AppComponent]
-})
+        MatDividerModule], providers: [AutomatonConfigurationService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

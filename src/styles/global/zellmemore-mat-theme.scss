@@ -11,11 +11,11 @@
 @include mat.core();
 
 // $app-color: mat-palette($palette, $default, $lighter, $darker)
-$zellmemore-primary: mat.define-palette(mat.$teal-palette);
-$zellmemore-accent: mat.define-palette(mat.$teal-palette, 300, A200, 800);
-$zellmemore-warn: mat.define-palette(mat.$red-palette);
+$zellmemore-primary: mat.m2-define-palette(mat.$m2-teal-palette);
+$zellmemore-accent: mat.m2-define-palette(mat.$m2-teal-palette, 300, A200, 800);
+$zellmemore-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // mat-light-theme: all 'neutral' colors are white, light greys and a little black
-$zellmemore-theme: mat.define-light-theme($zellmemore-primary, $zellmemore-accent, $zellmemore-warn);
+$zellmemore-theme: mat.m2-define-light-theme($zellmemore-primary, $zellmemore-accent, $zellmemore-warn);
 
 @include mat.all-component-themes($zellmemore-theme);

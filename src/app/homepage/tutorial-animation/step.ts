@@ -1,4 +1,5 @@
-import { Input, Output, EventEmitter } from '@angular/core';
+import { Input, Output, EventEmitter, Directive } from '@angular/core';
+@Directive()
 export abstract class Step {
 
     @Output() completion = new EventEmitter(true);

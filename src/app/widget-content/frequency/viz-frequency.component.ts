@@ -4,7 +4,6 @@ import * as p5 from 'p5';
 import { ContentBase } from '../../content-base/contentBase.component';
 import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
-import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
 
 @Component({
   selector: 'app-viz-frequency',

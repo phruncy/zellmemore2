@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef} from '@angular/core';
-import { _MatChipListMixinBase } from '@angular/material';
+//import { _MatChipListMixinBase } from '@angular/material/chips';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Step01Component } from './step01/step01.component';
 import { Step02Component } from './step02/step02.component';

@@ -3,11 +3,11 @@
 
 // custom typography settings
 
-$custom-typography: mat.define-typography-config(
+$custom-typography: mat.define-legacy-typography-config(
         $font-family: 'Nunito Sans'
 );
 
-@include mat.all-component-typographies($custom-typography);
+@include mat.all-legacy-component-typographies($custom-typography);
 
 // Material Design Overrides
 .mat-slider.mat-slider-horizontal {

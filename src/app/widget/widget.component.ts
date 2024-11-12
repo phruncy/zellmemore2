@@ -21,7 +21,7 @@ import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { MAT_LEGACY_TOOLTIP_DEFAULT_OPTIONS as MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/legacy-tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ContentBase } from '../content-base/contentBase.component';
 

@@ -1,13 +1,13 @@
+@use '~@angular/material' as mat;
 @import 'src/styles/global/margins';
 
 // custom typography settings
-@import '~@angular/material/theming';
 
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
         $font-family: 'Nunito Sans'
 );
 
-@include angular-material-typography($custom-typography);
+@include mat.all-component-typographies($custom-typography);
 
 // Material Design Overrides
 .mat-slider.mat-slider-horizontal {

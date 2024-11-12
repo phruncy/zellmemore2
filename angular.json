@@ -137,7 +137,6 @@
       }
     }
   },
-  "defaultProject": "zellmemore",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

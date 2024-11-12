@@ -6,9 +6,9 @@
 //  If you specify typography styles for the components you use elsewhere, you should delete this line.
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
+//    `@include mat.legacy-typography-hierarchy(mat.define-typography-config());`
+@include mat.all-component-typographies();
+@include mat.core();
 
 // $app-color: mat-palette($palette, $default, $lighter, $darker)
 $zellmemore-primary: mat.define-palette(mat.$teal-palette);
@@ -18,4 +18,4 @@ $zellmemore-warn: mat.define-palette(mat.$red-palette);
 // mat-light-theme: all 'neutral' colors are white, light greys and a little black
 $zellmemore-theme: mat.define-light-theme($zellmemore-primary, $zellmemore-accent, $zellmemore-warn);
 
-@include mat.all-legacy-component-themes($zellmemore-theme);
+@include mat.all-component-themes($zellmemore-theme);

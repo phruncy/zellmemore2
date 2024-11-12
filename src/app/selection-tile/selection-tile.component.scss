@@ -2,7 +2,7 @@
 @import 'src/styles/global/typo';
 @import 'src/styles/global/colors';
 
-.mat-card {
+.mat-mdc-card {
         margin: $selectionTileMargin;
         width: $matCardMaxWidth;
         display: inline-block;

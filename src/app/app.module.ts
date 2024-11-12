@@ -30,7 +30,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { PopupComponent } from './popup/popup.component';
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { VizDefaultComponent } from './widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from './widget-content/punchcard/viz-punchcard.component';
 import { VizThreadsComponent } from './widget-content/threads/viz-threads.component';
@@ -139,22 +138,6 @@ import { WidgetDirective } from './utils/widget.directive';
         MatDividerModule
     ],
     providers: [AutomatonConfigurationService],
-    bootstrap: [AppComponent],
-    entryComponents: [
-        WidgetComponent,
-        VizDefaultComponent,
-        Testing02Component,
-        VizFrequencyComponent,
-        PopupComponent,
-        VizPunchcardComponent,
-        VizThreadsComponent,
-        VizVortexComponent,
-        VizSignalsComponent,
-        VizWaves01Component,
-        VizWaves02Component,
-        VizWaves03Component,
-        VizWaves04Component,
-        ChaosComponent
-    ]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

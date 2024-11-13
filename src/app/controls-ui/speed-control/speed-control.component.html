@@ -6,8 +6,8 @@
                 <mat-slider
                         class="range"
                         [min]="_speedMin"
-                        [max]="_speedMax"
-                        [(ngModel)]="this.automaton.fps"><input matSliderThumb />
+                        [max]="_speedMax">
+                        <input matSliderThumb [(ngModel)]="automaton.fps"/>
                 </mat-slider>
 <!--         </div> -->
 </div>

@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation, model } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { RuleConverterService } from 'src/app/services/rule-converter.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rule-control',
@@ -18,16 +19,15 @@ export class RuleControlComponent implements OnInit {
     private faAngleLeft = faAngleLeft;
 
     private BOXES = [
-        { id: '111', value: 7, iconValues: [1, 1, 1]},
-        { id: '110', value: 6, iconValues: [1, 1, 0]},
-        { id: '101', value: 5, iconValues: [1, 0, 1]},
-        { id: '100', value: 4, iconValues: [1, 0, 0]},
-        { id: '011', value: 3, iconValues: [0, 1, 1]},
-        { id: '010', value: 2, iconValues: [0, 1, 0]},
-        { id: '001', value: 1, iconValues: [0, 0, 1]},
-        { id: '000', value: 0, iconValues: [0, 0, 0]},
+        { id: '111', index: 7, iconValues: [1, 1, 1]},
+        { id: '110', index: 6, iconValues: [1, 1, 0]},
+        { id: '101', index: 5, iconValues: [1, 0, 1]},
+        { id: '100', index: 4, iconValues: [1, 0, 0]},
+        { id: '011', index: 3, iconValues: [0, 1, 1]},
+        { id: '010', index: 2, iconValues: [0, 1, 0]},
+        { id: '001', index: 1, iconValues: [0, 0, 1]},
+        { id: '000', index: 0, iconValues: [0, 0, 0]},
     ];
-
     constructor(
         private automaton: AutomatonService,
         private converter: RuleConverterService,

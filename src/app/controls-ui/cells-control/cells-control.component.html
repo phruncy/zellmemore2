@@ -1,10 +1,9 @@
 <!-- <label for="cells-control">cells: </label> -->
 <div class="settings-unit" id="cells-control">
-        <span class="tag" for="cellnumber-slider" id="cellnumber-slider-label">{{this.automaton.cellnumber}} cells</span>
+        <span class="tag" for="cellnumber-slider" id="cellnumber-slider-label">{{automaton.cellnumber}} cells</span>
         <mat-slider                 
                 [min]="_cellsMin"
                 [max]="_cellsMax"
-                [(ngModel)]="this.automaton.cellnumber"
                 [step]="_step"
-        ><input matSliderThumb /></mat-slider>
+        ><input matSliderThumb [(ngModel)]="automaton.cellnumber"/></mat-slider>
 </div>

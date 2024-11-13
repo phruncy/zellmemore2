@@ -9,42 +9,15 @@ $custom-typography: mat.m2-define-typography-config(
 
 @include mat.all-component-typographies($custom-typography);
 
-// Material Design Overrides
-/* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-.mat-mdc-slider.mat-slider-horizontal {
-        min-width: 80px;
-        padding: 0;
-}
-
-.mat-mdc-slider {
-        height: 100%;
-        top: $matSliderOffset;
-}
-
 .mat-mdc-menu-panel.ng-trigger.ng-trigger-transformMenu {
-        max-width: 430px;
+        max-width: 500px;
         position: relative;
         top: $buttonMargin;
-}
-
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-        border-top: none;
-        padding: 0.3em 0;
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
 .mat-select-trigger {
         width: 140px;
-}
-
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-        padding-bottom: 0;
-}
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-appearance-legacy .mat-form-field-underline {
-        position: static;
 }
 
 .mat-mdc-slide-toggle {

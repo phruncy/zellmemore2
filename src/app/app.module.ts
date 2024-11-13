@@ -41,7 +41,7 @@ import { VizWaves03Component } from './widget-content/waves03/viz-waves03.compon
 import { VizWaves04Component } from './widget-content/waves04/viz-waves04.component';
 import { StatusDisplayComponent } from './controls-ui/status-display/status-display.component';
 import { ChaosComponent } from './widget-content/chaos/chaos.component';
-import { RuleControlComponent } from './controls-ui/automaton-controller/rule-control/rule-control.component';
+import { RuleControlComponent } from './controls-ui/rule-control/rule-control.component';
 import { SpeedControlComponent } from './controls-ui/speed-control/speed-control.component';
 import { EdgeControlComponent } from './controls-ui/edge-control/edge-control.component';
 import { CellsControlComponent } from './controls-ui/cells-control/cells-control.component';

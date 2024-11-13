@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation, model } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { RuleConverterService } from 'src/app/services/rule-converter.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rule-control',

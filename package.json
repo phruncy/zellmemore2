@@ -38,7 +38,6 @@
     "@angular/compiler-cli": "^18.2.11",
     "@angular/language-service": "^18.2.11",
     "@types/hammerjs": "^2.0.36",
-    "@types/jasminewd2": "~2.0.3",
     "@types/node": "^22.9.0",
     "protractor": "~7.0.0",
     "ts-node": "^10.9.2",

@@ -60,12 +60,12 @@ export class VizPunchcardComponent extends ContentBase implements AfterContentIn
             this._radius = (this.widgetWidth - 2 * this._edge - this._dotSize - 2 * this._amplitude) / 2;
         }
 
-        getLinearX(cell: any) {
-            return (this._dotSize + this._dotGap) * cell.id + this._edge;
+        getLinearX(index: number) {
+            return (this._dotSize + this._dotGap) * index + this._edge;
         }
 
-        getAmplitude(cell: any) {
-            if (cell.state === 1) {
+        getAmplitude(state: number) {
+            if (state === 1) {
                 return this._amplitude;
             }
             return - this._amplitude;
@@ -79,24 +79,25 @@ export class VizPunchcardComponent extends ContentBase implements AfterContentIn
                     s.fill(0);
                 };
 
-                s.draw = () => {
+                s.draw = () => 
+                {
                     s.background(255);
                     if (this.automaton.isCircular) {
                         s.push();
                         s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
-                        this.automaton.cells.forEach(cell => {
+                        this.automaton.states.forEach((state, index) => {
                             s.push();
-                            s.rotate(this._segmentSize * cell.id);
+                            s.rotate(this._segmentSize * index);
                             //
-                            s.translate(0, this._radius + this.getAmplitude(cell));
+                            s.translate(0, this._radius + this.getAmplitude(state));
                             s.ellipse(0, 0, this._dotSize +2, this._dotSize +2);
                             s.pop();
                         });
                         s.pop();
                     } else {
-                        this.automaton.cells.forEach( cell => {
+                        this.automaton.states.forEach( (state, index) => {
                             // amplitude has to be subtracted since the coordinate origin is at the top!
-                            s.ellipse(this.getLinearX(cell), this._linePosition - this.getAmplitude(cell), this._dotSize, this._dotSize);
+                            s.ellipse(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this._dotSize, this._dotSize);
                         });
                     }
                 };

@@ -74,7 +74,7 @@ export class VizVortexComponent extends ContentBase implements AfterContentInit 
         this.canvas.nativeElement.width = this.widgetWidth;
         this._radiusMax = (this.widgetHeight * 0.9) / 2;
         this._segmentHeight = this._radiusMax / this.matrix.data.length;
-        this._segment = (Math.PI * 2) / this.automaton.cells.length;
+        this._segment = (Math.PI * 2) / this.automaton.states.length;
         this._center = this.widgetWidth / 2;
         this.update();
     }

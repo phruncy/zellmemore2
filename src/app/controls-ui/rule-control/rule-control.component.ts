@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
-import { RuleConverterService } from 'src/app/services/rule-converter.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,53 +17,97 @@ export class RuleControlComponent implements OnInit {
     private faAngleLeft = faAngleLeft;
 
     private BOXES = [
-        { id: '111', index: 7, iconValues: [1, 1, 1]},
-        { id: '110', index: 6, iconValues: [1, 1, 0]},
-        { id: '101', index: 5, iconValues: [1, 0, 1]},
-        { id: '100', index: 4, iconValues: [1, 0, 0]},
-        { id: '011', index: 3, iconValues: [0, 1, 1]},
-        { id: '010', index: 2, iconValues: [0, 1, 0]},
-        { id: '001', index: 1, iconValues: [0, 0, 1]},
-        { id: '000', index: 0, iconValues: [0, 0, 0]},
+        { id: '111', index: 7, iconValues: [1, 1, 1], checked: false},
+        { id: '110', index: 6, iconValues: [1, 1, 0], checked: false},
+        { id: '101', index: 5, iconValues: [1, 0, 1], checked: false},
+        { id: '100', index: 4, iconValues: [1, 0, 0], checked: false},
+        { id: '011', index: 3, iconValues: [0, 1, 1], checked: false},
+        { id: '010', index: 2, iconValues: [0, 1, 0], checked: false},
+        { id: '001', index: 1, iconValues: [0, 0, 1], checked: false},
+        { id: '000', index: 0, iconValues: [0, 0, 0], checked: false},
     ];
     constructor(
         private automaton: AutomatonService,
-        private converter: RuleConverterService,
         private messenger: MessengerService) { }
 
     ngOnInit() {
         this.automaton.ready$.subscribe(
             () => {
-                this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
+                this.decimal = this.automaton.rule;
+                this.BOXES.forEach((box) => {
+                    if ((this.automaton.rule >> box.index & 1) === 1)
+                        box.checked = true;
+                });
             }
         );
     }
 
-  /* sets the digit in the ruleset at the given index to active or inactive, depending on the checkbox state */
-    updateRule(index: number, checked: boolean) {
-        this.automaton.ruleset[index] = checked ? 1 : 0;
-        this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
+    onTextInputChanged()
+    {
+        this.updateRule(convertRuleInput(this.decimal));
+        this.syncBoxes();
     }
 
-    updateDecimal(): void {
-    if (this.decimal === '') {
-        this.decimal = 0;
-    }
-    try {
-        this.automaton.ruleset = this.converter.decimalToBinary(parseInt(this.decimal, 10));
-    } catch (error) {
-        this.decimal = this.converter.binaryToDecimal(this.automaton.ruleset);
-        console.log(error);
-        const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer);
-    }
-  }
-
-    toggleBoxes() {
-        this._boxesDisplayed = !this._boxesDisplayed;
+    onBoxesChanged()
+    {
+        const newRule = parseFromCheckboxes(this.BOXES);
+        this.updateRule(newRule);
+        this.syncDecimal();
     }
 
-    setIcon(value: boolean) {
+    syncDecimal()
+    {
+        this.decimal = this.automaton.rule;
+    }
+
+    syncBoxes()
+    {
+        this.BOXES.forEach((box) => {
+            if ((this.automaton.rule >> box.index & 1) === 1)
+                box.checked = true;
+            else
+                box.checked = false;
+        });
+    }
+
+    updateRule(rule: number) {
+        try 
+        {
+            if ((rule < 0) || (rule > 255) || isNaN(rule))
+                    throw new Error("Invalid rule input.");
+            this.automaton.rule = rule;
+        }
+        catch(error)
+        {
+            const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer);
+            this.decimal = this.automaton.rule;
+        }
+    }
+
+    setIcon(value: boolean) 
+    {
         this._boxesDisplayed = value;
     }
 
 }
+
+function parseFromCheckboxes(BOXES: any) : number
+{
+    const shiftIn = (result, box) => {
+        result = result<<1;
+        if(box.checked)
+        {
+            result |= 1;
+        }
+        return result;
+    }
+    return BOXES.reduce(shiftIn, 0);
+}
+
+function convertRuleInput(decimal: string): number 
+{
+    if(decimal === "")
+        return 0;
+    return parseInt(decimal, 10);
+}
+

@@ -5,7 +5,7 @@
         </div>
 
         <mat-form-field class="rule-label">
-                <input matInput maxlength="3" [(ngModel)]="decimal" (input)="updateDecimal()" class="textinput">
+                <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()" class="textinput">
         </mat-form-field>
         <span>
                 <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="_boxesDisplayed">    
@@ -26,8 +26,8 @@
                                 <mat-checkbox 
                                         id="{{box.id}}"
                                         value="{{box.index}}"
-                                        [(ngModel)]="automaton.ruleset[box.index]"
-                                        (change)="updateRule(box.index, !this.automaton.ruleset[box.index])"
+                                        [(ngModel)]="box.checked"
+                                        (change)="onBoxesChanged()"
                                 ></mat-checkbox>
                         </div>
                 </span>

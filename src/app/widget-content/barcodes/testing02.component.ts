@@ -59,11 +59,10 @@ export class Testing02Component extends ContentBase implements AfterContentInit 
     render()
     {
         this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
-        for (let i = 0; i < this.automaton.cells.length; i++) {
-            if (this.automaton.cells[i].state === 1) {
+        for (let i = 0; i < this.automaton.states.length; i++) {
+            if (this.automaton.states[i] === 1) {
                 this._ctx.fillRect(i * this._blockSize, 0, this._blockSize, this.widgetHeight);
             }
         }
     }
-
 }

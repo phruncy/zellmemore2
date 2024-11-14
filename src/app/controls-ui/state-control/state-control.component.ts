@@ -10,6 +10,16 @@ export class StateControlComponent implements OnInit {
 
   constructor(private automaton: AutomatonService) { }
 
+  private initMode;
   ngOnInit() {
+    this.automaton.ready$.subscribe(() =>
+    {
+      this.initMode = this.automaton.initMode;
+    });
+  }
+
+  onSelectionChange()
+  {
+    this.automaton.initMode = this.initMode;
   }
 }

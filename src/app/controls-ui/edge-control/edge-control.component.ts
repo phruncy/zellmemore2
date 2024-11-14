@@ -26,7 +26,7 @@ export class EdgeControlComponent implements OnInit {
     }
 
     toggle() {
-        this.automaton.isCircular = !this.automaton.isCircular;
+        this.automaton.toggleArrayMode();
         this.setLabel();
     }
 

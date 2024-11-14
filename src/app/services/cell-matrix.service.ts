@@ -39,7 +39,7 @@ export class CellMatrixService {
 
     update() 
     {
-        this._data.push(this.automaton.cells.map(cell => cell.state));
+        this._data.push(this.automaton.states.slice(0));
         if (this._data.length > this._capacity) {
             this.data.shift();
         }

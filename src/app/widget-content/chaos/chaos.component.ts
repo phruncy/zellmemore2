@@ -68,11 +68,11 @@ export class ChaosComponent extends ContentBase implements AfterContentInit {
             this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
             this._ctx.putImageData(this._buffer, 0, 0);
         }
-        this.automaton.cells.forEach(
-            cell => {
-                if (cell.state === 1) {
+        this.automaton.states.forEach(
+            (state, index) => {
+                if (state === 1) {
                     this._ctx.fillRect(
-                        this._randomized[cell.id] * this._blockSize,
+                        this._randomized[index] * this._blockSize,
                         positionY, 
                         this._blockSize,
                         this._blockSize);

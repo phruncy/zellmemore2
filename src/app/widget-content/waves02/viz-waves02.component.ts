@@ -40,8 +40,8 @@ export class VizWaves02Component extends ContentBase implements AfterContentInit
         this.createP5();
     }
     update() {
-        this.automaton.cells.forEach((cell, index) => {
-                this._agents[index].target = this.getTargetPosition(cell.state);
+        this.automaton.states.forEach((state, index) => {
+                this._agents[index].target = this.getTargetPosition(state);
         });
     }
 
@@ -122,9 +122,9 @@ export class VizWaves02Component extends ContentBase implements AfterContentInit
         this._segment = (Math.PI * 2) / this.automaton.cellnumber;
         // initialize agents with current automaton state
         this._agents = [];
-        this.automaton.cells.forEach(cell => {
+        this.automaton.states.forEach((state, index) => {
             this._agents.push(
-                new Agent(cell.id, this.getTargetPosition(cell.state)));
+                new Agent(index, this.getTargetPosition(state)));
         });
         this._centerX = this.widgetWidth / 2;
         this._centerY = this.widgetHeight / 2;

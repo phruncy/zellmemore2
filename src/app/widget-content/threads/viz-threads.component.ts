@@ -74,14 +74,14 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
         this._strokeWeight = this.strokeWeight;
     }
 
-    getLinearX(cell: any) 
+    getLinearX(index: number) 
     {
-        return (this._dotSize + this._dotGap) * cell.id + this._edge;
+        return (this._dotSize + this._dotGap) * index + this._edge;
     }
 
-    getAmplitude(cell: any) 
+    getAmplitude(state: number) 
     {
-        if (cell.state === 1) {
+        if (state === 1) {
             return this._amplitude;
         }
         return - this._amplitude;
@@ -99,30 +99,30 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
                 if (this.automaton.isCircular) {
                     s.push();
                     s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
-                    this.automaton.cells.forEach(cell => {
-                        s.defineColor(cell);
+                    this.automaton.states.forEach((state, index) => {
+                        s.defineColor(state);
                         s.push();
-                        s.rotate(this._segmentSize * cell.id);
+                        s.rotate(this._segmentSize * index);
                         //
-                        s.translate(0, this._radius + this.getAmplitude(cell));
+                        s.translate(0, this._radius + this.getAmplitude(state));
                         s.line(0, 0, s.width, s.height);
                         s.ellipse(0, 0, this._dotSize, this._dotSize);
                         s.pop();
                     });
                     s.pop();
                 } else {
-                    this.automaton.cells.forEach( cell => {
-                        s.defineColor(cell);
-                        s.line(this.getLinearX(cell), this._linePosition - this.getAmplitude(cell), this.getLinearX(cell) - this.getAmplitude(cell), 0);
+                    this.automaton.states.forEach( (state, index) => {
+                        s.defineColor(state);
+                        s.line(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this.getLinearX(index) - this.getAmplitude(state), 0);
                         // amplitude has to be subtracted since the coordinate origin is at the top!
-                        s.ellipse(this.getLinearX(cell), this._linePosition - this.getAmplitude(cell), this._dotSize, this._dotSize);
+                        s.ellipse(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this._dotSize, this._dotSize);
                     });
                 }
             };
 
-            s.defineColor = (cell) =>
+            s.defineColor = (state: number) =>
             {
-                if (cell.state === 1) {
+                if (state === 1) {
                     s.stroke(this._color01[0], this._color01[1], this._color01[2]);
                     s.fill(this._color01[0], this._color01[1], this._color01[2]);
                 } else {

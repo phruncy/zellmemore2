@@ -34,10 +34,10 @@ export class VizFrequencyComponent extends ContentBase implements AfterContentIn
 
     update()
     {
-        this.automaton.cells.forEach(cell =>
+        this.automaton.states.forEach((state, index) =>
             {
-                if (cell.state === 1) {
-                this._history[cell.id]++;
+                if (state === 1) {
+                    this._history[index]++;
                 }
             }
         );
@@ -65,12 +65,11 @@ export class VizFrequencyComponent extends ContentBase implements AfterContentIn
             s.draw = () => {
                 s.background(255);
                 const scale = this.scale();
-                this.automaton.cells.forEach(cell =>
-                    {
-                        const barHeight = this._history[cell.id] * this._barWidth * scale;
-                        s.rect(cell.id * this._barWidth, s.height - barHeight, this._barWidth, barHeight);
-                    }
-                );
+                for (let i = 0; i < this._history.length; i++)
+                {
+                    const barHeight = this._history[i] * this._barWidth * scale;
+                    s.rect(i * this._barWidth, s.height - barHeight, this._barWidth, barHeight);
+                }
             }
         }
         this._p5 = new p5(sketch, this.container.nativeElement);
@@ -82,7 +81,7 @@ export class VizFrequencyComponent extends ContentBase implements AfterContentIn
 
     resetHistory() 
     {
-        this._history = this.automaton.cells.map(cell => cell.state);
+        this._history = this.automaton.states.slice(0);
     }
 
     /* scales the bar height once a constantly active cell's bar would reach 

@@ -37,8 +37,8 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
         this.createP5();
     }
     update() {
-        this.automaton.cells.forEach((cell, index) => {
-                this._agents[index].target = this.getTargetPosition(cell.state);
+        this.automaton.states.forEach((state, index) => {
+                this._agents[index].target = this.getTargetPosition(state);
         });
     }
 
@@ -106,7 +106,8 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
         this._p5 = new p5(sketch, this.container.nativeElement);
     }
 
-    init() {
+    init() : void
+    {
         this._margin = this.widgetWidth * 0.05;
         this._amplitude = this.widgetHeight * 0.2;
         this._baseline = this.widgetHeight / 2 + this._amplitude / 2;
@@ -117,20 +118,23 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
         this._segment = (Math.PI * 2) / this.automaton.cellnumber;
         // initialize agents with current automaton state
         this._agents = [];
-        this.automaton.cells.forEach(cell => {
+        this.automaton.states.forEach((state, i) => {
             this._agents.push(
-                new Agent(cell.id, this.getTargetPosition(cell.state)));
+                new Agent(i, this.getTargetPosition(state)));
         });
     }
 
-    getTargetPosition(state: number): number {
-        if (state === 1) {
+    getTargetPosition(state: number): number 
+    {
+        if (state === 1) 
+        {
             return this._amplitude;
         }
         return 0;
     }
 
-    moveAgents() {
+    moveAgents() 
+    {
         const speed = (this._amplitude / (60 / this.automaton.fps));
         this._agents.forEach( agent => {
             const distanceRemaining = Math.abs(agent.target - agent.pos);

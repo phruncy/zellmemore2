@@ -6,13 +6,8 @@ import { AutomatonService } from 'src/app/services/automaton.service';
   templateUrl: './status-display.component.html',
   styleUrls: ['./status-display.component.css']
 })
-export class StatusDisplayComponent implements OnInit {
-
-    @Input() cellnumber: number;
+export class StatusDisplayComponent implements OnInit 
+{
     constructor(private automaton: AutomatonService) { }
-
-    ngOnInit() {
-        this.cellnumber = this.automaton.cellnumber;
-    }
-
+    ngOnInit() {}
 }

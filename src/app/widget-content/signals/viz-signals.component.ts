@@ -52,8 +52,8 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
             this._colorCounter = 0;
         }
         this._p5.fill(color[0], color[1], color[2]);
-        this.automaton.cells.forEach((cell, index) => {
-                this._agents[index].target = this.getTargetPosition(cell.state);
+        this.automaton.states.forEach((state, index) => {
+                this._agents[index].target = this.getTargetPosition(state);
         });
     }
 
@@ -120,13 +120,14 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
         this._radius = (this.widgetWidth - 2 * this._margin - 2 * this._amplitude) / 2;
         this._segment = (Math.PI * 2) / this.automaton.cellnumber;
         this._agents = [];
-        this.automaton.cells.forEach(cell => {
-            this._agents.push(new Agent(cell.id, this.getTargetPosition(cell.state)));
+        this.automaton.states.forEach((state, index) => {
+            this._agents.push(new Agent(index, this.getTargetPosition(state)));
         });
         this._colorCounter = Math.floor(Math.random() * 7);
     }
 
-    getTargetPosition(state: number): number {
+    getTargetPosition(state: number): number 
+    {
         if (state === 1) {
             return this._amplitude;
         }

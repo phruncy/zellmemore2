@@ -87,11 +87,11 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
             this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
             this._ctx.putImageData(this._buffer, 0, 0);
         }
-        this.automaton.cells.forEach(
-            cell => {
-                if (cell.state === 1) {
+        this.automaton.states.forEach(
+            (state, index) => {
+                if (state === 1) {
                     this._ctx.fillRect(
-                        cell.id * this._blockSize, 
+                        index * this._blockSize, 
                         positionY, 
                         this._blockSize, 
                         this._blockSize);

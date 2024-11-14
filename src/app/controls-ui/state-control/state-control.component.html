@@ -1,7 +1,10 @@
 <div class="settings-unit">
 <!--         <span class="tag">initial: </span> -->     
         <div class="select-wrapper">
-                <mat-select class="settings-unit" [(ngModel)]="this.automaton.initState" disableRipple>
+                <mat-select class="settings-unit" 
+                        [(ngModel)]="initMode"
+                        (selectionChange)="onSelectionChange()"
+                        disableRipple>
                         <mat-option value="0">init from single cell</mat-option>
                         <mat-option value="1">random initial state</mat-option>
                 </mat-select>

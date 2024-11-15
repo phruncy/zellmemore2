@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProgramWindowComponent } from './program-window/program-window.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AutomatonConfigurationService } from './services/automaton-configuration.service';
 import { WidgetComponent } from './widget/widget.component';
 import { VisualizationDetailComponent } from './visualization-detail/visualization-detail.component';
 import { VisualizationSelectionComponent } from './visualization-selection/visualization-selection.component';
@@ -63,8 +62,6 @@ import { Step05Component } from './homepage/tutorial-animation/step05/step05.com
 import { Step06Component } from './homepage/tutorial-animation/step06/step06.component';
 import { StepFinalComponent } from './homepage/tutorial-animation/step-final/step-final.component';
 import { WidgetDirective } from './utils/widget.directive';
-
-
 
 @NgModule({ declarations: [
         AppComponent,
@@ -131,5 +128,5 @@ import { WidgetDirective } from './utils/widget.directive';
         MatCardModule,
         MatButtonModule,
         MatRippleModule,
-        MatDividerModule], providers: [AutomatonConfigurationService, provideHttpClient(withInterceptorsFromDi())] })
+        MatDividerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

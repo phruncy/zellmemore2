@@ -19,7 +19,8 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     constructor(protected automaton: AutomatonService,
                 protected sizeService: SizeService) {}
 
-    ngOnInit() {
+    ngOnInit() 
+    {
         this._generationSub = this.automaton.changed$.subscribe(
             () => {
                 this.update();

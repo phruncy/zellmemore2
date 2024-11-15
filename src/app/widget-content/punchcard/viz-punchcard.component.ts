@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterContentInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterContentInit, ElementRef } from '@angular/core';
 import { ContentBase } from '../../content-base/contentBase.component';
 import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
@@ -9,99 +9,110 @@ import * as p5 from 'p5';
   templateUrl: './viz-punchcard.component.html',
   styleUrls: ['./viz-punchcard.component.css']
 })
-export class VizPunchcardComponent extends ContentBase implements AfterContentInit {
-
+export class VizPunchcardComponent extends ContentBase implements AfterContentInit 
+{
     @ViewChild('container', { static: true }) container: ElementRef;
     private _p5: p5;
-    private _dotSize = 10;
-    private _dotGap: number;
-    // the horizontal position of the dots in linear mode
-    private _linePosition: number;
-    private _edge: number;
-    /* for circular mode */
-    private _amplitude: number;
-    private _radius: number;
-    // distance between Dots in circular Mode
-    private _segmentSize: number;
 
     constructor(
         protected automaton: AutomatonService,
         protected sizeService: SizeService
-        ) {
+        ) 
+        {
             super(automaton, sizeService);
+            this.processingSketch = this.processingSketch.bind(this);
         }
 
-        ngAfterContentInit() {
-            this.initValues();
+        ngAfterContentInit() 
+        {
             this.createP5();
-          }
+        }
 
         onReset()
         {
-            this.initValues();
+            this._p5.reset();
         }
 
         onResize()
         {
-            this.initValues();
-            this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
+            this._p5.onWidgetResize(this.widgetWidth, this.widgetHeight);
         }
 
-        update()
-        {}
+        update() {}
 
-        initValues() {
-            this._linePosition = this.widgetHeight / 2;
-            this._edge = this.widgetWidth * 0.05;
-            this._dotGap = ((this.widgetWidth - 2 * this._edge) / this.automaton.cellnumber) * 0.5;
-            this._dotSize = ((this.widgetWidth - 2 * this._edge) / this.automaton.cellnumber) - this._dotGap;
-            this._amplitude = this._dotSize * 2;
-            this._segmentSize = (2 * Math.PI) / this.automaton.cellnumber;
-            this._radius = (this.widgetWidth - 2 * this._edge - this._dotSize - 2 * this._amplitude) / 2;
+        createP5() 
+        {
+            this._p5 = new p5(this.processingSketch, this.container.nativeElement);
         }
 
-        getLinearX(index: number) {
-            return (this._dotSize + this._dotGap) * index + this._edge;
-        }
+        /**
+         * 
+         * @param p5 A p5 object (this will be created and passed by the p5 constuctor)
+         */
+        processingSketch(p5)
+        {
+            let edge: number = 0;
+            let linePosition: number = 0;
+            let dotSize: number = 1;
+            let dotGap: number = 0;
+            let angle: number = 0;
+            let amplitude: number = 0;
+            let circularModeRadius: number;
+            
+            const getLinearX = (index: number) => (dotSize + dotSize) * index + edge;
+            const getAmplitude = (state: number) => state === 1 ? amplitude : -amplitude;
 
-        getAmplitude(state: number) {
-            if (state === 1) {
-                return this._amplitude;
+            const initValues = () =>
+            {
+                edge = p5.width * 0.05;
+                linePosition = p5.height / 2;
+                dotSize = (p5.width - 2 * edge) * 0.5 / this.automaton.cellnumber;
+                dotGap = (p5.width - 2 * edge) / this.automaton.cellnumber - edge;
+                angle = 2 * Math.PI / this.automaton.cellnumber;
+                amplitude = dotSize * 2;
+                circularModeRadius = (p5.width - 2 * edge - dotSize - 2 * amplitude) / 2;
             }
-            return - this._amplitude;
-        }
-
-        createP5() {
-            const sketch = (s) => {
-                s.setup = () => {
-                    s.createCanvas(this.widgetWidth, this.widgetHeight);
-                    s.noStroke();
-                    s.fill(0);
-                };
-
-                s.draw = () => 
-                {
-                    s.background(255);
-                    if (this.automaton.isCircular) {
-                        s.push();
-                        s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
-                        this.automaton.states.forEach((state, index) => {
-                            s.push();
-                            s.rotate(this._segmentSize * index);
-                            //
-                            s.translate(0, this._radius + this.getAmplitude(state));
-                            s.ellipse(0, 0, this._dotSize +2, this._dotSize +2);
-                            s.pop();
-                        });
-                        s.pop();
-                    } else {
-                        this.automaton.states.forEach( (state, index) => {
-                            // amplitude has to be subtracted since the coordinate origin is at the top!
-                            s.ellipse(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this._dotSize, this._dotSize);
-                        });
-                    }
-                };
+            
+            p5.setup = () => 
+            {
+                p5.createCanvas(this.widgetWidth, this.widgetHeight);
+                p5.noStroke();
+                p5.fill(0);
+                initValues();
             };
-            this._p5 = new p5(sketch, this.container.nativeElement);
-        }
+        
+            p5.draw = () => 
+            {
+                p5.background(255);
+                if (this.automaton.isCircular) {
+                    p5.push();
+                    p5.translate(p5.width / 2, p5.height / 2);
+                    this.automaton.states.forEach((state, index) => 
+                    {
+                        p5.push();
+                        p5.rotate(angle * index);
+                        p5.translate(0, circularModeRadius + getAmplitude(state));
+                        p5.circle(0, 0, dotSize +2);
+                        p5.pop();
+                    });
+                    p5.pop();
+                } else {
+                    this.automaton.states.forEach( (state, index) => {
+                        // amplitude has to be subtracted since the coordinate origin is at the top!
+                        p5.circle(getLinearX(index), linePosition - getAmplitude(state), dotSize);
+                    });
+                }
+            };
+
+            p5.onWidgetResize = (widgetWidth: number, widgetHeight: number) =>
+            {
+                p5.resizeCanvas(widgetWidth, widgetHeight);
+                initValues();
+            }
+
+            p5.reset()
+            {
+                initValues();
+            }
+        };
 }

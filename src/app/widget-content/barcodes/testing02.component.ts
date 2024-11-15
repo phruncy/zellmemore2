@@ -1,6 +1,5 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterContentInit } from '@angular/core';
 import { AutomatonService } from '../../services/automaton.service';
-import { Subscription } from 'rxjs';
 import { ContentBase } from '../../content-base/contentBase.component';
 import { SizeService } from '../../services/size.service';
 

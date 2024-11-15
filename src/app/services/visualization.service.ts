@@ -1,7 +1,5 @@
-import { Injectable, 
-       } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-/* All Visualization Components */
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Testing02Component } from '../widget-content/barcodes/testing02.component';
 import { VizDefaultComponent } from '../widget-content/default/viz-default.component';
 import { VizPunchcardComponent } from '../widget-content/punchcard/viz-punchcard.component';
@@ -12,7 +10,6 @@ import { VizSignalsComponent } from '../widget-content/signals/viz-signals.compo
 import { VizWaves01Component } from '../widget-content/waves01/viz-waves01.component';
 import { VizWaves02Component } from '../widget-content/waves02/viz-waves02.component';
 import { VizWaves03Component } from '../widget-content/waves03/viz-waves03.component';
-import { VizWaves04Component } from '../widget-content/waves04/viz-waves04.component';
 import { ChaosComponent } from '../widget-content/chaos/chaos.component';
 import { ContentBase } from '../content-base/contentBase.component';
 
@@ -45,20 +42,13 @@ export class VisualizationService {
         "v011": VizWaves03Component,
     };
 
-    constructor() 
-    {
-    }
+    constructor() {}
 
     get visualizationToDisplay(): string
     {
         return this._visualizationToDisplay;
     }
-    /*
-     * this is used by the visualization-selection
-     * to determine the visualization to display
-     * changes are detected by the program window 
-     * which then adds the selected visualization as a new widget
-     */
+
     set visualizationToDisplay(id: string)
     {
         if (!(id in this.visualizationComponents)) {
@@ -70,25 +60,26 @@ export class VisualizationService {
         } catch (error) {
             console.log(error);
         }
-        // tells program window about value change
         this._hasChanged.next();
     }
 
-    get activeComponents() {
+    get activeComponents() 
+    {
         return this._activeComponents;
     }
 
-    getComponentById (id) {
+    getComponentById(id) 
+    {
         return this.visualizationComponents[id];
     }
 
-    /* returns the component for the currently selected id */
     provideComponent() : any
     {
         return this.visualizationComponents[this.visualizationToDisplay];
     }
 
-    addToActive(component: ContentBase) {
+    addToActive(component: ContentBase) 
+    {
         const id = this.visualizationToDisplay;
         this._activeComponents.push(id);
         const sub = component.$onDestroy.subscribe(
@@ -100,7 +91,8 @@ export class VisualizationService {
         this._activeComponentsChanged.next();
     }
 
-    removeFromActive(id: string) {
+    removeFromActive(id: string) 
+    {
         const index = this._activeComponents.indexOf(id);
         if (index === 0) {
             this._activeComponents.shift();

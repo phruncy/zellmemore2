@@ -9,7 +9,6 @@ export class VisualizationDetailService {
 
   constructor(private http: HttpClient) { }
 
-  // provides the json data asounchronously
   provideVisualizations(): Observable<any>
   {
     return this.http.get<any>('../assets/json/visualization-details.json').pipe();

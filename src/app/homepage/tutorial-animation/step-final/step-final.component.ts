@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from '../../animations';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -11,17 +11,14 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
       animations.slideInDescription
   ]
 })
-export class StepFinalComponent extends Step implements OnInit {
-
-    faAngleRight = faAngleRight;
+export class StepFinalComponent extends Step 
+{
+    readonly faAngleRight = faAngleRight;
     constructor() {
       super();
       this.descriptions = [
         'The program on this website provides visualizations of one dimensional cellular automata that depict the cells and their states in multiple ways. Feel free to experiment with different rules, cell numbers and edge behaviours!'
     ];
    }
-
-  ngOnInit() {
-  }
 
 }

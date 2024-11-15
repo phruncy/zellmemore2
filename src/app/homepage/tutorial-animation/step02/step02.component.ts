@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Step } from '../step';
 import {trigger, state, style, animate, transition } from '@angular/animations';
 import { animations } from 'src/app/homepage/animations';
@@ -16,33 +16,37 @@ import { animations } from 'src/app/homepage/animations';
         animations.slideInDescription
     ]
 })
-export class Step02Component extends Step implements OnInit {
-
-    private cells = [
+export class Step02Component extends Step implements OnInit 
+{
+    private cells = 
+    [
         {state : 'active'},
     ];
 
-    constructor() {
+    constructor() 
+    {
         super();
-        this.descriptions = [
+        this.descriptions = 
+        [
             'Now let\s align a bunch of them one-dimensionally in a row.',
             'In discrete time intervals, the cells all change their state. Each time step is a new generation in the automaton\'s lifecyle.',
         ];
      }
 
-    ngOnInit() {
+    ngOnInit() 
+    {
         for (let i = 0; i < 15; i++) {
-            this.cells.push(
-                {state : this.provideRandomState()}
-            );
+            this.cells.push({state : this.provideRandomState()});
         }
     }
 
-    toggleState(i: number) {
+    toggleState(i: number) 
+    {
         this.cells[i].state = (this.cells[i].state === 'active' ? 'inactive' : 'active');
     }
 
-    provideRandomState(): string {
+    provideRandomState(): string 
+    {
         const random = Math.round(Math.random());
         return random === 1 ? 'active' : 'inactive';
     }

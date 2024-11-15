@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { faArrowCircleRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +8,9 @@ import { faArrowCircleRight, faChevronRight } from '@fortawesome/free-solid-svg-
 })
 
 
-export class HomeComponent implements OnInit {
-
-    private faArrowAltCircleRight = faChevronRight;
+export class HomeComponent 
+{
+    readonly faArrowAltCircleRight = faChevronRight;
     
     constructor() { }
-
-  ngOnInit() {
-  }
 }

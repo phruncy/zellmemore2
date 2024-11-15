@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -10,7 +10,8 @@ import { animations } from 'src/app/homepage/animations';
         animations.slideInDescription
     ]
 })
-export class Step04Component extends Step implements OnInit {
+export class Step04Component extends Step
+{
 
     constructor() {
         super();
@@ -18,8 +19,4 @@ export class Step04Component extends Step implements OnInit {
             'This change does not happen randomly, but follows a specific ruleset.'
         ];
     }
-
-    ngOnInit() {
-    }
-
 }

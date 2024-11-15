@@ -9,8 +9,6 @@ import { Component,
           OnDestroy,
           ViewChild,
           ViewContainerRef,
-          //ComponentFactoryResolver,
-          //ComponentRef,
           HostBinding,
           Input,
         } from '@angular/core';
@@ -31,8 +29,8 @@ import { ContentBase } from '../content-base/contentBase.component';
         {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
     ]
 })
-export class WidgetComponent implements OnInit, OnDestroy {
-
+export class WidgetComponent implements OnInit, OnDestroy 
+{
     @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
     /* binds the width/height properties to the width/height variables. type is 'string'! */
     @ViewChild('fullscreen', { static: true }) container; // reference to  container-div
@@ -51,7 +49,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
             private visService: VisualizationService,
             private details: VisualizationDetailService,
             private sizeService: SizeService,
-            //private resolver: ComponentFactoryResolver,
             private automaton: AutomatonService,
         ) {}
 
@@ -66,11 +63,8 @@ export class WidgetComponent implements OnInit, OnDestroy {
      */
     ngOnInit() 
     {
-        this.sizeService.sizeChanged$.subscribe (
-            () => {
-                this.fetchSize();
-                }
-        );
+        this.fetchSize = this.fetchSize.bind(this);
+        this.sizeService.sizeChanged$.subscribe (this.fetchSize);
         this.sizeService.increaseWidgetNumber();
         this.fetchSize();
         this.fetchComponent();
@@ -89,10 +83,10 @@ export class WidgetComponent implements OnInit, OnDestroy {
     fetchComponent()
     {
         const visualization = this.visService.provideComponent();
-        //const factory = this.resolver.resolveComponentFactory(visualization);
         const component = this.entry.createComponent(visualization);
         this.details.provideVisualizations().subscribe (
-            data => {
+            data => 
+            {
                 this._title = data.find(
                     obj => obj.id === this.visService.visualizationToDisplay).name;
             }
@@ -100,7 +94,8 @@ export class WidgetComponent implements OnInit, OnDestroy {
         this.visService.addToActive(component.instance as ContentBase);
     }
 
-    fetchSize() {
+    fetchSize() 
+    {
         this._width = this.sizeService.widgetSize.toString();
         this._height = this._width;
         this._marginRight = this.sizeService.margin;

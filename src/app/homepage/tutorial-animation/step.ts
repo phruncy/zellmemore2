@@ -9,7 +9,8 @@ export abstract class Step {
     constructor() {}
 
     @Input()
-    set activeDescription(active: number) {
+    set activeDescription(active: number) 
+    {
         this._activeDescription = active;
         if (this._activeDescription >= this.descriptions.length) {
             this.completion.emit();

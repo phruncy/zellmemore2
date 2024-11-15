@@ -21,8 +21,8 @@ import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
 })
 export class Step06Component extends Step implements OnInit {
 
-    faInfinity = faInfinity;
-    faQuestion = faQuestion;
+    readonly faInfinity = faInfinity;
+    readonly faQuestion = faQuestion;
     private _icon: any;
 
     private cells = [

@@ -12,8 +12,8 @@ export class SelectionTileComponent implements OnInit {
     @Input() id;
     @Input() name: string;
     @Input() thumbnail;
-    private faPlusCircle = faPlusCircle;
-    private faCheckCircle = faCheckCircle;
+    readonly faPlusCircle = faPlusCircle;
+    readonly faCheckCircle = faCheckCircle;
     private _isActive = false;
     constructor(private visualizationService: VisualizationService) { }
 

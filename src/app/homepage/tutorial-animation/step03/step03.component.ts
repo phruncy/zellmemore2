@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -10,8 +10,8 @@ import { animations } from 'src/app/homepage/animations';
     animations.slideInDescription
   ]
 })
-export class Step03Component extends Step implements OnInit {
-    
+export class Step03Component extends Step 
+{
     constructor() {
         super();
         this.descriptions = [
@@ -20,8 +20,4 @@ export class Step03Component extends Step implements OnInit {
             'The ruleset defines which state the middle cell is going to have for any combination of neighbourhood states.',
         ];
     }
-
-    ngOnInit() {
-    }
-
 }

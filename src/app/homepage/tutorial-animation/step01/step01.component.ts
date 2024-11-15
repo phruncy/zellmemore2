@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -10,8 +10,8 @@ import { animations } from 'src/app/homepage/animations';
       animations.slideInDescription
   ]
 })
-export class Step01Component extends Step implements OnInit {
-  
+export class Step01Component extends Step 
+{
     constructor() { 
         super();
         this.descriptions = [
@@ -19,8 +19,4 @@ export class Step01Component extends Step implements OnInit {
             'In an elementary cellular automaton, a cell may have one of two distinguishable state: black or white, 1 or 0, active or inactive – anything is possible. Let\'s go for the black and white example here.'
         ];
     }
-
-  ngOnInit() {
-  }
-
 }

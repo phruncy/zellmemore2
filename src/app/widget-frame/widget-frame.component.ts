@@ -1,6 +1,5 @@
 import { Component,
         OnInit,
-        ComponentFactoryResolver,
         ViewChild,
         ViewContainerRef,
         ElementRef,
@@ -23,13 +22,12 @@ export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
     @Output() clickAnimated = new EventEmitter();
-    private faAngleDown = faAngleDown;
-    private faPlusCircle = faPlusCircle;
+    readonly faAngleDown = faAngleDown;
+    readonly faPlusCircle = faPlusCircle;
 
     constructor(
         private visualizationService: VisualizationService,
         private sizeService: SizeService,
-        private resolver: ComponentFactoryResolver,
         private elRef: ElementRef,
         private cd: ChangeDetectorRef,
     ) { }
@@ -38,7 +36,7 @@ export class WidgetFrameComponent implements OnInit {
     {
         this.visualizationService.hasChanged$.subscribe(
         () => {
-            this.addWidget(this.visualizationService.visualizationToDisplay);
+            this.addWidget();
         });
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
@@ -48,18 +46,9 @@ export class WidgetFrameComponent implements OnInit {
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
 
-
-
-    /* Subscription to Visualization Service:
-    * a new widget is added whenever the selected visualization changes
-    * change in value is induced by the selection component's
-    * (click) Callback
-    */
-    addWidget(id: any)
+    addWidget()
     {
-        // creates a Factory for a widget component
-        const widgetFactory = this.resolver.resolveComponentFactory(WidgetComponent);
-        const component = this.entry.createComponent(widgetFactory);
+        const component = this.entry.createComponent(WidgetComponent);
         component.instance.ref = component;
         this.cd.detectChanges();
     }

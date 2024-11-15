@@ -1,5 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ViewContainerRef, TemplateRef} from '@angular/core';
-//import { _MatChipListMixinBase } from '@angular/material/chips';
+import { Component, OnInit, NgZone, ViewChild, ViewContainerRef} from '@angular/core';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Step01Component } from './step01/step01.component';
 import { Step02Component } from './step02/step02.component';
@@ -22,8 +21,8 @@ export class TutorialAnimationComponent implements OnInit {
 
     @ViewChild('entry', { read: ViewContainerRef, static: false }) entry: ViewContainerRef;
 
-    private faAngleDown = faAngleDown;
-    private faAngleUp = faAngleUp;
+    readonly faAngleDown = faAngleDown;
+    readonly faAngleUp = faAngleUp;
     private _activeStepDescription = 0;
     private _tutorialStep: number;
     private _currentTotalSteps = 0;
@@ -31,7 +30,8 @@ export class TutorialAnimationComponent implements OnInit {
 
     constructor() {}
 
-    set tutorialStep(step: number) {
+    set tutorialStep(step: number) 
+    {
         if (step > this.steps.length) {
             return;
         }
@@ -43,7 +43,8 @@ export class TutorialAnimationComponent implements OnInit {
         return this._tutorialStep;
     }
 
-    ngOnInit() {
+    ngOnInit() 
+    {
         this._tutorialStep = 0;
         this.steps = [
             {step: Step01Component, active: false},

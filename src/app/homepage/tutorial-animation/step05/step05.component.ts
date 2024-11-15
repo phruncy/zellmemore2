@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -12,8 +12,8 @@ import { animations } from 'src/app/homepage/animations';
         animations.dropdownCell
     ]
 })
-export class Step05Component extends Step implements OnInit {
-
+export class Step05Component extends Step 
+{
     private trios = [
         {id: 1, left: 1, middle: 1, right: 1},
         {id: 2, left: 1, middle: 1, right: 0},
@@ -32,6 +32,4 @@ export class Step05Component extends Step implements OnInit {
             'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.'
         ];
      }
-    ngOnInit() {
-    }
 }

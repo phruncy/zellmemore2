@@ -14,7 +14,7 @@ export class RuleControlComponent implements OnInit {
     @Input() decimal;
     @ViewChild('popupContainer', { static: true }) private popupContainer: ViewContainerRef;
     private _boxesDisplayed = false;
-    private faAngleLeft = faAngleLeft;
+    readonly faAngleLeft = faAngleLeft;
 
     private BOXES = [
         { id: '111', index: 7, iconValues: [1, 1, 1], checked: false},

@@ -2,10 +2,8 @@ import { Component,
        } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
-import { RuleConverterService } from '../services/rule-converter.service';
 import { faTimes, faPlay, faUndo, faAngleLeft, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
@@ -34,7 +32,6 @@ export class ProgramWindowComponent {
         private visualizationService: VisualizationService,
         private automaton: AutomatonService,
         private location: Location,
-        private converter: RuleConverterService,
     ) {
         }
 
@@ -48,4 +45,3 @@ export class ProgramWindowComponent {
         this._selectionDisplayed = !this._selectionDisplayed;
     }
 }
-

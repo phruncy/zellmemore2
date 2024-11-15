@@ -7,8 +7,8 @@ import { VisualizationService } from '../services/visualization.service';
   templateUrl: './selection-tile.component.html',
   styleUrls: ['./selection-tile.component.scss']
 })
-export class SelectionTileComponent implements OnInit {
-
+export class SelectionTileComponent implements OnInit 
+{
     @Input() id;
     @Input() name: string;
     @Input() thumbnail;
@@ -17,17 +17,20 @@ export class SelectionTileComponent implements OnInit {
     private _isActive = false;
     constructor(private visualizationService: VisualizationService) { }
 
-    ngOnInit() {
-        this.visualizationService.$activeComponentsChanged.subscribe(
-            () => {
-                this._isActive = this.checkIsActive(this.id);
-            }
-        );
+    get isActive(): boolean {return this._isActive; }
+
+    ngOnInit() 
+    {
+        this.checkIsActive = this.checkIsActive.bind(this);
+        this.onActiveComponentaChange = this.onActiveComponentaChange.bind(this);
+        this.visualizationService.$activeComponentsChanged.subscribe(this.onActiveComponentaChange);
     }
 
-    // tells the visualization service which option was selected
-    // function is called whenever a DOM Element associated with a
-    // _visualization-Object is clicked
+    onActiveComponentaChange()
+    {
+        this.checkIsActive(this.id)
+    }
+
     selectVisualizationToDisplay(id: string)
     {
         this.visualizationService.visualizationToDisplay = id;

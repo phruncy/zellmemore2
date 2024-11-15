@@ -9,10 +9,7 @@ import { VisualizationDetailService } from '../services/visualization-detail.ser
 export class VisualizationSelectionComponent implements OnInit {
 
   private _visualizations: any[] = [];
-  constructor(
-        private visualizationDetailService: VisualizationDetailService,
-    ) 
-    { }
+  constructor(private visualizationDetailService: VisualizationDetailService,) { }
 
   get visualizations(): any[]
   {
@@ -28,9 +25,7 @@ export class VisualizationSelectionComponent implements OnInit {
   fetchVisualizations()
   {
     this.visualizationDetailService.provideVisualizations().subscribe(
-      data => {
-        this._visualizations = data;
-      } 
+      data => { this._visualizations = data; } 
     );
   }
 }

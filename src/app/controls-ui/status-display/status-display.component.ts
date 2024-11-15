@@ -8,6 +8,18 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 })
 export class StatusDisplayComponent implements OnInit 
 {
-    constructor(private automaton: AutomatonService) { }
-    ngOnInit() {}
+  public generation: number;  
+  
+  constructor(private automaton: AutomatonService) { }
+    ngOnInit() 
+    {
+      this.update = this.update.bind(this);
+      this.automaton.ready$.subscribe(this.update);
+      this.automaton.changed$.subscribe(this.update);
+    }
+
+    update(): void
+    {
+      this.generation = this.automaton.generation;
+    }
 }

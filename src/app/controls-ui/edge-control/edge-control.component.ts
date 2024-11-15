@@ -9,25 +9,21 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 export class EdgeControlComponent implements OnInit {
 
     private labeltext: String;
+    private _checked: boolean;
 
     constructor(private automaton: AutomatonService) { }
 
-    ngOnInit() {
+    ngOnInit() 
+    {
         this.automaton.ready$.subscribe(
             () => {
-                this.setLabel();
+                this._checked = this.automaton.isCircular;
             });
     }
 
-  /* sets the 'Array-Mode' label */
-    setLabel() {
-    this.labeltext =
-        this.automaton.isCircular ? 'on' : 'off';
-    }
-
-    toggle() {
-        this.automaton.toggleArrayMode();
-        this.setLabel();
+    onToggle() 
+    {
+        this.automaton.isCircular = this._checked;
     }
 
 }

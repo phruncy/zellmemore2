@@ -1,14 +1,14 @@
 <div class="toprow-wrapper">
         <button 
-                (click)="automaton.toggleLoop()" 
+                (click)="onClickPlay()" 
                 class="play-button" 
                 mat-button
                 matTooltip="Run/Pause">
-                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!automaton.isRunning"></fa-icon>
-                <fa-icon [icon]="faPause" class="pause icon" [class.active]="automaton.isRunning"></fa-icon>
+                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!_isRunning"></fa-icon>
+                <fa-icon [icon]="faPause" class="pause icon" [class.active]="_isRunning"></fa-icon>
         </button>
         <button 
-                (click)="automaton.reset()" 
+                (click)="onClickReset()" 
                 class="reset-animated"
                 mat-button 
                 matTooltip="reset">

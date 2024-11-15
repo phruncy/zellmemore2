@@ -8,11 +8,24 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 })
 export class CellsControlComponent implements OnInit {
 
-    private _cellsMin = 10;
-    private _cellsMax = 300;
-    private _step = 10;
+    readonly cellsMin = 10;
+    readonly cellsMax = 300;
+    readonly step = 10;
+
+    private _currentCellCount = 0;
 
   constructor(private automaton: AutomatonService) { }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    this.automaton.ready$.subscribe(() =>
+    {
+      this._currentCellCount = this.automaton.cellnumber;
+    })
+  }
+
+  onValueChange()
+  {
+    this.automaton.cellnumber = this._currentCellCount;
+  }
 }

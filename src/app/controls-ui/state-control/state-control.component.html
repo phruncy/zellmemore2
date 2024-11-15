@@ -2,11 +2,13 @@
 <!--         <span class="tag">initial: </span> -->     
         <div class="select-wrapper">
                 <mat-select class="settings-unit" 
-                        [(ngModel)]="initMode"
+                        [(ngModel)]="_initMode"
                         (selectionChange)="onSelectionChange()"
                         disableRipple>
-                        <mat-option value="0">init from single cell</mat-option>
-                        <mat-option value="1">random initial state</mat-option>
+                        @for(option of options; track option)
+                        {
+                          <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                        }
                 </mat-select>
         </div>
 </div>

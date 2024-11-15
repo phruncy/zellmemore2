@@ -2,11 +2,18 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { RuleConverterService } from './rule-converter.service';
 import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AutomatonService 
 {
+    readonly initModes = 
+    {
+        singeCell: 0,
+        randomCells: 1
+    };
+    
     private _states: number[];
     private _rule = 0;
     private _generation = 0;
@@ -14,12 +21,7 @@ export class AutomatonService
     private _isCircular: boolean;
     private _fps: number;
     private _lastFrameTime = 0;
-    
-    /* Defines the state of the Array when initialised:
-     * 0 = initialise only Middle Cell
-     * 1 = initialsie random
-     */
-    private _initMode;
+    private _initMode: number;
     
     /* Communication with views */
     private _changed = new Subject<void>();
@@ -31,37 +33,32 @@ export class AutomatonService
     private _modeChanged = new Subject<void>();
     public modeChanged$ =  this._modeChanged.asObservable();
 
-    private _config: any;
-
-    constructor(
-                private converter: RuleConverterService,
-                private http: HttpClient
-                ) 
+    constructor(private http: HttpClient) 
     {
-        /* functions that are called from outside the service */
         this.loop = this.loop.bind(this);
-        this.toggleLoop = this.toggleLoop.bind(this);
         this.generate = this.generate.bind(this);
         this.initCells = this.initCells.bind(this);
-        /* load configuration */
-        this.http.get('../assets/json/automaton-config.json').subscribe(
-            data => {
-                this._config = data;
-                this._fps = this._config.fps;
-                this._initMode = this._config.stateConfiguration;
-                this._isCircular = this._config.circular;
-                this._rule = parseInt(this._config.startRules[Math.floor(Math.random() * this._config.startRules.length)], 10);
-                const cellCount = parseInt(this._config.cellNumber);
-                this.initCells(cellCount);
-                this._ready.next();
-            }
-        );
+        this.configure = this.configure.bind(this);
+        this.http.get('../assets/json/automaton-config.json').subscribe(this.configure);
     }
 
     get states(): number[] { return this._states; }
     get generation(): number { return this._generation; }
     get isRunning(): boolean { return this._isRunning; }
+    set isRunning(running: boolean) 
+    { 
+        this._isRunning = running; 
+        if (running) 
+        {
+            requestAnimationFrame(this.loop);
+        }
+    }
+
     get isCircular(): boolean { return this._isCircular;}
+    set isCircular(value: boolean) 
+    { 
+        this._isCircular = value; 
+    } 
 
     get fps() { return this._fps; }
     set fps(fps: number) { this._fps = fps; }
@@ -94,27 +91,19 @@ export class AutomatonService
         }
     }
 
-    get initMode(): String { return this._initMode; }
-    set initMode(mode: String) 
+    get initMode(): number { return this._initMode; }
+    set initMode(mode: number) 
     {
         try {
-            if (!(mode === "0" || mode === "1")) 
-                {
+            if (!(mode === this.initModes.singeCell || mode === this.initModes.randomCells)) 
+            {
                 throw new Error("Invalid State");
             }
             this._initMode = mode;
             this.reset();
-        } catch (error) {
+        } catch (error) 
+        {
             console.error(error);
-            return;
-        }
-    }
-
-    toggleLoop(): void
-    {
-        this._isRunning = !this._isRunning;
-        if (this._isRunning) {
-            requestAnimationFrame(this.loop);
         }
     }
 
@@ -141,12 +130,6 @@ export class AutomatonService
         this._changed.next();
     }
 
-    toggleArrayMode() 
-    {
-        this._isCircular = !this._isCircular;
-        this._modeChanged.next();
-    }
-
     reset(): void
     {
         this.initCells(this._states.length);
@@ -162,12 +145,18 @@ export class AutomatonService
 
     initStates() 
     {
-        if (this._initMode === "0") {
+        if (this._initMode === 0) 
+        {
             const i = Math.floor(this._states.length / 2);
             this._states[i] = 1;
         } else {
             this._states = Array.from({length: this._states.length}, () => Math.round(Math.random()));
         }
+    }
+
+    toggleLoop()
+    {
+        this.isRunning = !this.isRunning;
     }
 
     loop(timestamp)
@@ -191,5 +180,17 @@ export class AutomatonService
         let ruleIndex = (left << 2 | middle << 1 | right) & 0b111;
         const result = (this._rule >> ruleIndex) & 0b1;
         return result;
+    }
+
+    configure(data): void
+    {
+        const config = data
+        this._fps = config.fps;
+        this._initMode = parseInt(config.stateConfiguration);
+        this._isCircular = config.circular;
+        this._rule = parseInt(config.startRules[Math.floor(Math.random() * config.startRules.length)], 10);
+        const cellCount = parseInt(config.cellNumber);
+        this.initCells(cellCount);
+        this._ready.next();
     }
 }

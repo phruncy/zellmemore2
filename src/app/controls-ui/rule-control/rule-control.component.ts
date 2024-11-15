@@ -28,18 +28,21 @@ export class RuleControlComponent implements OnInit {
     ];
     constructor(
         private automaton: AutomatonService,
-        private messenger: MessengerService) { }
+        private messenger: MessengerService) {}
 
-    ngOnInit() {
-        this.automaton.ready$.subscribe(
-            () => {
-                this.decimal = this.automaton.rule;
+    ngOnInit() 
+    {
+        this.init = this.init.bind(this);
+        this.automaton.ready$.subscribe(this.init);
+    }
+
+    init(): void
+    {
+        this.decimal = this.automaton.rule;
                 this.BOXES.forEach((box) => {
                     if ((this.automaton.rule >> box.index & 1) === 1)
                         box.checked = true;
                 });
-            }
-        );
     }
 
     onTextInputChanged()

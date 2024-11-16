@@ -56,7 +56,10 @@ export class AutomatonService
     get isCircular(): boolean { return this._isCircular;}
     set isCircular(value: boolean) 
     { 
-        this._isCircular = value; 
+        const previous = this._isCircular;
+        this._isCircular = value;
+        if (previous != value)
+            this._modeChanged.next(); 
     } 
 
     get fps() { return this._fps; }

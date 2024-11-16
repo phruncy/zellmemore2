@@ -9,7 +9,7 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 export class CellsControlComponent implements OnInit {
 
     readonly cellsMin = 10;
-    readonly cellsMax = 300;
+    readonly cellsMax = 500;
     readonly step = 10;
 
     private _currentCellCount = 0;

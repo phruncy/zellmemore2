@@ -16,136 +16,142 @@ export class VizWaves02Component extends ContentBase implements AfterContentInit
     @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
 
-    private _amplitude: number; // absolute spatial difference between 0 and 1 states
-    private _radius: number; // radius of the 0 state position in circular mode
-    private _baseline: number; // y coordinate of the 0 state in linear mode
-    private _margin: number;
-    private _segment: number; // angle between the dots in circular mode
-    private _agents: Agent[] = [];
-    private _linearGap: number; // wavelength in linear mode
-
-    private _centerX: number; // circle center in circular mode
-    private _centerY: number;
-
     constructor(
                 protected automaton: AutomatonService,
                 protected size: SizeService
-                ) {
+                ) 
+    {
         super(automaton, size);
+        this.processingSketch = this.processingSketch.bind(this);
     }
 
     ngAfterContentInit() 
     {
-        this.init();
         this.createP5();
     }
-    update() {
-        this.automaton.states.forEach((state, index) => {
-                this._agents[index].target = this.getTargetPosition(state);
-        });
+
+    update() 
+    {
+        this._p5.cellsUpdated();
     }
 
-    onResize() {
-        this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
-        this.init();
-        this._p5.background(0);
+    onResize() 
+    {
+        this._p5.resize(this.widgetWidth, this.widgetHeight);
     }
 
-    onReset() {
-        this.init();
-        this._p5.background(0);
+    onReset() 
+    {
+        this._p5.reset();
     }
 
     // contains the p5 instance
-    createP5() {
-        const sketch = (s) => 
+    createP5() 
+    {
+        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
+    }
+
+    processingSketch(p5)
+    {
+        let amplitude: number; // absolute spatial difference between 0 and 1 states
+        let radius: number; // radius of the 0 state position in circular mode
+        let margin: number;
+        let linearGap: number;
+        let angle: number;
+        let agents: Agent[] = [];
+
+        let centerX, centerY;
+        
+        const initValues = () =>
         {
-            s.setup = () => 
-            {
-                s.createCanvas(this.widgetWidth, this.widgetHeight);
-                s.noFill();
-                s.stroke(0);
-                s.background(0);
-            }
-            s.draw = () =>
-            {
-                s.background(255);
-                this.moveAgents();
-                // move circle Center to mousePosition
-                this._centerX += (s.mouseX - this._centerX) * 0.003;
-                this._centerY += (s.mouseY - this._centerY) * 0.003;
-                // circular rendering
-                if (this.automaton.isCircular) {
-                    s.push();
-                    s.translate(this._centerX, this._centerY);
-                    s.beginShape();
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    this._agents.forEach(agent => {
-                        s.curveVertex(
-                            Math.cos(this._segment * agent.id) * (this._radius + agent.pos),
-                            Math.sin(this._segment * agent.id) * (this._radius + agent.pos)
-                        );
-                    });
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    s.endShape();
-                    s.pop();
-                } else { // linear rendering
-                    s.push();
-                    s.translate(this._margin, this._baseline);
-                    s.beginShape();
-                    this._agents.forEach(agent => {
-                        s.curveVertex(agent.id * this._linearGap, -agent.pos);
-                    });
-                    s.endShape();
-                    s.pop();
-                }
-            };
-        };
-        this._p5 = new p5(sketch, this.container.nativeElement);
-    }
-
-    init() {
-        this._margin = this.widgetWidth * 0.05;
-        this._amplitude = this.widgetHeight * 0.1;
-        this._baseline = this.widgetHeight / 2 + this._amplitude / 2;
-        this._linearGap = (this.widgetWidth - 2 * this._margin) /
+            centerX = p5.width / 2;
+            centerY = p5.height /2;
+            amplitude = p5.height * 0.05
+            angle = (Math.PI * 2) / this.automaton.cellnumber;
+            margin = p5.width * 0.05;
+            radius = (p5.width / 2 - amplitude) * 0.5;
+            linearGap = (p5.width - 2 * margin) /
                             this.automaton.cellnumber;
-        this._radius = (this.widgetWidth - 2 * this._margin - 2 *
-                             this._amplitude) / 3.5;
-        this._segment = (Math.PI * 2) / this.automaton.cellnumber;
-        // initialize agents with current automaton state
-        this._agents = [];
-        this.automaton.states.forEach((state, index) => {
-            this._agents.push(
-                new Agent(index, this.getTargetPosition(state)));
-        });
-        this._centerX = this.widgetWidth / 2;
-        this._centerY = this.widgetHeight / 2;
-    }
-
-    getTargetPosition(state: number): number {
-        if (state === 1) {
-            return this._amplitude;
+            agents = [];
+            this.automaton.states.forEach((state, index) => 
+            {
+                agents.push( new Agent(index, getTargetPosition(state)));
+            });
         }
-        return 0;
-    }
 
-    moveAgents() {
-        const speed = (this._amplitude / (60 / this.automaton.fps));
-        this._agents.forEach( agent => {
-            const distanceRemaining = Math.abs(agent.target - agent.pos);
-            if (distanceRemaining <= speed) {
-                agent.pos = agent.target;
-            } else {
-                agent.pos = agent.pos + Math.sign(agent.target - agent.pos) * speed;
+        const getTargetPosition = (state) => state === 1 ? amplitude : -amplitude;
+
+        const moveAgents = () =>
+        {
+            const speed = 2 * amplitude * this.automaton.fps;
+            const movement = speed * (1 / p5.deltaTime); 
+            agents.forEach( agent => 
+            {
+                if (Math.abs(agent.pos - agent.target) < movement)
+                    agent.pos = agent.target;
+                agent.pos = agent.pos + Math.sign(agent.target - agent.pos) * movement;
+            });
+        }
+        
+        p5.setup = () => 
+        {
+            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.fill(0);
+            p5.stroke(0);
+            p5.background(255);
+            initValues();
+        }
+
+        p5.draw = () =>
+        {
+            moveAgents();
+            centerX += (p5.mouseX - centerX) * 0.003;
+            centerY += (p5.mouseY - centerY) * 0.003;
+            p5.background(255);
+            p5.push();
+            if (this.automaton.isCircular) {
+                p5.translate(centerX, centerY);
+                p5.beginShape();
+                p5.curveVertex(radius + agents[0].pos, 0);
+                agents.forEach(agent => 
+                {
+                    p5.curveVertex(
+                        Math.cos(angle * agent.id) * (radius + agent.pos),
+                        Math.sin(angle * agent.id) * (radius + agent.pos)
+                    );
+                });
+                p5.curveVertex (radius + agents[0].pos, 0);
+                p5.curveVertex (radius + agents[0].pos, 0);
+                p5.endShape();
+            } else { // linear rendering
+                p5.translate(margin, p5.height / 2);
+                p5.beginShape();
+                agents.forEach(agent => {
+                    p5.curveVertex(agent.id * linearGap, -agent.pos);
+                });
+                p5.endShape();
             }
-        });
+            p5.pop();
+        };
+
+        p5.resize = (w:number, h: number) =>
+        {
+            p5.resizeCanvas(w, h);
+            p5.reset();
+        }
+
+        p5.reset = () =>
+        {
+            p5.background(255);
+            initValues();
+        }
+
+        p5.cellsUpdated = () =>
+        {
+            this.automaton.states.forEach((state, index) => 
+            {
+                agents[index].target = getTargetPosition(state);
+            });
+        }
     }
 }

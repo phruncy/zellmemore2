@@ -69,7 +69,7 @@ export class AutomatonService
     set cellnumber(cells: number) {
         try 
         {
-            if (!((cells >= 0) && (cells <= 300))) {
+            if (cells < 3) {
                 const error = new Error('Not a valid number');
                 throw error;
             }

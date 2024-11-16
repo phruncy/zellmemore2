@@ -47,13 +47,7 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
 
     update() 
     {
-            /* const states = this.automaton.cells.map(cell => cell.state);
-            this.blockMatrix.push(states);
-            if (this.blockMatrix.length > this._maxDisplayableGenerations) {
-                this.blockMatrix.shift();
-            } */
-            // update prerendered Image Data to current generation
-            this.render();
+        this.render();
     }
 
     init() 
@@ -66,21 +60,6 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
 
     render()
     {
-        /* this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
-        for (let row = 0; row < this.blockMatrix.length; row++) {
-        this.blockMatrix[row].forEach(
-            (state, index) => {
-                if (state === 1) {
-                    this._ctx.fillRect(
-                        index * this._blockSize, 
-                        row * this._blockSize, 
-                        this._blockSize, this._blockSize
-                        );
-                }
-            }
-        );
-        } */
-
         const positionY = this.getPosition();
         if (this.automaton.generation >= this._maxDisplayableGenerations) {
             this._buffer = this._ctx.getImageData(0, this._blockSize, this.widgetWidth, this.widgetHeight - this._blockSize);

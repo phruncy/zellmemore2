@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import { ContentBase } from '../../content-base/contentBase.component';
 import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
@@ -14,124 +14,126 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
 
     @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
-    private _dotSize = 10;
-    private _dotGap: number;
-    // the horizontal position of the dots in linear mode
-    private _linePosition: number;
-    private _edge: number;
-    /* for circular mode */
-    private _amplitude: number;
-    private _radius: number;
-    // distance between Dots in circular Mode
-    private _segmentSize: number;
 
-    private _strokeWeight: number;
     private _color01 = [86, 239, 185];
 
     constructor(
                 protected automaton: AutomatonService,
-                protected sizeService: SizeService) {
+                protected sizeService: SizeService) 
+    {
         super(automaton, sizeService);
-     }
-
-    get strokeWeight() 
-    {
-        if (this.automaton.cellnumber > 300) {
-            return 1;
-        } else if (this.automaton.cellnumber > 100) {
-            return 2;
-        } else if (this.automaton.cellnumber > 50) {
-            return 3;
-        }
-        return 4;
+        this.processingSketch = this.processingSketch.bind(this);
     }
 
-    ngAfterContentInit() {
-      this.initValues();
+    ngAfterContentInit() 
+    {
       this.createP5();
-  }
-
-  onReset() 
-  {
-      this.initValues();
-  }
-  onResize() 
-  {
-      this.initValues();
-      this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
-  }
-  update() {}
-
-    initValues() 
-    {
-        this._linePosition = this.widgetHeight / 2;
-        this._edge = this.widgetWidth * 0.05;
-        this._dotGap = ((this.widgetWidth - 2 * this._edge) / this.automaton.cellnumber) * 0.5;
-        this._dotSize = ((this.widgetWidth - 2 * this._edge) / this.automaton.cellnumber) - this._dotGap;
-        this._amplitude = this._dotSize * 2;
-        this._segmentSize = (2 * Math.PI) / this.automaton.cellnumber;
-        this._radius = (this.widgetWidth - 2 * this._edge - this._dotSize - 2 * this._amplitude) / 4;
-        this._strokeWeight = this.strokeWeight;
     }
 
-    getLinearX(index: number) 
+    onReset() 
     {
-        return (this._dotSize + this._dotGap) * index + this._edge;
+        this._p5.reset();
     }
 
-    getAmplitude(state: number) 
+    onResize() 
     {
-        if (state === 1) {
-            return this._amplitude;
-        }
-        return - this._amplitude;
+        this._p5.onResize(this.widgetWidth, this.widgetHeight);
     }
+    update() {}
 
     createP5() 
     {
-        const sketch = (s) => {
-            s.setup = () => {
-                s.createCanvas(this.widgetWidth, this.widgetHeight);
-            }
-            s.draw = () => {
-                s.background(255);
-                s.strokeWeight(this._strokeWeight);
-                if (this.automaton.isCircular) {
-                    s.push();
-                    s.translate(this.widgetWidth / 2, this.widgetHeight / 2);
-                    this.automaton.states.forEach((state, index) => {
-                        s.defineColor(state);
-                        s.push();
-                        s.rotate(this._segmentSize * index);
-                        //
-                        s.translate(0, this._radius + this.getAmplitude(state));
-                        s.line(0, 0, s.width, s.height);
-                        s.ellipse(0, 0, this._dotSize, this._dotSize);
-                        s.pop();
-                    });
-                    s.pop();
-                } else {
-                    this.automaton.states.forEach( (state, index) => {
-                        s.defineColor(state);
-                        s.line(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this.getLinearX(index) - this.getAmplitude(state), 0);
-                        // amplitude has to be subtracted since the coordinate origin is at the top!
-                        s.ellipse(this.getLinearX(index), this._linePosition - this.getAmplitude(state), this._dotSize, this._dotSize);
-                    });
-                }
-            };
+        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
+    }
 
-            s.defineColor = (state: number) =>
-            {
-                if (state === 1) {
-                    s.stroke(this._color01[0], this._color01[1], this._color01[2]);
-                    s.fill(this._color01[0], this._color01[1], this._color01[2]);
-                } else {
-                    s.stroke(0);
-                    s.fill(0);
-                }
+    processingSketch(p5)
+    {   
+        let dotSize = 10;
+        let dotGap: number;
+        let lineHeight: number;
+        let edge: number;
+        /* for circular mode */
+        let amplitude: number;
+        let circularModeRadius: number;
+        let angle: number;
+
+        const getAmplitude = (state) => state === 1 ? amplitude : -amplitude;
+        const getLinearX = (index) => (dotSize + dotGap) * index + edge;
+        const getStrokeWeight = (value) =>
+        {
+            if (value >= 300) return 1;
+            if (value >= 100) return 2;
+            if (value >= 50)  return 3;
+            return 4;
+        }
+        
+        const initValues = () =>        
+        {
+            lineHeight = p5.height / 2;
+            edge = p5.width * 0.05;
+            dotGap = ((p5.width - 2 * edge) / this.automaton.cellnumber) * 0.5;
+            dotSize = ((p5.width - 2 * edge) / this.automaton.cellnumber) - dotGap;
+            amplitude = dotSize * 2;
+            angle = (2 * Math.PI) / this.automaton.cellnumber;
+            circularModeRadius = (p5.width - 2 * edge - dotSize - 2 * amplitude) / 4;
+        }
+        
+        p5.setup = () => 
+        {
+            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            initValues();
+        }
+
+        p5.draw = () => 
+        {
+            p5.background(255);
+            const stroke = getStrokeWeight(this.automaton.cellnumber);
+            p5.strokeWeight(stroke);
+            if (this.automaton.isCircular) {
+                p5.push();
+                p5.translate(p5.width / 2, p5.height / 2);
+                this.automaton.states.forEach((state, index) => {
+                    p5.defineColor(state);
+                    p5.push();
+                    p5.rotate(angle * index);
+                    //
+                    p5.translate(0, circularModeRadius + getAmplitude(state));
+                    p5.line(0, 0, p5.width, p5.height);
+                    p5.circle(0, 0, dotSize);
+                    p5.pop();
+                });
+                p5.pop();
+            } else {
+                this.automaton.states.forEach( (state, index) => {
+                    p5.defineColor(state);
+                    p5.line(getLinearX(index), lineHeight - getAmplitude(state), getLinearX(index) - getAmplitude(state), 0);
+                    // amplitude has to be subtracted since the coordinate origin is at the top!
+                    p5.circle(getLinearX(index), lineHeight - getAmplitude(state), dotSize);
+                });
+            }
+        };
+
+        p5.defineColor = (state: number) =>
+        {
+            if (state === 1) {
+                p5.stroke(this._color01[0], this._color01[1], this._color01[2]);
+                p5.fill(this._color01[0], this._color01[1], this._color01[2]);
+            } else {
+                p5.stroke(0);
+                p5.fill(0);
             }
         }
-        this._p5 = new p5(sketch, this.container.nativeElement);
+
+        p5.reset = () =>
+        {
+            initValues();
+        }
+
+        p5.onResize = (w: number, h: number) =>
+        {
+            p5.resizeCanvas(w, h);
+            initValues();
+        }
     }
 
 }

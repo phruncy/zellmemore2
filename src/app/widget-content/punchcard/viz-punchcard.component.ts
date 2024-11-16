@@ -110,7 +110,7 @@ export class VizPunchcardComponent extends ContentBase implements AfterContentIn
                 initValues();
             }
 
-            p5.reset()
+            p5.reset = () =>
             {
                 initValues();
             }

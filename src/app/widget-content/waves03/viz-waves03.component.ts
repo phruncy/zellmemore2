@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import { P5Animated } from '../../utils/p5-animated';
 import * as p5 from 'p5';
 import { Agent } from '../../utils/agent';
@@ -17,152 +17,184 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
     @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
 
-    private _amplitude: number; // absolute spatial difference between 0 and 1 states
-    private _radius: number; // radius of the 0 state position in circular mode
-    private _baseline: number; // y coordinate of the 0 state in linear mode
-    private _margin: number;
-    private _segment: number; // angle between the dots in circular mode
-    private _agents: Agent[] = [];
-    private _linearGap: number; // wavelength in linear mode
-
-    private _centerX: number; // circle center in circular mode
-    private _centerY: number;
-    private _colorCounter: number;
-
     constructor(
                 protected automaton: AutomatonService,
                 protected size: SizeService,
                 protected colors: ColorService
                 ) {
         super(automaton, size);
-        this.automaton.modeChanged$.subscribe(
-            () => {this._p5.background(255);}
-        );
+        this.processingSketch = this.processingSketch.bind(this);
+        this.automaton.modeChanged$.subscribe(() => {this._p5.onModeChange()});
+        this.automaton.changed$.subscribe(() => {this._p5.onCellUpdate()})
     }
 
     ngAfterContentInit() 
     {
-        this.init();
         this.createP5();
     }
+
     update() {
-        const color = this.colors.palette[this._colorCounter];
-        if (this._colorCounter < 7) {
-            this._colorCounter++;
-        } else {
-            this._colorCounter = 0;
-        }
-        this._p5.stroke(color[0], color[1], color[2]);
-        this.automaton.states.forEach((state, index) => {
-                this._agents[index].target = this.getTargetPosition(state);
-        });
+        
     }
 
     onResize() {
-        this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
-        this.init();
-        this._p5.background(255);
+        this._p5.onWidgetResize(this.widgetWidth, this.widgetHeight);
     }
 
-    onReset() {
-        this.init();
-        this._p5.background(255);
+    onReset() 
+    {
+        this._p5.reset();
     }
 
-    // contains the p5 instance
-    createP5() {
-        const sketch = (s) => 
+    createP5() 
+    {
+        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
+    }
+
+    processingSketch(p5)
+    {
+        let amplitude: number; // absolute spatial difference between 0 and 1 states
+        let radius: number; // radius of the 0 state position in circular mode
+        let baseline: number; // y coordinate of the 0 state in linear mode
+        let margin: number;
+        let segment: number; // angle between the dots in circular mode
+        let agents: Agent[] = [];
+        let linearGap: number; // wavelength in linear mode
+
+        let centerX: number; // circle center in circular mode
+        let centerY: number;
+        let colorCounter: number;
+        
+        const initValues = () =>
         {
-            s.setup = () => 
-            {
-                s.createCanvas(this.widgetWidth, this.widgetHeight);
-                s.noFill();
-                s.stroke(0);
-                s.strokeWeight(.5, 15);
-                s.background(255);
-            }
-            s.draw = () =>
-            {
-                this.moveAgents();
-                // let drawing follow the mouse movement
-                if (this.automaton.isRunning) {
-                    this._centerX += (s.mouseX - this._centerX) * 0.003;
-                    this._centerY += (s.mouseY - this._centerY) * 0.003;
-                    this._baseline += (s.mouseY - this._baseline) * 0.003;
-                }
-                // circular rendering
-                if (this.automaton.isCircular) {
-                    s.push();
-                    s.translate(this._centerX, this._centerY);
-                    s.beginShape();
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    this._agents.forEach(agent => {
-                        s.curveVertex(
-                            Math.cos(this._segment * agent.id) * (this._radius + agent.pos),
-                            Math.sin(this._segment * agent.id) * (this._radius + agent.pos)
-                        );
-                    });
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    s.curveVertex (
-                        Math.cos(0) * (this._radius + this._agents[0].pos),     Math.sin(0) * (this._radius + this._agents[0].pos)
-                    );
-                    s.endShape();
-                    s.pop();
-                } else { // linear rendering
-                    s.push();
-                    s.translate(this._margin, this._baseline);
-                    s.beginShape();
-                    this._agents.forEach(agent => {
-                        s.curveVertex(agent.id * this._linearGap, -agent.pos);
-                    });
-                    s.endShape();
-                    s.pop();
-                }
-            };
-        };
-        this._p5 = new p5(sketch, this.container.nativeElement);
-    }
+            margin = p5.width * 0.05;
+            amplitude = p5.height * 0.1;
+            baseline = p5.height / 2 + amplitude / 2;
+            linearGap = (p5.width - 2 * margin) /this.automaton.cellnumber;
+            radius = (p5.width - 2 * margin - 2 * amplitude) / 4;
+            segment = (Math.PI * 2) / this.automaton.cellnumber;
+            // initialize agents with current automaton state
+            agents = [];
+            this.automaton.states.forEach((state, index) => 
+                {
+                    agents.push(
+                    new Agent(index, getTargetPosition(state)));
+                });
+            centerX = p5.width / 2;
+            centerY = p5.height / 2;
+            colorCounter = Math.floor(Math.random() * 7);
+        } 
 
-    init() {
-        this._margin = this.widgetWidth * 0.05;
-        this._amplitude = this.widgetHeight * 0.1;
-        this._baseline = this.widgetHeight / 2 + this._amplitude / 2;
-        this._linearGap = (this.widgetWidth - 2 * this._margin) /
-                            this.automaton.cellnumber;
-        this._radius = (this.widgetWidth - 2 * this._margin - 2 *
-                             this._amplitude) / 4;
-        this._segment = (Math.PI * 2) / this.automaton.cellnumber;
-        // initialize agents with current automaton state
-        this._agents = [];
-        this.automaton.states.forEach((state, index) => {
-            this._agents.push(
-                new Agent(index, this.getTargetPosition(state)));
+        const moveAgents = () =>
+        {
+            const speed = (amplitude / (60 / this.automaton.fps));
+            agents.forEach( agent => {
+                const distanceRemaining = Math.abs(agent.target - agent.pos);
+                if (distanceRemaining <= speed) {
+                    agent.pos = agent.target;
+                } else {
+                    agent.pos = agent.pos + Math.sign(agent.target - agent.pos) * speed;
+                }
         });
-        this._centerX = this.widgetWidth / 2;
-        this._centerY = this.widgetHeight / 2;
-        this._colorCounter = Math.floor(Math.random() * 7);
-    }
-
-    getTargetPosition(state: number): number {
-        if (state === 1) {
-            return this._amplitude;
         }
-        return 0;
-    }
+        
+        const getTargetPosition = (state: number) => state === 1 ? amplitude : 0;
 
-    moveAgents() {
-        const speed = (this._amplitude / (60 / this.automaton.fps));
-        this._agents.forEach( agent => {
-            const distanceRemaining = Math.abs(agent.target - agent.pos);
-            if (distanceRemaining <= speed) {
-                agent.pos = agent.target;
-            } else {
-                agent.pos = agent.pos + Math.sign(agent.target - agent.pos) * speed;
+        const drawLinearShape = () =>
+        {
+            p5.push();
+            p5.translate(margin, baseline);
+            p5.beginShape();
+            agents.forEach(agent => {
+                p5.curveVertex(agent.id * linearGap, -agent.pos);
+            });
+            p5.endShape();
+            p5.pop();
+        }
+
+        const drawCircularShape = () =>
+        {                
+            p5.push();
+            p5.translate(centerX, centerY);
+            p5.beginShape();
+            p5.curveVertex (
+                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
+            );
+            p5.push();
+            agents.forEach(agent => {
+                p5.curveVertex(
+                    Math.cos(segment * agent.id) * (radius + agent.pos),
+                    Math.sin(segment * agent.id) * (radius + agent.pos)
+                );
+                p5.rotate(segment);
+            });
+            p5.pop();
+            p5.curveVertex (
+                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
+            );
+            p5.curveVertex (
+                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
+            );
+            p5.endShape();
+            p5.pop();
+        }
+
+        p5.setup = () => 
+        {
+            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.noFill();
+            p5.stroke(0);
+            p5.strokeWeight(.5, 15);
+            p5.background(255);
+            initValues();
+        };
+
+        p5.draw = () =>
+        {
+            moveAgents();
+            // let drawing follow the mouse movement
+            if (this.automaton.isRunning) {
+                centerX += (p5.mouseX - centerX) * 0.003;
+                centerY += (p5.mouseY - centerY) * 0.003;
+                baseline += (p5.mouseY - baseline) * 0.003;
             }
-        });
+            if (this.automaton.isCircular) 
+            {
+                drawCircularShape();
+            } 
+            else 
+            { 
+                drawLinearShape();
+            }
+        };
+
+        p5.onWidgetResize = (w: number, h: number) =>
+        {
+            p5.resizeCanvas(w, h);
+            p5.reset(); 
+        }
+
+        p5.reset = () =>
+        {
+            initValues();
+            p5.background(255);
+        }
+
+        p5.onModeChange = () =>
+        {
+            p5.background(255);
+        }
+
+        p5.onCellUpdate = () =>
+        {
+            p5.background(255, 5);
+            const color = this.colors.palette[colorCounter];
+            colorCounter = (colorCounter + 1) % 8;
+            p5.stroke(color[0], color[1], color[2]);
+            this.automaton.states.forEach((state, index) => 
+            {
+                agents[index].target = getTargetPosition(state);
+            });
+        }    
     }
 }

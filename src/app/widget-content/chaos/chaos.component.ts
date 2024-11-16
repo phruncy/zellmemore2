@@ -26,7 +26,8 @@ export class ChaosComponent extends ContentBase implements AfterContentInit {
         super(automaton, size);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit() 
+    {
         this._ctx = this.canvas.nativeElement.getContext('2d');
         this.init();
         this.render();
@@ -35,6 +36,7 @@ export class ChaosComponent extends ContentBase implements AfterContentInit {
     {
         this.render();
     }
+
     onResize()
     {
         this.init();
@@ -49,7 +51,8 @@ export class ChaosComponent extends ContentBase implements AfterContentInit {
         this.render();
     }
 
-    init() {
+    init() 
+    {
         this.canvas.nativeElement.height = this.widgetHeight;
         this.canvas.nativeElement.width = this.widgetWidth;
         this._randomized = [];

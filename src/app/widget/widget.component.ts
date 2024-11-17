@@ -10,7 +10,6 @@ import { Component,
           ViewChild,
           ViewContainerRef,
           HostBinding,
-          Input,
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -38,19 +37,25 @@ export class WidgetComponent implements OnInit, OnDestroy
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;
     @HostBinding('style.margin-bottom.px') private _marginBottom;
-    @Input() _title = 'widget name';
+    title: String = 'widget name';
 
     private _ref: any;
     /* icon references */
-    faTimes = faTimes;
-    faPlayCircle = faPlayCircle;
-    faExpand = faExpand;
+    readonly faTimes = faTimes;
+    readonly faPlayCircle = faPlayCircle;
+    readonly faExpand = faExpand;
+
+    public isRunning: boolean = false;
+    
     constructor(
             private visService: VisualizationService,
             private details: VisualizationDetailService,
             private sizeService: SizeService,
             private automaton: AutomatonService,
-        ) {}
+        ) 
+    {
+        this.automaton.ready$.subscribe(() => { this.isRunning = this.automaton.isRunning; })
+    }
 
     set ref(ref: any)
     {
@@ -76,6 +81,11 @@ export class WidgetComponent implements OnInit, OnDestroy
         this.sizeService.decreaseWidgetNumber();
     }
 
+    onClick()
+    {
+        this.automaton.toggleLoop();
+    }
+
     /* Component is fetched from the visualization service's dictionary 
      * that matches ids with the fitting components. The container does 
      * not care about its content: The id is only known to the service 
@@ -87,7 +97,7 @@ export class WidgetComponent implements OnInit, OnDestroy
         this.details.provideVisualizations().subscribe (
             data => 
             {
-                this._title = data.find(
+                this.title = data.find(
                     obj => obj.id === this.visService.visualizationToDisplay).name;
             }
         );

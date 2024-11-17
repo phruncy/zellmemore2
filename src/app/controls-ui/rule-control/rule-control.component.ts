@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 })
 export class RuleControlComponent implements OnInit {
 
-    @Input() decimal;
+    decimal: string;
     @ViewChild('popupContainer', { static: true }) private popupContainer: ViewContainerRef;
     private _boxesDisplayed = false;
     readonly faAngleLeft = faAngleLeft;
@@ -38,7 +38,7 @@ export class RuleControlComponent implements OnInit {
 
     init(): void
     {
-        this.decimal = this.automaton.rule;
+        this.decimal = this.automaton.rule.toString();
                 this.BOXES.forEach((box) => {
                     if ((this.automaton.rule >> box.index & 1) === 1)
                         box.checked = true;
@@ -60,7 +60,7 @@ export class RuleControlComponent implements OnInit {
 
     syncDecimal()
     {
-        this.decimal = this.automaton.rule;
+        this.decimal = this.automaton.rule.toString();
     }
 
     syncBoxes()
@@ -83,7 +83,7 @@ export class RuleControlComponent implements OnInit {
         catch(error)
         {
             const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer);
-            this.decimal = this.automaton.rule;
+            this.decimal = this.automaton.rule.toString();
         }
     }
 

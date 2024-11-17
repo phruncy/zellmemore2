@@ -2,8 +2,8 @@
 <!--         <span class="tag">initial: </span> -->     
         <div class="select-wrapper">
                 <mat-select class="settings-unit" 
-                        [(ngModel)]="_initMode"
-                        (selectionChange)="onSelectionChange()"
+                        [(ngModel)]="initMode"
+                        (ngModelChange)="onSelectionChange()"
                         disableRipple>
                         @for(option of options; track option)
                         {

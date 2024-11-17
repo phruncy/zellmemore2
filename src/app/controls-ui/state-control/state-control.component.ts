@@ -15,14 +15,14 @@ interface Option
 export class StateControlComponent implements OnInit {
 
     public options: Option[];
-    private _initMode: number;
+    public initMode: number;
     constructor(private automaton: AutomatonService) {}
     
     ngOnInit() 
     {
       this.automaton.ready$.subscribe(() =>
       {
-        this._initMode = this.automaton.initMode;
+        this.initMode = this.automaton.initMode;
         this.options = 
         [
           { value: this.automaton.initModes.singeCell, viewValue: "Start with a single active cell" },
@@ -33,6 +33,6 @@ export class StateControlComponent implements OnInit {
 
     onSelectionChange()
     {
-      this.automaton.initMode = this._initMode;
+      this.automaton.initMode = this.initMode;
     }
 }

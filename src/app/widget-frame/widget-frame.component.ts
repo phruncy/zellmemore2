@@ -5,8 +5,7 @@ import { Component,
         ElementRef,
         ChangeDetectorRef,
         HostListener,
-        Output,
-        EventEmitter
+        output
        } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
@@ -21,7 +20,10 @@ import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 export class WidgetFrameComponent implements OnInit {
 
     @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
-    @Output() clickAnimated = new EventEmitter();
+    
+    widgetAdded = output<boolean>();
+    clickAnimated = output<boolean>();
+
     readonly faAngleDown = faAngleDown;
     readonly faPlusCircle = faPlusCircle;
 
@@ -34,10 +36,8 @@ export class WidgetFrameComponent implements OnInit {
 
     ngOnInit() 
     {
-        this.visualizationService.hasChanged$.subscribe(
-        () => {
-            this.addWidget();
-        });
+        this.visualizationService.selectionChanged$.subscribe(
+        () => { this.addWidget() });
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
 
@@ -46,10 +46,21 @@ export class WidgetFrameComponent implements OnInit {
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
 
+    onVisualizationSelect()
+    {
+        this.addWidget();
+    }
+
     addWidget()
     {
         const component = this.entry.createComponent(WidgetComponent);
         component.instance.ref = component;
         this.cd.detectChanges();
+        this.widgetAdded.emit(true);
+    }
+
+    hasWidgets(): boolean
+    {
+        return this.sizeService.widgetNumber === 0;
     }
 }

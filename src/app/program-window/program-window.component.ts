@@ -14,19 +14,17 @@ import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 )
 export class ProgramWindowComponent
 {
-    private _selectionDisplayed = false;
+    selectionActive = false;
     readonly faTimes = faTimes;
     readonly faHome = faHome;
 
-    constructor() {}
-
-    get selectionDisplayed(): boolean
-    {
-        return this._selectionDisplayed;
-    }
-
     toggleSelection()
     {
-        this._selectionDisplayed = !this._selectionDisplayed;
+        this.selectionActive = !this.selectionActive;
+    }
+
+    closeSelection()
+    {
+        this.selectionActive = false;
     }
 }

@@ -1,4 +1,4 @@
-<div class="window-overlay" [class.active]="_selectionDisplayed"></div>
+<div class="window-overlay" [class.active]="selectionActive"></div>
 <body>
         <div class= "container">
                 <!-- The controller -->
@@ -7,17 +7,17 @@
                 </div>
                 <!-- Widgets go here: -->
                 <section class="canvas-display">
-                        <app-widget-frame (clickAnimated)="toggleSelection()"></app-widget-frame>
+                        <app-widget-frame (clickAnimated)="toggleSelection()" (widgetAdded)="closeSelection()"></app-widget-frame>
                 </section>
                 <!-- selection background overlay --> 
                 <!-- the selection dropup -->   
-                <div class="menu" [class.active]="_selectionDisplayed">
+                <div class="menu" [class.active]="selectionActive">
                         <div class="button-container">
                                 <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
-                                        <div class="plus-icon-container"><fa-icon [icon]="faTimes" class="plus-icon" [class.active]="_selectionDisplayed"></fa-icon></div>
+                                        <div class="plus-icon-container"><fa-icon [icon]="faTimes" class="plus-icon" [class.active]="selectionActive"></fa-icon></div>
                                 </button>
                         </div>
-                        <app-visualization-selection class="menu-content" [class.active]="_selectionDisplayed"></app-visualization-selection>
+                        <app-visualization-selection class="menu-content" [class.active]="selectionActive"></app-visualization-selection>
                 </div>
                 <button 
                         class="home"

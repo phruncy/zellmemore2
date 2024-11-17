@@ -20,9 +20,9 @@ import { ContentBase } from '../content-base/contentBase.component';
 export class VisualizationService {
 
     private _visualizationToDisplay: string;
-    private _hasChanged = new Subject<void>();
+    private _selectionChanged = new Subject<void>();
     // program window component subscribes to this
-    public hasChanged$ = this._hasChanged.asObservable();
+    public selectionChanged$ = this._selectionChanged.asObservable();
     // list of all displayed visualizations in the DOM
     private _activeComponentsChanged = new Subject<void>();
     public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
@@ -60,7 +60,7 @@ export class VisualizationService {
         } catch (error) {
             console.log(error);
         }
-        this._hasChanged.next();
+        this._selectionChanged.next();
     }
 
     get activeComponents() 

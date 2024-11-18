@@ -14,7 +14,7 @@ import { animations } from 'src/app/homepage/animations';
 })
 export class Step05Component extends Step 
 {
-    private trios = [
+    trios = [
         {id: 1, left: 1, middle: 1, right: 1},
         {id: 2, left: 1, middle: 1, right: 0},
         {id: 3, left: 1, middle: 0, right: 1},

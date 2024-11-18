@@ -1,11 +1,11 @@
 <div class="controls">
         <div 
-                *ngFor="let step of steps; let i = index"
+                *ngFor="let step of steps(); let i = index"
                 class="step-marker-outer">
                 <div 
-                        *ngIf="step.active === true"
+                        *ngIf="i < unlocked()"
                         class="step-marker" 
-                        [class.active]="_activeStep === (i + 1)"
+                        [class.active]="currentStep() === (i + 1)"
                         (click)="goToStep(i + 1)"
                         matRipple
                         [matRippleCentered]="true"

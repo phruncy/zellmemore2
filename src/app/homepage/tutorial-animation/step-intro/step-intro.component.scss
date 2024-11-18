@@ -1,0 +1,20 @@
+@import 'src/styles/global/mixins';
+@import 'src/styles/global/colors';
+@import 'src/styles/global/margins';
+@import '../tutorial-animation-mixins.scss';
+
+.h-container {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    padding: auto;
+    position: relative;
+}
+
+.text {
+    display: inline-block;
+    text-align: left;
+    max-width: $maxDescriptionWidth;
+    @include absolute-centered();
+}

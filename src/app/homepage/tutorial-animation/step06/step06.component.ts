@@ -25,7 +25,7 @@ export class Step06Component extends Step implements OnInit {
     readonly faQuestion = faQuestion;
     private _icon: any;
 
-    private cells = [
+    cells = [
         {state : 'active'},
     ];
     private edges = [
@@ -44,7 +44,7 @@ export class Step06Component extends Step implements OnInit {
     }
 
     get icon() {
-        if (this._activeDescription === 0) {
+        if (this._activeSlide === 0) {
             return this.faInfinity;
         }
         return this.faQuestion;

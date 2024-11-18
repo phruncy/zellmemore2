@@ -1,80 +1,35 @@
 <div class="fucking-container">
         <div class="animation-container" cdkScrollable>
-                <div *ngIf="_tutorialStep === 0"
-                        class="step-element">
-                        <div class="h-container">
-                                <div class="text">
-                                        <h2>What are elementary cellular automata?</h2>
-                                        <p>Of all self-organizing structures, elementary Cellular Automata are the simplest possible realization of that concept.</p>
-                                        <p>Click the button below for a short introduction on their mechanics.</p>
-                                </div>
-                        </div>
-                </div>
-                <div 
-                        *ngIf="_tutorialStep === 1"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step01 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step01>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 2"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step02 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step02>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 3"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step04 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step04>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 4"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step03 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step03>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 5"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step05 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step05>
-                </div>
-                <div 
-                        *ngIf="_tutorialStep === 6"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step06 (completion)="addStep()" [activeDescription]="_activeStepDescription"></app-step06>
-                </div>
-                <div
-                        *ngIf="_tutorialStep === 7"
-                        class="step-element-wrapper"
-                        [@slideInOut]>
-                        <app-step-final [activeDescription]="_activeStepDescription"></app-step-final>
+                <div class="step-element-wrapper"[@slideInOut]>
+                        <app-tutorial-step 
+                                [content]="getStepComponent().component" 
+                                [currentSection]="currentSection"
+                                (completed)="addStep()">
+                        </app-tutorial-step>
                 </div>
         </div>
         <div class="step-control-wrapper">
                 <app-tutorial-step-control 
-                                [_activeStep]="_tutorialStep" 
-                                (activeStepChange)="tutorialStep = $event"
+                                [currentStep]="activeStep"
+                                (currentStepChange)="activeStep = $event"
                                 [steps]="steps"
-                                [unlockedSteps]="_currentTotalSteps">
+                                [unlocked]="unlockedSteps">
                 </app-tutorial-step-control>
         </div>
         <div class="direction-control">
-                <div class="btn-wrapper" *ngIf="_tutorialStep !== 0">
+                <div class="btn-wrapper" *ngIf="activeStep !== 0">
                         <button
                                 mat-stroked-button
                                 color="accent"
-                                (click)="goBackInDescription()">
+                                (click)="previous()">
                                 <fa-icon [icon]="faAngleUp"></fa-icon>
                         </button>
                 </div>
-                <div class="btn-wrapper" *ngIf="_tutorialStep !== steps.length">
+                <div class="btn-wrapper" *ngIf="activeStep !== steps.length - 1">
                         <button 
                                 mat-stroked-button
                                 color="accent"
-                                (click)=forwardDescription();>
+                                (click)="advance()">
                                 <fa-icon [icon]="faAngleDown"></fa-icon>
                         </button>
                 </div>

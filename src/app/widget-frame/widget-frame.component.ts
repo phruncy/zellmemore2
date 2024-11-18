@@ -17,8 +17,8 @@ import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './widget-frame.component.html',
   styleUrls: ['./widget-frame.component.css']
 })
-export class WidgetFrameComponent implements OnInit {
-
+export class WidgetFrameComponent implements OnInit 
+{
     @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
     
     widgetAdded = output<boolean>();

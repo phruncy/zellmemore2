@@ -4,11 +4,11 @@
                         <div class="cell-container">
                                 <div 
                                         class="signal left" 
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
-                                        class="background-circle outer" [class.animate-step01]="_activeDescription === 1"
-                                        [class.animate-step02]="_activeDescription >= 2"></div>
+                                        class="background-circle outer" [class.animate-step01]="_activeSlide === 1"
+                                        [class.animate-step02]="_activeSlide >= 2"></div>
                                 <div 
                                         class="cell black" 
                                         id="cell1">
@@ -17,33 +17,33 @@
                         <div class="cell-container">
                                 <div 
                                         class="connector left" 
-                                        [class.animate-step01]="_activeDescription === 1"
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step01]="_activeSlide === 1"
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
                                         class="connector right" 
-                                        [class.animate-step01]="_activeDescription === 1"
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step01]="_activeSlide === 1"
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
                                         class="background-circle" 
-                                        [class.animate-step01]="_activeDescription === 1"
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step01]="_activeSlide === 1"
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
                                         class="cell" 
                                         id="cell2" 
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                         </div>
                         <div class="cell-container">
                                 <div 
                                         class="signal right" 
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
-                                        class="background-circle outer" [class.animate-step01]="_activeDescription === 1" 
-                                        [class.animate-step02]="_activeDescription >= 2">
+                                        class="background-circle outer" [class.animate-step01]="_activeSlide === 1" 
+                                        [class.animate-step02]="_activeSlide >= 2">
                                 </div>
                                 <div 
                                         class="cell" 
@@ -52,5 +52,5 @@
                         </div>
                 </div>
         </div>
-        <div class="description" [@slideInDescription]="_activeDescription">{{descriptions[_activeDescription]}}</div>
+        <div class="description" [@slideInDescription]="_activeSlide">{{descriptions[_activeSlide]}}</div>
 </div>

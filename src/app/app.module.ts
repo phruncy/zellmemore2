@@ -53,7 +53,6 @@ import { AboutComponent } from './homepage/about/about.component';
 import { CaTutorialComponent } from './homepage/ca-tutorial/ca-tutorial.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { TutorialAnimationComponent } from './homepage/tutorial-animation/tutorial-animation.component';
-import { TutorialStepControlComponent } from './homepage/tutorial-step-control/tutorial-step-control.component';
 import { Step01Component } from './homepage/tutorial-animation/step01/step01.component';
 import { Step02Component } from './homepage/tutorial-animation/step02/step02.component';
 import { Step03Component } from './homepage/tutorial-animation/step03/step03.component';
@@ -62,6 +61,7 @@ import { Step05Component } from './homepage/tutorial-animation/step05/step05.com
 import { Step06Component } from './homepage/tutorial-animation/step06/step06.component';
 import { StepFinalComponent } from './homepage/tutorial-animation/step-final/step-final.component';
 import { WidgetDirective } from './utils/widget.directive';
+import { TutorialStepComponent } from './homepage/tutorial-animation/tutorial-step/tutorial-step.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -99,8 +99,6 @@ import { WidgetDirective } from './utils/widget.directive';
         AboutComponent,
         CaTutorialComponent,
         DisclaimerComponent,
-        TutorialAnimationComponent,
-        TutorialStepControlComponent,
         Step01Component,
         Step02Component,
         Step03Component,
@@ -112,21 +110,23 @@ import { WidgetDirective } from './utils/widget.directive';
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        FontAwesomeModule,
-        MatSnackBarModule,
-        MatTooltipModule,
-        MatSliderModule,
-        MatSlideToggleModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatInputModule,
-        MatMenuModule,
-        MatCardModule,
-        MatButtonModule,
-        MatRippleModule,
-        MatDividerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatDividerModule, 
+    TutorialStepComponent,
+    TutorialAnimationComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

@@ -8,8 +8,8 @@ describe('TutorialStepControlComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutorialStepControlComponent ]
-    })
+    imports: [TutorialStepControlComponent]
+})
     .compileComponents();
   }));
 

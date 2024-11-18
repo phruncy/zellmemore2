@@ -8,8 +8,8 @@ describe('SpeedControlComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpeedControlComponent ]
-    })
+    imports: [SpeedControlComponent]
+})
     .compileComponents();
   }));
 

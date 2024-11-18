@@ -8,7 +8,8 @@ import { animations } from 'src/app/homepage/animations';
     styleUrls: ['./step04.component.scss'],
     animations: [
         animations.slideInDescription
-    ]
+    ],
+    standalone: true
 })
 export class Step04Component extends Step
 {

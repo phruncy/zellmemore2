@@ -8,8 +8,8 @@ describe('CustomFooterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomFooterComponent ]
-    })
+    imports: [CustomFooterComponent]
+})
     .compileComponents();
   }));
 

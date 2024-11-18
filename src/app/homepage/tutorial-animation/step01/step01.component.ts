@@ -3,12 +3,13 @@ import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
 @Component({
-  selector: 'app-step01',
-  templateUrl: './step01.component.html',
-  styleUrls: ['./step01.component.scss'],
-  animations: [
-      animations.slideInDescription
-  ]
+    selector: 'app-step01',
+    templateUrl: './step01.component.html',
+    styleUrls: ['./step01.component.scss'],
+    animations: [
+        animations.slideInDescription
+    ],
+    standalone: true
 })
 export class Step01Component extends Step 
 {

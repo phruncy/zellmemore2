@@ -8,8 +8,8 @@ describe('VizDefaultComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VizDefaultComponent ]
-    })
+    imports: [VizDefaultComponent]
+})
     .compileComponents();
   }));
 

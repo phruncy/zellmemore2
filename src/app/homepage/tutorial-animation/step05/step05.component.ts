@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
+import { NgFor, NgIf } from '@angular/common';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { animations } from 'src/app/homepage/animations';
     animations: [
         animations.slideInDescription,
         animations.dropdownCell
-    ]
+    ],
+    standalone: true,
+    imports: [NgFor, NgIf]
 })
 export class Step05Component extends Step 
 {

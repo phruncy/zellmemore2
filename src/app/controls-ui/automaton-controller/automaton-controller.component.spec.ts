@@ -8,8 +8,8 @@ describe('AutomatonControllerComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AutomatonControllerComponent ]
-    })
+    imports: [AutomatonControllerComponent]
+})
     .compileComponents();
   }));
 

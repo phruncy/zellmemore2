@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
+import { MatSelect } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
 
 interface Option
 {
@@ -8,9 +11,11 @@ interface Option
 }
 
 @Component({
-  selector: 'app-state-control',
-  templateUrl: './state-control.component.html',
-  styleUrls: ['./state-control.component.scss']
+    selector: 'app-state-control',
+    templateUrl: './state-control.component.html',
+    styleUrls: ['./state-control.component.scss'],
+    standalone: true,
+    imports: [MatSelect, FormsModule, MatOption]
 })
 export class StateControlComponent implements OnInit {
 

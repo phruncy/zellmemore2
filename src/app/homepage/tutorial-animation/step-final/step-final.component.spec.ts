@@ -8,8 +8,8 @@ describe('StepFinalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ StepFinalComponent ]
-    })
+    imports: [StepFinalComponent]
+})
     .compileComponents();
   }));
 

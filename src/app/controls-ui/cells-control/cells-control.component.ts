@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
+import { MatSlider, MatSliderThumb } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cells-control',
-  templateUrl: './cells-control.component.html',
-  styleUrls: ['./cells-control.component.scss']
+    selector: 'app-cells-control',
+    templateUrl: './cells-control.component.html',
+    styleUrls: ['./cells-control.component.scss'],
+    standalone: true,
+    imports: [MatSlider, MatSliderThumb, FormsModule]
 })
 export class CellsControlComponent implements OnInit {
 

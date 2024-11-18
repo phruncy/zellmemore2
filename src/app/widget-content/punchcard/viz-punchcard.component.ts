@@ -5,9 +5,10 @@ import { SizeService } from '../../services/size.service';
 import * as p5 from 'p5';
 
 @Component({
-  selector: 'app-viz-punchcard',
-  templateUrl: './viz-punchcard.component.html',
-  styleUrls: ['./viz-punchcard.component.css']
+    selector: 'app-viz-punchcard',
+    templateUrl: './viz-punchcard.component.html',
+    styleUrls: ['./viz-punchcard.component.css'],
+    standalone: true
 })
 export class VizPunchcardComponent extends ContentBase implements AfterContentInit 
 {

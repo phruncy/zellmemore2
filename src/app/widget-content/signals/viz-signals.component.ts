@@ -8,9 +8,10 @@ import { Agent } from '../../utils/agent';
 import { ColorService } from 'src/app/color.service';
 
 @Component({
-  selector: 'app-viz-signals',
-  templateUrl: './viz-signals.component.html',
-  styleUrls: ['./viz-signals.component.css']
+    selector: 'app-viz-signals',
+    templateUrl: './viz-signals.component.html',
+    styleUrls: ['./viz-signals.component.css'],
+    standalone: true
 })
 export class VizSignalsComponent extends ContentBase implements AfterContentInit, P5Animated {
 

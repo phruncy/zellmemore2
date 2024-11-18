@@ -5,9 +5,10 @@ import { SizeService } from '../../services/size.service';
 import { CellMatrixService } from '../../services/cell-matrix.service';
 
 @Component({
-  selector: 'app-viz-vortex',
-  templateUrl: './viz-vortex.component.html',
-  styleUrls: ['./viz-vortex.component.css']
+    selector: 'app-viz-vortex',
+    templateUrl: './viz-vortex.component.html',
+    styleUrls: ['./viz-vortex.component.css'],
+    standalone: true
 })
 export class VizVortexComponent extends ContentBase implements AfterContentInit {
     @ViewChild('canvas', { static: true }) canvas: ElementRef;

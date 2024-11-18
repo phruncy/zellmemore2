@@ -8,8 +8,8 @@ describe('VizPunchcardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VizPunchcardComponent ]
-    })
+    imports: [VizPunchcardComponent]
+})
     .compileComponents();
   }));
 

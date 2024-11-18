@@ -8,8 +8,8 @@ describe('ProgramWindowComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgramWindowComponent ]
-    })
+    imports: [ProgramWindowComponent]
+})
     .compileComponents();
   }));
 

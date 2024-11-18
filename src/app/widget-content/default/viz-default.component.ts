@@ -4,9 +4,10 @@ import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
 
 @Component({
-  selector: 'app-viz-default',
-  templateUrl: './viz-default.component.html',
-  styleUrls: ['./viz-default.component.css']
+    selector: 'app-viz-default',
+    templateUrl: './viz-default.component.html',
+    styleUrls: ['./viz-default.component.css'],
+    standalone: true
 })
 export class VizDefaultComponent extends ContentBase implements AfterContentInit {
 

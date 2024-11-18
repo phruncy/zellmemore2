@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-edge-control',
-  templateUrl: './edge-control.component.html',
-  styleUrls: ['./edge-control.component.scss']
+    selector: 'app-edge-control',
+    templateUrl: './edge-control.component.html',
+    styleUrls: ['./edge-control.component.scss'],
+    standalone: true,
+    imports: [MatSlideToggle, FormsModule]
 })
 export class EdgeControlComponent implements OnInit {
 

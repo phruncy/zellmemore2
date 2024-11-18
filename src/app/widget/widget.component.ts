@@ -16,17 +16,20 @@ import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ContentBase } from '../content-base/contentBase.component';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
     selector: 'app-widget',
     templateUrl: './widget.component.html',
     styleUrls: ['./widget.component.css'],
     providers: [
-        {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
-    ]
+        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
+    ],
+    standalone: true,
+    imports: [FaIconComponent, MatTooltip]
 })
 export class WidgetComponent implements OnInit, OnDestroy 
 {

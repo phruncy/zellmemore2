@@ -8,8 +8,8 @@ describe('VizVortexComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VizVortexComponent ]
-    })
+    imports: [VizVortexComponent]
+})
     .compileComponents();
   }));
 

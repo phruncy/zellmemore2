@@ -8,8 +8,8 @@ describe('EdgeControlComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EdgeControlComponent ]
-    })
+    imports: [EdgeControlComponent]
+})
     .compileComponents();
   }));
 

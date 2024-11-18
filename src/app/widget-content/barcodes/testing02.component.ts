@@ -4,9 +4,10 @@ import { ContentBase } from '../../content-base/contentBase.component';
 import { SizeService } from '../../services/size.service';
 
 @Component({
-  selector: 'app-default-view',
-  templateUrl: './testing02.component.html',
-  styleUrls: ['./testing02.component.css']
+    selector: 'app-default-view',
+    templateUrl: './testing02.component.html',
+    styleUrls: ['./testing02.component.css'],
+    standalone: true
 })
 export class Testing02Component extends ContentBase implements AfterContentInit {
     @ViewChild('defaultCanvas', { static: true })canvas: ElementRef;

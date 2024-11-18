@@ -2,12 +2,21 @@ import { Component, OnInit, ViewContainerRef, ViewChild, ViewEncapsulation } fro
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { NgFor } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'app-rule-control',
-  templateUrl: './rule-control.component.html',
-  styleUrls: ['./rule-control.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-rule-control',
+    templateUrl: './rule-control.component.html',
+    styleUrls: ['./rule-control.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [MatMenuTrigger, MatFormField, MatInput, FormsModule, FaIconComponent, MatMenu, NgFor, MatCheckbox]
 })
 export class RuleControlComponent implements OnInit {
 

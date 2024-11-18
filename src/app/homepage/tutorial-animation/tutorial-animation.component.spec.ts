@@ -8,8 +8,8 @@ describe('TutorialAnimationComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutorialAnimationComponent ]
-    })
+    imports: [TutorialAnimationComponent]
+})
     .compileComponents();
   }));
 

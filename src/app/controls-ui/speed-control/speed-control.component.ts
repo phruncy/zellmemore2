@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatSlider, MatSliderThumb } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-speed-control',
-  templateUrl: './speed-control.component.html',
-  styleUrls: ['./speed-control.component.scss']
+    selector: 'app-speed-control',
+    templateUrl: './speed-control.component.html',
+    styleUrls: ['./speed-control.component.scss'],
+    standalone: true,
+    imports: [MatTooltip, MatSlider, MatSliderThumb, FormsModule]
 })
 export class SpeedControlComponent implements OnInit
 {

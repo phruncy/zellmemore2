@@ -3,21 +3,25 @@ import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 import {trigger, state, animate, style, transition } from '@angular/animations';
 import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { NgIf, NgFor } from '@angular/common';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'app-step06',
-  templateUrl: './step06.component.html',
-  styleUrls: ['./step06.component.scss'],
-  animations: [
+    selector: 'app-step06',
+    templateUrl: './step06.component.html',
+    styleUrls: ['./step06.component.scss'],
+    animations: [
         animations.slideInDescription,
         trigger('changeState', [
-            state('active', style ({background: 'black'})),
-            state('inactive', style ({background: 'white'})),
+            state('active', style({ background: 'black' })),
+            state('inactive', style({ background: 'white' })),
             transition('active <=> inactive', [animate('1s ease-in-out')]),
         ]),
         animations.slideInDescription,
         animations.slideInOut
-  ]
+    ],
+    standalone: true,
+    imports: [NgIf, FaIconComponent, NgFor]
 })
 export class Step06Component extends Step implements OnInit {
 

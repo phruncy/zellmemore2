@@ -8,9 +8,10 @@ import { ContentBase } from '../../content-base/contentBase.component';
 import { ColorService } from 'src/app/color.service';
 
 @Component({
-  selector: 'app-viz-waves03',
-  templateUrl: './viz-waves03.component.html',
-  styleUrls: ['./viz-waves03.component.css']
+    selector: 'app-viz-waves03',
+    templateUrl: './viz-waves03.component.html',
+    styleUrls: ['./viz-waves03.component.css'],
+    standalone: true
 })
 export class VizWaves03Component extends ContentBase implements AfterContentInit, P5Animated {
 

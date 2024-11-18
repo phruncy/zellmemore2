@@ -8,8 +8,8 @@ describe('VisualizationDetailComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisualizationDetailComponent ]
-    })
+    imports: [VisualizationDetailComponent]
+})
     .compileComponents();
   }));
 

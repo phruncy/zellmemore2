@@ -7,9 +7,10 @@ import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
 
 @Component({
-  selector: 'app-viz-waves02',
-  templateUrl: './viz-waves02.component.html',
-  styleUrls: ['./viz-waves02.component.css']
+    selector: 'app-viz-waves02',
+    templateUrl: './viz-waves02.component.html',
+    styleUrls: ['./viz-waves02.component.css'],
+    standalone: true
 })
 export class VizWaves02Component extends ContentBase implements AfterContentInit, P5Animated {
 

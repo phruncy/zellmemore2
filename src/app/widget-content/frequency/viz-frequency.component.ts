@@ -6,9 +6,10 @@ import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
 
 @Component({
-  selector: 'app-viz-frequency',
-  templateUrl: './viz-frequency.component.html',
-  styleUrls: ['./viz-frequency.component.css']
+    selector: 'app-viz-frequency',
+    templateUrl: './viz-frequency.component.html',
+    styleUrls: ['./viz-frequency.component.css'],
+    standalone: true
 })
 export class VizFrequencyComponent extends ContentBase implements AfterContentInit, P5Animated {
 

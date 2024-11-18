@@ -8,8 +8,8 @@ describe('ChaosComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChaosComponent ]
-    })
+    imports: [ChaosComponent]
+})
     .compileComponents();
   }));
 

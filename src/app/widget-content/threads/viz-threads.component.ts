@@ -6,9 +6,10 @@ import * as p5 from 'p5';
 import { P5Animated } from '../../utils/p5-animated';
 
 @Component({
-  selector: 'app-viz-threads',
-  templateUrl: './viz-threads.component.html',
-  styleUrls: ['./viz-threads.component.css']
+    selector: 'app-viz-threads',
+    templateUrl: './viz-threads.component.html',
+    styleUrls: ['./viz-threads.component.css'],
+    standalone: true
 })
 export class VizThreadsComponent extends ContentBase implements AfterContentInit, P5Animated {
 

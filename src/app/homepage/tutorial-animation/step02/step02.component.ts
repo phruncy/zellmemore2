@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Step } from '../step';
 import {trigger, state, style, animate, transition } from '@angular/animations';
 import { animations } from 'src/app/homepage/animations';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-step02',
-  templateUrl: './step02.component.html',
-  styleUrls: ['./step02.component.scss'],
-  animations: [
+    selector: 'app-step02',
+    templateUrl: './step02.component.html',
+    styleUrls: ['./step02.component.scss'],
+    animations: [
         trigger('changeState', [
-            state('active', style ({background: 'black'})),
-            state('inactive', style ({background: 'white'})),
+            state('active', style({ background: 'black' })),
+            state('inactive', style({ background: 'white' })),
             transition('active <=> inactive', [animate('1s ease-in-out')]),
         ]),
         animations.slideInDescription
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, NgFor]
 })
 export class Step02Component extends Step implements OnInit 
 {

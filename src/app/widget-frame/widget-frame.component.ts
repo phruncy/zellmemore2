@@ -11,11 +11,14 @@ import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
 import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'app-widget-frame',
-  templateUrl: './widget-frame.component.html',
-  styleUrls: ['./widget-frame.component.css']
+    selector: 'app-widget-frame',
+    templateUrl: './widget-frame.component.html',
+    styleUrls: ['./widget-frame.component.css'],
+    standalone: true,
+    imports: [FaIconComponent]
 })
 export class WidgetFrameComponent implements OnInit 
 {

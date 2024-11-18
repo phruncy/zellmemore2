@@ -5,9 +5,10 @@ import { SizeService } from 'src/app/services/size.service';
 
 
 @Component({
-  selector: 'app-chaos',
-  templateUrl: './chaos.component.html',
-  styleUrls: ['./chaos.component.css']
+    selector: 'app-chaos',
+    templateUrl: './chaos.component.html',
+    styleUrls: ['./chaos.component.css'],
+    standalone: true
 })
 export class ChaosComponent extends ContentBase implements AfterContentInit {
 

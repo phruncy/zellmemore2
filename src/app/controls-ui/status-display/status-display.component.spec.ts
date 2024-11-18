@@ -8,8 +8,8 @@ describe('StatusDisplayComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusDisplayComponent ]
-    })
+    imports: [StatusDisplayComponent]
+})
     .compileComponents();
   }));
 

@@ -1,5 +1,5 @@
 
-<div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="setIcon(true)" (menuClosed)="setIcon(false)">
+<div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="boxesDisplayed = true" (menuClosed)="boxesDisplayed = false">
         <div class="rule-label">
                 <span>rule: </span>
         </div>
@@ -8,7 +8,7 @@
                 <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()" class="textinput">
         </mat-form-field>
         <span>
-                <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="_boxesDisplayed">    
+                <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed">    
                 </fa-icon>
         </span>
 </div>
@@ -25,7 +25,6 @@
                         <div class="checkbox-wrapper">
                                 <mat-checkbox 
                                         id="{{box.id}}"
-                                        value="{{box.index}}"
                                         [(ngModel)]="box.checked"
                                         (change)="onBoxesChanged()"
                                 ></mat-checkbox>

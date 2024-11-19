@@ -1,6 +1,6 @@
 import { Component,
         OnInit,
-        ViewChild,
+        viewChild,
         ViewContainerRef,
         ElementRef,
         ChangeDetectorRef,
@@ -22,7 +22,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class WidgetFrameComponent implements OnInit 
 {
-    @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
+    entry = viewChild('entry', {read: ViewContainerRef});
     
     widgetAdded = output<boolean>();
     clickAnimated = output<boolean>();
@@ -37,6 +37,8 @@ export class WidgetFrameComponent implements OnInit
         private cd: ChangeDetectorRef,
     ) { }
 
+    get isEmpty(): boolean { return this.sizeService.widgetNumber === 0;}
+
     ngOnInit() 
     {
         this.visualizationService.selectionChanged$.subscribe(
@@ -49,21 +51,11 @@ export class WidgetFrameComponent implements OnInit
         this.sizeService.setFrameSize(this.elRef.nativeElement.offsetWidth, this.elRef.nativeElement.offsetHeight);
     }
 
-    onVisualizationSelect()
-    {
-        this.addWidget();
-    }
-
     addWidget()
     {
-        const component = this.entry.createComponent(WidgetComponent);
+        const component = this.entry().createComponent(WidgetComponent);
         component.instance.ref = component;
         this.cd.detectChanges();
         this.widgetAdded.emit(true);
-    }
-
-    hasWidgets(): boolean
-    {
-        return this.sizeService.widgetNumber === 0;
     }
 }

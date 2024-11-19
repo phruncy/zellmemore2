@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import { P5Animated } from '../../utils/p5-animated';
 import * as p5 from 'p5';
 import { ContentBase } from '../../content-base/contentBase.component';
@@ -16,85 +16,96 @@ export class VizFrequencyComponent extends ContentBase implements AfterContentIn
     _p5: p5;
     @ViewChild('container', { static: true }) container: ElementRef;
 
-    private _barWidth: number;
-    private _history: number[];
-
     constructor(
-                protected automaton: AutomatonService,
-                protected sizeService: SizeService
-    ) {
+        protected automaton: AutomatonService,
+        protected sizeService: SizeService
+    ) 
+    {
         super(automaton, sizeService);
+        this.processingSketch = this.processingSketch.bind(this);
     }
 
     ngAfterContentInit()
     {
-        this.resetHistory();
-        this.init();
         this.createP5();
     }
 
     update()
     {
-        this.automaton.states.forEach((state, index) =>
-            {
-                if (state === 1) {
-                    this._history[index]++;
-                }
-            }
-        );
+        this._p5.stateUpdate();
     }
+
     onResize()
     {
-        this.init();
-        this._p5.resizeCanvas(this.widgetWidth, this.widgetHeight);
+        this._p5.resize(this.widgetWidth, this.widgetHeight);
     }
+
     onReset()
     {
-        this.init();
-        this.resetHistory();
+        this._p5.reset();
     }
 
     createP5() 
     {
-        const sketch = (s) =>
+        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
+    }
+
+    processingSketch(p5)
+    {
+        let barWidth : number;
+        let history: number[];
+        
+        const initValues = () =>
         {
-            s.setup = () => {
-                s.createCanvas(this.widgetWidth, this.widgetHeight);
-                s.fill(0);
-                s.noStroke();
-            }
-            s.draw = () => {
-                s.background(255);
-                const scale = this.scale();
-                for (let i = 0; i < this._history.length; i++)
-                {
-                    const barHeight = this._history[i] * this._barWidth * scale;
-                    s.rect(i * this._barWidth, s.height - barHeight, this._barWidth, barHeight);
-                }
-            }
+            barWidth = p5.width / this.automaton.cellnumber;
+        };
+        
+        const resetHistory = () =>
+        {
+            history = this.automaton.states.slice(0);
+                
         }
-        this._p5 = new p5(sketch, this.container.nativeElement);
-    }
 
-    init() {
-        this._barWidth = this.widgetWidth / this.automaton.cellnumber;
-    }
-
-    resetHistory() 
-    {
-        this._history = this.automaton.states.slice(0);
-    }
-
-    /* scales the bar height once a constantly active cell's bar would reach 
-        the widget height. Hence the bar of a cell that has been active for 
-        its entire lifecycle will span the entire height, the others scale relatively 
-    */
-    scale()
-    {
-        const highest = this.automaton.generation * this._barWidth;
-        if (highest > this.widgetHeight) {
-            return this.widgetWidth / highest;
+        const scale = (): number =>
+        {
+            const highest = this.automaton.generation * barWidth;
+            if (highest > p5.height)
+                return p5.height /highest;
+            return 1.0;
         }
-        return 1;
+        
+        p5.setup = () => 
+        {
+            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.fill(0);
+            p5.noStroke();
+            initValues();
+            resetHistory();
+        }
+        p5.draw = () => {
+            p5.background(255);
+            history.forEach((entry, i) => 
+            {
+                const barHeight = entry * barWidth * scale();
+                p5.rect(i * barWidth, p5.height - barHeight, barWidth, barHeight);
+            }) 
+        }
+
+        p5.reset = () =>
+        {
+            initValues();
+            resetHistory();
+        }
+
+        p5.resize = (w: number, h: number) => 
+        {
+            p5.resizeCanvas(w, h);
+            initValues();
+        }
+
+        p5.stateUpdate= () =>
+        {
+            this.automaton.states.forEach((state, index) => { history[index] += state; });
+        }
     }
 }

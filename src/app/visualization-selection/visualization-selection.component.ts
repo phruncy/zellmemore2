@@ -25,7 +25,6 @@ export class VisualizationSelectionComponent implements OnInit {
     this.fetchVisualizations();
   }
 
-  // visualizations are loaded asynchronously
   fetchVisualizations()
   {
     this.visualizationDetailService.provideVisualizations().subscribe(

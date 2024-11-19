@@ -1,4 +1,4 @@
-import { Component, viewChild, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Step01Component } from './step01/step01.component';
 import { Step02Component } from './step02/step02.component';
@@ -28,7 +28,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TutorialAnimationComponent
 {
-    stepContainer = viewChild.required('stepPlaceholder', {read: ViewContainerRef});
     readonly faAngleDown = faAngleDown;
     readonly faAngleUp = faAngleUp;
     readonly steps: StepDescription[] = 

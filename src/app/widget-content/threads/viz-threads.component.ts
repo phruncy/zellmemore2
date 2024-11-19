@@ -16,8 +16,6 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
     @ViewChild('container', { static: true }) container: ElementRef;
     _p5: p5;
 
-    private _color01 = [86, 239, 185];
-
     constructor(
                 protected automaton: AutomatonService,
                 protected sizeService: SizeService) 
@@ -40,6 +38,7 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
     {
         this._p5.onResize(this.widgetWidth, this.widgetHeight);
     }
+    
     update() {}
 
     createP5() 
@@ -49,6 +48,8 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
 
     processingSketch(p5)
     {   
+        const contrastColor = [86, 239, 185];
+        
         let dotSize = 10;
         let dotGap: number;
         let lineHeight: number;
@@ -117,8 +118,8 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
         p5.defineColor = (state: number) =>
         {
             if (state === 1) {
-                p5.stroke(this._color01[0], this._color01[1], this._color01[2]);
-                p5.fill(this._color01[0], this._color01[1], this._color01[2]);
+                p5.stroke(contrastColor[0], contrastColor[1], contrastColor[2]);
+                p5.fill(contrastColor[0], contrastColor[1], contrastColor[2]);
             } else {
                 p5.stroke(0);
                 p5.fill(0);
@@ -136,5 +137,4 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
             initValues();
         }
     }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationService } from '../services/visualization.service';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardImage } from '@angular/material/card';
@@ -15,35 +15,32 @@ import { MatRipple } from '@angular/material/core';
 })
 export class SelectionTileComponent implements OnInit 
 {
-    @Input() id;
-    @Input() name: string;
-    @Input() thumbnail;
+    id = input.required<string>();
+    name = input.required<string>();
+    thumbnail = input<any>();
+
     readonly faPlusCircle = faPlusCircle;
     readonly faCheckCircle = faCheckCircle;
+    
     private _isActive = false;
-    constructor(private visualizationService: VisualizationService) { }
-
     get isActive(): boolean {return this._isActive; }
+
+    constructor(private visualizationService: VisualizationService) { }
 
     ngOnInit() 
     {
-        this.checkIsActive = this.checkIsActive.bind(this);
-        this.onActiveComponentaChange = this.onActiveComponentaChange.bind(this);
-        this.visualizationService.$activeComponentsChanged.subscribe(this.onActiveComponentaChange);
+        this.onActiveVisualizationChange = this.onActiveVisualizationChange.bind(this);
+        this.visualizationService.$activeComponentsChanged.subscribe(this.onActiveVisualizationChange);
     }
 
-    onActiveComponentaChange()
+    onActiveVisualizationChange()
     {
-        this.checkIsActive(this.id)
+        this._isActive = this.visualizationService.activeComponents.includes(this.id());
+        
     }
 
     selectVisualizationToDisplay(id: string)
     {
         this.visualizationService.visualizationToDisplay = id;
-    }
-
-    checkIsActive(id: string): boolean
-    {
-        return this.visualizationService.activeComponents.includes(id);
     }
 }

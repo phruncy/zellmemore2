@@ -1,6 +1,7 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
+@import 'src/styles/global/mixins';
 
 $tutorialOffsetMobile: 15px;
 $tutorialOffsetDesktop: 35px;
@@ -48,9 +49,19 @@ body {
         box-sizing: border-box;
 }
 
+.app-tutorial-container {
+        height: 500px;
+        position: relative; // necessary for overlay!
+}
+
 .tutorial-outer-wrapper {
         text-align: center;
         background: $backgroundUltraLight;
+}
+
+.content {
+        background: $accent;
+        overflow: scroll;
 }
 
 .section {

@@ -7,9 +7,10 @@
 import { Component,
           OnInit,
           OnDestroy,
-          ViewChild,
           ViewContainerRef,
           HostBinding,
+          viewChild,
+          ElementRef,
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -33,16 +34,16 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class WidgetComponent implements OnInit, OnDestroy 
 {
-    @ViewChild('entry', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
+    widgetentry = viewChild('entry', {read: ViewContainerRef});
+    fullscreenContainer = viewChild<ElementRef>('fullscreen');
     /* binds the width/height properties to the width/height variables. type is 'string'! */
-    @ViewChild('fullscreen', { static: true }) container; // reference to  container-div
     @HostBinding('style.width.px') private _width = '300';
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;
     @HostBinding('style.margin-bottom.px') private _marginBottom;
     title: String = 'widget name';
 
-    private _ref: any;
+    private _self: any;
     /* icon references */
     readonly faTimes = faTimes;
     readonly faPlayCircle = faPlayCircle;
@@ -62,7 +63,7 @@ export class WidgetComponent implements OnInit, OnDestroy
 
     set ref(ref: any)
     {
-        this._ref = ref;
+        this._self = ref;
     }
 
     /* IncreaseWidgetNumber() has to be called in order to get the right 
@@ -96,7 +97,7 @@ export class WidgetComponent implements OnInit, OnDestroy
     fetchComponent()
     {
         const visualization = this.visService.provideComponent();
-        const component = this.entry.createComponent(visualization);
+        const component = this.widgetentry().createComponent(visualization);
         this.details.provideVisualizations().subscribe (
             data => 
             {
@@ -117,18 +118,17 @@ export class WidgetComponent implements OnInit, OnDestroy
 
     remove()
     {
-        this._ref.destroy();
+        this._self.destroy();
     }
 
     toggleFullscreen()
     {
-        console.log(this.container);
-        if (this.container.nativeElement.webkitRequestFullscreen) {
-            this.container.nativeElement.webkitRequestFullscreen();
+        console.log(this.fullscreenContainer());
+        if (this.fullscreenContainer().nativeElement.webkitRequestFullscreen) {
+            this.fullscreenContainer().nativeElement.webkitRequestFullscreen();
         } else {
             throw new Error('No fullscreen available');
         }
-        //this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;
     }
 }
 

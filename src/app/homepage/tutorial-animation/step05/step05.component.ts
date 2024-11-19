@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 import { NgFor, NgIf } from '@angular/common';
@@ -15,8 +15,10 @@ import { NgFor, NgIf } from '@angular/common';
     standalone: true,
     imports: [NgFor, NgIf]
 })
-export class Step05Component extends Step 
+export class Step05Component implements Step 
 {
+    activeDescription = input.required<number>();
+    
     trios = [
         {id: 1, left: 1, middle: 1, right: 1},
         {id: 2, left: 1, middle: 1, right: 0},
@@ -28,11 +30,8 @@ export class Step05Component extends Step
         {id: 8, left: 0, middle: 0, right: 0}
     ];
 
-    constructor() {
-        super();
-        this.descriptions = [
-            'Fortunately, there are only eight possible configurations for a set of three cells: ',
-            'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.'
-        ];
-     }
+    readonly descriptions = [
+        'Fortunately, there are only eight possible configurations for a set of three cells: ',
+        'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.'
+    ];
 }

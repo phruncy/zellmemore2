@@ -5,7 +5,7 @@ import { Agent } from '../../utils/agent';
 import { AutomatonService } from '../../services/automaton.service';
 import { SizeService } from '../../services/size.service';
 import { ContentBase } from '../../content-base/contentBase.component';
-import { ColorService } from 'src/app/color.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
     selector: 'app-viz-waves03',

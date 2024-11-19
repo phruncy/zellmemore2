@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 import {trigger, state, animate, style, transition } from '@angular/animations';
@@ -23,11 +23,19 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
     standalone: true,
     imports: [NgIf, FaIconComponent, NgFor]
 })
-export class Step06Component extends Step implements OnInit {
+export class Step06Component implements Step, OnInit {
 
+    activeDescription = input.required<number>();
+    
     readonly faInfinity = faInfinity;
     readonly faQuestion = faQuestion;
-    private _icon: any;
+
+    readonly descriptions = [
+        'In theory, cellular automata may have an infinite width, so that each cell will always have two adjacent neighbours.',
+        'Practically, there are two ways to deal with a finite number of cells. ',
+        'The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.',
+        'The second version connects the two marginal cells with each other and treats them as nieghbours, thus creating a boundless ring-like structure.'
+    ];
 
     cells = [
         {state : 'active'},
@@ -37,18 +45,8 @@ export class Step06Component extends Step implements OnInit {
         {state: 'active'}
     ];
 
-    constructor() {
-      super();
-      this.descriptions = [
-        'In theory, cellular automata may have an infinite width, so that each cell will always have two adjacent neighbours.',
-        'Practically, there are two ways to deal with a finite number of cells. ',
-        'The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.',
-        'The second version connects the two marginal cells with each other and treats them as nieghbours, thus creating a boundless ring-like structure.'
-    ];
-    }
-
     get icon() {
-        if (this._activeSlide === 0) {
+        if (this.activeDescription() === 0) {
             return this.faInfinity;
         }
         return this.faQuestion;

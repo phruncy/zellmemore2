@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -11,13 +11,10 @@ import { animations } from 'src/app/homepage/animations';
     ],
     standalone: true
 })
-export class Step04Component extends Step
+export class Step04Component implements Step
 {
-
-    constructor() {
-        super();
-        this.descriptions = [
-            'This change does not happen randomly, but follows a specific ruleset.'
-        ];
-    }
+    activeDescription = input.required<number>();
+    readonly descriptions = [
+        'This change does not happen randomly, but follows a specific ruleset.'
+    ];
 }

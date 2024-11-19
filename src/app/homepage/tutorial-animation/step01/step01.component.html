@@ -3,10 +3,10 @@
                 <div 
                         class="cell large"
                         [style.background]="'black'"
-                        [class.animated]="_activeSlide >= 1">
+                        [class.animated]="activeDescription() >= 1">
                 </div>
         </div>
-        <div class="description" [@slideInDescription]="_activeSlide">
-                {{descriptions[_activeSlide]}}
+        <div class="description" [@slideInDescription]="activeDescription()">
+                {{descriptions[activeDescription()]}}
         </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { animations } from '../../animations';
 import {trigger, state, animate, style, transition } from '@angular/animations';
 import { Step } from '../step';
@@ -20,14 +20,11 @@ import { Step } from '../step';
     animations.slideInOut
 ]
 })
-export class StepIntroComponent extends Step
+export class StepIntroComponent implements Step
 {
-  constructor()
-  {
-    super();
-    this.descriptions = 
-    [
-      "Of all self-organizing structures, elementary Cellular Automata are the simplest possible realization of that concept. Click the button below for a short introduction on their mechanics."
-    ];
-  }
+  activeDescription: InputSignal<number> = input.required<number>();
+  readonly descriptions: string[] = 
+  [
+    "Of all self-organizing structures, elementary Cellular Automata are the simplest possible realization of that concept. Click the button below for a short introduction on their mechanics."
+  ];
 }

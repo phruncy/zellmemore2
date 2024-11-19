@@ -1,9 +1,6 @@
 <div class="controls">
-        <div 
-                *ngFor="let step of steps(); let i = index"
-                class="step-marker-outer">
+        <div *ngFor="let step of unlockedSteps; let i = index" class="step-marker-outer">
                 <div 
-                        *ngIf="i < unlocked()"
                         class="step-marker" 
                         [class.active]="currentStep() === (i + 1)"
                         (click)="goToStep(i + 1)"

@@ -1,5 +1,5 @@
-import { NgComponentOutlet, NgIf } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { NgComponentOutlet } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { StepDescription } from '../../step-description';
 
 @Component({

@@ -2,7 +2,7 @@
         <div class="upper container">
                 <div 
                         class="multiple-cells-wrapper step01"
-                        *ngIf="_activeSlide === 1">
+                        *ngIf="activeDescription() === 1">
                         <div 
                                 *ngFor="let cell of cells; let i = index"
                                 class="cell"
@@ -12,7 +12,7 @@
                 </div>
                 <div 
                         class="multiple-cells-wrapper step02"
-                        *ngIf="_activeSlide === 0">
+                        *ngIf="activeDescription() === 0">
                         <div 
                                 *ngFor="let cell of cells; let i = index"
                                 class="cell"
@@ -20,6 +20,6 @@
                                 ></div>
                 </div>
         </div>
-        <div class="description" [@slideInDescription]="_activeSlide">{{descriptions[_activeSlide]}}</div>
+        <div class="description" [@slideInDescription]="activeDescription()">{{descriptions[activeDescription()]}}</div>
 </div>
 

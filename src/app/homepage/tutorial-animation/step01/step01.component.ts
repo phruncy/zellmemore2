@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, InputSignal, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -11,13 +11,11 @@ import { animations } from 'src/app/homepage/animations';
     ],
     standalone: true
 })
-export class Step01Component extends Step 
+export class Step01Component implements Step 
 {
-    constructor() { 
-        super();
-        this.descriptions = [
-            'A cellular automaton consists of identical elements that are called cells.',
-            'In an elementary cellular automaton, a cell may have one of two distinguishable state: black or white, 1 or 0, active or inactive – anything is possible. Let\'s go for the black and white example here.'
-        ];
-    }
+    activeDescription: InputSignal<number> = input.required<number>();
+    readonly descriptions = [
+        'A cellular automaton consists of identical elements that are called cells.',
+        'In an elementary cellular automaton, a cell may have one of two distinguishable state: black or white, 1 or 0, active or inactive – anything is possible. Let\'s go for the black and white example here.'
+    ];
 }

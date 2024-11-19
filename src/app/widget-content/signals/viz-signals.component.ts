@@ -5,7 +5,7 @@ import * as p5 from 'p5';
 import { SizeService } from '../../services/size.service';
 import { AutomatonService } from '../../services/automaton.service';
 import { Agent } from '../../utils/agent';
-import { ColorService } from 'src/app/color.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
     selector: 'app-viz-signals',

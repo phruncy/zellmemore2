@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/homepage/animations';
 
@@ -11,14 +11,12 @@ import { animations } from 'src/app/homepage/animations';
     ],
     standalone: true
 })
-export class Step03Component extends Step 
+export class Step03Component implements Step 
 {
-    constructor() {
-        super();
-        this.descriptions = [
-            'To understand the ruleset, pick out a trio of three cells. The middle cell has one direct neighbour both to the left and to the right.',
-            'In an elementary cellular automaton, a cell determines its next state solely by its own current state and the states of its neighbourhood.',
-            'The ruleset defines which state the middle cell is going to have for any combination of neighbourhood states.',
-        ];
-    }
+    activeDescription = input.required<number>();
+    readonly descriptions = [
+        'To understand the ruleset, pick out a trio of three cells. The middle cell has one direct neighbour both to the left and to the right.',
+        'In an elementary cellular automaton, a cell determines its next state solely by its own current state and the states of its neighbourhood.',
+        'The ruleset defines which state the middle cell is going to have for any combination of neighbourhood states.',
+    ];
 }

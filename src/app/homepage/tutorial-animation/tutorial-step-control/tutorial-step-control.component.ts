@@ -1,13 +1,12 @@
 import { Component, model, input } from '@angular/core';
 import { animations } from 'src/app/homepage/animations';
-import { Step } from '../tutorial-animation/step';
-import { NgForOf, NgIf } from '@angular/common';
+import { NgForOf } from '@angular/common';
 import { MatRipple } from '@angular/material/core';
 
 @Component({
   selector: 'app-tutorial-step-control',
   standalone: true,
-  imports: [NgIf, NgForOf, MatRipple],
+  imports: [NgForOf, MatRipple],
   templateUrl: './tutorial-step-control.component.html',
   styleUrls: ['./tutorial-step-control.component.scss'],
   animations: [
@@ -17,13 +16,17 @@ import { MatRipple } from '@angular/material/core';
 export class TutorialStepControlComponent
 {
     currentStep = model.required<number>();
-    steps = input.required<typeof Step[]>();
-    unlocked = input.required<number>();
+    unlocked = input<number>(0);
+    
+    get unlockedSteps(): number[]
+    {
+      return [...Array(this.unlocked()).keys()];
+    } 
 
     goToStep(step: number) 
     {
-        if (step > this.unlocked() || step < 1) {
-            console.log('invalid step count');
+        if (step > this.unlocked() || step < 0) {
+            console.error(`invalid step number '${step}'.`);
             return;
         }
         this.currentStep.set(step);

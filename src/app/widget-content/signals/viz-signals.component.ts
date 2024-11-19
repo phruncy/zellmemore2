@@ -19,9 +19,9 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
     _p5: p5;
 
     constructor(
-                protected automaton: AutomatonService,
-                protected size: SizeService,
-                protected colors: ColorService
+        protected automaton: AutomatonService,
+        protected size: SizeService,
+        protected colors: ColorService
     ) 
     {
         super(automaton, size);
@@ -51,7 +51,6 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
         this._p5.reset();
     }
 
-    // contains the p5 instance
     createP5() 
     {    
         this._p5 = new p5(this.processingSketch, this.container.nativeElement);

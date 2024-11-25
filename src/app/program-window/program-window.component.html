@@ -12,10 +12,11 @@
                 <!-- selection background overlay --> 
                 <!-- the selection dropup -->   
                 <div class="menu" [class.active]="selectionActive">
-                        <div class="button-container">
-                                <button (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
-                                        <div class="plus-icon-container"><fa-icon [icon]="faTimes" class="plus-icon" [class.active]="selectionActive"></fa-icon></div>
-                                </button>
+                        <div (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
+                                <fa-icon 
+                                        [icon]="faPlusCircle" 
+                                        class="plus-icon" 
+                                        [class.active]="selectionActive"></fa-icon>
                         </div>
                         <app-visualization-selection class="menu-content" [class.active]="selectionActive"></app-visualization-selection>
                 </div>

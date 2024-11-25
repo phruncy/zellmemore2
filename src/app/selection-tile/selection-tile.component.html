@@ -6,7 +6,9 @@
         </mat-card-header>
         <div mat-card-image class="image-container">
                 <span class="overlay" (click)="selectVisualizationToDisplay(id())">
-                        <div class="check-wrapper"><fa-icon [icon]="faCheckCircle" class="check" [class.active]="isActive"></fa-icon></div>
+                        <div class="check-wrapper">
+                                <fa-icon [icon]="faCheckCircle" class="check" [class.active]="isActive"></fa-icon>
+                        </div>
                         <button mat-icon-button class="btn" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
                                 <fa-icon [icon]="faPlusCircle" class="icon"></fa-icon>
                         </button>               

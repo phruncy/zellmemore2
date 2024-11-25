@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faHome, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { TopbarComponent } from '../controls-ui/topbar/topbar.component';
@@ -26,6 +26,7 @@ export class ProgramWindowComponent
     selectionActive = false;
     readonly faTimes = faTimes;
     readonly faHome = faHome;
+    readonly faPlusCircle = faPlusCircle;
 
     toggleSelection()
     {

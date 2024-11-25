@@ -2,6 +2,14 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 
+$plusButtonSize: 27px;
+$plusButtonMargin: 2.5vh;
+$plusButtonPadding: 10px;
+
+$widgetAreaMinHeight: 200px;
+$selectMenuActiveHeight: 400px;
+$selectMenuActiveHeightMobile: 300px;
+$selectMenuMaxWidth: 860px;
 
 body {
         background-color:  white;
@@ -24,6 +32,8 @@ body {
 }
  /* /// SELECTION MENU /// */
 .menu {
+        display: grid;
+        justify-items: center;
         position: absolute;
         bottom: 0;
         padding: $plusButtonPadding;
@@ -59,58 +69,35 @@ body {
         transition: max-height 0.3s ease-out;
 }
 
-/* for positioning the "+"-button in the center of the screen */
-.button-container {
-        text-align: center;
+.dropdown-btn {
+        background-color: transparent;
+        border-style: none;
+        cursor: pointer;
         margin-bottom: $plusButtonMargin;
 }
 
-.dropdown-btn {
-        position: relative;
-        display: inline-block;
-        background-color: rgb(30, 30, 30);
-        transition: background-color 0.1s linear;
-        width: $plusButtonSize;
-        height: $plusButtonSize;
-        border-radius: 50%;
-        border-style: none;
-        cursor: pointer;
-}
-
-.dropdown-btn:active {
-        top: 1px;
-        transition: all 0.2s ease-in-out ;
-}
-
-.dropdown-btn:hover {
-        background-color: $accent;
-        transition: all 0.1s linear;
-}
-
 .plus-icon {
-        display: inline-block;
-        color: $fontNegative;
-        font-size: 20px;
-        -webkit-transform:rotate(10deg);
-        -moz-transform:rotate(10deg);
-        -o-transform:rotate(10deg);
-        transform: rotate(-45deg);
-        transition: all 0.2s ease-in;
-}
-
-.plus-icon.active {
-        
+        display: block;
+        color: rgb(30, 30, 30);
+        font-size: $plusButtonSize;
         transform:rotate(0deg);
         transition-property: all;
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
+        cursor: pointer;
 }
 
-.plus-icon-container {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+.plus-icon:hover {
+        color: $accent;
+        transition: all 0.1s linear;
+}
+
+.plus-icon.active {
+        -webkit-transform:rotate(10deg);
+        -moz-transform:rotate(10deg);
+        -o-transform:rotate(10deg);
+        transform: rotate(-45deg);
+        transition: all 0.2s ease-in; 
 }
 
 .home {

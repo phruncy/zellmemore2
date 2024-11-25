@@ -1,6 +1,8 @@
-@import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 @import 'src/styles/global/colors';
+
+$selectionTileMargin: 2px;
+$matCardMaxWidth: 150px;
 
 .mat-mdc-card {
         margin: $selectionTileMargin;
@@ -13,6 +15,9 @@
 }
 
 .overlay {
+        display: grid;
+        align-items: center;
+        justify-content: center;
         background: $overlay;
         position: absolute;
         top: 0;
@@ -35,17 +40,9 @@
 }
 
 .btn {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
         transition: opacity 0.2s ease-out;
         z-index: 1;
         color: $highlight;
-}
-
-.icon {
-        font-size: $iconSize;
 }
 
 .check-wrapper {

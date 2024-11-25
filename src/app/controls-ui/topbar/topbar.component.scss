@@ -125,4 +125,19 @@
         }
 }
 
+.app-status.container {
+        text-align: center;
+}
+
+.app-status.elt{
+        display: inline-block;
+        margin: 0px 10px 0px 10px;
+}
+
+@media only screen and (max-width: 420px) {
+        .elt {
+                margin: 0;
+        }
+}
+
 

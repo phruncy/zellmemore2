@@ -4,8 +4,8 @@
                 class="play-button" 
                 mat-button
                 matTooltip="Run/Pause">
-                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!_isRunning"></fa-icon>
-                <fa-icon [icon]="faPause" class="pause icon" [class.active]="_isRunning"></fa-icon>
+                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!isRunning"></fa-icon>
+                <fa-icon [icon]="faPause" class="pause icon" [class.active]="isRunning"></fa-icon>
         </button>
         <button 
                 (click)="onClickReset()" 
@@ -20,18 +20,20 @@
                 matTooltip="show / hide">
                 <div class="icon settings-label">
                         settings 
-                        <fa-icon [icon]="faAngleLeft" class="settings icon" [class.active]="_controllerDisplayed">    
+                        <fa-icon [icon]="faAngleLeft" class="settings icon" [class.active]="controllerDisplayed">    
                         </fa-icon>
                 </div>
         </button>
         <div class ="stats">
-                <app-status-display></app-status-display>
+                <div class="app-status.container">
+                        <div class="appstatus.elt">generation: {{generation}}</div>
+                </div>
         </div>
 </div>
 <mat-divider></mat-divider>
 <div class="controller-wrapper">
         <app-automaton-controller 
                 class="controller" 
-                [class.active]="_controllerDisplayed">
+                [class.active]="controllerDisplayed">
         </app-automaton-controller>
 </div>

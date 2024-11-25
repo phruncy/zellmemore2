@@ -1,62 +1,12 @@
-import { Component, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
-import { ContentBase } from '../../content-base/contentBase.component';
-import { P5Animated } from '../../utils/p5-animated';
-import * as p5 from 'p5';
-import { SizeService } from '../../services/size.service';
-import { AutomatonService } from '../../services/automaton.service';
-import { Agent } from '../../utils/agent';
-import { ColorService } from 'src/app/services/color.service';
+import { P5Sketch } from "src/P5Sketches/P5Sketch";
+import * as p5 from "p5";
+import { Agent } from "src/app/utils/agent";
+import { sketchColors } from "src/app/utils/colors";
 
-@Component({
-    selector: 'app-viz-signals',
-    templateUrl: './viz-signals.component.html',
-    styleUrls: ['./viz-signals.component.css'],
-    standalone: true
-})
-export class VizSignalsComponent extends ContentBase implements AfterContentInit, P5Animated {
-
-    @ViewChild('container', { static: true }) container: ElementRef;
-    _p5: p5;
-
-    constructor(
-        protected automaton: AutomatonService,
-        protected size: SizeService,
-        protected colors: ColorService
-    ) 
-    {
-        super(automaton, size);
-        this.processingSketch = this.processingSketch.bind(this);
-        this.automaton.modeChanged$.subscribe(
-            () => {this._p5.background(0);}
-        );
-    }
-
-    ngAfterContentInit() 
-    {
-        this.createP5();
-    }
-
-    update() 
-    {
-        this._p5.cellsUpdated();    
-    }
-
-    onResize() 
-    {
-        this._p5.resize();
-    }
-
-    onReset() 
-    {
-        this._p5.reset();
-    }
-
-    createP5() 
-    {    
-        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
-    }
-
-    processingSketch(p5)
+export const p5signals = new P5Sketch
+(   
+    "signals",
+    function signalsSketch(p5: p5): void 
     {
         let amplitude: number; // absolute spatial difference between 0 and 1 states
         let dotSize: number; // size of the dots representing the cells
@@ -118,7 +68,7 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
 
         p5.setup = () => 
         {
-            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.createCanvas(this.componentWidth, this.componentWidth);
             p5.noStroke();
             p5.fill(255);
             p5.background(0);
@@ -140,10 +90,10 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
             p5.pop();
         };
 
-        p5.cellsUpdated = () =>
+        p5.automatonStateUpdate = () =>
         {
-            const color = this.colors.palette[colorIndex];
-            colorIndex = (colorIndex + 1) % this.colors.palette.length;
+            const color: number[] = sketchColors[colorIndex];
+            colorIndex = (colorIndex + 1) % sketchColors.length;
             this._p5.fill(color[0], color[1], color[2]);
             this.automaton.states.forEach((state, index) => 
             {
@@ -151,16 +101,18 @@ export class VizSignalsComponent extends ContentBase implements AfterContentInit
             });
         }
 
-        p5.resize = (w:number, h: number) =>
+        p5.componentResize = (w:number, h: number) =>
         {
             p5.resizeCanvas(w, h);
-            p5.reset();
+            p5.automatonReset();
         }
 
-        p5.reset = () =>
+        p5.automatonReset = () =>
         {
             p5.background(0);
             initValues();
         }
+
+        p5.automatonModeChange = () => {};
     }
-}
+);

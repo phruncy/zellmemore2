@@ -1,57 +1,11 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { P5Animated } from '../../utils/p5-animated';
-import * as p5 from 'p5';
-import { AutomatonService } from '../../services/automaton.service';
-import { Agent } from '../../utils/agent';
-import { SizeService } from '../../services/size.service';
-import { ContentBase } from '../../content-base/contentBase.component';
+import { P5Sketch } from "src/P5Sketches/P5Sketch";
+import * as p5 from "p5";
+import { Agent } from "src/app/utils/agent";
 
-@Component({
-    selector: 'app-viz-waves01',
-    templateUrl: './viz-waves01.component.html',
-    styleUrls: ['./viz-waves01.component.css'],
-    standalone: true
-})
-export class VizWaves01Component extends ContentBase implements AfterContentInit, P5Animated {
-
-    @ViewChild('container', { static: true }) container: ElementRef;
-    _p5: p5;
-
-    constructor(
-        protected automaton: AutomatonService,
-        protected size: SizeService
-    ) 
-    {
-        super(automaton, size);
-        this.processingSketch = this.processingSketch.bind(this);
-    }
-
-    ngAfterContentInit() 
-    {
-        this.createP5();
-    }
-
-    update() 
-    {
-        this._p5.updateAgents();
-    }
-
-    onResize() 
-    {
-        this._p5.resize(this.widgetWidth, this.widgetHeight);
-    }
-
-    onReset() 
-    {
-        this._p5.reset();
-    }
-
-    createP5() 
-    {
-        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
-    }
-
-    processingSketch(p5)
+export const p5waves01 = new P5Sketch 
+   
+(   "waves01",
+    function waves01Sketch(p5: p5): void 
     {
         let agents: Agent[] = [];
         let amplitude: number; // absolute spatial difference between 0 and 1 states
@@ -115,7 +69,7 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
         
         p5.setup = () => 
         {
-            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.createCanvas(this.componentWidth, this.componentHeight);
             p5.noFill();
             p5.stroke(255);
             p5.background(0);
@@ -138,7 +92,7 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
             p5.pop();
         };
 
-        p5.updateAgents = () =>
+        p5.automatonStateUpdate = () =>
         {
             this.automaton.states.forEach((state, index) => 
             {
@@ -146,17 +100,18 @@ export class VizWaves01Component extends ContentBase implements AfterContentInit
             });
         }
 
-        p5.reset = () =>
+        p5.automatonReset = () =>
         {
             p5.background(0);
             initValues();
         }
 
-        p5.resize = (w: number, h: number) =>
+        p5.componentResize = (w: number, h: number) =>
         {
             p5.resizeCanvas(w, h);
             p5.reset();
         }
+
+        p5.automatonModeChange = () => {}
     }
-}
-    
+);

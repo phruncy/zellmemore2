@@ -17,6 +17,7 @@ export class StatusDisplayComponent implements OnInit
       this.update = this.update.bind(this);
       this.automaton.ready$.subscribe(this.update);
       this.automaton.changed$.subscribe(this.update);
+      this.automaton.cellsChanged$.subscribe(this.update);
     }
 
     update(): void

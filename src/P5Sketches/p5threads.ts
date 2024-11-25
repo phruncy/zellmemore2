@@ -1,53 +1,11 @@
-import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { ContentBase } from '../../content-base/contentBase.component';
-import { AutomatonService } from '../../services/automaton.service';
-import { SizeService } from '../../services/size.service';
-import * as p5 from 'p5';
-import { P5Animated } from '../../utils/p5-animated';
+import { P5Sketch } from "src/P5Sketches/P5Sketch";
+import * as p5 from "p5";
 
-@Component({
-    selector: 'app-viz-threads',
-    templateUrl: './viz-threads.component.html',
-    styleUrls: ['./viz-threads.component.css'],
-    standalone: true
-})
-export class VizThreadsComponent extends ContentBase implements AfterContentInit, P5Animated {
-
-    @ViewChild('container', { static: true }) container: ElementRef;
-    _p5: p5;
-
-    constructor(
-                protected automaton: AutomatonService,
-                protected sizeService: SizeService) 
+export const p5threads = new P5Sketch 
+(
+    "threads",
+    function p5threads(p5: p5): void 
     {
-        super(automaton, sizeService);
-        this.processingSketch = this.processingSketch.bind(this);
-    }
-
-    ngAfterContentInit() 
-    {
-      this.createP5();
-    }
-
-    onReset() 
-    {
-        this._p5.reset();
-    }
-
-    onResize() 
-    {
-        this._p5.onResize(this.widgetWidth, this.widgetHeight);
-    }
-    
-    update() {}
-
-    createP5() 
-    {
-        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
-    }
-
-    processingSketch(p5)
-    {   
         const contrastColor = [86, 239, 185];
         
         let dotSize = 10;
@@ -82,7 +40,7 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
         
         p5.setup = () => 
         {
-            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.createCanvas(this.componentWidth, this.componentHeight);
             initValues();
         }
 
@@ -126,15 +84,17 @@ export class VizThreadsComponent extends ContentBase implements AfterContentInit
             }
         }
 
-        p5.reset = () =>
+        p5.automatonReset = () =>
         {
             initValues();
         }
 
-        p5.onResize = (w: number, h: number) =>
+        p5.componentResize = (w: number, h: number) =>
         {
             p5.resizeCanvas(w, h);
             initValues();
         }
-    }
-}
+
+        p5.automatonModeChange = () => {};
+        p5.automatonStateUpdate = () => {};
+    });

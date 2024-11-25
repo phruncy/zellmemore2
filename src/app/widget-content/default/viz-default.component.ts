@@ -14,7 +14,6 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
     @ViewChild('defaultCanvas', { static: true })canvas: ElementRef;
     private _ctx: CanvasRenderingContext2D;
 
-    private blockMatrix: number[][] = [];
     private _blockSize: number;
     private _maxDisplayableGenerations: number;
     private _buffer: ImageData;
@@ -41,7 +40,6 @@ export class VizDefaultComponent extends ContentBase implements AfterContentInit
     {
         this._blockSize = this.getBlocksize();
         this._maxDisplayableGenerations = this.widgetWidth/ this._blockSize;
-        this.blockMatrix = [];
         this._ctx.clearRect(0, 0, this.widgetWidth, this.widgetHeight);
         this.update();
     }

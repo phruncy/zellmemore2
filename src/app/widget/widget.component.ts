@@ -19,8 +19,9 @@ import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-ico
 import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
-import { ContentBase } from '../content-base/contentBase.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
+import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
 
 @Component({
     selector: 'app-widget',
@@ -44,7 +45,6 @@ export class WidgetComponent implements OnInit, OnDestroy
     title: String = 'widget name';
 
     private _self: any;
-    /* icon references */
     readonly faTimes = faTimes;
     readonly faPlayCircle = faPlayCircle;
     readonly faExpand = faExpand;
@@ -96,16 +96,17 @@ export class WidgetComponent implements OnInit, OnDestroy
      */
     fetchComponent()
     {
-        const visualization = this.visService.provideComponent();
-        const component = this.widgetentry().createComponent(visualization);
-        this.details.provideVisualizations().subscribe (
+        const visualization = this.visService.provideSketch();
+        const component = this.widgetentry().createComponent(P5VisualizationComponent);
+        component.setInput('p5sketch', visualization);
+        /*this.details.provideVisualizations().subscribe (
             data => 
             {
                 this.title = data.find(
                     obj => obj.id === this.visService.visualizationToDisplay).name;
             }
         );
-        this.visService.addToActive(component.instance as ContentBase);
+        //this.visService.addToActive(component.instance as ContentBase);*/
     }
 
     fetchSize() 

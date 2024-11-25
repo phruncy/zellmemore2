@@ -12,7 +12,8 @@ export abstract class ContentBase implements OnInit, OnDestroy {
     private _resetSub: Subscription;
     private _onDestroy = new Subject<void>();
     public $onDestroy = this._onDestroy.asObservable();
-    /* sets the size */
+
+
     @HostBinding('style.width.px') protected widgetWidth ;
     @HostBinding('style.height.px') protected widgetHeight;
 

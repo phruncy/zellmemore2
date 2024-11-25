@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Testing02Component } from '../widget-content/barcodes/testing02.component';
-import { VizDefaultComponent } from '../widget-content/default/viz-default.component';
-import { VizPunchcardComponent } from '../widget-content/punchcard/viz-punchcard.component';
-import { VizThreadsComponent } from '../widget-content/threads/viz-threads.component';
-import { VizFrequencyComponent } from '../widget-content/frequency/viz-frequency.component';
-import { VizVortexComponent } from '../widget-content/vortex/viz-vortex.component';
-import { VizSignalsComponent } from '../widget-content/signals/viz-signals.component';
-import { VizWaves01Component } from '../widget-content/waves01/viz-waves01.component';
-import { VizWaves02Component } from '../widget-content/waves02/viz-waves02.component';
-import { VizWaves03Component } from '../widget-content/waves03/viz-waves03.component';
-import { ChaosComponent } from '../widget-content/chaos/chaos.component';
 import { ContentBase } from '../content-base/contentBase.component';
+import { p5barcode } from 'src/P5Sketches/p5barcode';
+import { p5punchCard } from 'src/P5Sketches/p5punchCard';
+import { p5default } from 'src/P5Sketches/p5default';
+import { P5Sketch } from '../../P5Sketches/P5Sketch';
+import { p5waves01 } from 'src/P5Sketches/p5waves01';
+import { p5frequency } from 'src/P5Sketches/p5frequency';
+import { p5threads } from 'src/P5Sketches/p5threads';
+import { p5signals } from 'src/P5Sketches/p5signals';
+import { p5waves02 } from 'src/P5Sketches/p5waves02';
+import { p5waves03 } from 'src/P5Sketches/p5waves03';
+import { p5chaos } from 'src/P5Sketches/p5chaos';
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +21,28 @@ export class VisualizationService {
 
     private _visualizationToDisplay: string;
     private _selectionChanged = new Subject<void>();
-    // program window component subscribes to this
     public selectionChanged$ = this._selectionChanged.asObservable();
-    // list of all displayed visualizations in the DOM
     private _activeComponentsChanged = new Subject<void>();
     public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
     private _activeComponents = [];
+
+    private p5Sketches = 
+    {
+        "v001": p5default,
+        "v002": p5barcode,
+        "v003": p5frequency,
+        "v004": p5punchCard,
+        "v005": p5threads,
+        "v006": p5signals,
+        "v007": null,
+        "v008": p5chaos,
+        "v009": p5waves01,
+        "v010": p5waves02,
+        "v011": p5waves03,
+    };
     private visualizationComponents =
     {
-        "v001": VizDefaultComponent,
+        /*"v001": VizDefaultComponent,
         "v002": Testing02Component,
         "v003": VizFrequencyComponent,
         "v004": VizPunchcardComponent,
@@ -39,7 +52,7 @@ export class VisualizationService {
         "v008": ChaosComponent,
         "v009": VizWaves01Component,
         "v010": VizWaves02Component,
-        "v011": VizWaves03Component,
+        "v011": VizWaves03Component,*/
     };
 
     constructor() {}
@@ -51,7 +64,7 @@ export class VisualizationService {
 
     set visualizationToDisplay(id: string)
     {
-        if (!(id in this.visualizationComponents)) {
+        if (!(id in this.p5Sketches)) {
             const unknownComponent = new Error('Oops, this component doesn\'t exist.');
             throw unknownComponent;
         }
@@ -71,6 +84,11 @@ export class VisualizationService {
     getComponentById(id) 
     {
         return this.visualizationComponents[id];
+    }
+
+    provideSketch(): P5Sketch
+    {
+        return this.p5Sketches[this.visualizationToDisplay];
     }
 
     provideComponent() : any

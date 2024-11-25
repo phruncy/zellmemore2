@@ -1,58 +1,12 @@
-import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { P5Animated } from '../../utils/p5-animated';
-import * as p5 from 'p5';
-import { Agent } from '../../utils/agent';
-import { AutomatonService } from '../../services/automaton.service';
-import { SizeService } from '../../services/size.service';
-import { ContentBase } from '../../content-base/contentBase.component';
-import { ColorService } from 'src/app/services/color.service';
+import { P5Sketch } from "src/P5Sketches/P5Sketch";
+import * as p5 from "p5";
+import { sketchColors } from "src/app/utils/colors";
+import { Agent } from "src/app/utils/agent";
 
-@Component({
-    selector: 'app-viz-waves03',
-    templateUrl: './viz-waves03.component.html',
-    styleUrls: ['./viz-waves03.component.css'],
-    standalone: true
-})
-export class VizWaves03Component extends ContentBase implements AfterContentInit, P5Animated {
-
-    @ViewChild('container', { static: true }) container: ElementRef;
-    _p5: p5;
-
-    constructor(
-                protected automaton: AutomatonService,
-                protected size: SizeService,
-                protected colors: ColorService
-                ) {
-        super(automaton, size);
-        this.processingSketch = this.processingSketch.bind(this);
-        this.automaton.modeChanged$.subscribe(() => {this._p5.onModeChange()});
-        this.automaton.changed$.subscribe(() => {this._p5.onCellUpdate()})
-    }
-
-    ngAfterContentInit() 
-    {
-        this.createP5();
-    }
-
-    update() {
-        
-    }
-
-    onResize() {
-        this._p5.onWidgetResize(this.widgetWidth, this.widgetHeight);
-    }
-
-    onReset() 
-    {
-        this._p5.reset();
-    }
-
-    createP5() 
-    {
-        this._p5 = new p5(this.processingSketch, this.container.nativeElement);
-    }
-
-    processingSketch(p5)
+export const p5waves03 = new P5Sketch
+(   
+    "waves03",
+    function waves03Sketch(p5: p5): void 
     {
         let amplitude: number; // absolute spatial difference between 0 and 1 states
         let radius: number; // radius of the 0 state position in circular mode
@@ -65,6 +19,8 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
         let centerX: number; // circle center in circular mode
         let centerY: number;
         let colorCounter: number;
+
+        const structureSpeed = 0.003;
         
         const initValues = () =>
         {
@@ -119,8 +75,7 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
             p5.translate(centerX, centerY);
             p5.beginShape();
             p5.curveVertex (
-                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
-            );
+                Math.cos(0) * (radius + agents[0].pos), 0);
             p5.push();
             agents.forEach(agent => {
                 p5.curveVertex(
@@ -131,18 +86,16 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
             });
             p5.pop();
             p5.curveVertex (
-                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
-            );
+                radius + agents[0].pos, 0);
             p5.curveVertex (
-                Math.cos(0) * (radius + agents[0].pos),     Math.sin(0) * (radius + agents[0].pos)
-            );
+                radius + agents[0].pos, 0);
             p5.endShape();
             p5.pop();
         }
 
         p5.setup = () => 
         {
-            p5.createCanvas(this.widgetWidth, this.widgetHeight);
+            p5.createCanvas(this.componentWidth, this.componentWidth);
             p5.noFill();
             p5.stroke(0);
             p5.strokeWeight(.5, 15);
@@ -153,11 +106,11 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
         p5.draw = () =>
         {
             moveAgents();
-            // let drawing follow the mouse movement
-            if (this.automaton.isRunning) {
-                centerX += (p5.mouseX - centerX) * 0.003;
-                centerY += (p5.mouseY - centerY) * 0.003;
-                baseline += (p5.mouseY - baseline) * 0.003;
+            if (this.automaton.isRunning) 
+            {
+                centerX += (p5.mouseX - centerX) * structureSpeed;
+                centerY += (p5.mouseY - centerY) * structureSpeed;
+                baseline += (p5.mouseY - baseline) * structureSpeed;
             }
             if (this.automaton.isCircular) 
             {
@@ -169,33 +122,33 @@ export class VizWaves03Component extends ContentBase implements AfterContentInit
             }
         };
 
-        p5.onWidgetResize = (w: number, h: number) =>
+        p5.componentResize = (w: number, h: number) =>
         {
             p5.resizeCanvas(w, h);
             p5.reset(); 
         }
 
-        p5.reset = () =>
+        p5.automatonReset = () =>
         {
             initValues();
             p5.background(255);
         }
 
-        p5.onModeChange = () =>
+        p5.automatonModeChange = () =>
         {
             p5.background(255);
         }
 
-        p5.onCellUpdate = () =>
+        p5.automatonStateUpdate = () =>
         {
             p5.background(255, 5);
-            const color = this.colors.palette[colorCounter];
-            colorCounter = (colorCounter + 1) % 8;
+            const color: number[] = sketchColors[colorCounter];
+            colorCounter = (colorCounter + 1) % sketchColors.length;
             p5.stroke(color[0], color[1], color[2]);
             this.automaton.states.forEach((state, index) => 
             {
                 agents[index].target = getTargetPosition(state);
             });
-        }    
+        } 
     }
-}
+);

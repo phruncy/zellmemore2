@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ContentBase } from '../content-base/contentBase.component';
-import { p5barcode } from 'src/P5Sketches/p5barcode';
-import { p5punchCard } from 'src/P5Sketches/p5punchCard';
-import { p5default } from 'src/P5Sketches/p5default';
-import { P5Sketch } from '../../P5Sketches/P5Sketch';
-import { p5waves01 } from 'src/P5Sketches/p5waves01';
-import { p5frequency } from 'src/P5Sketches/p5frequency';
-import { p5threads } from 'src/P5Sketches/p5threads';
-import { p5signals } from 'src/P5Sketches/p5signals';
-import { p5waves02 } from 'src/P5Sketches/p5waves02';
-import { p5waves03 } from 'src/P5Sketches/p5waves03';
-import { p5chaos } from 'src/P5Sketches/p5chaos';
+import { p5barcode } from 'src/app/P5Sketches/p5barcode';
+import { p5punchCard } from 'src/app/P5Sketches/p5punchCard';
+import { p5default } from 'src/app/P5Sketches/p5default';
+import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
+import { p5waves01 } from 'src/app/P5Sketches/p5waves01';
+import { p5frequency } from 'src/app/P5Sketches/p5frequency';
+import { p5threads } from 'src/app/P5Sketches/p5threads';
+import { p5signals } from 'src/app/P5Sketches/p5signals';
+import { p5waves02 } from 'src/app/P5Sketches/p5waves02';
+import { p5waves03 } from 'src/app/P5Sketches/p5waves03';
+import { p5chaos } from 'src/app/P5Sketches/p5chaos';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable({ providedIn: 'root'})
 export class VisualizationService {
 
     private _visualizationToDisplay: string;
@@ -40,21 +37,6 @@ export class VisualizationService {
         "v010": p5waves02,
         "v011": p5waves03,
     };
-    private visualizationComponents =
-    {
-        /*"v001": VizDefaultComponent,
-        "v002": Testing02Component,
-        "v003": VizFrequencyComponent,
-        "v004": VizPunchcardComponent,
-        "v005": VizThreadsComponent,
-        "v006": VizSignalsComponent,
-        "v007": VizVortexComponent,
-        "v008": ChaosComponent,
-        "v009": VizWaves01Component,
-        "v010": VizWaves02Component,
-        "v011": VizWaves03Component,*/
-    };
-
     constructor() {}
 
     get visualizationToDisplay(): string
@@ -83,7 +65,7 @@ export class VisualizationService {
 
     getComponentById(id) 
     {
-        return this.visualizationComponents[id];
+        return this.p5Sketches[id];
     }
 
     provideSketch(): P5Sketch
@@ -93,7 +75,7 @@ export class VisualizationService {
 
     provideComponent() : any
     {
-        return this.visualizationComponents[this.visualizationToDisplay];
+        return this.p5Sketches[this.visualizationToDisplay];
     }
 
     addToActive(component: ContentBase) 

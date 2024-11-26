@@ -3,7 +3,7 @@ import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { Subscription, Subject } from 'rxjs';
 import * as p5 from 'p5';
-import { P5Sketch } from '../../P5Sketches/P5Sketch';
+import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
 
 @Component({
   selector: 'app-p5-visualization',

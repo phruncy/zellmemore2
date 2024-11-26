@@ -1,4 +1,4 @@
-import { P5Sketch } from "src/P5Sketches/P5Sketch";
+import { P5Sketch } from "src/app/P5Sketches/P5Sketch";
 import * as p5 from "p5";
 import { Agent } from "src/app/utils/agent";
 import { sketchColors } from "src/app/utils/colors";

@@ -1,13 +1,13 @@
 <div id="speed-controller" class="settings-unit">
         <span matTooltip="generations per second" class="tag">
-                {{_fps}} fps 
+                {{fps}} fps 
         </span>
 <!--         <div class="slider-wrapper"> -->
                 <mat-slider
                         class="range"
                         [min]="speedMin"
                         [max]="speedMax">
-                        <input matSliderThumb [(ngModel)]="_fps" (ngModelChange)="onModelChange($event)"/>
+                        <input matSliderThumb [(ngModel)]="fps" (ngModelChange)="onModelChange($event)"/>
                 </mat-slider>
 <!--         </div> -->
 </div>

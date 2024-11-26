@@ -25,16 +25,13 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "./node_modules/p5/lib/p5.min.js"
-            ],
             "stylePreprocessorOptions": {
                     "includePaths": [
                             "./styles/"
                     ]
             },
             "aot": false,
-            "vendorChunk": true,
+            "vendorChunk": false,
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
@@ -56,10 +53,33 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "3mb"
+                }
+              ]
+            },
+            "analyze-bundle": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
               "buildOptimizer": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

@@ -12,8 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EdgeControlComponent implements OnInit {
 
-    private labeltext: String;
-    private _checked: boolean;
+    checked: boolean;
 
     constructor(private automaton: AutomatonService) { }
 
@@ -21,13 +20,13 @@ export class EdgeControlComponent implements OnInit {
     {
         this.automaton.ready$.subscribe(
             () => {
-                this._checked = this.automaton.isCircular;
+                this.checked = this.automaton.isCircular;
             });
     }
 
     onToggle() 
     {
-        this.automaton.isCircular = this._checked;
+        this.automaton.isCircular = this.checked;
     }
 
 }

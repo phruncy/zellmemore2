@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "analyze-bundle": "ng build --configuration=analyze-bundle && source-map-explorer dist/**/*.js --no-border-checks"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,7 @@
     "@types/hammerjs": "^2.0.36",
     "@types/node": "^22.9.0",
     "protractor": "~7.0.0",
+    "source-map-explorer": "^2.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }

@@ -15,7 +15,7 @@ export class SpeedControlComponent implements OnInit
 {
   readonly speedMin = 1;
   readonly speedMax = 30;
-  private _fps: number;
+  public fps: number;
   constructor(private automaton: AutomatonService) {}
 
   ngOnInit()
@@ -31,6 +31,6 @@ export class SpeedControlComponent implements OnInit
 
   init(): void
   {
-    this._fps = this.automaton.fps;
+    this.fps = this.automaton.fps;
   }
 }

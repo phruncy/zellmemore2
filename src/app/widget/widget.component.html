@@ -1,4 +1,4 @@
-<div class="widget-container" #fullscreen (document:webkitfullscreenchange)="this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;" (click)= "onClick()">
+<div class="widget-container" #fullscreen (click)= "onClick()">
         <div #entry></div>
         <div class="favicon-outer">
                 <fa-icon [icon]="faPlayCircle" class=" run-pause" [class.active]="!isRunning" matTooltip="run automaton">run/ pause</fa-icon>

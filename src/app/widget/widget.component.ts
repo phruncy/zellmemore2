@@ -99,14 +99,6 @@ export class WidgetComponent implements OnInit, OnDestroy
         const visualization = this.visService.provideSketch();
         const component = this.widgetentry().createComponent(P5VisualizationComponent);
         component.setInput('p5sketch', visualization);
-        /*this.details.provideVisualizations().subscribe (
-            data => 
-            {
-                this.title = data.find(
-                    obj => obj.id === this.visService.visualizationToDisplay).name;
-            }
-        );
-        //this.visService.addToActive(component.instance as ContentBase);*/
     }
 
     fetchSize() 
@@ -130,6 +122,7 @@ export class WidgetComponent implements OnInit, OnDestroy
         } else {
             throw new Error('No fullscreen available');
         }
+        this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;
     }
 }
 

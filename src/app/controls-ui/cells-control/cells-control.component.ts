@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, model } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { MatSlider, MatSliderThumb } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ export class CellsControlComponent implements OnInit {
     readonly cellsMax = 500;
     readonly step = 10;
 
-    private _currentCellCount = 0;
+    currentCellCount: number = 0;
 
   constructor(private automaton: AutomatonService) { }
 
@@ -24,12 +24,12 @@ export class CellsControlComponent implements OnInit {
   {
     this.automaton.ready$.subscribe(() =>
     {
-      this._currentCellCount = this.automaton.cellnumber;
+      this.currentCellCount = this.automaton.cellnumber;
     })
   }
 
   onValueChange()
   {
-    this.automaton.cellnumber = this._currentCellCount;
+    this.automaton.cellnumber = this.currentCellCount;
   }
 }

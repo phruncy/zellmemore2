@@ -109,7 +109,18 @@ export class AutomatonService
         }
     }
 
-    generate()
+    
+    reset(): void
+    {
+        this.initCells(this._states.length);
+    }
+    
+    toggleLoop()
+    {
+        this.isRunning = !this.isRunning;
+    }
+
+    private generate()
     {
         const count = this._states.length;
         const newGen: number[] = this._states.map((state, index, arr) => 
@@ -132,12 +143,7 @@ export class AutomatonService
         this._changed.next();
     }
 
-    reset(): void
-    {
-        this.initCells(this._states.length);
-    }
-
-    initCells(cellNumber: number)
+    private initCells(cellNumber: number)
     {
         this._states = Array(cellNumber).fill(0);
         this.initStates();
@@ -145,7 +151,7 @@ export class AutomatonService
         this._cellsChanged.next();
     }
 
-    initStates() 
+    private initStates() 
     {
         if (this._initMode === 0) 
         {
@@ -156,12 +162,7 @@ export class AutomatonService
         }
     }
 
-    toggleLoop()
-    {
-        this.isRunning = !this.isRunning;
-    }
-
-    loop(timestamp)
+    private loop(timestamp)
     {
         if (timestamp < this._lastFrameTime + (1000 / this._fps)) 
         {
@@ -177,14 +178,14 @@ export class AutomatonService
         }
     }
     
-    calculateState(left: number, middle: number, right: number): number
+    private calculateState(left: number, middle: number, right: number): number
     {
         let ruleIndex = (left << 2 | middle << 1 | right) & 0b111;
         const result = (this._rule >> ruleIndex) & 0b1;
         return result;
     }
 
-    configure(data): void
+    private configure(data): void
     {
         const config = data
         this._fps = config.fps;

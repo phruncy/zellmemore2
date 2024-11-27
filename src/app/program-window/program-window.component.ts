@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faTimes, faHome, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
-import { TopbarComponent } from '../controls-ui/topbar/topbar.component';
+import { TopbarComponent } from '../automaton-controller/topbar/topbar.component';
 import { WidgetFrameComponent } from '../widget-frame/widget-frame.component';
 import { MatRipple } from '@angular/material/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';

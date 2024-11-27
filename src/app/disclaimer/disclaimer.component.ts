@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from '../homepage/header/header.component';
 import { CustomFooterComponent } from '../custom-footer/custom-footer.component';
 
@@ -9,11 +9,4 @@ import { CustomFooterComponent } from '../custom-footer/custom-footer.component'
     standalone: true,
     imports: [HeaderComponent, CustomFooterComponent]
 })
-export class DisclaimerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class DisclaimerComponent {}

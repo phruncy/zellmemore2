@@ -1,34 +1,29 @@
 <div class="window-overlay" [class.active]="selectionActive"></div>
 <body>
-        <div class= "container">
-                <!-- The controller -->
-                <div>
-                        <app-topbar></app-topbar>
-                </div>
-                <!-- Widgets go here: -->
-                <section class="canvas-display">
+        <div class= "program-window">
+                <app-topbar></app-topbar>
+                <div class="program-window-canvas">
                         <app-widget-frame (clickAnimated)="toggleSelection()" (widgetAdded)="closeSelection()"></app-widget-frame>
-                </section>
-                <!-- selection background overlay --> 
-                <!-- the selection dropup -->   
-                <div class="menu" [class.active]="selectionActive">
-                        <div (click)="toggleSelection()" class="dropdown-btn" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
-                                <fa-icon 
-                                        [icon]="faPlusCircle" 
-                                        class="plus-icon" 
-                                        [class.active]="selectionActive"></fa-icon>
-                        </div>
-                        <app-visualization-selection class="menu-content" [class.active]="selectionActive"></app-visualization-selection>
                 </div>
-                <button 
-                        class="home"
-                        mat-button 
-                        routerLink="/home"
-                        mat-tooltip="to homepage">
-                        <fa-icon [icon]="faHome"></fa-icon>
-                </button>
+                <div class="program-window-bottom">
+                        <div class="program-window-menu" [class.active]="selectionActive">
+                                <div (click)="toggleSelection()" class="btn-menu" matTooltip="toggle menu" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true">
+                                        <fa-icon 
+                                                [icon]="faPlusCircle" 
+                                                class="plus-icon" 
+                                                [class.active]="selectionActive">
+                                        </fa-icon>
+                                </div>
+                                <app-visualization-selection class="menu-content" [class.active]="selectionActive"></app-visualization-selection>
+                        </div>
+                        <button 
+                                class="btn-home"
+                                mat-button 
+                                routerLink="/home"
+                                mat-tooltip="to homepage">
+                                <fa-icon [icon]="faHome"></fa-icon>
+                        </button>
+                </div>  
         </div>
-        <footer>
-                <app-custom-footer></app-custom-footer>
-        </footer>
+        <app-custom-footer></app-custom-footer>
 </body>

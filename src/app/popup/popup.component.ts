@@ -3,9 +3,9 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-popup',
-    templateUrl: './popup.component.html',
     styleUrls: ['./popup.component.css'],
-    standalone: true
+    standalone: true,
+    template: `<div class="container"><p class="text">{{this.message}}</p></div>`
 })
 export class PopupComponent 
 {

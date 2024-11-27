@@ -98,6 +98,7 @@ export class WidgetComponent implements OnInit, OnDestroy
     {
         const visualization = this.visService.provideSketch();
         const component = this.widgetentry().createComponent(P5VisualizationComponent);
+        this.visService.addToActive(component.instance);
         component.setInput('p5sketch', visualization);
     }
 

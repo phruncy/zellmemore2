@@ -1,0 +1,10 @@
+<div class="settings-unit">
+    <span mat matTooltip="tooltip">{{tooltip}}</span>
+    <mat-slider
+        class="range"
+        [min]="settings().min"
+        [max]="settings().max"
+        [step]="settings().step">
+        <input matSliderThumb [(ngModel)]="value"/>
+    </mat-slider>
+</div>

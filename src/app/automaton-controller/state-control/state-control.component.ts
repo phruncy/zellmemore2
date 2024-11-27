@@ -12,13 +12,23 @@ interface Option
 
 @Component({
     selector: 'app-state-control',
-    templateUrl: './state-control.component.html',
-    styleUrls: ['./state-control.component.scss'],
+    styleUrls: ['../../../styles/controller/controller.scss'],
     standalone: true,
-    imports: [MatSelect, FormsModule, MatOption]
+    imports: [MatSelect, FormsModule, MatOption],
+    template: `
+      <mat-select class="settings-unit" 
+          [(ngModel)]="initMode"
+          (ngModelChange)="onSelectionChange()"
+          disableRipple>
+          @for(option of options; track option)
+          {
+                  <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+          }
+      </mat-select>
+    `
 })
-export class StateControlComponent implements OnInit {
-
+export class StateControlComponent implements OnInit 
+{
     public options: Option[];
     public initMode: number;
     constructor(private automaton: AutomatonService) {}

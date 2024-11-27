@@ -1,9 +1,0 @@
-<!-- <label for="cells-control">cells: </label> -->
-<div class="settings-unit" id="cells-control">
-        <span class="tag" for="cellnumber-slider" id="cellnumber-slider-label" >{{currentCellCount}} cells</span>
-        <mat-slider                 
-                [min]="cellsMin"
-                [max]="cellsMax"
-                [step]="step"
-        ><input matSliderThumb [(ngModel)]="currentCellCount" (valueChange)="onValueChange()"/></mat-slider>
-</div>

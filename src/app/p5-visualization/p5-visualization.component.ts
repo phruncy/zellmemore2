@@ -9,8 +9,7 @@ import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
   selector: 'app-p5-visualization',
   standalone: true,
   imports: [],
-  templateUrl: './p5-visualization.component.html',
-  styleUrl: './p5-visualization.component.scss'
+  template: `<div #container id="container"></div>`
 })
 export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContentInit
 {

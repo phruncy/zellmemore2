@@ -5,7 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
-import { AutomatonControllerComponent } from '../automaton-controller/automaton-controller.component';
+import { AutomatonControllerComponent } from '../automaton-controller.component';
 
 @Component({
     selector: 'app-topbar',

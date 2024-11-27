@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ContentBase } from '../content-base/contentBase.component';
 import { p5barcode } from 'src/app/P5Sketches/p5barcode';
 import { p5punchCard } from 'src/app/P5Sketches/p5punchCard';
 import { p5default } from 'src/app/P5Sketches/p5default';
@@ -12,6 +11,7 @@ import { p5signals } from 'src/app/P5Sketches/p5signals';
 import { p5waves02 } from 'src/app/P5Sketches/p5waves02';
 import { p5waves03 } from 'src/app/P5Sketches/p5waves03';
 import { p5chaos } from 'src/app/P5Sketches/p5chaos';
+import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
 
 @Injectable({ providedIn: 'root'})
 export class VisualizationService {
@@ -78,11 +78,11 @@ export class VisualizationService {
         return this.p5Sketches[this.visualizationToDisplay];
     }
 
-    addToActive(component: ContentBase) 
+    addToActive(visualization: P5VisualizationComponent) 
     {
         const id = this.visualizationToDisplay;
         this._activeComponents.push(id);
-        const sub = component.$onDestroy.subscribe(
+        const sub = visualization.$onDestroy.subscribe(
             () => {
                 this.removeFromActive(id);
                 sub.unsubscribe();

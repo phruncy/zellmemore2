@@ -1,19 +1,12 @@
 
 <div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="boxesDisplayed = true" (menuClosed)="boxesDisplayed = false">
-        <div class="rule-label">
-                <span>rule: </span>
-        </div>
-
+        <span class="rule-label">rule: </span>
         <mat-form-field class="rule-label">
                 <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()" class="textinput">
         </mat-form-field>
-        <span>
-                <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed">    
-                </fa-icon>
-        </span>
+        <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed"></fa-icon>
 </div>
 <mat-menu #boxes="matMenu" class="test">
-        <!-- The checkboxes-input -->
         <div class="dropdown" (click)="$event.stopPropagation()">
                 <span *ngFor="let box of BOXES" class="checkbox-outer">
                         <div class="checkbox-wrapper icons">
@@ -22,13 +15,11 @@
                         <div class ="checkbox-wrapper icons">
                                 <span>d</span>
                         </div>
-                        <div class="checkbox-wrapper">
-                                <mat-checkbox 
-                                        id="{{box.id}}"
-                                        [(ngModel)]="box.checked"
-                                        (change)="onBoxesChanged()"
-                                ></mat-checkbox>
-                        </div>
+                        <mat-checkbox 
+                                id="{{box.id}}"
+                                [(ngModel)]="box.checked"
+                                (change)="onBoxesChanged()">
+                        </mat-checkbox>
                 </span>
         </div>
 </mat-menu>

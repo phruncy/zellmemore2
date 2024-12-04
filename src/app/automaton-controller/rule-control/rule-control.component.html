@@ -1,11 +1,12 @@
 
-<div mat-button [matMenuTriggerFor]="boxes" class="settings-unit" (menuOpened)="boxesDisplayed = true" (menuClosed)="boxesDisplayed = false">
+<div mat-button [matMenuTriggerFor]="boxes" class="controller-element" (menuOpened)="boxesDisplayed = true" (menuClosed)="boxesDisplayed = false">
         <span class="rule-label">rule: </span>
         <mat-form-field class="rule-label">
-                <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()" class="textinput">
+                <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()">
         </mat-form-field>
         <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed"></fa-icon>
 </div>
+
 <mat-menu #boxes="matMenu" class="test">
         <div class="dropdown" (click)="$event.stopPropagation()">
                 <span *ngFor="let box of BOXES" class="checkbox-outer">

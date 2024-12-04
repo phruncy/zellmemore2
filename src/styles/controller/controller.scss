@@ -1,26 +1,26 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
 
-.settings-unit {
+.controller-element {
         display: flex;
         max-width: 300px;
         margin: 0;
         text-align: center;
+        align-items: center;
 }
 
-.slider-wrapper {
-        height: $toprowHeight;
-        display: flex;
+.mat-element {
+        --mat-switch-label-text-size: $fontsize_default;
+        --mat-switch-label-text-weight: $fontweight_default;
+        --mat-switch-label-text-tracking: 0px;
+
+        --mat-select-trigger-text-weight: $fontweight_default;
+        --mat-select-trigger-text-size: $fontsize_default;
+        --mat-select-trigger-text-tracking: 0;
+        --mat-option-label-text-tracking: 0;
 }
 
 .select-wrapper {
         display: flex;
-}
-
-.tag {
-        display: inline-block;
-        position: relative;
-        margin-right: 10px;
 }
 
 :host {

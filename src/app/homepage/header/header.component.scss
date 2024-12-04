@@ -32,8 +32,9 @@
 
 .btn {
         font-family: 'Nunito Sans';
-        font-size: $default;
+        font-size: $fontsize_default;
 }
+
 @media only screen and (min-width: $breakpointMobile) {
   .container-outer {
     background: none;

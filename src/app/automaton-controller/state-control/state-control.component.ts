@@ -16,13 +16,13 @@ interface Option
     standalone: true,
     imports: [MatSelect, FormsModule, MatOption],
     template: `
-      <mat-select class="settings-unit" 
+      <mat-select class="mat-element" 
           [(ngModel)]="initMode"
           (ngModelChange)="onSelectionChange()"
           disableRipple>
           @for(option of options; track option)
           {
-                  <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                  <mat-option class="mat-element" [value]="option.value">{{option.viewValue}}</mat-option>
           }
       </mat-select>
     `

@@ -3,23 +3,20 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 
-.wrapper{
+.automaton-controller-container{
         margin: 10px 10px 10px 0px;
         color: $fontDefault;
         display: flex;
 }
 
 .dropdown-element {
-        padding: $settingsUnitPaddingTop $settingsUnitPaddingSides 0;
+        display: flex;
+        align-items: center;
+        padding: 0 $settingsUnitPaddingSides 0;
         max-width: 250px;
-}
-
-.dropdown-element.last {
-        border-right-style: none;
-}
-
-.dropdown-element.first {
-        padding-left: 1px;
+        &.last {
+                border-right-style: none;
+        }
 }
 
 .pointer {
@@ -31,9 +28,6 @@
 }
 
 @media only screen and (max-width: $breakpointMobile) {
-        .dropdownelement {
-                display: block;
-        }
         .wrapper {
                 display: inline-block;
                 margin-top: 0px;
@@ -48,5 +42,4 @@
         .mobile-divider {
                 display: block;
         }
-
 }

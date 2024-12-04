@@ -1,0 +1,93 @@
+@import 'src/styles/global/colors';
+@import 'src/styles/controller/controller';
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
+
+.toprow-container {
+        font-weight: $topbarFontWeight;
+        vertical-align: top;
+        margin-bottom: 7px;
+}
+
+.btn-settings {
+        font-size: $fontsize_default;
+        --mdc-text-button-label-text-weight: $fontweight_default;
+        --mdc-text-button-label-text-tracking: 0;
+}
+
+.btn-reset:hover .icon.reset {
+        transform:rotate(-45deg);
+        transition: transform 0.3s ease-out;
+}
+
+.icon {
+        color: $fontDefault;
+        display: none;
+
+        &.active {
+                display: inline-block;
+        }
+
+        &.reset {
+                display: inline-block;
+                transform: rotate(0deg);
+                transition: transform 0.2s ease-out;
+                &:active{
+                        transform:rotate(-45deg);
+                        transition: transform 0.3s ease-out;
+                }
+        }
+
+        &.settings {
+                display:inline-block;
+                transform: rotate(0deg);
+                transition: all 0.2s ease-out;
+                margin-left: 2px;
+
+                &.active {
+                        transform: rotate(-90deg);
+                        transition: transform 0.2s ease-out
+                }
+        }
+
+        &.settings-label {
+                display: block;        
+        }
+}
+
+.stats {
+        display: inline-block;
+        margin: 0px 10px 0px 10px;
+        padding: 5px;
+        text-align: center;
+}
+
+.controller {
+        display: inline-block;
+        max-height: 0;
+        overflow: hidden;
+        z-index: 1;
+        font-weight: $topbarFontWeight;
+
+        &.active {
+                max-height: $controllerHeight;
+                transition: max-height 0.2s ease-out;
+        }
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        .controller {
+                left: 0;
+                width: 100%;
+                &.active {
+                        max-height: $controllerHeightMobile;
+                        max-width: 100%;
+                }
+        }
+}       
+
+@media only screen and (max-width: 420px) {
+        .elt {
+                margin: 0;
+        }
+}

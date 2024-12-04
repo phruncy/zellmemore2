@@ -7,6 +7,7 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-typography-config());`
+@import 'src/styles/global/margins';
 @include mat.all-component-typographies();
 @include mat.core();
 
@@ -18,4 +19,15 @@ $zellmemore-warn: mat.m2-define-palette(mat.$m2-red-palette);
 // mat-light-theme: all 'neutral' colors are white, light greys and a little black
 $zellmemore-theme: mat.m2-define-light-theme($zellmemore-primary, $zellmemore-accent, $zellmemore-warn);
 
+$custom-typography: mat.m2-define-typography-config(
+        $font-family: 'Nunito Sans'
+);
+
+@include mat.all-component-typographies($custom-typography);
 @include mat.all-component-themes($zellmemore-theme);
+
+.mat-mdc-menu-panel.ng-trigger.ng-trigger-transformMenu {
+    max-width: 500px;
+    position: relative;
+    top: $buttonMargin;
+}

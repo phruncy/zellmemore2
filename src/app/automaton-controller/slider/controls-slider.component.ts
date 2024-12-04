@@ -8,8 +8,18 @@ import { SliderSettings } from '../ControlSettings';
   selector: 'app-controls-slider',
   standalone: true,
   imports: [MatSlider, MatSliderThumb, MatTooltip, FormsModule],
-  templateUrl: './controls-slider.component.html',
-  styleUrl: './controls-slider.scss'
+  styleUrl: '../../../styles/controller/controller.scss',
+  template:`
+    <div class="controller-element mat-element">
+      <span mat matTooltip="tooltip">{{tooltip}}</span>
+      <mat-slider
+          [min]="settings().min"
+          [max]="settings().max"
+          [step]="settings().step">
+          <input matSliderThumb [(ngModel)]="value"/>
+      </mat-slider>
+    </div>
+  `
 })
 export class ControlsSliderComponent 
 {

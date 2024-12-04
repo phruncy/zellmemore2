@@ -1,12 +1,20 @@
 @import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
-@import 'src/styles/global/material';
 @import 'src/styles/global/typo';
 
 .rule-label {
         display: inline-block;
         margin-right: 10px;
         max-width: 65px;
+
+        --mat-form-field-container-text-size: $fontsize_default;
+        --mat-form-field-container-height: 30px;
+        --mat-form-field-filled-with-label-container-padding-bottom: 0px;
+        --mat-form-field-container-vertical-padding: 5px;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+        height: 0;
 }
 
 .angle {
@@ -15,11 +23,10 @@
         transition: transform 0.2s ease-out;
         padding: 2px;
         cursor: pointer;
-}
-
-.angle.active {
-        transform: rotate(-90deg);
-        transition: transform 0.2s ease-out
+        &.active {
+                transform: rotate(-90deg);
+                transition: transform 0.2s ease-out
+        }
 }
 
 .dropdown {
@@ -51,11 +58,10 @@
 .cell-icon {
         color: $fontLight;
         font-weight: 200;
-}
-
-.cell-icon.active {
-        color: $accent;
-        font-size: 13px;
+        &.active {
+                color: $accent;
+                font-size: 13px;
+        }
 }
 
 @media only screen and (max-width: $breakpointMobile) {

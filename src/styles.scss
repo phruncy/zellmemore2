@@ -26,6 +26,6 @@ a:hover, a:visited, a:link, a:active, a:any-link {
 
 @media only screen and (min-width: $breakpointMobile) {
         body {
-                font-size: $default;
+                font-size: $fontsize_default;
         }
 }

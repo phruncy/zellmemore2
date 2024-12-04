@@ -1,6 +1,6 @@
 @import 'src/styles/global/margins';
 
-$default: 15px;
+$fontsize_default: 15px;
 $mainDesktop: 18px;
 $defaultMobile: 16px;
 $program: 16px;
@@ -18,6 +18,8 @@ $menuItemsFontSize: 15px;
 $homepageLinks: 20px;
 $homepageLinksMobile: 22px;
 $menuItemsLineHeight: 15px;
+
+$fontweight_default : 500;
 
 h1 {
         font-size: $h1;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { faTimes, faHome, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
@@ -27,6 +27,11 @@ export class ProgramWindowComponent
     readonly faTimes = faTimes;
     readonly faHome = faHome;
     readonly faPlusCircle = faPlusCircle;
+
+    @HostListener('window:keydown.escape', ['$event'])
+    handleKeydown(event: KeyboardEvent) {
+        this.closeSelection();
+    } 
 
     toggleSelection()
     {

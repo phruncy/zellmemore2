@@ -27,7 +27,7 @@ body {
         width: 100%;
         margin-top: 10px;
         min-height: $widgetAreaMinHeight;
-        height: calc(95vh - 155px);
+        height: calc(90vh - 155px);
 }
 
 .program-window-bottom {
@@ -45,16 +45,15 @@ body {
         max-width: $selectMenuMaxWidth;
         transition: bottom 0.2s ease-in-out;
         z-index: 1000;
-}
 
-.program-window-menu.active {
-        position: absolute;
-        background-color: white;
-        bottom: 0;
-        margin-bottom: 0;
-        transition: bottom, paddingbottom 0.2s ease-in-out;
-        border-top-left-radius: $globalCornerRadius;
-        border-top-right-radius: $globalCornerRadius;
+        &.active {
+                position: absolute;
+                background-color: white;
+                margin-bottom: 0;
+                transition: bottom, paddingbottom 0.2s ease-in-out;
+                border-top-left-radius: $globalCornerRadius;
+                border-top-right-radius: $globalCornerRadius;
+        }
 }
 
 .menu-content {
@@ -64,11 +63,11 @@ body {
         display: block;
         padding: 0 $globalMargin 0 $globalMargin;
         z-index: 1000;
-}
 
-.menu-content.active {
-        max-height: $selectMenuActiveHeight;
-        transition: max-height 0.3s ease-out;
+        &.active {
+                max-height: $selectMenuActiveHeight;
+                transition: max-height 0.3s ease-out;
+        }
 }
 
 .btn-menu {
@@ -84,19 +83,19 @@ body {
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
         cursor: pointer;
-}
 
-.plus-icon:hover {
-        color: $accent;
-        transition: all 0.1s linear;
-}
+        &.active {
+                -webkit-transform:rotate(10deg);
+                -moz-transform:rotate(10deg);
+                -o-transform:rotate(10deg);
+                transform: rotate(-45deg);
+                transition: all 0.2s ease-in;
+        }
 
-.plus-icon.active {
-        -webkit-transform:rotate(10deg);
-        -moz-transform:rotate(10deg);
-        -o-transform:rotate(10deg);
-        transform: rotate(-45deg);
-        transition: all 0.2s ease-in; 
+        &:hover {
+                color: $accent;
+                transition: all 0.1s linear;
+        }
 }
 
 .btn-home {
@@ -114,14 +113,14 @@ body {
         top: 0;
         left: 0;
         z-index: 999;
-}
 
-.window-overlay.active {
-        visibility: visible;
-        opacity: 1;
-        transition: opacity 0.2s ease-out;
-        width: 100%;
-        height: 100vh;
+        &.active {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 0.2s ease-out;
+                width: 100%;
+                height: 100vh;  
+        }
 }
 
 @media only screen and (max-width: $breakpointMobile) {

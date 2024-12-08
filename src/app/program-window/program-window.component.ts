@@ -3,7 +3,7 @@ import { faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { TopbarComponent } from '../topbar/topbar.component';
-import { WidgetFrameComponent } from '../widget-frame/widget-frame.component';
+import { WidgetFrameComponent } from '../visualization-canvas/widget-frame.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
 import { MatButton } from '@angular/material/button';

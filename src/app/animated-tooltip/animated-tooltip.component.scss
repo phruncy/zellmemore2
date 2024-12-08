@@ -1,0 +1,33 @@
+.animated {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    animation-duration: 0.75s;
+    animation-name: bounce;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in;
+}
+
+.midTextIcon {
+    font-size: 12px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+@keyframes bounce {
+    from {
+            -transform: (0, 0);
+            -webkit-transform: translate(0, 0);
+            -moz-transform: translate(0, 0);
+            -ms-transform: translate(0 ,0);
+    }
+    to {
+            -transform: (0, 10px);
+            -webkit-transform: translate(0, 10px);
+            -moz-transform: translate(0, 10px);
+            -ms-transform: translate(0, 10px);
+    }
+}

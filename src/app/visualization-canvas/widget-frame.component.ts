@@ -10,15 +10,21 @@ import { Component,
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
-import { faAngleDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { AnimatedTooltipComponent } from "../animated-tooltip/animated-tooltip.component";
+import { AddTileAreaComponent } from "../add-tile-area/add-tile-area.component";
 
 @Component({
     selector: 'app-widget-frame',
-    templateUrl: './widget-frame.component.html',
-    styleUrls: ['./widget-frame.component.css'],
+    styleUrls: ['./widget-frame.component.scss'],
     standalone: true,
-    imports: [FaIconComponent]
+    imports: [AnimatedTooltipComponent, AddTileAreaComponent],
+    template: `
+        <div #entry class ="empty"></div>
+        <app-add-tile-area class="add-tile-area" [class.active]="!isEmpty"></app-add-tile-area>
+        <div class="empty-frame-overlay" [class.active]="isEmpty" (click)="clickAnimated.emit(true)">
+                <app-animated-tooltip></app-animated-tooltip>
+        </div>
+    `
 })
 export class WidgetFrameComponent implements OnInit 
 {
@@ -26,9 +32,6 @@ export class WidgetFrameComponent implements OnInit
     
     widgetAdded = output<boolean>();
     clickAnimated = output<boolean>();
-
-    readonly faAngleDown = faAngleDown;
-    readonly faPlusCircle = faPlusCircle;
 
     constructor(
         private visualizationService: VisualizationService,

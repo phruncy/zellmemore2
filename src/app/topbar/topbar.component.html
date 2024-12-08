@@ -23,6 +23,14 @@
                         <fa-icon [icon]="faAngleLeft" class="settings icon" [class.active]="controllerDisplayed"></fa-icon>
                 </div>
         </button>
+        <button 
+                class="btn-home"
+                mat-button 
+                routerLink="/home"
+                mat-tooltip="to homepage">
+                <fa-icon [icon]="faHome"></fa-icon>
+        </button>
+
 </div>
 <mat-divider></mat-divider>
 <app-automaton-controller class="controller" [class.active]="controllerDisplayed"></app-automaton-controller>

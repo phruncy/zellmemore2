@@ -1,8 +1,13 @@
-<h1 class="headline">Add a visualization:</h1>
-<div class="container">
-        <div class="container-inner">
+<div class="selection-frame">
+        <button mat-icon-button mat-tooltip="close" 
+                matRipple [matRippleCentered]="true" 
+                [matRippleUnbounded]="true"
+                (close)="close()">
+                <fa-icon class="plus-icon" [icon]="faTimes"></fa-icon>
+        </button>
+        <h2>Select a visualization:</h2>
+        <div class="selection-tiles-container">
                 <app-selection-tile 
-                        class="selection-tile"
                         *ngFor="let option of visualizations" 
                         [id]="option.id" 
                         [name]="option.name"

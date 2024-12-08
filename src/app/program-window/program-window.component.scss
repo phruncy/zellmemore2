@@ -2,14 +2,7 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 
-$plusButtonSize: 27px;
-$plusButtonMargin: 2.5vh;
-$plusButtonPadding: 10px;
-
 $widgetAreaMinHeight: 200px;
-$selectMenuActiveHeight: 400px;
-$selectMenuActiveHeightMobile: 300px;
-$selectMenuMaxWidth: 860px;
 
 body {
         background-color:  white;
@@ -27,81 +20,7 @@ body {
         width: 100%;
         margin-top: 10px;
         min-height: $widgetAreaMinHeight;
-        height: calc(90vh - 155px);
-}
-
-.program-window-bottom {
-        position: relative;
-}
-
-.program-window-menu {
-        display: grid;
-        justify-items: center;
-        bottom: 0;
-        padding-bottom: 0;
-        margin: auto;
-        left: 23%;
-        right: 23%;
-        max-width: $selectMenuMaxWidth;
-        transition: bottom 0.2s ease-in-out;
-        z-index: 1000;
-
-        &.active {
-                position: absolute;
-                background-color: white;
-                margin-bottom: 0;
-                transition: bottom, paddingbottom 0.2s ease-in-out;
-                border-top-left-radius: $globalCornerRadius;
-                border-top-right-radius: $globalCornerRadius;
-        }
-}
-
-.menu-content {
-        max-height: 0;
-        transition: max-height 0.3s ease-out;
-        overflow: hidden;
-        display: block;
-        padding: 0 $globalMargin 0 $globalMargin;
-        z-index: 1000;
-
-        &.active {
-                max-height: $selectMenuActiveHeight;
-                transition: max-height 0.3s ease-out;
-        }
-}
-
-.btn-menu {
-        cursor: pointer;
-}
-
-.plus-icon {
-        display: block;
-        color: rgb(30, 30, 30);
-        font-size: $plusButtonSize;
-        transform:rotate(0deg);
-        transition-property: all;
-        transition-duration: 0.2s;
-        transition-timing-function: ease-in;
-        cursor: pointer;
-
-        &.active {
-                -webkit-transform:rotate(10deg);
-                -moz-transform:rotate(10deg);
-                -o-transform:rotate(10deg);
-                transform: rotate(-45deg);
-                transition: all 0.2s ease-in;
-        }
-
-        &:hover {
-                color: $accent;
-                transition: all 0.1s linear;
-        }
-}
-
-.btn-home {
-        position: absolute;
-        top: 0;
-        left: 0;
+        height: calc(100vh - 200px);
 }
 
 .window-overlay {
@@ -114,6 +33,9 @@ body {
         left: 0;
         z-index: 999;
 
+        display: grid;
+        align-content: center;
+        justify-items: center;
         &.active {
                 visibility: visible;
                 opacity: 1;
@@ -122,26 +44,3 @@ body {
                 height: 100vh;  
         }
 }
-
-@media only screen and (max-width: $breakpointMobile) {
-        .container {
-                padding: $globalMarginMobile;
-        }
-        
-        .menu {
-                max-width: 100%;
-                left: 0;
-                right: 0;
-        }
-        
-        .menu-content.active {
-                max-height: $selectMenuActiveHeightMobile;
-        }
-        .menu-content {
-                padding: 0 $globalMarginMobile 0 $globalMarginMobile;
-        }
-}
-
-
-
-

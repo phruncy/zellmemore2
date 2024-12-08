@@ -1,25 +1,19 @@
+@import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
 
-.container {
-        display: block;
-        max-height: $menuInnerHeightMax;
+$selectionFrameMaxWidth: 860px;
+$selectionPaddingDesktop: 20px;
+
+.selection-frame {
+        display : block;
+        max-width: $selectionFrameMaxWidth;
         overflow: scroll;
+        background-color: rgb(255, 255, 255);
+        padding: $selectionPaddingDesktop;
+        border-radius: 5px;
 }
 
-.container-inner {
-        text-align: center;
-}
-
-.selection-tile {
-        display:inline-block;
-}
-
-.headline {
-        margin-top: 20px;
-}
-
-@media only screen and (max-width: $breakpointMobile) {
-        .headline {
-                margin-top: 10px;
-        }
+h2 {
+        margin-bottom: 20px;
 }

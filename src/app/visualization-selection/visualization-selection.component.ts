@@ -1,18 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, model, output } from '@angular/core';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { NgFor } from '@angular/common';
+import { customTooltipDefaults } from '../utils/customTooltipDefaults';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { SelectionTileComponent } from '../selection-tile/selection-tile.component';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { MatRipple } from '@angular/material/core';
+import { MatButtonModule} from '@angular/material/button';
 
 @Component({
     selector: 'app-visualization-selection',
     templateUrl: './visualization-selection.component.html',
     styleUrls: ['./visualization-selection.component.scss'],
+    providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [NgFor, SelectionTileComponent]
+    imports: [NgFor, SelectionTileComponent, FaIconComponent, MatRipple, MatButtonModule]
 })
 export class VisualizationSelectionComponent implements OnInit {
 
+  readonly faTimes = faTimes;
+
+  public shouldClose = output<boolean>();
   private _visualizations: any[] = [];
+  
   constructor(private visualizationDetailService: VisualizationDetailService,) { }
 
   get visualizations(): any[]
@@ -23,6 +34,11 @@ export class VisualizationSelectionComponent implements OnInit {
   ngOnInit() 
   {
     this.fetchVisualizations();
+  }
+
+  close()
+  {
+    this.shouldClose.emit(true);
   }
 
   fetchVisualizations()

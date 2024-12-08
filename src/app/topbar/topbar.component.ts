@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
-import { faPlay, faUndo, faAngleLeft, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -20,6 +20,7 @@ export class TopbarComponent implements OnInit
     readonly faPause = faPause;
     readonly faUndo = faUndo;
     readonly faAngleLeft = faAngleLeft;
+    readonly faHome = faHome;
     controllerDisplayed: boolean;
     isRunning = false;
     generation: number;

@@ -1,34 +1,21 @@
 $globalMargin: 30px;
 $globalMarginMobile: .75rem;
 $globalTop: 20px;
-$secondaryMargin: 10%;
-$buttonMargin: 5px;
-$buttonMarginMobile: 2px;
-$globalCornerRadius: 4px;
+$global_buttonMargin: 5px;
+$global_buttonMarginMobile: 2px;
+$globalCornerRadius: 5px;
 
 // screen widths
 $maxWindowWidth: 1024px;
 $maxTextWidth: 1024px;
 
 // Controller
-$settingsUnitPaddingTop: 5px;
-$settingsUnitPaddingSides: 10px;
 $controllerHeight: 100px;
 $controllerHeightMobile: 300px;
-$toprowHeight: 30px;
-$iconButtonWidth: 50px;
-$topbarButtonHeight: 30px;
-$controllerOffset: 21px;
-$matSliderOffset: - (31 - $settingsUnitPaddingTop) / 2;
 
-//menu
-$menuInnerHeightMax: 300px;
-
-//homepage
 $sectionGap: 50px;
 $sectionGapMobile: 35px;
 $headerMenuItemHeight: 25px;
-$borderWidth: 2px;
 
 //breakpoints
 $breakpointMobile: 420px;

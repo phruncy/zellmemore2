@@ -14,14 +14,19 @@ import { AnimatedTooltipComponent } from "../animated-tooltip/animated-tooltip.c
 import { AddTileAreaComponent } from "../add-tile-area/add-tile-area.component";
 
 @Component({
-    selector: 'app-widget-frame',
-    styleUrls: ['./widget-frame.component.scss'],
+    selector: 'app-canvas',
+    styleUrls: ['./app-canvas.component.scss'],
     standalone: true,
     imports: [AnimatedTooltipComponent, AddTileAreaComponent],
     template: `
         <div #entry class ="empty"></div>
-        <app-add-tile-area class="add-tile-area" [class.active]="!isEmpty"></app-add-tile-area>
-        <div class="empty-frame-overlay" [class.active]="isEmpty" (click)="clickAnimated.emit(true)">
+        <app-add-tile-area 
+            class="add-tile-area" 
+            [class.active]="!isEmpty" 
+            [areaHeight]="sizeService.widgetSize"
+            [margin]="sizeService.margin"
+            (click)="requestSelection.emit(true)"></app-add-tile-area>
+        <div class="empty-frame-overlay" [class.active]="isEmpty" (click)="requestSelection.emit(true)">
                 <app-animated-tooltip></app-animated-tooltip>
         </div>
     `
@@ -31,11 +36,11 @@ export class WidgetFrameComponent implements OnInit
     entry = viewChild('entry', {read: ViewContainerRef});
     
     widgetAdded = output<boolean>();
-    clickAnimated = output<boolean>();
+    requestSelection = output<boolean>();
 
     constructor(
         private visualizationService: VisualizationService,
-        private sizeService: SizeService,
+        public sizeService: SizeService,
         private elRef: ElementRef,
         private cd: ChangeDetectorRef,
     ) { }

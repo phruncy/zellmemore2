@@ -26,7 +26,7 @@ import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.c
 @Component({
     selector: 'app-widget',
     templateUrl: './widget.component.html',
-    styleUrls: ['./widget.component.css'],
+    styleUrls: ['./widget.component.scss'],
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
     ],

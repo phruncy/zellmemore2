@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { WidgetFrameComponent } from './widget-frame.component';
+import { WidgetFrameComponent } from './app-canvas.component';
 
 describe('WidgetFrameComponent', () => {
   let component: WidgetFrameComponent;

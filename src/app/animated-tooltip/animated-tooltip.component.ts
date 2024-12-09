@@ -13,8 +13,8 @@ import { faPlusCircle, faAngleDown } from '@fortawesome/free-solid-svg-icons';
     </div>
   `
 })
-export class AnimatedTooltipComponent {
-
+export class AnimatedTooltipComponent 
+{
   readonly faPlusCircle = faPlusCircle;
   readonly faAngleDown = faAngleDown;
 }

@@ -1,4 +1,6 @@
-/* /// WIDGET FORMATTING /// */
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
+
 .widget-container {
        position: relative;
        width: 100%;
@@ -6,28 +8,33 @@
        text-align: center;
        cursor: pointer;
        font-size: 16px;
+
+       &:hover {
+                .overlay {
+                        opacity: .8;    
+                }
+                .fade-in, .run-pause {
+                        opacity: 1;
+                }
+        }
 }
 
 /* accesses the element that the component is hosted in
  * (<app-widget> in this case)
  */
  :host {
-        border-radius: 4px;
+        box-sizing: border-box;
         background-color: white;
         box-shadow: 3px 3px 5px rgb(148, 148, 148);
+        border-radius: $globalCornerRadius;
+        overflow: hidden;
 }
-
-/*//// OVERLAY INTERFACE: LAYOUT & DISPLAY SETTINGS ////*/
 
 /* Play Button */
 .favicon-outer {
-        width: 100%;
-        padding-top: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        display:grid;
+        align-content: center;
+        justify-items: center;
 }
 .run-pause {
         position: absolute;
@@ -40,17 +47,17 @@
         cursor: pointer;
         color: gray;
         transition: color 0.2s;
-}
 
-.run-pause:hover {
-        color: rgb(100, 100, 100);
-        transition: color 0.2s;
+        &:hover {
+                color: rgb(100, 100, 100);
+                transition: color 0.2s;
+        }
 }
 
 .widget-container:hover .run-pause.active {
         visibility: visible;
         opacity: 1;
-        animation: fade 0.3s;
+        animation: fade 0.2s;
 }
 
 @keyframes fade {
@@ -89,6 +96,8 @@
         width: 100%;
         position: absolute;
         top: 6px;
+
+        font-weight: $fontweight_default;
 }
 
 /* All buttons */
@@ -96,12 +105,11 @@
         position: absolute;
         font-size: inherit;
         cursor: pointer;
-}
 
-.btn:hover, 
-.btn:active {
-        font-size: 103%;
-        transition: font-size 0.1s ease-in;
+        &:hover, &:active {
+                font-size: 103%;
+                transition: font-size 0.1s ease-in;
+        }
 }
 
 .overlay {
@@ -118,16 +126,7 @@
         border-radius: inherit;
 }
 
-/* Fade-in Functionality */
-.widget-container:hover .overlay {
-        opacity: .8;
-}
-
 .fade-in {
         opacity: 0;
         color: white;
-}
-
-.widget-container:hover .fade-in, .run-pause {
-        opacity: 1;
 }

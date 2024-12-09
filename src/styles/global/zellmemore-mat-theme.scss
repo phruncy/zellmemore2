@@ -29,5 +29,5 @@ $custom-typography: mat.m2-define-typography-config(
 .mat-mdc-menu-panel.ng-trigger.ng-trigger-transformMenu {
     max-width: 500px;
     position: relative;
-    top: $buttonMargin;
+    top: $global_buttonMargin;
 }

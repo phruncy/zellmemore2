@@ -3,6 +3,8 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 
+$settingsUnitPaddingSides: 10px;
+
 .automaton-controller-container{
         margin: 10px 10px 10px 0px;
         color: $fontDefault;

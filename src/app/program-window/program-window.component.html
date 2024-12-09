@@ -4,6 +4,6 @@
 <div class= "program-window">
         <app-topbar></app-topbar>
         <div class="program-window-canvas">
-                <app-widget-frame (clickAnimated)="toggleSelection()" (widgetAdded)="closeSelection()"></app-widget-frame>
+                <app-canvas (requestSelection)="openSelection()" (widgetAdded)="closeSelection()"></app-canvas>
         </div>
 </div>

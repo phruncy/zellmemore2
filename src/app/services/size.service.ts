@@ -43,6 +43,12 @@ export class SizeService {
         this.fullScreen();
     }
 
+    public fullScreen()
+    {
+        this._widgetSize = window.innerHeight;
+        this._sizeChanged.next();
+    }
+
     setFrameSize(width: number, height: number) {
         // prevents frameSize from changing the widget's size in fullscreen mode
         if (this._fullscreenActive) {
@@ -97,9 +103,5 @@ export class SizeService {
         this._sizeChanged.next();
     }
 
-    public fullScreen()
-    {
-        this._widgetSize = window.innerHeight;
-        this._sizeChanged.next();
-    }
+    
 }

@@ -21,6 +21,8 @@ body {
         margin-top: 10px;
         min-height: $widgetAreaMinHeight;
         height: calc(100vh - 200px);
+        display:flex;
+        align-items: center;
 }
 
 .window-overlay {

@@ -25,8 +25,8 @@
 }
 
 .add-tile-area {
-        visibility: hidden;
+        display:none;
         &.active {
-                visibility: initial;
+                display: flex;
         }
 }

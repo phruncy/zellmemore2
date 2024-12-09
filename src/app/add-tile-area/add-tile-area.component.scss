@@ -1,0 +1,30 @@
+@import 'src/styles/global/colors';
+@import 'src/styles/global/margins';
+@import 'src/styles/global/typo';
+
+.clickable-area {
+    background-color: $backgroundUltraLight;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+
+    // 'border-box' setting includes the padding in the total height
+    box-sizing: border-box;
+    border-radius: $globalCornerRadius;
+    padding: 5px;
+    height: inherit;
+    width: inherit;
+
+    cursor: pointer;
+
+    &:hover{
+        background-color: $backgroundLight;
+    }
+}
+
+.clickable-area-content {
+    display: grid;
+    justify-items: center;
+    color: $fontLight;
+    font-weight: $fontweight_default;
+}

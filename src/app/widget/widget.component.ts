@@ -53,7 +53,7 @@ export class WidgetComponent implements OnInit, OnDestroy
     
     constructor(
             private visService: VisualizationService,
-            private details: VisualizationDetailService,
+            private detailsService: VisualizationDetailService,
             private sizeService: SizeService,
             private automaton: AutomatonService,
         ) 
@@ -100,6 +100,7 @@ export class WidgetComponent implements OnInit, OnDestroy
         const component = this.widgetentry().createComponent(P5VisualizationComponent);
         this.visService.addToActive(component.instance);
         component.setInput('p5sketch', visualization);
+        this.detailsService.getName(this.visService.visualizationToDisplay).then( name => this.title = name);
     }
 
     fetchSize() 

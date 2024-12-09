@@ -1,5 +1,14 @@
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
+@import 'src/styles/global/colors';
+
+:host {
+        box-sizing: border-box;
+        background-color: white;
+        box-shadow: 3px 3px 5px rgb(148, 148, 148);
+        border-radius: $globalCornerRadius;
+        overflow: hidden;
+}
 
 .widget-container {
        position: relative;
@@ -10,120 +19,44 @@
        font-size: 16px;
 
        &:hover {
-                .overlay {
-                        opacity: .8;    
-                }
-                .fade-in, .run-pause {
+                .widget-overlay-header, .fade-in {
                         opacity: 1;
+                        transition: opacity 0.2s;
                 }
         }
 }
 
-/* accesses the element that the component is hosted in
- * (<app-widget> in this case)
- */
- :host {
-        box-sizing: border-box;
-        background-color: white;
-        box-shadow: 3px 3px 5px rgb(148, 148, 148);
-        border-radius: $globalCornerRadius;
-        overflow: hidden;
-}
-
-/* Play Button */
-.favicon-outer {
-        display:grid;
-        align-content: center;
-        justify-items: center;
-}
-.run-pause {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -40%);
-        font-size: 60px;
-        visibility: hidden;
-        opacity: 0;
-        cursor: pointer;
-        color: gray;
-        transition: color 0.2s;
-
-        &:hover {
-                color: rgb(100, 100, 100);
-                transition: color 0.2s;
-        }
-}
-
-.widget-container:hover .run-pause.active {
-        visibility: visible;
-        opacity: 1;
-        animation: fade 0.2s;
-}
-
-@keyframes fade {
-        0% {
-                opacity: 0; 
-        }
-        100% {
-                opacity: .8;
-        }
-}
-
-/*/// Top Bar ///*/
-.remove {
-        top: 6px;
-        padding: 0 0 0 7px;
-}
-
-.fullscreen {
-        display: block;
-        top: 6px;
-        padding: 0 7px 0 0;
-        text-align: center;
-        transform: translateX(-100%);
-}
-
-.right-align {
-        float: right;
-}
-
-.left-align {
-        float: left;
-}
-
-.label {
-        text-align: center;
+.widget-overlay-header {
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         position: absolute;
-        top: 6px;
+        top:0;
+        left:0;
 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: $backgroundLight;
+        opacity: 0;
+}
+
+.header-label {
+        text-align: center;
         font-weight: $fontweight_default;
 }
 
-/* All buttons */
 .btn {
-        position: absolute;
         font-size: inherit;
+        text-align: center;
+        padding: 0px 10px;
         cursor: pointer;
 
         &:hover, &:active {
                 font-size: 103%;
                 transition: font-size 0.1s ease-in;
         }
-}
-
-.overlay {
-        position: absolute;
-        top: -0.2%;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        height: 30px;
-        width: 100%;
-        background-color: rgb(60, 60, 60);
-        opacity: 0;
-        transition: .5s ease;
-        border-radius: inherit;
 }
 
 .fade-in {

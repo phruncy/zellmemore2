@@ -1,14 +1,8 @@
 <div class="widget-container" #fullscreen (click)= "onClick()">
         <div #entry></div>
-        <div class="favicon-outer">
-                <fa-icon [icon]="faPlayCircle" class=" run-pause" [class.active]="!isRunning" matTooltip="run automaton">run/ pause</fa-icon>
-        </div>
-        <div class="overlay" [class.active]= "isRunning"></div>
-        <div class="label fade-in">{{title}}</div>
-        <div class="left-align">
-                <fa-icon [icon]="faTimes" (click)="remove()" class="btn remove fade-in"></fa-icon>
-        </div>
-        <div class="right-align">
-                <fa-icon [icon]="faExpand" (click)="toggleFullscreen()" class="btn fullscreen fade-in"></fa-icon>
+        <div class="widget-overlay-header">
+                <fa-icon [icon]="faTimes" (click)="remove()" class="btn fade-in"></fa-icon>
+                <div class="header-label fade-in">{{title}}</div>
+                <fa-icon [icon]="faExpand" (click)="toggleFullscreen()" class="btn fade-in"></fa-icon>
         </div>
 </div>

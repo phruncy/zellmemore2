@@ -1,4 +1,4 @@
-import { Component, OnInit, model, output } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { NgFor } from '@angular/common';
 import { customTooltipDefaults } from '../utils/customTooltipDefaults';

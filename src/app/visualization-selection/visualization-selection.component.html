@@ -1,11 +1,8 @@
 <div class="selection-frame">
-        <button mat-icon-button mat-tooltip="close" 
-                matRipple [matRippleCentered]="true" 
-                [matRippleUnbounded]="true"
-                (close)="close()">
-                <fa-icon class="plus-icon" [icon]="faTimes"></fa-icon>
-        </button>
-        <h2>Select a visualization:</h2>
+        <div class="header">
+                <h2>Select a visualization:</h2>
+                <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
+        </div>
         <div class="selection-tiles-container">
                 <app-selection-tile 
                         *ngFor="let option of visualizations" 

@@ -38,11 +38,13 @@ body {
         display: grid;
         align-content:normal;
         justify-items: center;
+
+        padding-top: $toprowHeight + $globalTop;
         &.active {
                 visibility: visible;
                 opacity: 1;
                 transition: opacity 0.2s ease-out;
                 width: 100%;
-                height: 100vh;  
+                height: 100vh;
         }
 }

@@ -11,32 +11,47 @@ $gridColumns_mobile: 2;
 
 .selection-frame {
         display : block;
+        box-sizing: border-box;
         max-width: $selectionFrameMaxWidth;
-        overflow: scroll;
         background-color: rgb(255, 255, 255);
         padding: $selectionPaddingDesktop;
         border-radius: 5px;
 }
 
-.selection-tiles-container {
-        display: grid;
-        grid-template-columns: repeat($gridColumns_desktop, 1fr);
+.header {
+        display: flex;
+        align-items: center;
 }
 
-@media only screen and (max-width: $breakpointMobile) {
-        .selection-tiles-container {
-                grid-template-columns: repeat($gridColumns_mobile, 1fr);
+.close-icon {
+        font-size: $fontsize_default;
+        margin-right: 5px;
+        margin-left: auto;
+        color: $fontLight;
+        cursor: pointer;
+        
+        &:hover {
+                color: black;
+                transition: color 0.2s;
         }
 }
 
-fa-icon {
-        font-size: $fontsize_default;
-}
-
-.plus-icon {
-        font-size: $fontsize_default;
-}
-
 h2 {
-        margin-bottom: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 3px;
+}
+
+.selection-tiles-container {
+        display: grid;
+        grid-template-columns: repeat($gridColumns_desktop, 1fr); 
+        max-height: 650px;  
+        overflow: scroll;
+        margin-top: 16px;
+}
+
+@media only screen and (max-width: $breakpointSmallMenu) {
+        .selection-tiles-container {
+                grid-template-columns: repeat($gridColumns_mobile, 1fr);
+        }
 }

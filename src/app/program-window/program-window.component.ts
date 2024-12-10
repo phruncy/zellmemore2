@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
-import { TopbarComponent } from '../topbar/topbar.component';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { WidgetFrameComponent } from '../app-canvas/app-canvas.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
     ],
     standalone: true,
-    imports: [TopbarComponent, WidgetFrameComponent, VisualizationSelectionComponent,]
+    imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent,]
 })
 export class ProgramWindowComponent
 {

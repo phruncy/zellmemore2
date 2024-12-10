@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, model, OnInit} from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MatButton } from '@angular/material/button';
@@ -8,28 +8,27 @@ import { MatDivider } from '@angular/material/divider';
 import { AutomatonControllerComponent } from '../automaton-controller/automaton-controller.component';
 
 @Component({
-    selector: 'app-topbar',
-    templateUrl: './topbar.component.html',
-    styleUrls: ['./topbar.component.scss'],
+    selector: 'app-toolbar-toprow',
+    templateUrl: './toolbar-toprow.component.html',
+    styleUrls: ['./toolbar-toprow.component.scss'],
     standalone: true,
     imports: [MatButton, MatTooltip, FaIconComponent, MatDivider, AutomatonControllerComponent]
 })
-export class TopbarComponent implements OnInit 
+export class ToolbarToprowComponent implements OnInit 
 {
     readonly faPlay = faPlay;
     readonly faPause = faPause;
     readonly faUndo = faUndo;
     readonly faAngleLeft = faAngleLeft;
     readonly faHome = faHome;
-    controllerDisplayed: boolean;
     isRunning = false;
     generation: number;
 
+    displayController = model<boolean>(true);
     constructor(private automaton: AutomatonService) { }
 
     ngOnInit() 
     {
-        this.controllerDisplayed = window.innerWidth > 420 ? true : false;
         this.init = this.ngOnInit.bind(this);
         this.update = this.update.bind(this);
         this.automaton.ready$.subscribe(this.init)
@@ -55,7 +54,7 @@ export class TopbarComponent implements OnInit
     
     public toggleController()
     {
-        this.controllerDisplayed = !this.controllerDisplayed;
+        this.displayController.set(!this.displayController());
     }
 
     private init(): void

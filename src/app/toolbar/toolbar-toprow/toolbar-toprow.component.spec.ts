@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { TopbarComponent } from './topbar.component';
+import { TopbarComponent } from './toolbar-toprow.component';
 
 describe('TopbarComponent', () => {
   let component: TopbarComponent;

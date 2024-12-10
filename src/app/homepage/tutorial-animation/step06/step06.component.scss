@@ -52,8 +52,6 @@ $strokeWidth: 4px;
         animation: expand-line 0.5s ease-out forwards;
 }
 
-/// cicular connector;
-
 .connector-circular-container {
         width: 90%;
         position: absolute;
@@ -92,7 +90,7 @@ $strokeWidth: 4px;
         to {stroke-dashoffset: 0px;}
 }
 
-@media only screen and (min-width: $) {
+@media only screen and (min-width: $breakpointLargeDesktop) {
         .cell {
                 width: $smallCellSizeDesktop;
                 height: $smallCellSizeDesktop;

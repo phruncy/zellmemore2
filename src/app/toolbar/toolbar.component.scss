@@ -1,0 +1,25 @@
+@import 'src/styles/controller/controller';
+
+.controller {
+    display: inline-block;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: $topbarFontWeight;
+
+    &.active {
+            max-height: $controllerHeight;
+            transition: max-height 0.2s ease-out;
+    }
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+    .controller {
+            left: 0;
+            width: 100%;
+            &.active {
+                    max-height: $controllerHeightMobile;
+                    max-width: 100%;
+            }
+    }
+} 

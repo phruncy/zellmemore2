@@ -1,9 +1,9 @@
-@import 'src/styles/controller/controller';
+@import 'src/styles/global/typo';
 
 .controller {
     display: inline-block;
     max-height: 0;
-    overflow: hidden;
+    transition: max-height 0.2s;
     z-index: 1;
     font-weight: $topbarFontWeight;
 
@@ -13,9 +13,8 @@
     }
 }
 
-@media only screen and (max-width: $breakpointMobile) {
+@media only screen and (max-width: $breakpointSmallMenu) {
     .controller {
-            left: 0;
             width: 100%;
             &.active {
                     max-height: $controllerHeightMobile;

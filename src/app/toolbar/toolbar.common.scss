@@ -2,8 +2,6 @@
 
 .controller-element {
         display: flex;
-        max-width: 300px;
-        margin: 0;
         text-align: center;
         align-items: center;
 }
@@ -17,12 +15,4 @@
         --mat-select-trigger-text-size: $fontsize_default;
         --mat-select-trigger-text-tracking: 0;
         --mat-option-label-text-tracking: 0;
-}
-
-.select-wrapper {
-        display: flex;
-}
-
-:host {
-        margin: auto;
 }

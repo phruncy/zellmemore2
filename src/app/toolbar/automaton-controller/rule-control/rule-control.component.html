@@ -6,16 +6,13 @@
         </mat-form-field>
         <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed"></fa-icon>
 </div>
-
-<mat-menu #boxes="matMenu" class="test">
+<mat-menu #boxes="matMenu">
         <div class="dropdown" (click)="$event.stopPropagation()">
                 <span *ngFor="let box of BOXES" class="checkbox-outer">
-                        <div class="checkbox-wrapper icons">
+                        <div class="checkbox-icons">
                                 <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
                         </div>
-                        <div class ="checkbox-wrapper icons">
-                                <span>d</span>
-                        </div>
+                        <div class ="checkbox-icons">d</div>
                         <mat-checkbox 
                                 id="{{box.id}}"
                                 [(ngModel)]="box.checked"
@@ -24,5 +21,4 @@
                 </span>
         </div>
 </mat-menu>
-
-<div #popupContainer class="popup"></div>
+<div #popupContainer></div>

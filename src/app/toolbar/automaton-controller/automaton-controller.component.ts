@@ -5,7 +5,7 @@ import { MatDivider } from '@angular/material/divider';
 import { EdgeControlComponent } from './edge-control/edge-control.component';
 import { StateControlComponent } from './state-control/state-control.component';
 import { ControlsSliderComponent } from 'src/app/toolbar/automaton-controller/slider/controls-slider.component';
-import { SliderSettings } from './ControlSettings';
+import { SliderSettings } from './SliderSettings';
 
 @Component({
     selector: 'app-automaton-controller',

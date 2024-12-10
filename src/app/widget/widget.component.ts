@@ -17,7 +17,7 @@ import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip } from '@angular/material/tooltip';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
@@ -31,7 +31,7 @@ import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.c
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
     ],
     standalone: true,
-    imports: [FaIconComponent, MatTooltip]
+    imports: [FaIconComponent]
 })
 export class WidgetComponent implements OnInit, OnDestroy 
 {
@@ -79,7 +79,6 @@ export class WidgetComponent implements OnInit, OnDestroy
         this.fetchComponent();
     }
 
-    /* Widget has to be removed from the size service's log */
     ngOnDestroy()
     {
         this.sizeService.decreaseWidgetNumber();
@@ -90,10 +89,6 @@ export class WidgetComponent implements OnInit, OnDestroy
         this.automaton.toggleLoop();
     }
 
-    /* Component is fetched from the visualization service's dictionary 
-     * that matches ids with the fitting components. The container does 
-     * not care about its content: The id is only known to the service 
-     */
     fetchComponent()
     {
         const visualization = this.visService.provideSketch();

@@ -2,13 +2,13 @@ import { Component, input, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSlider, MatSliderThumb } from '@angular/material/slider';
 import { MatTooltip } from '@angular/material/tooltip';
-import { SliderSettings } from '../ControlSettings';
+import { SliderSettings } from '../SliderSettings';
 
 @Component({
   selector: 'app-controls-slider',
   standalone: true,
   imports: [MatSlider, MatSliderThumb, MatTooltip, FormsModule],
-  styleUrl: '../../../styles/controller/controller.scss',
+  styleUrl: '../../toolbar.common.scss',
   template:`
     <div class="controller-element mat-element">
       <span mat matTooltip="tooltip">{{tooltip}}</span>

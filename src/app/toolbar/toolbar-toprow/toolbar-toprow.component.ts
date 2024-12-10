@@ -4,15 +4,13 @@ import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { MatDivider } from '@angular/material/divider';
-import { AutomatonControllerComponent } from '../automaton-controller/automaton-controller.component';
 
 @Component({
     selector: 'app-toolbar-toprow',
     templateUrl: './toolbar-toprow.component.html',
     styleUrls: ['./toolbar-toprow.component.scss'],
     standalone: true,
-    imports: [MatButton, MatTooltip, FaIconComponent, MatDivider, AutomatonControllerComponent]
+    imports: [MatButton, MatTooltip, FaIconComponent]
 })
 export class ToolbarToprowComponent implements OnInit 
 {

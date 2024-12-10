@@ -21,14 +21,20 @@ body {
         line-height: 1.6;
 }
 
+.header {
+        display: block;
+        margin: auto;
+        max-width: $maxTextWidth;
+}
+
 .landing-text {
         font-weight: 400;
         margin-top: 50px;
         margin-bottom: 0px;
-}
 
-.landing-text.colored {
-        color: $accent;
+        &.colored {
+                color: $accent;
+        }
 }
 
 .landing-link {
@@ -42,7 +48,6 @@ body {
 }
 
 .tutorial-wrapper 
-/// v Basti wars
 {
         max-width: 800px;
         width: 100%;
@@ -78,15 +83,15 @@ body {
         text-align: left;
         display: block;
         margin: auto;
-}
 
-.section.top {
-        border-top-width: $borderWidth;
-        border-top-style: solid;
-}
+        &.top {
+                border-top-width: $borderWidth;
+                border-top-style: solid;
+        }
 
-.section.last {
-        border-bottom-style: none;
+        &.last {
+                border-bottom-style: none;
+        }
 }
 
 @media only screen and (min-width: $breakpointMobile) {

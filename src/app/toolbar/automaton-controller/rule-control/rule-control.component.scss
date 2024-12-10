@@ -1,7 +1,7 @@
-@import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
 @import 'src/styles/global/breakpoints';
+@import '../../toolbar.common.scss';
 
 .rule-label {
         display: inline-block;
@@ -37,24 +37,19 @@
         transition: all 0.2s ease-in-out;
 }
 
-/* the single checkboxes */
 .checkbox-outer {
         display: inline-block;
         max-width: 200px;
         margin: 0 10px 0 10px;
 }
 
-.checkbox-wrapper {
+.checkbox-icons {
         display: block;
         text-align: center;
-}
-
-.checkbox-wrapper.icons {
         font-family: 'binary-marbles';
         font-size: 13px;
         color: $fontLight;
 }
-
 
 .cell-icon {
         color: $fontLight;

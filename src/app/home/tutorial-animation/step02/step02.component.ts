@@ -1,7 +1,7 @@
 import { Component, OnInit, input } from '@angular/core';
 import { Step } from '../step';
 import {trigger, state, style, animate, transition } from '@angular/animations';
-import { animations } from 'src/app/homepage/animations';
+import { animations } from 'src/app/home/animations';
 import { NgIf, NgFor } from '@angular/common';
 
 @Component({

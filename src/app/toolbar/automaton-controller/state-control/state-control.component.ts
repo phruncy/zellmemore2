@@ -12,7 +12,7 @@ interface Option
 
 @Component({
     selector: 'app-state-control',
-    styleUrls: ['../../../styles/controller/controller.scss'],
+    styleUrls: ['../../toolbar.common.scss'],
     standalone: true,
     imports: [MatSelect, FormsModule, MatOption],
     template: `

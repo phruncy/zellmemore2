@@ -1,47 +1,45 @@
-@import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 @import 'src/styles/global/breakpoints';
+@import '../toolbar.common.scss';
 
-$settingsUnitPaddingSides: 10px;
-
-.automaton-controller-container{
+.automaton-controller-container {
+        box-sizing: border-box;
         margin: 8px 8px 8px 0px;
         color: $fontDefault;
         display: flex;
-}
-
-.dropdown-element {
-        display: flex;
         align-items: center;
-        padding: 0 $settingsUnitPaddingSides 0;
-        max-width: 250px;
-        &.last {
-                border-right-style: none;
-        }
 }
 
-.pointer {
-        cursor:pointer;
+.desktop-divider {
+        align-self: stretch;
+        margin: 0 10px;
 }
 
 .mobile-divider {
         display: none;
+        margin: 7px 0;
 }
 
-@media only screen and (max-width: $breakpointMobile) {
-        .wrapper {
+@media only screen and (max-width: $breakpointSmallMenu) {
+        .automaton-controller-container {
                 display: inline-block;
                 margin-top: 0px;
-                background: white;
-                box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-                border-radius: 5px;
-                width: 97%;
+                background: $backgroundUltraLight;
+                border-radius: 0 0 5px 5px;
+                width: 100%;
+                padding-left: 10px;
+                padding-right: 20px;
         }
-        .dropdown-element {
+        .ui-element {
                 margin: 10px;
         }
+
+        .desktop-divider {
+                display: none;
+        }
+
         .mobile-divider {
                 display: block;
         }

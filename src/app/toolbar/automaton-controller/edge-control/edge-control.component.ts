@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-edge-control',
-    styleUrls: ['../../../styles/controller/controller.scss'],
+    styleUrls: ['../../toolbar.common.scss'],
     standalone: true,
     imports: [MatSlideToggle, FormsModule],
     template: `<mat-slide-toggle class="mat-element" labelPosition="before" [(ngModel)]="checked">Connect Edges</mat-slide-toggle>`

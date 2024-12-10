@@ -8,7 +8,7 @@
                                 class="cell"
                                 [@changeState]="cell.state"
                                 (@changeState.done)="toggleState(i)"
-                                ></div>
+                        ></div>
                 </div>
                 <div 
                         class="multiple-cells-wrapper step02"
@@ -17,9 +17,8 @@
                                 *ngFor="let cell of cells; let i = index"
                                 class="cell"
                                 [style.background]="cell.state === 'active' ? 'black' : 'white'"
-                                ></div>
+                        ></div>
                 </div>
         </div>
         <div class="description" [@slideInDescription]="activeDescription()">{{descriptions[activeDescription()]}}</div>
 </div>
-

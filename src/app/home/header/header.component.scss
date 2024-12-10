@@ -4,6 +4,7 @@
 @import 'src/styles/global/breakpoints';
 
 .container-outer {
+  display: flex;
   padding-top: 1rem;
   padding-bottom: .5rem;
   font-size: $menuItemsFontSize;
@@ -12,28 +13,17 @@
   font-family: 'Nunito Sans';
 }
 
-.container-inner {
-        max-width: $maxWindowWidth;
-        width: 100%;
-        display: inline-block;
-}
-
 .github-icon {
   font-family: github-icon;
   font-size: 26px;
 }
 
-.left {
-        float: left;
-}
-
-.right {
-        float: right;
-}
-
 .btn {
-        font-family: 'Nunito Sans';
-        font-size: $fontsize_default;
+  font-family: 'Nunito Sans';
+  font-size: $fontsize_default;
+  &.left {
+    margin-right: auto;
+  }
 }
 
 @media only screen and (min-width: $breakpointMobile) {

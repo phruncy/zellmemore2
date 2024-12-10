@@ -13,7 +13,7 @@ import { NgIf } from '@angular/common';
 import { TutorialStepComponent } from './tutorial-step/tutorial-step.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StepDescription } from '../step-description';
-import { StepIntroComponent } from 'src/app/homepage/tutorial-animation/step-intro/step-intro.component';
+import { StepIntroComponent } from './step-intro/step-intro.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

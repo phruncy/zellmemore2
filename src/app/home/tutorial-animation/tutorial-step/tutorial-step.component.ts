@@ -6,8 +6,7 @@ import { StepDescription } from '../../step-description';
   selector: 'app-tutorial-step',
   standalone: true,
   imports: [NgComponentOutlet],
-  templateUrl: './tutorial-step.component.html',
-  styleUrl: './tutorial-step.component.scss'
+  template: `<ng-container *ngComponentOutlet="content(); inputs: {activeDescription: currentSection()}"></ng-container>`
 })
 export class TutorialStepComponent 
 {

@@ -12,6 +12,4 @@ import { MatDivider } from '@angular/material/divider';
     imports: [MatButton, RouterLink, MatAnchor, MatTooltip, MatDivider]
 })
 export class HeaderComponent
-{
-    constructor() { }
-}
+{}

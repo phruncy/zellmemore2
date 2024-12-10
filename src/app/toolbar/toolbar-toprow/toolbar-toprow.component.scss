@@ -1,8 +1,8 @@
 @import 'src/styles/global/colors';
-@import 'src/styles/controller/controller';
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
 @import 'src/styles/global/breakpoints';
+@import '../toolbar.common.scss';
 
 .toprow-container {
         font-weight: $topbarFontWeight;
@@ -67,9 +67,3 @@
         text-align: center;
         align-items: center;
 }      
-
-@media only screen and (max-width: 420px) {
-        .elt {
-                margin: 0;
-        }
-}

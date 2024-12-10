@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { HeaderComponent } from '../homepage/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
-import { AboutComponent } from '../homepage/about/about.component';
 import { CustomFooterComponent } from '../custom-footer/custom-footer.component';
-import { TutorialAnimationComponent } from "../homepage/tutorial-animation/tutorial-animation.component";
+import { TutorialAnimationComponent } from './tutorial-animation/tutorial-animation.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     standalone: true,
-    imports: [HeaderComponent, RouterLink, FaIconComponent, MatDivider, AboutComponent, CustomFooterComponent, TutorialAnimationComponent]
+    imports: [HeaderComponent, RouterLink, FaIconComponent, MatDivider, CustomFooterComponent, TutorialAnimationComponent]
 })
 export class HomeComponent 
 {

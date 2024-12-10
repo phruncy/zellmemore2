@@ -33,12 +33,10 @@ export class RuleControlComponent implements OnInit
         { id: '000', iconValues: [0, 0, 0], checked: false},
     ];
     decimal: string;
-    popupContainer = viewChild('popupContainer', {read:ViewContainerRef});
     boxesDisplayed = false;
+    popupContainer = viewChild('popupContainer', {read:ViewContainerRef});
 
-    constructor(
-        private automaton: AutomatonService,
-        private messenger: MessengerService) {}
+    constructor( private automaton: AutomatonService, private messenger: MessengerService) {}
 
     ngOnInit() 
     {
@@ -109,4 +107,3 @@ function convertRuleInput(decimal: string): number
         return 0;
     return parseInt(decimal, 10);
 }
-

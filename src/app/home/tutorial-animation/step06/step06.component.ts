@@ -1,6 +1,6 @@
 import { Component, OnInit, input } from '@angular/core';
 import { Step } from '../step';
-import { animations } from 'src/app/homepage/animations';
+import { animations } from 'src/app/home/animations';
 import {trigger, state, animate, style, transition } from '@angular/animations';
 import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { NgIf, NgFor } from '@angular/common';

@@ -1,6 +1,6 @@
 import { Component, InputSignal, input } from '@angular/core';
 import { Step } from '../step';
-import { animations } from 'src/app/homepage/animations';
+import { animations } from 'src/app/home/animations';
 
 @Component({
     selector: 'app-step01',

@@ -1,5 +1,5 @@
 import { Component, model, input } from '@angular/core';
-import { animations } from 'src/app/homepage/animations';
+import { animations } from 'src/app/home/animations';
 import { NgForOf } from '@angular/common';
 import { MatRipple } from '@angular/material/core';
 

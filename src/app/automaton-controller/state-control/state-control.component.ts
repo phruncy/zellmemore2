@@ -16,13 +16,14 @@ interface Option
     standalone: true,
     imports: [MatSelect, FormsModule, MatOption],
     template: `
-      <mat-select class="mat-element" 
+      <mat-select 
+          class="mat-element" 
           [(ngModel)]="initMode"
           (ngModelChange)="onSelectionChange()"
           disableRipple>
           @for(option of options; track option)
           {
-                  <mat-option class="mat-element" [value]="option.value">{{option.viewValue}}</mat-option>
+            <mat-option class="mat-element" [value]="option.value">{{option.viewValue}}</mat-option>
           }
       </mat-select>
     `
@@ -40,8 +41,8 @@ export class StateControlComponent implements OnInit
         this.initMode = this.automaton.initMode;
         this.options = 
         [
-          { value: this.automaton.initModes.singeCell, viewValue: "Start with a single active cell" },
-          { value: this.automaton.initModes.randomCells, viewValue: "Start from random state" }
+          { value: this.automaton.initModes.singeCell, viewValue: "Single cell" },
+          { value: this.automaton.initModes.randomCells, viewValue: "Random state" }
         ];
       });
     }

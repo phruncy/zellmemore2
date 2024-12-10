@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
     ],
     standalone: true,
-    imports: [TopbarComponent, WidgetFrameComponent, FaIconComponent, VisualizationSelectionComponent, MatButton, RouterLink]
+    imports: [TopbarComponent, WidgetFrameComponent, VisualizationSelectionComponent,]
 })
 export class ProgramWindowComponent
 {

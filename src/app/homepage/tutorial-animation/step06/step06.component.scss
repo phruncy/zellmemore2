@@ -92,7 +92,7 @@ $strokeWidth: 4px;
         to {stroke-dashoffset: 0px;}
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (min-width: $) {
         .cell {
                 width: $smallCellSizeDesktop;
                 height: $smallCellSizeDesktop;

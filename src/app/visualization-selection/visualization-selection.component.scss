@@ -1,9 +1,13 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
+@import 'src/styles/global/breakpoints';
 
 $selectionFrameMaxWidth: 860px;
 $selectionPaddingDesktop: 20px;
+
+$gridColumns_desktop: 4;
+$gridColumns_mobile: 2;
 
 .selection-frame {
         display : block;
@@ -12,6 +16,25 @@ $selectionPaddingDesktop: 20px;
         background-color: rgb(255, 255, 255);
         padding: $selectionPaddingDesktop;
         border-radius: 5px;
+}
+
+.selection-tiles-container {
+        display: grid;
+        grid-template-columns: repeat($gridColumns_desktop, 1fr);
+}
+
+@media only screen and (max-width: $breakpointMobile) {
+        .selection-tiles-container {
+                grid-template-columns: repeat($gridColumns_mobile, 1fr);
+        }
+}
+
+fa-icon {
+        font-size: $fontsize_default;
+}
+
+.plus-icon {
+        font-size: $fontsize_default;
 }
 
 h2 {

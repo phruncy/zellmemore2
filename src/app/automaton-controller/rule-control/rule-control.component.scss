@@ -1,11 +1,12 @@
 @import 'src/styles/controller/controller';
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
+@import 'src/styles/global/breakpoints';
 
 .rule-label {
         display: inline-block;
         margin-right: 10px;
-        max-width: 65px;
+        max-width: 60px;
 
         --mat-form-field-container-text-size: $fontsize_default;
         --mat-form-field-container-height: 30px;

@@ -36,7 +36,7 @@ body {
         z-index: 999;
 
         display: grid;
-        align-content: center;
+        align-content:normal;
         justify-items: center;
         &.active {
                 visibility: visible;

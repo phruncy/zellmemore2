@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MatButton } from '@angular/material/button';
@@ -37,34 +37,40 @@ export class TopbarComponent implements OnInit
         this.automaton.cellsChanged$.subscribe(this.update);
     }
 
-    init(): void
+    @HostListener('window:keydown.space', ['$event'])
+    handleKeyDown(event: KeyboardEvent)
     {
-        this.isRunning = this.automaton.isRunning;
+        this.toggleRunning();
     }
-
-    onClickPlay()
+    
+    public onClickPlay()
     {
-        this.isRunning = !this.isRunning;
-        this.automaton.isRunning = this.isRunning;
+        this.toggleRunning();
     }
-
-    onClickReset()
+    
+    public onClickReset()
     {
         this.automaton.reset();
     }
-
-    toggleController()
+    
+    public toggleController()
     {
         this.controllerDisplayed = !this.controllerDisplayed;
     }
 
-    hideController() 
+    private init(): void
     {
-        this.controllerDisplayed = false;
+        this.isRunning = this.automaton.isRunning;
     }
-
-    update()
+    
+    private update()
     {
         this.generation = this.automaton.generation;
+    }
+
+    private toggleRunning() 
+    {
+        this.isRunning = !this.isRunning;
+        this.automaton.isRunning = this.isRunning;
     }
 }

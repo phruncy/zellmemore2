@@ -25,40 +25,34 @@ $matCardMaxWidth: 150px;
         left: 0px;
         width: 100%;
         opacity: 0;
-        transition: opacity 0.2s ease-out;       
-}
-
-.overlay:hover {
-        opacity: 1;
         transition: opacity 0.2s ease-out;
-        cursor: pointer;
+        
+        &:hover {
+                opacity: 1;
+                transition: opacity 0.2s ease-out;
+                cursor: pointer;
+        }
 }
 
 .thumbnail {
-
         width: 100%;
 }
 
 .btn {
-        transition: opacity 0.2s ease-out;
         z-index: 1;
         color: $highlight;
 }
 
-.check-wrapper {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        text-align: right;
-}
 .check {
+        position: absolute;
+        top: 0;
+        left: 0;
         visibility: hidden;
         color: $highlight;
-        margin: 5px 5px 5px 5px;
+        margin: 5px 8px;
         display: inline-block;
-}
 
-.check.active {
-        visibility: visible;
+        &.active {
+                visibility: visible;
+        }
 }

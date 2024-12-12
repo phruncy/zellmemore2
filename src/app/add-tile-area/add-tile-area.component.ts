@@ -1,4 +1,4 @@
-import { Component, input, HostBinding } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 

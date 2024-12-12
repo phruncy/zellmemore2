@@ -20,17 +20,14 @@ export class ToolbarToprowComponent implements OnInit
     readonly faUndo = faUndo;
     readonly faAngleLeft = faAngleLeft;
     readonly faHome = faHome;
-    isRunning = false;
     generation: number;
 
     displayController = model<boolean>(true);
-    constructor(private automaton: AutomatonService) { }
+    constructor(public automaton: AutomatonService) { }
 
     ngOnInit() 
     {
-        this.init = this.ngOnInit.bind(this);
         this.update = this.update.bind(this);
-        this.automaton.ready$.subscribe(this.init)
         this.automaton.changed$.subscribe(this.update)
         this.automaton.cellsChanged$.subscribe(this.update);
     }
@@ -55,11 +52,6 @@ export class ToolbarToprowComponent implements OnInit
     {
         this.displayController.set(!this.displayController());
     }
-
-    private init(): void
-    {
-        this.isRunning = this.automaton.isRunning;
-    }
     
     private update()
     {
@@ -68,7 +60,6 @@ export class ToolbarToprowComponent implements OnInit
 
     private toggleRunning() 
     {
-        this.isRunning = !this.isRunning;
-        this.automaton.isRunning = this.isRunning;
+        this.automaton.isRunning = !this.automaton.isRunning;
     }
 }

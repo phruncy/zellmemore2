@@ -3,8 +3,8 @@
                 (click)="onClickPlay()" 
                 mat-button
                 matTooltip="Run/Pause">
-                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!isRunning"></fa-icon>
-                <fa-icon [icon]="faPause" class="pause icon" [class.active]="isRunning"></fa-icon>
+                <fa-icon [icon]="faPlay" class="play icon" [class.active]="!automaton.isRunning"></fa-icon>
+                <fa-icon [icon]="faPause" class="pause icon" [class.active]="automaton.isRunning"></fa-icon>
         </button>
         <button 
                 (click)="onClickReset()" 

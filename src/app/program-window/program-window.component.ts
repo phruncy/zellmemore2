@@ -4,10 +4,7 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import {customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { WidgetFrameComponent } from '../app-canvas/app-canvas.component';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
-import { MatButton } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-program-window',

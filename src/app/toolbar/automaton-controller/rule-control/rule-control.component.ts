@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgFor } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-rule-control',
@@ -36,16 +37,16 @@ export class RuleControlComponent implements OnInit
     boxesDisplayed = false;
     popupContainer = viewChild('popupContainer', {read:ViewContainerRef});
 
-    constructor( private automaton: AutomatonService, private messenger: MessengerService) {}
+    constructor( 
+        private automaton: AutomatonService, 
+        private messenger: MessengerService,
+        private route: ActivatedRoute) {}
 
     ngOnInit() 
     {
-        this.automaton.ready$.subscribe(() => 
-            {
-                this.decimal = this.automaton.rule.toString();
-                this.syncBoxes();
-            }
-        );
+        this.init = this.init.bind(this);
+        this.automaton.ready$.subscribe(this.init);
+        this.route.params.subscribe(this.init);
     }
 
     onTextInputChanged()
@@ -84,6 +85,12 @@ export class RuleControlComponent implements OnInit
             const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer());
         }
         this.decimal = this.automaton.rule.toString();
+    }
+
+    private init()
+    {
+        this.decimal = this.automaton.rule.toString();
+        this.syncBoxes();
     }
 }
 

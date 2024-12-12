@@ -3,6 +3,7 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 import { MatSelect } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface Option
 {
@@ -32,23 +33,27 @@ export class StateControlComponent implements OnInit
 {
     public options: Option[];
     public initMode: number;
-    constructor(private automaton: AutomatonService) {}
+    constructor(private automaton: AutomatonService, private route: ActivatedRoute) {}
     
     ngOnInit() 
     {
-      this.automaton.ready$.subscribe(() =>
-      {
-        this.initMode = this.automaton.initMode;
-        this.options = 
-        [
-          { value: this.automaton.initModes.singeCell, viewValue: "Single cell" },
-          { value: this.automaton.initModes.randomCells, viewValue: "Random state" }
-        ];
-      });
+      this.init = this.init.bind(this);
+      this.automaton.ready$.subscribe(this.init);
+      this.route.params.subscribe(this.init);
     }
 
     onSelectionChange()
     {
       this.automaton.initMode = this.initMode;
+    }
+
+    private init()
+    {
+      this.initMode = this.automaton.initMode;
+        this.options = 
+        [
+          { value: this.automaton.initModes.singeCell, viewValue: "Single cell" },
+          { value: this.automaton.initModes.randomCells, viewValue: "Random state" }
+        ];
     }
 }

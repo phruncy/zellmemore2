@@ -109,7 +109,7 @@ export const p5waves01 = new P5Sketch
         p5.componentResize = (w: number, h: number) =>
         {
             p5.resizeCanvas(w, h);
-            p5.reset();
+            p5.automatonReset();
         }
 
         p5.automatonModeChange = () => {}

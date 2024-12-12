@@ -59,7 +59,7 @@ export const p5default = new P5Sketch
         p5.automatonStateUpdate = () => 
         {
             p5.background(255);
-            const anchorY = this.automaton.generation <= maxDisplayableGenerations ? 0 : -blockSize;
+            const anchorY = this.automaton.generation <= maxDisplayableGenerations - 1 ? 0 : -blockSize;
             p5.drawingContext.putImageData(buffer, 0, anchorY);
             addCurrentToFrameBuffer();
         }

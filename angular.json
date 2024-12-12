@@ -64,7 +64,7 @@
             },
             "development": {
               "optimization": false,
-              "sourceMap": false,
+              "sourceMap": true,
               "vendorChunk": true,
               "buildOptimizer": false,
               "extractLicenses": true,
@@ -170,5 +170,8 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

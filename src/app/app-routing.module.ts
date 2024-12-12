@@ -7,8 +7,6 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 const routes: Routes =
 [
   {path: 'home', component: HomeComponent},
-  // Default-Route, wenn Seite geladen wird
-  // Route zu einem Programm:
   {path: 'program-window', component: ProgramWindowComponent},
   {path: 'data-disclaimer', component: DisclaimerComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

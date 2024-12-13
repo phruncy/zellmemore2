@@ -12,6 +12,7 @@ import { p5waves02 } from 'src/app/P5Sketches/p5waves02';
 import { p5waves03 } from 'src/app/P5Sketches/p5waves03';
 import { p5chaos } from 'src/app/P5Sketches/p5chaos';
 import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
+import { p5vortex } from '../P5Sketches/p5vortex';
 
 @Injectable({ providedIn: 'root'})
 export class VisualizationService {
@@ -31,7 +32,7 @@ export class VisualizationService {
         "v004": p5punchCard,
         "v005": p5threads,
         "v006": p5signals,
-        "v007": null,
+        "v007": p5vortex,
         "v008": p5chaos,
         "v009": p5waves01,
         "v010": p5waves02,

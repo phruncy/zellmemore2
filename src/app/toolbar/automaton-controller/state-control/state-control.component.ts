@@ -17,6 +17,7 @@ interface Option
     standalone: true,
     imports: [MatSelect, FormsModule, MatOption],
     template: `
+      <span></span>
       <mat-select 
           class="mat-element" 
           [(ngModel)]="initMode"
@@ -52,8 +53,8 @@ export class StateControlComponent implements OnInit
       this.initMode = this.automaton.initMode;
         this.options = 
         [
-          { value: this.automaton.initModes.singeCell, viewValue: "Single cell" },
-          { value: this.automaton.initModes.randomCells, viewValue: "Random state" }
+          { value: this.automaton.initModes.singeCell, viewValue: "Start from single cell " },
+          { value: this.automaton.initModes.randomCells, viewValue: "Start from random state " }
         ];
     }
 }

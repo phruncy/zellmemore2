@@ -24,6 +24,12 @@
                         transition: opacity 0.2s;
                 }
         }
+
+        &:fullscreen {
+                .widget-overlay-header {
+                        visibility: hidden;
+                }
+        }
 }
 
 .widget-overlay-header {

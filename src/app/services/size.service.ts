@@ -6,14 +6,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SizeService {
-
-    private _frameHeight; // the area that contains all the widgets
-    private _frameWidth;
+    
+    public margin;
+    private _appCanvasWidth;
+    private _appCanvasHeight;
     private _widgetNumber = 0;
     private _widgetSize = 250;
-    public margin = 3; // default
-    private _fullscreenActive = false;
-    /* informs listeners (widgets) about change in widget size */
+
     private _sizeChanged = new Subject<void>();
     public sizeChanged$ = this._sizeChanged.asObservable();
 
@@ -24,52 +23,26 @@ export class SizeService {
         });
     }
 
-    get widgetSize(): number
+    get widgetSize(): number { return this._widgetSize; }
+    get widgetNumber(): number { return this._widgetNumber; }
+
+    public setFrameSize(width: number, height: number) 
     {
-      return this._widgetSize;
+            this._appCanvasWidth = width;
+            this._appCanvasHeight = height;
+            this.setWidgetSize();
     }
 
-    get fullscreenActive(): boolean {
-        return this._fullscreenActive;
-    }
-
-    get widgetNumber(): number
-    {
-        return this._widgetNumber;
-    }
-
-    set fullscreenActive(value: boolean) {
-        this._fullscreenActive = value;
-        this.fullScreen();
-    }
-
-    public fullScreen()
-    {
-        this._widgetSize = window.innerHeight;
-        this._sizeChanged.next();
-    }
-
-    setFrameSize(width: number, height: number) {
-        // prevents frameSize from changing the widget's size in fullscreen mode
-        if (this._fullscreenActive) {
-            this._frameHeight = window.innerHeight;
-        } else {
-            this._frameWidth = width;
-            this._frameHeight = height;
-        }
-        this.changeWidgetSize();
-    }
-
-    decreaseWidgetNumber()
+    public decreaseWidgetNumber()
     {
         this._widgetNumber--;
-        this.changeWidgetSize();
+        this.setWidgetSize();
     }
 
-    increaseWidgetNumber()
+    public increaseWidgetNumber()
     {
         this._widgetNumber++;
-        this.changeWidgetSize();
+        this.setWidgetSize();
     }
 
     /* 
@@ -82,16 +55,16 @@ export class SizeService {
      *              sidelength for the given rows + 1.
      */
 
-    private getInterimSize(rows): number {
-        const w = (this._frameWidth - 
+    private getInterimSize(rows: number): number {
+        const w = (this._appCanvasWidth - 
             (this._widgetNumber / rows) * this.margin) / Math.ceil(this._widgetNumber / rows);
-        if ((w * rows + rows * this.margin) > this._frameHeight) {
-            return (this._frameHeight - this.margin) / rows;
+        if ((w * rows + rows * this.margin) > this._appCanvasHeight) {
+            return (this._appCanvasHeight - this.margin) / rows;
         }
         return Math.floor(w) - 1;
     }
 
-    private changeWidgetSize()
+    private setWidgetSize()
     {
         let rows = 1;
         let sidelength;
@@ -102,6 +75,4 @@ export class SizeService {
         this._widgetSize = Math.floor(sidelength);
         this._sizeChanged.next();
     }
-
-    
 }

@@ -11,6 +11,7 @@ import { Component,
           HostBinding,
           viewChild,
           ElementRef,
+          HostListener,
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -72,10 +73,10 @@ export class WidgetComponent implements OnInit, OnDestroy
      */
     ngOnInit() 
     {
-        this.fetchSize = this.fetchSize.bind(this);
-        this.sizeService.sizeChanged$.subscribe (this.fetchSize);
+        this.updateSize = this.updateSize.bind(this);
+        this.sizeService.sizeChanged$.subscribe (this.updateSize);
         this.sizeService.increaseWidgetNumber();
-        this.fetchSize();
+        this.updateSize();
         this.fetchComponent();
     }
 
@@ -97,29 +98,31 @@ export class WidgetComponent implements OnInit, OnDestroy
         component.setInput('p5sketch', visualization);
         this.detailsService.getName(this.visService.visualizationToDisplay).then( name => this.title = name);
     }
-
-    fetchSize() 
+    
+    remove()
+    {
+        this._self.destroy();
+    }
+    
+    enterFullscreen()
+    {
+        if (this.fullscreenContainer().nativeElement.requestFullscreen) {
+            this.fullscreenContainer().nativeElement.requestFullscreen();
+        } 
+        else if (this.fullscreenContainer().nativeElement.webkitRequestFullscreen) {
+            this.fullscreenContainer().nativeElement.webkitRequestFullscreen();
+        }
+        else {
+            throw new Error('No fullscreen available');
+        }
+    }
+    
+    private updateSize() 
     {
         this._width = this.sizeService.widgetSize.toString();
         this._height = this._width;
         this._marginRight = this.sizeService.margin;
         this._marginBottom = this.sizeService.margin;
-    }
-
-    remove()
-    {
-        this._self.destroy();
-    }
-
-    toggleFullscreen()
-    {
-        console.log(this.fullscreenContainer());
-        if (this.fullscreenContainer().nativeElement.webkitRequestFullscreen) {
-            this.fullscreenContainer().nativeElement.webkitRequestFullscreen();
-        } else {
-            throw new Error('No fullscreen available');
-        }
-        this.sizeService.fullscreenActive = !this.sizeService.fullscreenActive;
     }
 }
 

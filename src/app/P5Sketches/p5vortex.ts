@@ -60,8 +60,8 @@ export const p5vortex = new P5Sketch
             }
         }
 
-        p5.componentResize = () => {
-            p5.resizeCanvas(this.componentWidth, this.componentHeight);
+        p5.componentResize = (w: number, h: number) => {
+            p5.resizeCanvas(w, h);
             initValues();
         }
     } 

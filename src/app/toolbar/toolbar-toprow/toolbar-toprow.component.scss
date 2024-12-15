@@ -5,6 +5,7 @@
 @import '../toolbar.common.scss';
 
 .toprow-container {
+        min-width: 390px;
         font-weight: $topbarFontWeight;
         margin-bottom: 7px;
         display: flex;

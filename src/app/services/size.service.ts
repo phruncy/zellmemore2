@@ -22,7 +22,8 @@ export class SizeService {
             this.margin = config.widgetMargin;
         });
     }
-
+    
+    readonly addAreaWidth = 35;
     get widgetSize(): number { return this._widgetSize; }
     get widgetNumber(): number { return this._widgetNumber; }
 
@@ -44,35 +45,31 @@ export class SizeService {
         this._widgetNumber++;
         this.setWidgetSize();
     }
-
-    /* 
-     * calculates the side length for the current number of widgets in the
-     * given number of rows based on the frameWidth.
-     * if the result exceeds the frameHeight, the maximum widget size based on * the frame height is returned instead.
-     * @param rows: the number of rows that the widgets will be displayed in
-     *              it is increased by 1 whenever the resulting sidelength for
-     *              the given number of rows is smaller than the resulting 
-     *              sidelength for the given rows + 1.
+    
+    /**
+     * Calculate Max length of each square if they are arranged in a layout with n rows:
+     * Calculate a the maximum size based on both the width and the height and take the 
+     * minium of both in order to fit both constraints
      */
-
-    private getInterimSize(rows: number): number {
-        const w = (this._appCanvasWidth - 
-            (this._widgetNumber / rows) * this.margin) / Math.ceil(this._widgetNumber / rows);
-        if ((w * rows + rows * this.margin) > this._appCanvasHeight) {
-            return (this._appCanvasHeight - this.margin) / rows;
-        }
-        return Math.floor(w) - 1;
+    private calculateWidgetSize(rows: number) : number 
+    {
+        const maxWidgetsPerRow = Math.ceil(this.widgetNumber / rows);
+        const netWidth = this._appCanvasWidth - maxWidgetsPerRow * this.margin - this.addAreaWidth;
+        const netHeight = this._appCanvasHeight - (rows - 1) * this.margin;
+        const maxWidth = netWidth / maxWidgetsPerRow;
+        const maxHeight = netHeight / rows;
+        return Math.min (maxWidth, maxHeight);
     }
 
     private setWidgetSize()
     {
         let rows = 1;
-        let sidelength;
-        while ((sidelength = this.getInterimSize(rows)) 
-            < this.getInterimSize(rows + 1)) {
+        let sidelength = 0;
+        while ((sidelength = this.calculateWidgetSize(rows)) < this.calculateWidgetSize(rows + 1))
+        {
             rows++;
         }
-        this._widgetSize = Math.floor(sidelength);
+        this._widgetSize = sidelength;
         this._sizeChanged.next();
     }
 }

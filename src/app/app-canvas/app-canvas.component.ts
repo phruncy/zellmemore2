@@ -23,8 +23,8 @@ import { AddTileAreaComponent } from "../add-tile-area/add-tile-area.component";
         <app-add-tile-area 
             class="add-tile-area" 
             [class.active]="!isEmpty" 
+            [areaWidth]="sizeService.addAreaWidth"
             [areaHeight]="sizeService.widgetSize"
-            [margin]="sizeService.margin"
             (click)="requestSelection.emit(true)"></app-add-tile-area>
         <div class="empty-frame-overlay" [class.active]="isEmpty" (click)="requestSelection.emit(true)">
                 <app-animated-tooltip></app-animated-tooltip>

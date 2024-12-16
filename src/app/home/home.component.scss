@@ -24,7 +24,7 @@ body {
 .header {
         display: block;
         margin: auto;
-        max-width: $maxTextWidth;
+        max-width: $maxContentWidth;
 }
 
 .landing-text {
@@ -78,7 +78,7 @@ body {
         border-bottom-style: solid;
         border-bottom-width: $borderWidth;
         box-sizing: border-box;
-        max-width: $maxTextWidth;
+        max-width: $maxContentWidth;
         width: 100%;
         text-align: left;
         display: block;

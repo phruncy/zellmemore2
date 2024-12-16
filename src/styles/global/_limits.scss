@@ -1,3 +1,10 @@
 $breakpointMobile: 480px;
 $breakpointLargeDesktop: 770px;
 $breakpointSmallMenu: 660px;
+
+$maxContentWidth: 1024px;
+
+$minMenuWidth: 390px;
+
+$minCanvasWidth: $minMenuWidth;
+$minCanvasHeight: $minCanvasWidth;

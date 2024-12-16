@@ -1,8 +1,7 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/margins';
 @import 'src/styles/global/typo';
-
-$widgetAreaMinHeight: 200px;
+@import 'src/styles/global/limits';
 
 body {
         background-color:  white;
@@ -18,10 +17,11 @@ body {
 
 .program-window-canvas {
         width: 100%;
+        min-width: $minCanvasWidth;
+        height: calc(100vh - $controllerHeight);
+        min-height: $minCanvasHeight;
         margin-top: 10px;
-        min-height: $widgetAreaMinHeight;
-        height: calc(100vh - 150px);
-        display:flex;
+        display: flex;
         align-items: center;
 }
 

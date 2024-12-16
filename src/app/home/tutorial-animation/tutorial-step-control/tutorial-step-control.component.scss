@@ -1,24 +1,28 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
+@import '../tutorial-animation-mixins.scss';
+
+$stepMarkerWidth: 10px;
 
 .controls {
         text-align: center;
+        margin: 0 8px;
+        min-width: $stepMarkerWidth;
 }
 
 .step-marker {
         @include roundShape(white);
         display: inline-block;
         height: 10px;
-        width: 10px;
+        width: $stepMarkerWidth;
         background: $accent;
         cursor: pointer;
         opacity: .6;
         border: none;
         margin: 0 5px;
-}
 
-.step-marker.active {
-        opacity: 1;
+        &.active {
+                opacity: 1;
+        }
 }
 
 .btn {

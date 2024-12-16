@@ -15,7 +15,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
         trigger('changeState', [
             state('active', style({ background: 'black' })),
             state('inactive', style({ background: 'white' })),
-            transition('active <=> inactive', [animate('1s ease-in-out')]),
+            transition('active <=> inactive', [animate('0.3s 1s ease-in-out')]),
         ]),
         animations.slideInDescription,
         animations.slideInOut

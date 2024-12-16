@@ -1,24 +1,22 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 
 $largeCellSize: 100px;
 
-.cell-wrapper {
-        display: inline-block;
-        width: 100%;
-        position: relative;
-        text-align: center;
+:host {
+        @include tutorialStepContent();
 }
 
-.cell.large {
-        display: inline-block;
+.cell {
         @include roundShape(black);
-        @include absolute-centered();
         width: $largeCellSize;
         height: $largeCellSize;
+        margin-top: auto;
+        &.animated {
+                animation: state-switch 1.5s ease-out 0.2s infinite alternate forwards;
+        }
 }
 
-.cell.large.animated {
-        animation: state-switch 1.5s ease-out 0.2s infinite alternate forwards;
+.tutorialText {
+        @include tutorialText();
 }

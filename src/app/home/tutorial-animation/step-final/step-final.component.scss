@@ -1,10 +1,9 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 @import 'src/styles/global/limits';
 
 .btn-container {
-        margin-top: 30px;
+        margin-top: 4em;
         text-align: center;
 }
 
@@ -14,23 +13,12 @@
 }
 
 .container {
-        @include absolute-centered();
+        height: 100%;
+        display: flex;
+        flex-direction: column;
 }
 
-.description.centered {
-        text-align: center;
-}
-
-@media only screen and (max-width: $breakpointMobile) {
-        .container {
-                position: relative;
-                transform: translate(0%, 0%);
-                top: 0;
-                left: 0;
-                margin-top: 100px;
-        }
-        .description {
-                padding: 0;
-        }
-
+.tutorialText {
+        @include tutorialText();
+        margin-top: auto;
 }

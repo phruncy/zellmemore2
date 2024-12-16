@@ -1,80 +1,38 @@
-@import 'src/styles/global/mixins';
+
 @import 'src/styles/global/colors';
 @import './tutorial-animation-mixins.scss';
 @import 'src/styles/global/limits';
 
-$largeCellSize: 100px;
-$smallCellSize: 30px;
-
-:host ::ng-deep {
+:host {
         height: 100%;
-        position: relative;
 }
 
-/// Outer container ///
-.fucking-container {
-        width: 100%;
+.flex-container {
+        display :flex;
         height: 100%;
-        position: relative;
+        align-items: center;
+        background: $backgroundUltraLight;
+        z-index: -1;
+}
+
+.tutorial-content {
+        height: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
 }
 
 .animation-container {
-        position: relative;
         height: 100%;
-}
-
-/// step format ///
-.step-element {
-        height: 100%;
-        display: block;
-        position: relative;
 }
 
 .step-element-wrapper {
-        position: relative;
         height: 100%;
 }
 
-.step-control-wrapper {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-}
-
-/// shape and colour of elements ///
-.h-container {
-        width: 100%;
-        text-align: center;
-        height: 100%;
-        vertical-align: middle;
-        padding: auto;
-        position: relative;
-}
-
-
-.direction-control {
-        position: absolute;
-        bottom: 3%;
+.navigation {
+        align-self: self-end;
         text-align: center;
         width: 100%;
-}
-
-.text {
-        display: inline-block;
-        text-align: left;
-        max-width: $maxDescriptionWidth;
-        @include absolute-centered();
-}
-
-@media only screen and (max-width: $breakpointMobile) {
-        .step-control-wrapper {
-                transform: translate(-100%, -50%);
-        }
-        .text {
-                display: inline-block;
-                text-align: left;
-                max-width: $maxDescriptionWidth;
-                position: relative;
-                padding: 1rem;
-        }
+        margin: 3em 0;
 }

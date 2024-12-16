@@ -1,4 +1,3 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 @import 'src/styles/global/limits';
@@ -10,15 +9,18 @@ $cellContainerDesktop: 90px;
 $expandingCircleDuration: .3s;
 $stateChangeDuration: 1.5s;
 
-.graphics-container {
-        width: 100%;
-        text-align: center;
-        position: relative;
+:host {
+        @include tutorialStepContent();
 }
 
-.cells-wrapper-inner {
-        width: 100%;
-        @include absolute-centered();
+.graphics-container {
+        @include graphicsContent();
+}
+
+.cell-row {
+        display: flex;
+        justify-content: center;
+        margin: auto;
 }
 
 .cell-container {
@@ -50,31 +52,24 @@ $stateChangeDuration: 1.5s;
         animation: state-switch-trio $stateChangeDuration ease-in-out infinite reverse forwards;
 }
 
-
-/// step 1 animation ///
-
 .background-circle {
         @include absolute-centered();
         width: 90%;
         height: 90%;
         border-radius: 50%;
         background: $accent;
-}
-
-.background-circle.animate-step01 {
-        animation: expanding-circle $expandingCircleDuration ease-out forwards;
-}
-
-.background-circle.animate-step02 {
-        animation: expanding-circle-inner-repeat $stateChangeDuration ease-out infinite;
-}
-
-.background-circle.outer.animate-step01 {
-        animation: expanding-circle $expandingCircleDuration ease-out $expandingCircleDuration forwards;
-}
-
-.background-circle.outer.animate-step02 {
-        animation: expanding-circle-repeat $stateChangeDuration ease-out infinite; 
+        &.animate-step01 {
+                animation: expanding-circle $expandingCircleDuration ease-out forwards;
+        }
+        &.animate-step02 {
+                animation: expanding-circle-inner-repeat $stateChangeDuration ease-out infinite;
+        }
+        &.outer.animate-step01 {
+                animation: expanding-circle $expandingCircleDuration ease-out $expandingCircleDuration forwards;
+        }
+        &.outer.animate-step02 {
+                animation: expanding-circle-repeat $stateChangeDuration ease-out infinite; 
+        }
 }
 
 .connector {
@@ -84,20 +79,17 @@ $stateChangeDuration: 1.5s;
         background: $accent;
         position: absolute;
         top: 50%;
-}
-
-.connector.left {
-        left: 0;
-        transform: translate(-100%, -50%);
-}
-
-.connector.right {
-        right: 0;
-        transform: translate(100%, -50%);
-}       
-
-.connector.animate-step01 {
-        animation: expand-connector $expandingCircleDuration ease-out .2s forwards;
+        &.left {
+                left: 0;
+                transform: translate(-100%, -50%);
+        }
+        &.right {
+                right: 0;
+                transform: translate(100%, -50%);
+        }
+        &.animate-step01 {
+                animation: expand-connector $expandingCircleDuration ease-out .2s forwards;
+        }
 }
 
 .signal {
@@ -107,24 +99,24 @@ $stateChangeDuration: 1.5s;
         border-radius: 5px;
         position: absolute;
         background: $accent;
+        &.right {
+                left: 0;
+                transform: translate(0%, -50%);
+                &.animate-step02 { 
+                        animation: send-signal-right $stateChangeDuration ease-in-out infinite 
+                }
+        }
+        &.left {
+                right: 0;
+                transform: translate(0%, -50%);
+                &.animate-step02 { 
+                        animation: send-signal-left $stateChangeDuration ease-in-out infinite 
+                }
+        }
 }
 
-.signal.right {
-        left: 0;
-        transform: translate(0%, -50%);
-}
-
-.signal.left {
-        right: 0;
-        transform: translate(0%, -50%);
-}
-
-.signal.right.animate-step02 {
-        animation: send-signal-right $stateChangeDuration ease-in-out infinite
-}
-
-.signal.left.animate-step02 {
-        animation: send-signal-left $stateChangeDuration ease-in-out infinite
+.tutorialText {
+        @include tutorialText();
 }
 
 @keyframes expand-connector {
@@ -144,7 +136,7 @@ $stateChangeDuration: 1.5s;
         100% {transform: translate(-300%, -50%);}
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (min-width: $breakpointSmallMenu) {
 
         .cell-container {
                 width: $cellContainerDesktop;

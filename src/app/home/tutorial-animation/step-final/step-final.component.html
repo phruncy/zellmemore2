@@ -1,17 +1,15 @@
-<div class="step-element">
-        <div class="container">
-                <div class="description centered" [@slideInDescription]="activeDescription()">
-                        {{descriptions[activeDescription()]}}
-                </div>
-                <div class="btn-container">
-                        <button 
-                                class="btn" 
-                                routerLink="/program-window"
-                                mat-flat-button
-                                color="accent">
-                                Try it 
-                                <fa-icon [icon]="faAngleRight"></fa-icon>
-                        </button>
-                </div>
+<div class="container">
+        <div class="tutorialText" [@slideInDescription]="activeDescription()">
+                {{descriptions[activeDescription()]}}
+        </div>
+        <div class="btn-container">
+                <button 
+                        class="btn" 
+                        routerLink="/program-window"
+                        mat-flat-button
+                        color="accent">
+                        Try it 
+                        <fa-icon [icon]="faAngleRight"></fa-icon>
+                </button>
         </div>
 </div>

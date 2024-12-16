@@ -1,6 +1,6 @@
 @import 'src/styles/global/colors';
 @import 'src/styles/global/typo';
-@import 'src/styles/global/mixins';
+
 @import 'src/styles/global/limits';
 
 $tutorialOffsetMobile: 15px;
@@ -56,13 +56,12 @@ body {
 }
 
 .app-tutorial-container {
-        height: 500px;
+        height: 520px;
         position: relative; // necessary for overlay!
 }
 
 .tutorial-outer-wrapper {
         text-align: center;
-        background: $backgroundUltraLight;
 }
 
 .content {
@@ -93,7 +92,7 @@ body {
         }
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (min-width: $breakpointSmallMenu) {
         .section {
                 padding-left: $paddingSides;
                 padding-right: $paddingSides;
@@ -109,5 +108,8 @@ body {
         }
         .outer-container {
                 margin-top: 40px;
+        }
+        .app-tutorial-container {
+                height: 500px;
         }
 }

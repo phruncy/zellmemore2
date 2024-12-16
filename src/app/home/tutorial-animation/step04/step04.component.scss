@@ -1,14 +1,16 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 
-.container {
-        position: relative;
-        width: 100%;
-        height: 100%;
+:host {
+        @include tutorialStepContent();
 }
 
-.description.centered {
-        @include absolute-centered();
-        width: 100%;
+.container {
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+}
+
+.tutorialText {
+        @include tutorialText();
 }

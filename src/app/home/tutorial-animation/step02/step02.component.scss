@@ -1,32 +1,38 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 @import 'src/styles/global/limits';
 
-.cell{
+:host {
+        @include tutorialStepContent();
+}
+
+.graphics-container {
+        @include graphicsContent();
+}
+
+.cell {
         @include roundShape(black);
-        width: $smallCellSizeMobile;
-        height: $smallCellSizeMobile;
-        margin: .5%;
+        width: $smallCellSizeDesktop;
+        height: $smallCellSizeDesktop;
+        margin: 4px;
         display: inline-flex;
         border-width: $cellBorder;
 }
 
 .multiple-cells-wrapper {
-        text-align: center;
         width: 100%;
-        @include absolute-centered();
+        display: flex;
+        justify-content: center;
+        align-content: center;
 }
 
-
-.upper.container {
-        position: relative;
-        width: 100%;
+.tutorialText {
+        @include tutorialText();
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (max-width: $breakpointMobile) {
         .cell {
-                width: $smallCellSizeDesktop;
-                height: $smallCellSizeDesktop;
+                width: $smallCellSizeMobile ;
+                height: $smallCellSizeMobile ;
         }
 }

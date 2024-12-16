@@ -12,7 +12,7 @@ import { NgIf, NgFor } from '@angular/common';
         trigger('changeState', [
             state('active', style({ background: 'black' })),
             state('inactive', style({ background: 'white' })),
-            transition('active <=> inactive', [animate('1s ease-in-out')]),
+            transition('active <=> inactive', [animate('0.2s 1s ease-in-out')]),
         ]),
         animations.slideInDescription
     ],
@@ -28,7 +28,7 @@ export class Step02Component implements Step, OnInit
     activeDescription = input.required<number>();
     readonly descriptions = 
     [
-        'Now let\s align a bunch of them one-dimensionally in a row.',
+        'Now let\'s align a bunch of them one-dimensionally in a row.',
         'In discrete time intervals, the cells all change their state. Each time step is a new generation in the automaton\'s lifecyle.',
     ];
 

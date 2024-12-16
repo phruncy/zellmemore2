@@ -1,54 +1,58 @@
-@import 'src/styles/global/mixins';
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 
 $strokeWidth: 4px;
 
+:host {
+        @include tutorialStepContent();
+}
+
+.graphics-container {
+        @include graphicsContent();
+}
+
 .cell{
         @include roundShape(black);
         width: $smallCellSizeMobile;
         height: $smallCellSizeMobile;
-        margin: .5%;
+        margin: 5px;
         display: inline-flex;
+        z-index: 2;
+
+        &.edges {
+                background: $accent;
+                border-color: $accent;
+        }
 }
 
-.multiple-cells-wrapper {
-        text-align: center;
+.cell-row-wrapper {
         width: 100%;
-        position: absolute;
-        @include absolute-centered();
-}
-
-.graphics-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
-        height: 60%;
 }
 
-.edges01 {
-        display: inline-block;
+
+.edge-illustration {
+        align-content: center;
         color: $accent;
         font-size: 18px;
         margin-left: 5px;
         margin-right: 5px;
 }
 
-.cell.edges {
-        background: $accent;
-        border-color: $accent;
-}
-
-
 .connector {
         width: 0%;
-        @include absolute-centered;
+        @include absolute-centered();
         height: $strokeWidth;
         border-radius: 2px;
         background: $accent;
-        z-index: -2;
-}
+        z-index: 0;
+        &.animated {
+                animation: expand-line 0.5s ease-out forwards;
+        }
 
-.connector.animated {
-        animation: expand-line 0.5s ease-out forwards;
 }
 
 .connector-circular-container {
@@ -58,7 +62,7 @@ $strokeWidth: 4px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -2%);
-        z-index: -3;
+        z-index: 0;
 }
 
 .connector-circular {
@@ -67,6 +71,10 @@ $strokeWidth: 4px;
         stroke-width: 6px;
         stroke-dasharray: 1200px;
         animation: dash 1s ease-in-out;
+}
+
+.tutorialText {
+        @include tutorialText();
 }
 
 #connector02 {
@@ -101,4 +109,3 @@ $strokeWidth: 4px;
                 height: $smallCellSizeDesktop;
         }
 }
-

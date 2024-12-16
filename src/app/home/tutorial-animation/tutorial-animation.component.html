@@ -1,26 +1,30 @@
-<div class="fucking-container">
-        <div class="animation-container">
-                <div class="step-element-wrapper"[@slideInOut]><app-tutorial-step 
-                                [content]="activeStepDescription.component" 
-                                [currentSection]="currentSection"
-                                (completed)="addStep()">
-                </app-tutorial-step></div>
-        </div>
-        <div class="step-control-wrapper"> <app-tutorial-step-control 
+<div class="flex-container">
+        <app-tutorial-step-control 
                 [currentStep]="activeStep"
                 (currentStepChange)="activeStep = $event"
                 [unlocked]="unlockedSteps">
-        </app-tutorial-step-control></div>
-        <div class="direction-control">
-                <div class="btn-wrapper" *ngIf="activeStep > 0">
-                        <button mat-stroked-button color="accent" (click)="previous()">
-                                <fa-icon [icon]="faAngleUp"></fa-icon>
-                        </button>
+        </app-tutorial-step-control>
+        <div class="tutorial-content">
+                <div class="animation-container">
+                        <div class="step-element-wrapper"[@slideInOut]>
+                                <app-tutorial-step
+                                        [content]="activeStepDescription.component" 
+                                        [currentSection]="currentSection"
+                                        (completed)="addStep()">
+                                </app-tutorial-step>
+                        </div>
                 </div>
-                <div class="btn-wrapper" *ngIf="activeStep < steps.length - 1">
-                        <button mat-stroked-button color="accent" (click)="advance()">
-                                <fa-icon [icon]="faAngleDown"></fa-icon>
-                        </button>
+                <div class="navigation">
+                        <div *ngIf="activeStep > 0">
+                                <button mat-stroked-button color="accent" (click)="previous()">
+                                        <fa-icon [icon]="faAngleUp"></fa-icon>
+                                </button>
+                        </div>
+                        <div *ngIf="activeStep < steps.length - 1">
+                                <button mat-stroked-button color="accent" (click)="advance()">
+                                        <fa-icon [icon]="faAngleDown"></fa-icon>
+                                </button>
+                        </div>
                 </div>
         </div>
 </div>

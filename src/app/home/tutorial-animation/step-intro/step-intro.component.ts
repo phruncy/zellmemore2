@@ -18,7 +18,7 @@ import { Step } from '../step';
     ]),
     animations.slideInDescription,
     animations.slideInOut
-]
+  ]
 })
 export class StepIntroComponent implements Step
 {

@@ -4,6 +4,7 @@
     display: inline-block;
     max-height: 0;
     transition: max-height 0.2s;
+    overflow: hidden;
     z-index: 1;
     font-weight: $topbarFontWeight;
 
@@ -16,6 +17,7 @@
 @media only screen and (max-width: $breakpointSmallMenu) {
     .controller {
             width: 100%;
+            max-height: 0;
             &.active {
                     max-height: $controllerHeightMobile;
                     max-width: 100%;

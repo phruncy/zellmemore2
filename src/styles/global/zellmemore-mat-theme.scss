@@ -7,7 +7,6 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-typography-config());`
-@import 'src/styles/global/margins';
 @include mat.all-component-typographies();
 @include mat.core();
 
@@ -29,5 +28,5 @@ $custom-typography: mat.m2-define-typography-config(
 .mat-mdc-menu-panel.ng-trigger.ng-trigger-transformMenu {
     max-width: 500px;
     position: relative;
-    top: $global_buttonMargin;
+    top: 5px;
 }

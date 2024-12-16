@@ -1,5 +1,4 @@
 @import 'src/styles/global/colors';
-@import 'src/styles/global/margins';
 
 .container {
         display: block;
@@ -12,6 +11,6 @@
 
 .link {
         color: $fontLight;
-        margin: 0 10px $global_buttonMargin 0;
+        margin: 0 10px 5px 0;
 }
 

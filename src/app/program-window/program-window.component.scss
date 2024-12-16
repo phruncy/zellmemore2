@@ -3,6 +3,12 @@
 @import 'src/styles/global/typo';
 @import 'src/styles/global/limits';
 
+$programWindowPadding: 30px;
+$programWindowPadding_Mobile: .75rem;
+$programWindowPaddingTop: 8px;
+
+$toprowHeight: 43px;
+
 body {
         background-color:  white;
 }
@@ -10,9 +16,9 @@ body {
 .program-window {
         height: 100%;
         border: none;
-        padding: $globalMargin;
+        padding: $programWindowPadding;
         padding-bottom: 0;
-        padding-top: $globalTop;
+        padding-top: $programWindowPaddingTop;
 }
 
 .program-window-canvas {
@@ -39,12 +45,18 @@ body {
         align-content:normal;
         justify-items: center;
 
-        padding-top: $toprowHeight + $globalTop;
+        padding-top: $toprowHeight + $programWindowPaddingTop;
         &.active {
                 visibility: visible;
                 opacity: 1;
                 transition: opacity 0.2s ease-out;
                 width: 100%;
                 height: 100vh;
+        }
+}
+
+@media only screen and (max-width: $breakpointSmallMenu) {
+        .program-window {
+                padding: $programWindowPadding_Mobile;
         }
 }

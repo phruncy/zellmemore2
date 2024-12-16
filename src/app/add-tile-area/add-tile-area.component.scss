@@ -27,7 +27,14 @@
 }
 
 .clickable-area-content {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     justify-items: center;
+    justify-content: center;
+    align-content: center;
     font-weight: $fontweight_default;
+}
+
+.icon {
+    padding: 0 4px;
 }

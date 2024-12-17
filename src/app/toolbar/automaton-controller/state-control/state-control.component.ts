@@ -23,7 +23,7 @@ interface Option
           [(ngModel)]="initMode"
           (ngModelChange)="onSelectionChange()"
           disableRipple>
-          @for(option of options; track option)
+          @for(option of options; track option.value)
           {
             <mat-option class="mat-element" [value]="option.value">{{option.viewValue}}</mat-option>
           }

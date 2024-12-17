@@ -34,9 +34,10 @@ import { AddTileAreaComponent } from "../add-tile-area/add-tile-area.component";
 export class WidgetFrameComponent implements OnInit 
 {
     entry = viewChild('entry', {read: ViewContainerRef});
-    
     widgetAdded = output<boolean>();
     requestSelection = output<boolean>();
+
+    private _staticChildCounter = 0;
 
     constructor(
         private visualizationService: VisualizationService,
@@ -62,8 +63,17 @@ export class WidgetFrameComponent implements OnInit
     addWidget()
     {
         const component = this.entry().createComponent(WidgetComponent);
-        component.instance.ref = component;
+        component.instance.self = component;
         this.cd.detectChanges();
         this.widgetAdded.emit(true);
+        if (this.sizeService.isSmallMobile) {
+            this.scrolltoLastWidget();
+        }
+    }
+
+    private scrolltoLastWidget(): void 
+    {
+        const newScrollingPosition = this.sizeService.widgetNumber * (this.sizeService.margin + this.sizeService.widgetSize);
+        this.elRef.nativeElement.scrollTop = newScrollingPosition;
     }
 }

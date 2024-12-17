@@ -1,9 +1,3 @@
-/*
- * This is the Container for any visualization.
- * A Widget Container is created whenever the VisualizationService's selected 
- * Visualization property is reassigned.
- * The widget's content is delivered by the VisualizationService.
- */
 import { Component,
           OnInit,
           OnDestroy,
@@ -11,7 +5,6 @@ import { Component,
           HostBinding,
           viewChild,
           ElementRef,
-          HostListener,
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -36,6 +29,12 @@ import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.c
 })
 export class WidgetComponent implements OnInit, OnDestroy 
 {
+    readonly faTimes = faTimes;
+    readonly faPlayCircle = faPlayCircle;
+    readonly faExpand = faExpand;
+
+    isRunning: boolean = false;
+    
     widgetentry = viewChild('entry', {read: ViewContainerRef});
     fullscreenContainer = viewChild<ElementRef>('fullscreen');
     /* binds the width/height properties to the width/height variables. type is 'string'! */
@@ -46,25 +45,21 @@ export class WidgetComponent implements OnInit, OnDestroy
     title: String = 'widget name';
 
     private _self: any;
-    readonly faTimes = faTimes;
-    readonly faPlayCircle = faPlayCircle;
-    readonly faExpand = faExpand;
 
-    public isRunning: boolean = false;
-    
     constructor(
             private visService: VisualizationService,
             private detailsService: VisualizationDetailService,
             private sizeService: SizeService,
             private automaton: AutomatonService,
+            private elementRef: ElementRef
         ) 
     {
         this.automaton.ready$.subscribe(() => { this.isRunning = this.automaton.isRunning; })
     }
 
-    set ref(ref: any)
+    set self(self: any)
     {
-        this._self = ref;
+        this._self = self;
     }
 
     /* IncreaseWidgetNumber() has to be called in order to get the right 

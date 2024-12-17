@@ -16,7 +16,8 @@ export class SizeService {
         appCanvasHeight: 0,
         widgetNumber: 0,
         widgetSize: 0,
-        minWidgetSize: 0
+        minWidgetSize: 0,
+        addAreaSmallSide: 35
     }
 
     constructor(private http: HttpClient) {
@@ -27,15 +28,15 @@ export class SizeService {
         });
     }
 
-    get isSmallMobile(): boolean { return this._config.appCanvasWidth - this.margin - this._addAreaSmallSide < this._config.minWidgetSize * 2;}
-    private _addAreaSmallSide = 35;
-    get addAreaWidth(): number { return this.isSmallMobile ? this._config.widgetSize : this._addAreaSmallSide; }
-    get addAreaHeight(): number 
-    { 
-        return this.isSmallMobile ? this._addAreaSmallSide : this.widgetSize;
-    }
-    get widgetSize(): number { return this._config.widgetSize; }
+    get isSmallMobile(): boolean { return this._config.appCanvasWidth - this.margin - this._config.addAreaSmallSide < this._config.minWidgetSize * 2;}
+    
+    get addAreaWidth(): number { return this.isSmallMobile ? this._config.widgetSize : this._config.addAreaSmallSide; }
+    get addAreaHeight(): number { return this.isSmallMobile ? this._config.addAreaSmallSide : this.widgetSize; }
+    get widgetSize():   number { return this._config.widgetSize; }
     get widgetNumber(): number { return this._config.widgetNumber; }
+
+    get canvasHeight(): number { return this._config.appCanvasHeight; }
+    get canvasWidth():  number { return this._config.appCanvasWidth; }
 
     public setFrameSize(width: number, height: number) 
     {

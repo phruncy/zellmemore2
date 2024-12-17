@@ -8,8 +8,6 @@ export const p5vortex = new P5Sketch
     {
         let center: number;
         let radiusMax: number;
-        let segmentHeight: number;
-
         let history: number[];
         let maxHistory: number;
         let arcLength: number;

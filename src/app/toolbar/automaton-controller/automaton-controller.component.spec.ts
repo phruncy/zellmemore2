@@ -6,7 +6,6 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 describe('AutomatonControllerComponent', () => {
   let component: AutomatonControllerComponent;
   let fixture: ComponentFixture<AutomatonControllerComponent>;
-  let automatonService: AutomatonService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -14,8 +13,6 @@ describe('AutomatonControllerComponent', () => {
     providers: [AutomatonService]
   })
     .compileComponents();
-
-    const automatonService = TestBed.inject(AutomatonService);
   }));
 
   beforeEach(() => {

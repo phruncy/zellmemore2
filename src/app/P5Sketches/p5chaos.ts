@@ -20,7 +20,7 @@ export const p5chaos = new P5Sketch
         
         const drawCurrentGeneration = () =>
         {
-            const random: number[] = this.automaton.states.slice().sort((a, b) => 0.5 - Math.random());
+            const random: number[] = this.automaton.states.slice().sort(() => 0.5 - Math.random());
             const positionY = getPositionY();
             random.forEach((state, index) => 
                 {

@@ -23,7 +23,7 @@ export class ProgramWindowComponent
     readonly faHome = faHome;
 
     @HostListener('window:keydown.escape', ['$event'])
-    handleKeydown(event: KeyboardEvent) {
+    handleKeydown() {
         this.closeSelection();
     } 
 

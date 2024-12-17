@@ -1,5 +1,4 @@
 import * as p5 from 'p5';
-import { AutomatonService } from 'src/app/services/automaton.service';
 
 export class P5Sketch
 {

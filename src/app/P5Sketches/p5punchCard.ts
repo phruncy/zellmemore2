@@ -9,7 +9,6 @@ export const p5punchCard = new P5Sketch
         let edge: number = 0;
         let linePosition: number = 0;
         let dotSize: number = 1;
-        let dotGap: number = 0;
         let angle: number = 0;
         let amplitude: number = 0;
         let circularModeRadius: number;
@@ -22,7 +21,6 @@ export const p5punchCard = new P5Sketch
             edge = p5.width * 0.05;
             linePosition = p5.height / 2;
             dotSize = (p5.width - 2 * edge) * 0.5 / this.automaton.cellnumber;
-            dotGap = (p5.width - 2 * edge) / this.automaton.cellnumber - edge;
             angle = 2 * Math.PI / this.automaton.cellnumber;
             amplitude = dotSize * 2;
             circularModeRadius = (p5.width - 2 * edge - dotSize - 2 * amplitude) / 2;

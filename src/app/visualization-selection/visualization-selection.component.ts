@@ -6,7 +6,6 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { SelectionTileComponent } from '../selection-tile/selection-tile.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MatRipple } from '@angular/material/core';
 import { MatButtonModule} from '@angular/material/button';
 
 @Component({
@@ -15,7 +14,7 @@ import { MatButtonModule} from '@angular/material/button';
     styleUrls: ['./visualization-selection.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [NgFor, SelectionTileComponent, FaIconComponent, MatRipple, MatButtonModule]
+    imports: [NgFor, SelectionTileComponent, FaIconComponent, MatButtonModule]
 })
 export class VisualizationSelectionComponent implements OnInit {
 

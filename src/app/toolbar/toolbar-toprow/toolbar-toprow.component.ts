@@ -33,7 +33,7 @@ export class ToolbarToprowComponent implements OnInit
     }
 
     @HostListener('window:keydown.space', ['$event'])
-    handleKeyDown(event: KeyboardEvent)
+    handleKeyDown()
     {
         this.toggleRunning();
     }

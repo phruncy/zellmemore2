@@ -74,7 +74,7 @@ export class AutomatonService
                 throw error;
             }
             this.initCells(cells);
-        } catch (error)
+        } catch
         {
             console.error(`Invalid cell number '${cells}'.`);
         }
@@ -180,7 +180,7 @@ export class AutomatonService
     
     private calculateState(left: number, middle: number, right: number): number
     {
-        let ruleIndex = (left << 2 | middle << 1 | right) & 0b111;
+        const ruleIndex = (left << 2 | middle << 1 | right) & 0b111;
         const result = (this._rule >> ruleIndex) & 0b1;
         return result;
     }

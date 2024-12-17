@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { TopbarComponent } from './toolbar-toprow.component';
+import { ToolbarToprowComponent } from './toolbar-toprow.component';
 
 describe('TopbarComponent', () => {
-  let component: TopbarComponent;
-  let fixture: ComponentFixture<TopbarComponent>;
+  let component: ToolbarToprowComponent;
+  let fixture: ComponentFixture<ToolbarToprowComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [TopbarComponent]
+    imports: [ToolbarToprowComponent]
 })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopbarComponent);
+    fixture = TestBed.createComponent(ToolbarToprowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

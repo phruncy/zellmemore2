@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { TutorialAnimationComponent } from './tutorial-animation.component';
 
 describe('TutorialAnimationComponent', () => {
@@ -8,7 +8,8 @@ describe('TutorialAnimationComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [TutorialAnimationComponent]
+    imports: [TutorialAnimationComponent],
+    providers: [provideAnimations()] 
 })
     .compileComponents();
   }));

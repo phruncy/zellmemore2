@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { VisualizationService } from './visualization.service';
 
 describe('VisualizationService', () => {

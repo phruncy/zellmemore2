@@ -1,4 +1,4 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/home/animations';
 import { NgFor, NgIf } from '@angular/common';

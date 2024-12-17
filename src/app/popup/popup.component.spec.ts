@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { PopupComponent } from './popup.component';
 
 describe('PopupComponent', () => {
@@ -8,7 +8,8 @@ describe('PopupComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [PopupComponent]
+    imports: [PopupComponent],
+    providers: [provideRouter([])],
 })
     .compileComponents();
   }));

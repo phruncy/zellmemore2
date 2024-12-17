@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { Step03Component } from './step03.component';
 
 describe('Step03Component', () => {
@@ -8,7 +8,8 @@ describe('Step03Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [Step03Component]
+    imports: [Step03Component],
+    providers: [provideAnimations()] 
 })
     .compileComponents();
   }));
@@ -16,6 +17,7 @@ describe('Step03Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(Step03Component);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('activeDescription', 0);
     fixture.detectChanges();
   });
 

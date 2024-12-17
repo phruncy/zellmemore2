@@ -16,6 +16,8 @@ describe('SelectionTileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SelectionTileComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('id', 'mock-id');
+    fixture.componentRef.setInput('name', 'mock-name');
     fixture.detectChanges();
   });
 

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { CustomFooterComponent } from './custom-footer.component';
 
 describe('CustomFooterComponent', () => {
@@ -8,7 +8,8 @@ describe('CustomFooterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [CustomFooterComponent]
+    imports: [CustomFooterComponent],
+    providers: [provideRouter([])]
 })
     .compileComponents();
   }));

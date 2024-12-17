@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { DisclaimerComponent } from './disclaimer.component';
 
 describe('DisclaimerComponent', () => {
@@ -8,7 +8,8 @@ describe('DisclaimerComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DisclaimerComponent]
+    imports: [DisclaimerComponent],
+    providers: [provideRouter([])],
 })
     .compileComponents();
   }));

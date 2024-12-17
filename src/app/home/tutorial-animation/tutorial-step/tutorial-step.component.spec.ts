@@ -14,6 +14,9 @@ describe('TutorialStepComponent', () => {
 
     fixture = TestBed.createComponent(TutorialStepComponent);
     component = fixture.componentInstance;
+
+    const mockStepDesc = { component: null, sectionCount: 0 };
+    fixture.componentRef.setInput('content', mockStepDesc);
     fixture.detectChanges();
   });
 

@@ -14,6 +14,8 @@ describe('AddTileAreaComponent', () => {
 
     fixture = TestBed.createComponent(AddTileAreaComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('areaWidth', 100);
+    fixture.componentRef.setInput('areaHeight', 100);
     fixture.detectChanges();
   });
 

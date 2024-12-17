@@ -14,6 +14,8 @@ describe('ControlsSliderComponent', () => {
 
     fixture = TestBed.createComponent(ControlsSliderComponent);
     component = fixture.componentInstance;
+    const mockSettings = { min: 0, max: 100, label: "mock", step: 1 };
+    fixture.componentRef.setInput('settings', mockSettings);
     fixture.detectChanges();
   });
 

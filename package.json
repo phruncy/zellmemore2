@@ -41,6 +41,8 @@
     "@types/jasmine": "^5.1.5",
     "@types/karma": "^6.3.9",
     "@types/node": "^22.9.0",
+    "angular-eslint": "19.0.2",
+    "eslint": "^9.16.0",
     "jasmine": "^5.5.0",
     "jasmine-core": "^5.5.0",
     "karma": "^6.4.4",
@@ -51,6 +53,7 @@
     "protractor": "~7.0.0",
     "source-map-explorer": "^2.5.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "8.18.0"
   }
 }

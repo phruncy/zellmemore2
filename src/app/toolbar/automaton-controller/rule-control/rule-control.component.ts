@@ -11,6 +11,13 @@ import { NgFor } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { ActivatedRoute } from '@angular/router';
 
+interface Checkbox 
+{
+    id: string,
+    iconValues: number [],
+    checked: boolean
+}
+
 @Component({
     selector: 'app-rule-control',
     templateUrl: './rule-control.component.html',
@@ -22,7 +29,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RuleControlComponent implements OnInit 
 {
     readonly faAngleLeft = faAngleLeft;
-    readonly BOXES = 
+    readonly BOXES: Checkbox[] = 
     [
         { id: '111', iconValues: [1, 1, 1], checked: false},
         { id: '110', iconValues: [1, 1, 0], checked: false},
@@ -80,9 +87,9 @@ export class RuleControlComponent implements OnInit
                 throw new Error("Invalid rule input.");
             this.automaton.rule = rule;
         }
-        catch(error)
+        catch
         {
-            const popup = this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000, this.popupContainer());
+            this.messenger.openPopUp('Please enter a number between 0 and 255.', 3000);
         }
         this.decimal = this.automaton.rule.toString();
     }
@@ -94,7 +101,7 @@ export class RuleControlComponent implements OnInit
     }
 }
 
-function parseFromCheckboxes(BOXES: any) : number
+function parseFromCheckboxes(BOXES: Checkbox[]) : number
 {
     const shiftIn = (result, box) => 
     {

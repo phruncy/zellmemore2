@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 interface Option
 {
   value: number;
-  viewValue: String;
+  viewValue: string;
 }
 
 @Component({

@@ -74,7 +74,7 @@ export class VisualizationService {
         return this.p5Sketches[this.visualizationToDisplay];
     }
 
-    provideComponent() : any
+    provideComponent() : P5Sketch
     {
         return this.p5Sketches[this.visualizationToDisplay];
     }

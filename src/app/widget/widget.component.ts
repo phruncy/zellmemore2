@@ -5,6 +5,7 @@ import { Component,
           HostBinding,
           viewChild,
           ElementRef,
+          ComponentRef,
         } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { AutomatonService } from '../services/automaton.service';
@@ -42,22 +43,21 @@ export class WidgetComponent implements OnInit, OnDestroy
     @HostBinding('style.height.px') private _height = '300';
     @HostBinding('style.margin-right.px') private _marginRight;
     @HostBinding('style.margin-bottom.px') private _marginBottom;
-    title: String = 'widget name';
+    title: string = 'widget name';
 
-    private _self: any;
+    private _self: ComponentRef<WidgetComponent>;
 
     constructor(
             private visService: VisualizationService,
             private detailsService: VisualizationDetailService,
             private sizeService: SizeService,
             private automaton: AutomatonService,
-            private elementRef: ElementRef
         ) 
     {
         this.automaton.ready$.subscribe(() => { this.isRunning = this.automaton.isRunning; })
     }
 
-    set self(self: any)
+    set self(self: ComponentRef<WidgetComponent>)
     {
         this._self = self;
     }

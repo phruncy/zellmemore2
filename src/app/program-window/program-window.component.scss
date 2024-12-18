@@ -6,26 +6,33 @@ $programWindowPadding: 30px;
 $programWindowPadding_Mobile: .75rem;
 $programWindowPaddingTop: 8px;
 
-$toprowHeight: 43px;
+$toprowHeight: 44px;
 
-body {
-        background-color:  white;
+:host {
+        display: block;
+        height: 100vh;
 }
 
 .program-window {
+        display: flex;
+        flex-direction: column;
+
         height: 100%;
+        box-sizing: border-box;
         border: none;
-        padding: $programWindowPadding;
+        padding-left: $programWindowPadding;
+        padding-right: $programWindowPadding;
         padding-bottom: 0;
         padding-top: $programWindowPaddingTop;
 }
 
 .program-window-canvas {
         width: 100%;
+        box-sizing: border-box;
+        flex-grow: 1;
         min-width: $minCanvasWidth;
-        height: calc(100vh - $controllerHeight);
         min-height: $minCanvasHeight;
-        margin-top: 10px;
+        padding: 10px 0;
         display: flex;
         align-items: center;
 }

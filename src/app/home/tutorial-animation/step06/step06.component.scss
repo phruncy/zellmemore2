@@ -15,7 +15,7 @@ $strokeWidth: 4px;
         @include roundShape(black);
         width: $smallCellSizeMobile;
         height: $smallCellSizeMobile;
-        margin: 5px;
+        margin: 3px;
         display: inline-flex;
         z-index: 2;
 
@@ -101,6 +101,7 @@ $strokeWidth: 4px;
         .cell {
                 width: $smallCellSizeDesktop;
                 height: $smallCellSizeDesktop;
+                margin: 4px;
         }
 
         .cell-edge-container {

@@ -5,9 +5,8 @@
                 <div class="connector-circular-container" *ngIf="activeDescription() === 3">
                                 <svg id="connector02" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 76"><path class="connector-circular" d="M642,13h96a38.11,38.11,0,0,1,38,38h0a38.11,38.11,0,0,1-38,38H54A38.11,38.11,0,0,1,16,51h0A38.11,38.11,0,0,1,54,13h71" transform="translate(-16 -13)"/></svg>
                 </div>
-                <div class="edges01" *ngIf="activeDescription() === 1 || activeDescription() === 0">
-                        <fa-icon [icon]="icon"></fa-icon>
-                        ...  
+                <div class="edge-illustration" *ngIf="activeDescription() === 1 || activeDescription() === 0">
+                        <fa-icon [icon]="icon"></fa-icon>...  
                 </div>
                 <div class="cell edges" *ngIf="activeDescription() === 2" [@slideInOut]></div>
                 <div class="cell" *ngIf="activeDescription() === 3" [@slideInOut] [@changeState]="edges[0].state" (@changeState.done)="toggleEdges(0)"></div>

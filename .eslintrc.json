@@ -39,9 +39,16 @@
         ],
         "extends": [
           "plugin:@angular-eslint/template/recommended",
-          "plugin:@angular-eslint/template/accessibility"
+          "plugin:@angular-eslint/template/accessibility",
+          "plugin:@typescript-eslint/recommended",
+          "plugin:prettier/recommended"
         ],
-        "rules": {}
+        "parser": "@typescript-eslint/parser",
+        "rules": {
+          "semi": ["error", "always"],
+          "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+          "@typescript-eslint/explicit-function-return-type": "off"
+        }
       }
     ]
 }

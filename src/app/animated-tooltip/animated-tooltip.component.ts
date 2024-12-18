@@ -8,7 +8,7 @@ import { faPlusCircle, faAngleDown } from '@fortawesome/free-solid-svg-icons';
   imports: [FaIconComponent],
   styleUrl: './animated-tooltip.component.scss',
   template: `
-    <div class="animated" >
+    <div class="animated">
       <p>Click <fa-icon [icon]="faPlusCircle" class="midTextIcon"></fa-icon> to add visualizations<br><fa-icon [icon]="faAngleDown" class="midTextIcon"></fa-icon></p>
     </div>
   `

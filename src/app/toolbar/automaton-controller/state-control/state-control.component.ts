@@ -10,7 +10,6 @@ interface Option
   value: number;
   viewValue: string;
 }
-
 @Component({
     selector: 'app-state-control',
     styleUrls: ['../../toolbar.common.scss'],
@@ -19,7 +18,7 @@ interface Option
     template: `
       <span></span>
       <mat-select 
-          class="mat-element" 
+          class="mat-element"
           [(ngModel)]="initMode"
           (ngModelChange)="onSelectionChange()"
           disableRipple>
@@ -47,7 +46,7 @@ export class StateControlComponent implements OnInit
     {
       this.automaton.initMode = this.initMode;
     }
-
+    
     private init()
     {
       this.initMode = this.automaton.initMode;

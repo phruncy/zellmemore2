@@ -1,9 +1,11 @@
 <div class="window-overlay" [class.active]="selectionActive" (click)="closeSelection()">
-        <app-visualization-selection (shouldClose)="closeSelection()"></app-visualization-selection>
+    <app-visualization-selection (shouldClose)="closeSelection()"></app-visualization-selection>
 </div>
-<div class= "program-window">
-        <app-toolbar></app-toolbar>
-        <div class="program-window-canvas">
-                <app-canvas (requestSelection)="openSelection()" (widgetAdded)="closeSelection()"></app-canvas>
-        </div>
+<div class="program-window">
+    <app-toolbar></app-toolbar>
+    <div class="program-window-canvas">
+        <app-canvas
+            (requestSelection)="openSelection()"
+            (widgetAdded)="closeSelection()"></app-canvas>
+    </div>
 </div>

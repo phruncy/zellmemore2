@@ -1,15 +1,23 @@
 <div class="automaton-controller-container">
-        <app-rule-control></app-rule-control>
-        <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
-        <mat-divider class="mobile-divider"></mat-divider>
-        <app-controls-slider [settings]="cellnumberSettings" [(value)]="cellNumber" (valueChange)="setCellnumber($event)"></app-controls-slider>
-        <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
-        <mat-divider class="mobile-divider"></mat-divider>
-        <app-edge-control [(checked)]="isCircular" (checkedChange)="setCircular($event)"></app-edge-control>
-        <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
-        <mat-divider class="mobile-divider"></mat-divider>
-        <app-state-control></app-state-control>
-        <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
-        <mat-divider class="mobile-divider"></mat-divider>
-        <app-controls-slider [settings]="speedSettings" [(value)]="speed" (valueChange)="setSpeed($event)"></app-controls-slider>
+    <app-rule-control></app-rule-control>
+    <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
+    <mat-divider class="mobile-divider"></mat-divider>
+    <app-controls-slider
+        [settings]="cellnumberSettings"
+        [(value)]="cellNumber"
+        (valueChange)="setCellnumber($event)"></app-controls-slider>
+    <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
+    <mat-divider class="mobile-divider"></mat-divider>
+    <app-edge-control
+        [(checked)]="isCircular"
+        (checkedChange)="setCircular($event)"></app-edge-control>
+    <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
+    <mat-divider class="mobile-divider"></mat-divider>
+    <app-state-control></app-state-control>
+    <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
+    <mat-divider class="mobile-divider"></mat-divider>
+    <app-controls-slider
+        [settings]="speedSettings"
+        [(value)]="speed"
+        (valueChange)="setSpeed($event)"></app-controls-slider>
 </div>

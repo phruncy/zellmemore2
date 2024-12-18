@@ -4,13 +4,20 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { VisualizationDetailService } from './visualization-detail.service';
 
 describe('VisualizationDetailService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [VisualizationDetailService, provideHttpClient(), provideHttpClientTesting()]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [
+                VisualizationDetailService,
+                provideHttpClient(),
+                provideHttpClientTesting(),
+            ],
+        });
     });
-  });
 
-  it('should be created', inject([VisualizationDetailService], (service: VisualizationDetailService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject(
+        [VisualizationDetailService],
+        (service: VisualizationDetailService) => {
+            expect(service).toBeTruthy();
+        },
+    ));
 });

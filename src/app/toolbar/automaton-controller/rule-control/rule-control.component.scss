@@ -4,69 +4,69 @@
 @import '../../toolbar.common.scss';
 
 .rule-label {
-        display: inline-block;
-        margin-right: 10px;
-        max-width: 60px;
+    display: inline-block;
+    margin-right: 10px;
+    max-width: 60px;
 
-        --mat-form-field-container-text-size: $fontsize_default;
-        --mat-form-field-container-height: 30px;
-        --mat-form-field-filled-with-label-container-padding-bottom: 0px;
-        --mat-form-field-container-vertical-padding: 5px;
+    --mat-form-field-container-text-size: $fontsize_default;
+    --mat-form-field-container-height: 30px;
+    --mat-form-field-filled-with-label-container-padding-bottom: 0px;
+    --mat-form-field-container-vertical-padding: 5px;
 }
 
 .mat-mdc-form-field-subscript-wrapper {
-        height: 0;
+    height: 0;
 }
 
 .angle {
-        display:inline-block;
-        transform: rotate(0deg);
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-out;
+    padding: 2px;
+    cursor: pointer;
+    &.active {
+        transform: rotate(-90deg);
         transition: transform 0.2s ease-out;
-        padding: 2px;
-        cursor: pointer;
-        &.active {
-                transform: rotate(-90deg);
-                transition: transform 0.2s ease-out
-        }
+    }
 }
 
 .dropdown {
-        max-height: $controllerHeight;
-        opacity: 1;
-        overflow: hidden;
-        transition: all 0.2s ease-in-out;
+    max-height: $controllerHeight;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
 }
 
 .checkbox-outer {
-        display: inline-block;
-        max-width: 200px;
-        margin: 0 10px 0 10px;
+    display: inline-block;
+    max-width: 200px;
+    margin: 0 10px 0 10px;
 }
 
 .checkbox-icons {
-        display: block;
-        text-align: center;
-        font-family: 'binary-marbles';
-        font-size: 13px;
-        color: $fontLight;
+    display: block;
+    text-align: center;
+    font-family: 'binary-marbles';
+    font-size: 13px;
+    color: $fontLight;
 }
 
 .cell-icon {
-        color: $fontLight;
-        font-weight: 200;
-        &.active {
-                color: $accent;
-                font-size: 13px;
-        }
+    color: $fontLight;
+    font-weight: 200;
+    &.active {
+        color: $accent;
+        font-size: 13px;
+    }
 }
 
 @media only screen and (max-width: $breakpointMobile) {
-        .dropdown {
-                max-height: 300px;
-                max-width: 250px;
-                overflow: visible;
-        }
-        .checkbox-outer {
-                margin-bottom: 10px;
-        }
+    .dropdown {
+        max-height: 300px;
+        max-width: 250px;
+        overflow: visible;
+    }
+    .checkbox-outer {
+        margin-bottom: 10px;
+    }
 }

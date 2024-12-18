@@ -3,24 +3,23 @@ import { provideRouter } from '@angular/router';
 import { CustomFooterComponent } from './custom-footer.component';
 
 describe('CustomFooterComponent', () => {
-  let component: CustomFooterComponent;
-  let fixture: ComponentFixture<CustomFooterComponent>;
+    let component: CustomFooterComponent;
+    let fixture: ComponentFixture<CustomFooterComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-    imports: [CustomFooterComponent],
-    providers: [provideRouter([])]
-})
-    .compileComponents();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [CustomFooterComponent],
+            providers: [provideRouter([])],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CustomFooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CustomFooterComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

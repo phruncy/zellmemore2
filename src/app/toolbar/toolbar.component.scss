@@ -10,18 +10,18 @@
     font-weight: $topbarFontWeight;
 
     &.active {
-            max-height: $controllerHeight;
-            transition: max-height 0.2s ease-out;
+        max-height: $controllerHeight;
+        transition: max-height 0.2s ease-out;
     }
 }
 
 @media only screen and (max-width: $breakpointSmallMenu) {
     .controller {
-            width: 100%;
-            max-height: 0;
-            &.active {
-                    max-height: $controllerHeightMobile;
-                    max-width: 100%;
-            }
+        width: 100%;
+        max-height: 0;
+        &.active {
+            max-height: $controllerHeightMobile;
+            max-width: 100%;
+        }
     }
-} 
+}

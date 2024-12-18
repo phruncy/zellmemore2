@@ -3,33 +3,33 @@
 @import 'src/styles/global/limits';
 
 .container-outer {
-  display: flex;
-  padding-top: 1rem;
-  padding-bottom: .5rem;
-  font-size: $menuItemsFontSize;
-  font-weight: $topbarFontWeight;
-  text-align: center;
-  font-family: 'Nunito Sans';
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    font-size: $menuItemsFontSize;
+    font-weight: $topbarFontWeight;
+    text-align: center;
+    font-family: 'Nunito Sans';
 }
 
 .github-icon {
-  font-family: github-icon;
-  font-size: 26px;
+    font-family: github-icon;
+    font-size: 26px;
 }
 
 .btn {
-  font-family: 'Nunito Sans';
-  font-size: $fontsize_default;
-  &.left {
-    margin-right: auto;
-  }
+    font-family: 'Nunito Sans';
+    font-size: $fontsize_default;
+    &.left {
+        margin-right: auto;
+    }
 }
 
 @media only screen and (min-width: $breakpointMobile) {
-  .container-outer {
-    background: none;
-    margin: 0;
-    padding-top: 20px;
-    padding-bottom: 0;
-  }
+    .container-outer {
+        background: none;
+        margin: 0;
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
 }

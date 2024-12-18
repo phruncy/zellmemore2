@@ -6,7 +6,7 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { SelectionTileComponent } from '../selection-tile/selection-tile.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-visualization-selection',
@@ -14,36 +14,31 @@ import { MatButtonModule} from '@angular/material/button';
     styleUrls: ['./visualization-selection.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [NgFor, SelectionTileComponent, FaIconComponent, MatButtonModule]
+    imports: [NgFor, SelectionTileComponent, FaIconComponent, MatButtonModule],
 })
 export class VisualizationSelectionComponent implements OnInit {
+    readonly faTimes = faTimes;
 
-  readonly faTimes = faTimes;
+    public shouldClose = output<boolean>();
+    private _visualizations: any[] = [];
 
-  public shouldClose = output<boolean>();
-  private _visualizations: any[] = [];
-  
-  constructor(private visualizationDetailService: VisualizationDetailService,) { }
+    constructor(private visualizationDetailService: VisualizationDetailService) {}
 
-  get visualizations(): any[]
-  {
-    return this._visualizations;
-  }
+    get visualizations(): any[] {
+        return this._visualizations;
+    }
 
-  ngOnInit() 
-  {
-    this.fetchVisualizations();
-  }
+    ngOnInit() {
+        this.fetchVisualizations();
+    }
 
-  close()
-  {
-    this.shouldClose.emit(true);
-  }
+    close() {
+        this.shouldClose.emit(true);
+    }
 
-  fetchVisualizations()
-  {
-    this.visualizationDetailService.provideVisualizations().subscribe(
-      data => { this._visualizations = data; } 
-    );
-  }
+    fetchVisualizations() {
+        this.visualizationDetailService.provideVisualizations().subscribe((data) => {
+            this._visualizations = data;
+        });
+    }
 }

@@ -8,76 +8,136 @@ $maxDescriptionWidth: 420px;
 $nextStepDelay: 0.3s;
 
 @mixin absolute-centered() {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @mixin roundShape($color) {
-        border-style: solid;
-        border-color: $color;
-        border-radius: 50%;
-        border-width: 1.5px;
+    border-style: solid;
+    border-color: $color;
+    border-radius: 50%;
+    border-width: 1.5px;
 }
 
 @mixin tutorialStepContent() {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
 @mixin graphicsContent() {
-        width: 100%;
-        margin-top: auto;
-        display:flex;
-        align-items: center;
-        justify-items: center;
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 
 @mixin tutorialText() {
-        align-content: center;
-        text-align: left;
-        margin: 3em 50px 0 50px;
-        max-width: 550px;
-        min-height: 3lh;
+    align-content: center;
+    text-align: left;
+    margin: 3em 50px 0 50px;
+    max-width: 550px;
+    min-height: 3lh;
 
-        @media only screen and (max-width: $breakpointSmallMenu) {
-                margin: 2em 30px 0 30px;
-        }
+    @media only screen and (max-width: $breakpointSmallMenu) {
+        margin: 2em 30px 0 30px;
+    }
 }
 
 @keyframes state-switch {
-        0% {background: black; width: 100px; height: 100px};
-        33% {background: black; width: 100px; height: 100px};
-        50% {width: 105px; height: 105px}
-        66% {background: none; width: 100px; height: 100px};
-        100% {background: none; width: 100px; height: 100px};
+    0% {
+        background: black;
+        width: 100px;
+        height: 100px;
+    }
+    33% {
+        background: black;
+        width: 100px;
+        height: 100px;
+    }
+    50% {
+        width: 105px;
+        height: 105px;
+    }
+    66% {
+        background: none;
+        width: 100px;
+        height: 100px;
+    }
+    100% {
+        background: none;
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @keyframes state-switch-trio {
-        0% {background: black; height: 100%};
-        40% {background: black; height: 100%};
-        50%  {height: 97%}
-        60% {background: white; height: 100%};
-        100% {background: white; height: 100%};
+    0% {
+        background: black;
+        height: 100%;
+    }
+    40% {
+        background: black;
+        height: 100%;
+    }
+    50% {
+        height: 97%;
+    }
+    60% {
+        background: white;
+        height: 100%;
+    }
+    100% {
+        background: white;
+        height: 100%;
+    }
 }
 
 @keyframes expanding-circle {
-        from { width: 90%; height: 90%; }
-        to { width: 120%; height: 120% }
+    from {
+        width: 90%;
+        height: 90%;
+    }
+    to {
+        width: 120%;
+        height: 120%;
+    }
 }
 
 @keyframes expanding-circle-repeat {
-        0% { width: 90%; height: 90%; }
-        30% { width: 120%; height: 120%; }
-        100% { width: 120%; height: 120% }
+    0% {
+        width: 90%;
+        height: 90%;
+    }
+    30% {
+        width: 120%;
+        height: 120%;
+    }
+    100% {
+        width: 120%;
+        height: 120%;
+    }
 }
 
 @keyframes expanding-circle-inner-repeat {
-        0% { width: 90%; height: 90%; }
-        20% { width: 90%; height: 90%; }
-        60% { width: 120%; height: 120%; }
-        100% { width: 120%; height: 120%; }
+    0% {
+        width: 90%;
+        height: 90%;
+    }
+    20% {
+        width: 90%;
+        height: 90%;
+    }
+    60% {
+        width: 120%;
+        height: 120%;
+    }
+    100% {
+        width: 120%;
+        height: 120%;
+    }
 }

@@ -3,37 +3,37 @@
 @import 'src/styles/global/limits';
 
 :host {
-        @include tutorialStepContent();
+    @include tutorialStepContent();
 }
 
 .graphics-container {
-        @include graphicsContent();
+    @include graphicsContent();
 }
 
 .cell {
-        @include roundShape(black);
-        width: $smallCellSizeDesktop;
-        height: $smallCellSizeDesktop;
-        margin: 4px;
-        display: inline-flex;
-        border-width: $cellBorder;
+    @include roundShape(black);
+    width: $smallCellSizeDesktop;
+    height: $smallCellSizeDesktop;
+    margin: 4px;
+    display: inline-flex;
+    border-width: $cellBorder;
 }
 
 .multiple-cells-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .tutorialText {
-        @include tutorialText();
+    @include tutorialText();
 }
 
 @media only screen and (max-width: $breakpointSmallAnimations) {
-        .cell {
-                width: $smallCellSizeMobile ;
-                height: $smallCellSizeMobile ;
-                margin: 3px;
-        }
+    .cell {
+        width: $smallCellSizeMobile;
+        height: $smallCellSizeMobile;
+        margin: 3px;
+    }
 }

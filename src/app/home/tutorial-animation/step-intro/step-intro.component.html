@@ -1,6 +1,8 @@
 <div class="container">
     <h2 class="headline">What are elementary cellular automata?</h2>
     <div class="text">
-            <div [@slideInDescription]="activeDescription()">{{descriptions[activeDescription()]}}</div>
+        <div [@slideInDescription]="activeDescription()">
+            {{ descriptions[activeDescription()] }}
+        </div>
     </div>
 </div>

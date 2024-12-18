@@ -1,4 +1,17 @@
 {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "html.format.enable": false
+    "html.format.enable": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "formatFiles.extensionsToInclude": "scss",
+    "formatFiles.excludePattern": "",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

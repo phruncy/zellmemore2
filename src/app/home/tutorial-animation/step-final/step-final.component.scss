@@ -3,22 +3,22 @@
 @import 'src/styles/global/limits';
 
 .btn-container {
-        margin-top: 4em;
-        text-align: center;
+    margin-top: 4em;
+    text-align: center;
 }
 
 .btn {
-        color: $fontNegative;
-        display: inline-block;
+    color: $fontNegative;
+    display: inline-block;
 }
 
 .container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .tutorialText {
-        @include tutorialText();
-        margin-top: auto;
+    @include tutorialText();
+    margin-top: auto;
 }

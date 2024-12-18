@@ -10,106 +10,105 @@ $paddingSidesMobile: 2.5rem;
 $borderWidth: 2px;
 
 body {
-        font-size: $defaultMobile;
+    font-size: $defaultMobile;
 }
 
 .outer-container {
-        margin: auto;
-        margin-top: 0;
-        text-align: center;
-        line-height: 1.6;
+    margin: auto;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .header {
-        display: block;
-        margin: auto;
-        max-width: $maxContentWidth;
+    display: block;
+    margin: auto;
+    max-width: $maxContentWidth;
 }
 
 .landing-text {
-        font-weight: 400;
-        margin-top: 50px;
-        margin-bottom: 0px;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 0px;
 
-        &.colored {
-                color: $accent;
-        }
+    &.colored {
+        color: $accent;
+    }
 }
 
 .landing-link {
-        font-size: $homepageLinksMobile;
-        font-weight: bold;
-        margin-top: 7px;
+    font-size: $homepageLinksMobile;
+    font-weight: bold;
+    margin-top: 7px;
 }
 
 .landing-link-wrapper {
-        margin-top: 30px
+    margin-top: 30px;
 }
 
-.tutorial-wrapper 
-{
-        max-width: 800px;
-        width: 100%;
-        text-align: center;
-        display: inline-block;
-        box-sizing: border-box;
+.tutorial-wrapper {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
 }
 
 .app-tutorial-container {
-        height: 520px;
-        position: relative; // necessary for overlay!
+    height: 520px;
+    position: relative; // necessary for overlay!
 }
 
 .tutorial-outer-wrapper {
-        text-align: center;
+    text-align: center;
 }
 
 .content {
-        background: $accent;
-        overflow: scroll;
+    background: $accent;
+    overflow: scroll;
 }
 
 .section {
-        padding-bottom: $sectionGap;
-        padding-left: $paddingSidesMobile;
-        padding-right: $paddingSidesMobile;
-        border-bottom-style: solid;
-        border-bottom-width: $borderWidth;
-        box-sizing: border-box;
-        max-width: $maxContentWidth;
-        width: 100%;
-        text-align: left;
-        display: block;
-        margin: auto;
+    padding-bottom: $sectionGap;
+    padding-left: $paddingSidesMobile;
+    padding-right: $paddingSidesMobile;
+    border-bottom-style: solid;
+    border-bottom-width: $borderWidth;
+    box-sizing: border-box;
+    max-width: $maxContentWidth;
+    width: 100%;
+    text-align: left;
+    display: block;
+    margin: auto;
 
-        &.top {
-                border-top-width: $borderWidth;
-                border-top-style: solid;
-        }
+    &.top {
+        border-top-width: $borderWidth;
+        border-top-style: solid;
+    }
 
-        &.last {
-                border-bottom-style: none;
-        }
+    &.last {
+        border-bottom-style: none;
+    }
 }
 
 @media only screen and (min-width: $breakpointSmallMenu) {
-        .section {
-                padding-left: $paddingSides;
-                padding-right: $paddingSides;
-        }
-        .landing-text {
-                margin-top: 50px;
-        }
-        .landing-link {
-                font-size: $homepageLinks;
-        }
-        .landing-link-wrapper {
-                margin-top: 30px
-        }
-        .outer-container {
-                margin-top: 40px;
-        }
-        .app-tutorial-container {
-                height: 500px;
-        }
+    .section {
+        padding-left: $paddingSides;
+        padding-right: $paddingSides;
+    }
+    .landing-text {
+        margin-top: 50px;
+    }
+    .landing-link {
+        font-size: $homepageLinks;
+    }
+    .landing-link-wrapper {
+        margin-top: 30px;
+    }
+    .outer-container {
+        margin-top: 40px;
+    }
+    .app-tutorial-container {
+        height: 500px;
+    }
 }

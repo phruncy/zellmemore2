@@ -4,19 +4,19 @@
 $largeCellSize: 100px;
 
 :host {
-        @include tutorialStepContent();
+    @include tutorialStepContent();
 }
 
 .cell {
-        @include roundShape(black);
-        width: $largeCellSize;
-        height: $largeCellSize;
-        margin-top: auto;
-        &.animated {
-                animation: state-switch 1.5s ease-out 0.2s infinite alternate forwards;
-        }
+    @include roundShape(black);
+    width: $largeCellSize;
+    height: $largeCellSize;
+    margin-top: auto;
+    &.animated {
+        animation: state-switch 1.5s ease-out 0.2s infinite alternate forwards;
+    }
 }
 
 .tutorialText {
-        @include tutorialText();
+    @include tutorialText();
 }

@@ -8,10 +8,10 @@ import { RouterLink } from '@angular/router';
     standalone: true,
     imports: [MatDivider, RouterLink],
     template: `
-    <mat-divider></mat-divider>
-    <div class ="container">
+        <mat-divider></mat-divider>
+        <div class="container">
             <a class="link" routerLink="/data-disclaimer">Privacy</a>
-    </div>
-    `
+        </div>
+    `,
 })
 export class CustomFooterComponent {}

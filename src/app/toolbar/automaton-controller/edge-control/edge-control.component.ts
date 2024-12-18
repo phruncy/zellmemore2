@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['../../toolbar.common.scss'],
     standalone: true,
     imports: [MatSlideToggle, FormsModule],
-    template: `<mat-slide-toggle class="mat-element" labelPosition="before" [(ngModel)]="checked">Connect Edges</mat-slide-toggle>`
+    template: `<mat-slide-toggle class="mat-element" labelPosition="before" [(ngModel)]="checked"
+        >Connect Edges</mat-slide-toggle
+    >`,
 })
-export class EdgeControlComponent
-{
+export class EdgeControlComponent {
     checked = model<boolean>(false);
 }

@@ -12,9 +12,15 @@ import { TutorialAnimationComponent } from './tutorial-animation/tutorial-animat
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     standalone: true,
-    imports: [HeaderComponent, RouterLink, FaIconComponent, MatDivider, CustomFooterComponent, TutorialAnimationComponent]
+    imports: [
+        HeaderComponent,
+        RouterLink,
+        FaIconComponent,
+        MatDivider,
+        CustomFooterComponent,
+        TutorialAnimationComponent,
+    ],
 })
-export class HomeComponent 
-{
+export class HomeComponent {
     readonly faArrowAltCircleRight = faChevronRight;
 }

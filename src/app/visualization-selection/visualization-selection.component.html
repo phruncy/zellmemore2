@@ -1,14 +1,14 @@
 <div class="selection-frame">
-        <div class="header">
-                <h2>Select a visualization:</h2>
-                <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
-        </div>
-        <div class="selection-tiles-container">
-                <app-selection-tile 
-                        *ngFor="let option of visualizations" 
-                        [id]="option.id" 
-                        [name]="option.name"
-                        [thumbnail]="option.thumbnail">
-                </app-selection-tile>
-        </div>
+    <div class="header">
+        <h2>Select a visualization:</h2>
+        <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
+    </div>
+    <div class="selection-tiles-container">
+        <app-selection-tile
+            *ngFor="let option of visualizations"
+            [id]="option.id"
+            [name]="option.name"
+            [thumbnail]="option.thumbnail">
+        </app-selection-tile>
+    </div>
 </div>

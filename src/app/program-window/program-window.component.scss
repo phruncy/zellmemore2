@@ -3,66 +3,66 @@
 @import 'src/styles/global/limits';
 
 $programWindowPadding: 30px;
-$programWindowPadding_Mobile: .75rem;
+$programWindowPadding_Mobile: 0.75rem;
 $programWindowPaddingTop: 8px;
 
 $toprowHeight: 44px;
 
 :host {
-        display: block;
-        height: 100vh;
+    display: block;
+    height: 100vh;
 }
 
 .program-window {
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-        height: 100%;
-        box-sizing: border-box;
-        border: none;
-        padding-left: $programWindowPadding;
-        padding-right: $programWindowPadding;
-        padding-bottom: 0;
-        padding-top: $programWindowPaddingTop;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    padding-left: $programWindowPadding;
+    padding-right: $programWindowPadding;
+    padding-bottom: 0;
+    padding-top: $programWindowPaddingTop;
 }
 
 .program-window-canvas {
-        width: 100%;
-        box-sizing: border-box;
-        flex-grow: 1;
-        min-width: $minCanvasWidth;
-        min-height: $minCanvasHeight;
-        padding: 10px 0;
-        display: flex;
-        align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: $minCanvasWidth;
+    min-height: $minCanvasHeight;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
 }
 
 .window-overlay {
-        visibility: hidden;
-        background: $overlay;
-        opacity: 0;
+    visibility: hidden;
+    background: $overlay;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: grid;
+    align-content: normal;
+    justify-items: center;
+
+    padding-top: $toprowHeight + $programWindowPaddingTop;
+    &.active {
+        visibility: visible;
+        opacity: 1;
         transition: opacity 0.2s ease-out;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 999;
-
-        display: grid;
-        align-content:normal;
-        justify-items: center;
-
-        padding-top: $toprowHeight + $programWindowPaddingTop;
-        &.active {
-                visibility: visible;
-                opacity: 1;
-                transition: opacity 0.2s ease-out;
-                width: 100%;
-                height: 100vh;
-        }
+        width: 100%;
+        height: 100vh;
+    }
 }
 
 @media only screen and (max-width: $breakpointSmallMenu) {
-        .program-window {
-                padding: $programWindowPadding_Mobile;
-        }
+    .program-window {
+        padding: $programWindowPadding_Mobile;
+    }
 }

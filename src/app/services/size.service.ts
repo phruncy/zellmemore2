@@ -3,10 +3,9 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class SizeService {
-    
     public margin;
     private _sizeChanged = new Subject<void>();
     public sizeChanged$ = this._sizeChanged.asObservable();
@@ -17,8 +16,8 @@ export class SizeService {
         widgetNumber: 0,
         widgetSize: 0,
         minWidgetSize: 0,
-        addAreaSmallSide: 35
-    }
+        addAreaSmallSide: 35,
+    };
 
     constructor(private http: HttpClient) {
         this.http.get('../assets/json/ui.json').subscribe((data: any) => {
@@ -28,69 +27,77 @@ export class SizeService {
         });
     }
 
-    get isSmallMobile(): boolean { return this._config.appCanvasWidth - this.margin - this._config.addAreaSmallSide < this._config.minWidgetSize * 2;}
-    
-    get addAreaWidth(): number { return this.isSmallMobile ? this._config.widgetSize : this._config.addAreaSmallSide; }
-    get addAreaHeight(): number { return this.isSmallMobile ? this._config.addAreaSmallSide : this.widgetSize; }
-    get widgetSize():   number { return this._config.widgetSize; }
-    get widgetNumber(): number { return this._config.widgetNumber; }
-
-    get canvasHeight(): number { return this._config.appCanvasHeight; }
-    get canvasWidth():  number { return this._config.appCanvasWidth; }
-
-    public setFrameSize(width: number, height: number) 
-    {
-            this._config.appCanvasWidth = width;
-            this._config.appCanvasHeight = height;
-            this.setWidgetSize();
+    get isSmallMobile(): boolean {
+        return (
+            this._config.appCanvasWidth - this.margin - this._config.addAreaSmallSide <
+            this._config.minWidgetSize * 2
+        );
     }
 
-    public decreaseWidgetNumber()
-    {
+    get addAreaWidth(): number {
+        return this.isSmallMobile ? this._config.widgetSize : this._config.addAreaSmallSide;
+    }
+    get addAreaHeight(): number {
+        return this.isSmallMobile ? this._config.addAreaSmallSide : this.widgetSize;
+    }
+    get widgetSize(): number {
+        return this._config.widgetSize;
+    }
+    get widgetNumber(): number {
+        return this._config.widgetNumber;
+    }
+
+    get canvasHeight(): number {
+        return this._config.appCanvasHeight;
+    }
+    get canvasWidth(): number {
+        return this._config.appCanvasWidth;
+    }
+
+    public setFrameSize(width: number, height: number) {
+        this._config.appCanvasWidth = width;
+        this._config.appCanvasHeight = height;
+        this.setWidgetSize();
+    }
+
+    public decreaseWidgetNumber() {
         this._config.widgetNumber--;
         this.setWidgetSize();
     }
 
-    public increaseWidgetNumber()
-    {
+    public increaseWidgetNumber() {
         this._config.widgetNumber++;
         this.setWidgetSize();
     }
-    
+
     /**
      * Calculate Max length of each square if they are arranged in a layout with n rows:
-     * Calculate a the maximum size based on both the width and the height and take the 
+     * Calculate a the maximum size based on both the width and the height and take the
      * minium of both in order to fit both constraints
      */
-    private calculateWidgetSize(rows: number) : number 
-    {
+    private calculateWidgetSize(rows: number): number {
         const maxWidgetsPerRow = Math.ceil(this._config.widgetNumber / rows);
-        const netWidth = this._config.appCanvasWidth - maxWidgetsPerRow * this.margin - this.addAreaWidth;
+        const netWidth =
+            this._config.appCanvasWidth - maxWidgetsPerRow * this.margin - this.addAreaWidth;
         const netHeight = this._config.appCanvasHeight - rows * this.margin;
         const maxWidth = netWidth / maxWidgetsPerRow;
         const maxHeight = netHeight / rows;
-        return Math.min (maxWidth, maxHeight);
+        return Math.min(maxWidth, maxHeight);
     }
 
-    private calculateForLargeLayout(): number 
-    {
+    private calculateForLargeLayout(): number {
         let rows = 1;
         let sidelength = 0;
-        while ((sidelength = this.calculateWidgetSize(rows)) < this.calculateWidgetSize(rows + 1))
-        {
+        while ((sidelength = this.calculateWidgetSize(rows)) < this.calculateWidgetSize(rows + 1)) {
             rows++;
         }
         return sidelength;
     }
 
-    private setWidgetSize()
-    {
-        if (this._config.appCanvasHeight > this._config.appCanvasWidth && this.isSmallMobile)
-        {
+    private setWidgetSize() {
+        if (this._config.appCanvasHeight > this._config.appCanvasWidth && this.isSmallMobile) {
             this._config.widgetSize = this._config.appCanvasWidth - this.margin;
-        } 
-        else 
-        {
+        } else {
             this._config.widgetSize = this.calculateForLargeLayout();
         }
         this._sizeChanged.next();

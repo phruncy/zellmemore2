@@ -2,15 +2,15 @@
 @import '../tutorial-animation-mixins.scss';
 
 :host {
-        @include tutorialStepContent();
+    @include tutorialStepContent();
 }
 
 .container {
-        display: flex;
-        flex-direction: column;
-        margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
 }
 
 .tutorialText {
-        @include tutorialText();
+    @include tutorialText();
 }

@@ -4,13 +4,13 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('AutomatonService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [AutomatonService, provideHttpClient(), provideHttpClientTesting()]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [AutomatonService, provideHttpClient(), provideHttpClientTesting()],
+        });
     });
-  });
 
-  it('should be created', inject([AutomatonService], (service: AutomatonService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([AutomatonService], (service: AutomatonService) => {
+        expect(service).toBeTruthy();
+    }));
 });

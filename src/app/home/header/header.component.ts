@@ -9,7 +9,6 @@ import { MatDivider } from '@angular/material/divider';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     standalone: true,
-    imports: [MatButton, RouterLink, MatAnchor, MatTooltip, MatDivider]
+    imports: [MatButton, RouterLink, MatAnchor, MatTooltip, MatDivider],
 })
-export class HeaderComponent
-{}
+export class HeaderComponent {}

@@ -4,13 +4,13 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { SizeService } from './size.service';
 
 describe('SizeService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [SizeService, provideHttpClient(), provideHttpClientTesting()]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [SizeService, provideHttpClient(), provideHttpClientTesting()],
+        });
     });
-  });
 
-  it('should be created', inject([SizeService], (service: SizeService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([SizeService], (service: SizeService) => {
+        expect(service).toBeTruthy();
+    }));
 });

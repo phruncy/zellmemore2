@@ -11,36 +11,43 @@ import { MatRipple } from '@angular/material/core';
     templateUrl: './selection-tile.component.html',
     styleUrls: ['./selection-tile.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardImage, FaIconComponent, MatIconButton, MatRipple]
+    imports: [
+        MatCard,
+        MatCardHeader,
+        MatCardTitle,
+        MatCardImage,
+        FaIconComponent,
+        MatIconButton,
+        MatRipple,
+    ],
 })
-export class SelectionTileComponent implements OnInit 
-{
+export class SelectionTileComponent implements OnInit {
     id = input.required<string>();
     name = input.required<string>();
     thumbnail = input<any>();
 
     readonly faPlusCircle = faPlusCircle;
     readonly faCheckCircle = faCheckCircle;
-    
+
     private _isActive = false;
-    get isActive(): boolean {return this._isActive; }
+    get isActive(): boolean {
+        return this._isActive;
+    }
 
-    constructor(private visualizationService: VisualizationService) { }
+    constructor(private visualizationService: VisualizationService) {}
 
-    ngOnInit() 
-    {
+    ngOnInit() {
         this.onActiveVisualizationChange = this.onActiveVisualizationChange.bind(this);
-        this.visualizationService.$activeComponentsChanged.subscribe(this.onActiveVisualizationChange);
+        this.visualizationService.$activeComponentsChanged.subscribe(
+            this.onActiveVisualizationChange,
+        );
     }
 
-    onActiveVisualizationChange()
-    {
+    onActiveVisualizationChange() {
         this._isActive = this.visualizationService.activeComponents.includes(this.id());
-        
     }
 
-    selectVisualizationToDisplay(id: string)
-    {
+    selectVisualizationToDisplay(id: string) {
         this.visualizationService.visualizationToDisplay = id;
     }
 }

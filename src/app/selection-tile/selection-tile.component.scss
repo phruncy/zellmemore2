@@ -5,54 +5,54 @@ $selectionTileMargin: 2px;
 $matCardMaxWidth: 150px;
 
 .mat-mdc-card {
-        margin: $selectionTileMargin;
-        width: $matCardMaxWidth;
-        display: inline-block;
+    margin: $selectionTileMargin;
+    width: $matCardMaxWidth;
+    display: inline-block;
 }
 
 .image-container {
-        position: relative;
+    position: relative;
 }
 
 .overlay {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        background: $overlay;
-        position: absolute;
-        top: 0;
-        bottom: 5px;
-        left: 0px;
-        width: 100%;
-        opacity: 0;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background: $overlay;
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    left: 0px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+
+    &:hover {
+        opacity: 1;
         transition: opacity 0.2s ease-out;
-        
-        &:hover {
-                opacity: 1;
-                transition: opacity 0.2s ease-out;
-                cursor: pointer;
-        }
+        cursor: pointer;
+    }
 }
 
 .thumbnail {
-        width: 100%;
+    width: 100%;
 }
 
 .btn {
-        z-index: 1;
-        color: $highlight;
+    z-index: 1;
+    color: $highlight;
 }
 
 .check {
-        position: absolute;
-        top: 0;
-        left: 0;
-        visibility: hidden;
-        color: $highlight;
-        margin: 5px 8px;
-        display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    color: $highlight;
+    margin: 5px 8px;
+    display: inline-block;
 
-        &.active {
-                visibility: visible;
-        }
+    &.active {
+        visibility: visible;
+    }
 }

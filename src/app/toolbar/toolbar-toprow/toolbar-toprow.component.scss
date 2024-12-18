@@ -4,66 +4,66 @@
 @import '../toolbar.common.scss';
 
 .toprow-container {
-        min-width: 390px;
-        font-weight: $topbarFontWeight;
-        margin-bottom: 7px;
-        display: flex;
-        justify-content: start;
+    min-width: 390px;
+    font-weight: $topbarFontWeight;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: start;
 }
 
 .btn-settings {
-        font-size: $fontsize_default;
-        --mdc-text-button-label-text-weight: $fontweight_default;
-        --mdc-text-button-label-text-tracking: 0;
+    font-size: $fontsize_default;
+    --mdc-text-button-label-text-weight: $fontweight_default;
+    --mdc-text-button-label-text-tracking: 0;
 }
 
 .btn-reset:hover .icon.reset {
-        transform:rotate(-45deg);
-        transition: transform 0.3s ease-out;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease-out;
 }
 
 .btn-home {
-        margin-left: auto;
+    margin-left: auto;
 }
 
 .icon {
-        color: $fontDefault;
-        display: none;
+    color: $fontDefault;
+    display: none;
+
+    &.active {
+        display: inline-block;
+    }
+
+    &.reset {
+        display: inline-block;
+        transform: rotate(0deg);
+        transition: transform 0.2s ease-out;
+        &:active {
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease-out;
+        }
+    }
+
+    &.settings {
+        display: inline-block;
+        transform: rotate(0deg);
+        transition: all 0.2s ease-out;
+        margin-left: 2px;
 
         &.active {
-                display: inline-block;
+            transform: rotate(-90deg);
+            transition: transform 0.2s ease-out;
         }
+    }
 
-        &.reset {
-                display: inline-block;
-                transform: rotate(0deg);
-                transition: transform 0.2s ease-out;
-                &:active{
-                        transform:rotate(-45deg);
-                        transition: transform 0.3s ease-out;
-                }
-        }
-
-        &.settings {
-                display:inline-block;
-                transform: rotate(0deg);
-                transition: all 0.2s ease-out;
-                margin-left: 2px;
-
-                &.active {
-                        transform: rotate(-90deg);
-                        transition: transform 0.2s ease-out
-                }
-        }
-
-        &.settings-label {
-                display: block;        
-        }
+    &.settings-label {
+        display: block;
+    }
 }
 
 .stats {
-        display: flex;
-        margin: 0px 10px 0px 10px;
-        text-align: center;
-        align-items: center;
-}      
+    display: flex;
+    margin: 0px 10px 0px 10px;
+    text-align: center;
+    align-items: center;
+}

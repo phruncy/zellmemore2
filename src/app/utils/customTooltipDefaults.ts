@@ -1,3 +1,3 @@
 export const customTooltipDefaults = {
-    showDelay: 800
-}
+    showDelay: 800,
+};

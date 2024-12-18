@@ -1,5 +1,4 @@
-export interface SliderSettings
-{
+export interface SliderSettings {
     min: number;
     max: number;
     label: string;

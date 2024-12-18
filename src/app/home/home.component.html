@@ -1,24 +1,38 @@
 <app-header class="header"></app-header>
 <div class="outer-container">
-        <div class="section top">
-                <h1 class="landing-text colored">One Algorithm, 12 depictions:
-                Cellular automata are systems capable of producing
-                fascinating structures from simple rules.</h1>
-                <h3 class="landing-text">These mathematical models of self organizing systems evolve by repeatedly applying the same algorithm on themselves. Despite – or due to ? – being so simple, their behaviour is of intriguing complexity. This website invites you to visually explore the principle of elementary cellular automata.</h3>
-                <div class="landing-link-wrapper">
-                        <div  class="landing-link"><a routerLink="/program-window">Explore <fa-icon [icon]="faArrowAltCircleRight"></fa-icon></a></div>
-                        <div class="landing-link"><a routerLink="/home" [fragment]="'tutorial-anchor'">What are Cellular automata? <fa-icon [icon]="faArrowAltCircleRight"></fa-icon></a></div>
-                </div>
+    <div class="section top">
+        <h1 class="landing-text colored">
+            One Algorithm, 12 depictions: Cellular automata are systems capable of producing
+            fascinating structures from simple rules.
+        </h1>
+        <h3 class="landing-text">
+            These mathematical models of self organizing systems evolve by repeatedly applying the
+            same algorithm on themselves. Despite – or due to ? – being so simple, their behaviour
+            is of intriguing complexity. This website invites you to visually explore the principle
+            of elementary cellular automata.
+        </h3>
+        <div class="landing-link-wrapper">
+            <div class="landing-link">
+                <a routerLink="/program-window"
+                    >Explore <fa-icon [icon]="faArrowAltCircleRight"></fa-icon
+                ></a>
+            </div>
+            <div class="landing-link">
+                <a routerLink="/home" [fragment]="'tutorial-anchor'"
+                    >What are Cellular automata? <fa-icon [icon]="faArrowAltCircleRight"></fa-icon
+                ></a>
+            </div>
         </div>
-        <section class="section">
-                <h1>About Elementary Cellular Automata</h1>
-                <mat-divider></mat-divider>
-                <div class="tutorial-outer-wrapper">
-                        <div class="app-tutorial-container">
-                                <app-tutorial-animation class="content"></app-tutorial-animation>
-                        </div>
-                </div>
-        </section>
-        <section class="section last" id="tutorial-anchor"></section>
-        <footer><app-custom-footer></app-custom-footer></footer> 
+    </div>
+    <section class="section">
+        <h1>About Elementary Cellular Automata</h1>
+        <mat-divider></mat-divider>
+        <div class="tutorial-outer-wrapper">
+            <div class="app-tutorial-container">
+                <app-tutorial-animation class="content"></app-tutorial-animation>
+            </div>
+        </div>
+    </section>
+    <section class="section last" id="tutorial-anchor"></section>
+    <footer><app-custom-footer></app-custom-footer></footer>
 </div>

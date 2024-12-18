@@ -18,46 +18,42 @@ import { ActivatedRoute } from '@angular/router';
         MatDivider,
         EdgeControlComponent,
         StateControlComponent,
-        ControlsSliderComponent
+        ControlsSliderComponent,
     ],
 })
 export class AutomatonControllerComponent implements OnInit {
-
-    readonly speedSettings: SliderSettings = {min: 1, max: 30, label: "fps", step: 1};
-    readonly cellnumberSettings: SliderSettings= {min: 10, max: 500, label:"cells", step: 10};
+    readonly speedSettings: SliderSettings = { min: 1, max: 30, label: 'fps', step: 1 };
+    readonly cellnumberSettings: SliderSettings = { min: 10, max: 500, label: 'cells', step: 10 };
     speed: number = this.speedSettings.min;
     cellNumber: number = this.cellnumberSettings.min;
     isCircular: boolean = false;
 
-    constructor(private automaton: AutomatonService, private route: ActivatedRoute) { }
+    constructor(
+        private automaton: AutomatonService,
+        private route: ActivatedRoute,
+    ) {}
 
-    ngOnInit() 
-    {
+    ngOnInit() {
         this.init = this.init.bind(this);
-        this.automaton.ready$.subscribe(() => 
-        {
+        this.automaton.ready$.subscribe(() => {
             this.init();
             this.route.params.subscribe(this.init);
         });
     }
 
-    setCellnumber(value: number)
-    {
+    setCellnumber(value: number) {
         this.automaton.cellnumber = value;
     }
 
-    setCircular(value: boolean)
-    {
+    setCircular(value: boolean) {
         this.automaton.isCircular = value;
     }
 
-    setSpeed(value: number)
-    {
+    setSpeed(value: number) {
         this.automaton.fps = value;
     }
 
-    private init()
-    {
+    private init() {
         this.speed = this.automaton.fps;
         this.cellNumber = this.automaton.cellnumber;
         this.isCircular = this.automaton.isCircular;

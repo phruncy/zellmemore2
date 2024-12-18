@@ -6,142 +6,156 @@ $gapMobile: 8px;
 $gapDesktop: 20px;
 $cellContainerMobile: 50px;
 $cellContainerDesktop: 90px;
-$expandingCircleDuration: .3s;
+$expandingCircleDuration: 0.3s;
 $stateChangeDuration: 1.5s;
 
 :host {
-        @include tutorialStepContent();
+    @include tutorialStepContent();
 }
 
 .graphics-container {
-        @include graphicsContent();
+    @include graphicsContent();
 }
 
 .cell-row {
-        display: flex;
-        justify-content: center;
-        margin: auto;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 
 .cell-container {
-        display: inline-block;
-        width: $cellContainerMobile;
-        height: $cellContainerMobile;
-        margin: $gapMobile;
-        vertical-align: bottom;
-        text-align: center;
-        position: relative;
+    display: inline-block;
+    width: $cellContainerMobile;
+    height: $cellContainerMobile;
+    margin: $gapMobile;
+    vertical-align: bottom;
+    text-align: center;
+    position: relative;
 }
 
-.cell{
-        @include roundShape('black');
-        @include absolute-centered();
-        display: inline-block;
-        width: 100%;
-        height: 100%; 
-        background: white;
-        z-index: 1;
+.cell {
+    @include roundShape('black');
+    @include absolute-centered();
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1;
 }
 
 .black {
-        background: black;
+    background: black;
 }
 
-
 #cell2.animate-step02 {
-        animation: state-switch-trio $stateChangeDuration ease-in-out infinite reverse forwards;
+    animation: state-switch-trio $stateChangeDuration ease-in-out infinite reverse forwards;
 }
 
 .background-circle {
-        @include absolute-centered();
-        width: 90%;
-        height: 90%;
-        border-radius: 50%;
-        background: $accent;
-        &.animate-step01 {
-                animation: expanding-circle $expandingCircleDuration ease-out forwards;
-        }
-        &.animate-step02 {
-                animation: expanding-circle-inner-repeat $stateChangeDuration ease-out infinite;
-        }
-        &.outer.animate-step01 {
-                animation: expanding-circle $expandingCircleDuration ease-out $expandingCircleDuration forwards;
-        }
-        &.outer.animate-step02 {
-                animation: expanding-circle-repeat $stateChangeDuration ease-out infinite; 
-        }
+    @include absolute-centered();
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: $accent;
+    &.animate-step01 {
+        animation: expanding-circle $expandingCircleDuration ease-out forwards;
+    }
+    &.animate-step02 {
+        animation: expanding-circle-inner-repeat $stateChangeDuration ease-out infinite;
+    }
+    &.outer.animate-step01 {
+        animation: expanding-circle $expandingCircleDuration ease-out $expandingCircleDuration
+            forwards;
+    }
+    &.outer.animate-step02 {
+        animation: expanding-circle-repeat $stateChangeDuration ease-out infinite;
+    }
 }
 
 .connector {
-        height: 10%;
-        width: 0px;
-        border-radius: 5px;
-        background: $accent;
-        position: absolute;
-        top: 50%;
-        &.left {
-                left: 0;
-                transform: translate(-100%, -50%);
-        }
-        &.right {
-                right: 0;
-                transform: translate(100%, -50%);
-        }
-        &.animate-step01 {
-                animation: expand-connector $expandingCircleDuration ease-out .2s forwards;
-        }
+    height: 10%;
+    width: 0px;
+    border-radius: 5px;
+    background: $accent;
+    position: absolute;
+    top: 50%;
+    &.left {
+        left: 0;
+        transform: translate(-100%, -50%);
+    }
+    &.right {
+        right: 0;
+        transform: translate(100%, -50%);
+    }
+    &.animate-step01 {
+        animation: expand-connector $expandingCircleDuration ease-out 0.2s forwards;
+    }
 }
 
 .signal {
-        height: 10%;
-        width: 20%;
-        top: 50%;
-        border-radius: 5px;
-        position: absolute;
-        background: $accent;
-        &.right {
-                left: 0;
-                transform: translate(0%, -50%);
-                &.animate-step02 { 
-                        animation: send-signal-right $stateChangeDuration ease-in-out infinite 
-                }
+    height: 10%;
+    width: 20%;
+    top: 50%;
+    border-radius: 5px;
+    position: absolute;
+    background: $accent;
+    &.right {
+        left: 0;
+        transform: translate(0%, -50%);
+        &.animate-step02 {
+            animation: send-signal-right $stateChangeDuration ease-in-out infinite;
         }
-        &.left {
-                right: 0;
-                transform: translate(0%, -50%);
-                &.animate-step02 { 
-                        animation: send-signal-left $stateChangeDuration ease-in-out infinite 
-                }
+    }
+    &.left {
+        right: 0;
+        transform: translate(0%, -50%);
+        &.animate-step02 {
+            animation: send-signal-left $stateChangeDuration ease-in-out infinite;
         }
+    }
 }
 
 .tutorialText {
-        @include tutorialText();
+    @include tutorialText();
 }
 
 @keyframes expand-connector {
-        from { width: 0px }
-        to { width: 45px }
+    from {
+        width: 0px;
+    }
+    to {
+        width: 45px;
+    }
 }
 
 @keyframes send-signal-left {
-        0% {transform: translate(0%, -50%);}
-        65% {transform: translate(300%, -50%);}
-        100% {transform: translate(300%, -50%);}
+    0% {
+        transform: translate(0%, -50%);
+    }
+    65% {
+        transform: translate(300%, -50%);
+    }
+    100% {
+        transform: translate(300%, -50%);
+    }
 }
 
 @keyframes send-signal-right {
-        0% {transform: translate(0%, -50%);}
-        65% {transform: translate(-300%, -50%);}
-        100% {transform: translate(-300%, -50%);}
+    0% {
+        transform: translate(0%, -50%);
+    }
+    65% {
+        transform: translate(-300%, -50%);
+    }
+    100% {
+        transform: translate(-300%, -50%);
+    }
 }
 
 @media only screen and (min-width: $breakpointSmallMenu) {
-
-        .cell-container {
-                width: $cellContainerDesktop;
-                height: $cellContainerDesktop;
-                margin: $gapDesktop;
-        }
+    .cell-container {
+        width: $cellContainerDesktop;
+        height: $cellContainerDesktop;
+        margin: $gapDesktop;
+    }
 }
-

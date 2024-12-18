@@ -1,24 +1,27 @@
-
-<div mat-button [matMenuTriggerFor]="boxes" class="controller-element" (menuOpened)="boxesDisplayed = true" (menuClosed)="boxesDisplayed = false">
-        <span class="rule-label">rule: </span>
-        <mat-form-field class="rule-label">
-                <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()">
-        </mat-form-field>
-        <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed"></fa-icon>
+<div
+    mat-button
+    [matMenuTriggerFor]="boxes"
+    class="controller-element"
+    (menuOpened)="boxesDisplayed = true"
+    (menuClosed)="boxesDisplayed = false">
+    <span class="rule-label">rule: </span>
+    <mat-form-field class="rule-label">
+        <input matInput maxlength="3" [(ngModel)]="decimal" (input)="onTextInputChanged()" />
+    </mat-form-field>
+    <fa-icon [icon]="faAngleLeft" class="angle" [class.active]="boxesDisplayed"></fa-icon>
 </div>
 <mat-menu #boxes="matMenu">
-        <div class="dropdown" (click)="$event.stopPropagation()">
-                <span *ngFor="let box of BOXES" class="checkbox-outer">
-                        <div class="checkbox-icons">
-                                <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{icon}}</span>
-                        </div>
-                        <div class ="checkbox-icons">d</div>
-                        <mat-checkbox 
-                                id="{{box.id}}"
-                                [(ngModel)]="box.checked"
-                                (change)="onBoxesChanged()">
-                        </mat-checkbox>
-                </span>
-        </div>
+    <div class="dropdown" (click)="$event.stopPropagation()">
+        <span *ngFor="let box of BOXES" class="checkbox-outer">
+            <div class="checkbox-icons">
+                <span *ngFor="let icon of box.iconValues" class="cell-icon" [class.active]="icon">{{
+                    icon
+                }}</span>
+            </div>
+            <div class="checkbox-icons">d</div>
+            <mat-checkbox id="{{ box.id }}" [(ngModel)]="box.checked" (change)="onBoxesChanged()">
+            </mat-checkbox>
+        </span>
+    </div>
 </mat-menu>
 <div #popupContainer></div>

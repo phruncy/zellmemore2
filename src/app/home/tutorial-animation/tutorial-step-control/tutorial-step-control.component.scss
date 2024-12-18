@@ -4,31 +4,31 @@
 $stepMarkerWidth: 10px;
 
 .controls {
-        text-align: center;
-        margin: 0 8px;
-        min-width: $stepMarkerWidth;
+    text-align: center;
+    margin: 0 8px;
+    min-width: $stepMarkerWidth;
 }
 
 .step-marker {
-        @include roundShape(white);
-        display: inline-block;
-        height: 10px;
-        width: $stepMarkerWidth;
-        background: $accent;
-        cursor: pointer;
-        opacity: .6;
-        border: none;
-        margin: 0 5px;
+    @include roundShape(white);
+    display: inline-block;
+    height: 10px;
+    width: $stepMarkerWidth;
+    background: $accent;
+    cursor: pointer;
+    opacity: 0.6;
+    border: none;
+    margin: 0 5px;
 
-        &.active {
-                opacity: 1;
-        }
+    &.active {
+        opacity: 1;
+    }
 }
 
 .btn {
-        border-radius: 10px;
-        border: none;
-        background: $accent;
-        color: $fontNegative;
-        cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background: $accent;
+    color: $fontNegative;
+    cursor: pointer;
 }

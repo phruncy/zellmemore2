@@ -4,25 +4,24 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { StepFinalComponent } from './step-final.component';
 
 describe('StepFinalComponent', () => {
-  let component: StepFinalComponent;
-  let fixture: ComponentFixture<StepFinalComponent>;
+    let component: StepFinalComponent;
+    let fixture: ComponentFixture<StepFinalComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-    imports: [StepFinalComponent],
-    providers: [provideRouter([]), provideAnimations()],
-})
-    .compileComponents();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [StepFinalComponent],
+            providers: [provideRouter([]), provideAnimations()],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(StepFinalComponent);
-    component = fixture.componentInstance;
-    fixture.componentRef.setInput('activeDescription', 0);
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(StepFinalComponent);
+        component = fixture.componentInstance;
+        fixture.componentRef.setInput('activeDescription', 0);
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

@@ -1,5 +1,4 @@
-export interface StepDescription
-{
+export interface StepDescription {
     component: any;
     sectionCount: number;
 }

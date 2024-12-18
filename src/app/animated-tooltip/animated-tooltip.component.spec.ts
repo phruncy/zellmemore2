@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AnimatedTooltipComponent } from './animated-tooltip.component';
 
 describe('AnimatedTooltipComponent', () => {
-  let component: AnimatedTooltipComponent;
-  let fixture: ComponentFixture<AnimatedTooltipComponent>;
+    let component: AnimatedTooltipComponent;
+    let fixture: ComponentFixture<AnimatedTooltipComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AnimatedTooltipComponent]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [AnimatedTooltipComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(AnimatedTooltipComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(AnimatedTooltipComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

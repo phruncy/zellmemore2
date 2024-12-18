@@ -19,20 +19,22 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
     selector: 'app-tutorial-animation',
     standalone: true,
-    imports: [ NgIf, TutorialStepControlComponent, TutorialStepComponent, FontAwesomeModule, MatButtonModule],
+    imports: [
+        NgIf,
+        TutorialStepControlComponent,
+        TutorialStepComponent,
+        FontAwesomeModule,
+        MatButtonModule,
+    ],
     templateUrl: './tutorial-animation.component.html',
     styleUrls: ['./tutorial-animation.component.scss'],
-    animations: [
-        animations.slideInOut
-    ]
+    animations: [animations.slideInOut],
 })
-export class TutorialAnimationComponent
-{
+export class TutorialAnimationComponent {
     readonly faAngleDown = faAngleDown;
     readonly faAngleUp = faAngleUp;
-    readonly steps: StepDescription[] = 
-    [
-        { component: StepIntroComponent, sectionCount: 1},
+    readonly steps: StepDescription[] = [
+        { component: StepIntroComponent, sectionCount: 1 },
         { component: Step01Component, sectionCount: 2 },
         { component: Step02Component, sectionCount: 2 },
         { component: Step03Component, sectionCount: 3 },
@@ -43,15 +45,20 @@ export class TutorialAnimationComponent
     ];
 
     private _currentSection: number = 0;
-    get currentSection(): number { return this._currentSection; }
+    get currentSection(): number {
+        return this._currentSection;
+    }
 
     private _unlockedSteps = 0;
-    get unlockedSteps() { return this._unlockedSteps; }
-    
+    get unlockedSteps() {
+        return this._unlockedSteps;
+    }
+
     private _activeStep: number = 0;
-    get activeStep() { return this._activeStep; }
-    set activeStep(step: number) 
-    {
+    get activeStep() {
+        return this._activeStep;
+    }
+    set activeStep(step: number) {
         if (step > this.steps.length) {
             return;
         }
@@ -59,22 +66,22 @@ export class TutorialAnimationComponent
         this._activeStep = step;
     }
 
-    get isAtEnd() : boolean { return this._activeStep >= this.steps.length; }
-    get activeStepDescription(): StepDescription { return this.steps[this._activeStep]; } 
-    
-    advance() 
-    {
-        if(this.isAtEnd) 
-                return;
+    get isAtEnd(): boolean {
+        return this._activeStep >= this.steps.length;
+    }
+    get activeStepDescription(): StepDescription {
+        return this.steps[this._activeStep];
+    }
+
+    advance() {
+        if (this.isAtEnd) return;
         this._currentSection++;
-        if (this._currentSection >= this.steps[this.activeStep].sectionCount)
-        {
+        if (this._currentSection >= this.steps[this.activeStep].sectionCount) {
             this.addStep();
         }
     }
 
-    previous() 
-    {
+    previous() {
         if (this._currentSection === 0) {
             this.activeStep--;
             return;
@@ -82,15 +89,13 @@ export class TutorialAnimationComponent
         this._currentSection--;
     }
 
-    addStep() 
-    {
+    addStep() {
         if (this._activeStep >= this.steps.length) {
             return;
         }
         this.activeStep++;
         this._currentSection = 0;
-        if (this.activeStep > this._unlockedSteps)
-        {
+        if (this.activeStep > this._unlockedSteps) {
             this._unlockedSteps++;
         }
     }

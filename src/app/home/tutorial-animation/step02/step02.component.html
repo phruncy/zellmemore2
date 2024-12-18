@@ -1,22 +1,18 @@
 <div class="graphics-container">
-        <div 
-                class="multiple-cells-wrapper"
-                *ngIf="activeDescription() === 1">
-                <div 
-                        *ngFor="let cell of cells; let i = index"
-                        class="cell"
-                        [@changeState]="cell.state"
-                        (@changeState.done)="toggleState(i)"
-                ></div>
-        </div>
-        <div 
-                class="multiple-cells-wrapper"
-                *ngIf="activeDescription() === 0">
-                <div 
-                        *ngFor="let cell of cells; let i = index"
-                        class="cell"
-                        [style.background]="cell.state === 'active' ? 'black' : 'white'"
-                ></div>
-        </div>
+    <div class="multiple-cells-wrapper" *ngIf="activeDescription() === 1">
+        <div
+            *ngFor="let cell of cells; let i = index"
+            class="cell"
+            [@changeState]="cell.state"
+            (@changeState.done)="toggleState(i)"></div>
+    </div>
+    <div class="multiple-cells-wrapper" *ngIf="activeDescription() === 0">
+        <div
+            *ngFor="let cell of cells; let i = index"
+            class="cell"
+            [style.background]="cell.state === 'active' ? 'black' : 'white'"></div>
+    </div>
 </div>
-<div class="tutorialText" [@slideInDescription]="activeDescription()">{{descriptions[activeDescription()]}}</div>
+<div class="tutorialText" [@slideInDescription]="activeDescription()">
+    {{ descriptions[activeDescription()] }}
+</div>

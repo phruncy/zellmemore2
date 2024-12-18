@@ -4,42 +4,42 @@
 @import '../toolbar.common.scss';
 
 .automaton-controller-container {
-        box-sizing: border-box;
-        margin: 8px 8px 8px 0px;
-        color: $fontDefault;
-        display: flex;
-        align-items: center;
+    box-sizing: border-box;
+    margin: 8px 8px 8px 0px;
+    color: $fontDefault;
+    display: flex;
+    align-items: center;
 }
 
 .desktop-divider {
-        align-self: stretch;
-        margin: 0 10px;
+    align-self: stretch;
+    margin: 0 10px;
 }
 
 .mobile-divider {
-        display: none;
-        margin: 7px 0;
+    display: none;
+    margin: 7px 0;
 }
 
 @media only screen and (max-width: $breakpointSmallMenu) {
-        .automaton-controller-container {
-                display: inline-block;
-                margin-top: 0px;
-                background: $backgroundUltraLight;
-                border-radius: 0 0 5px 5px;
-                width: 100%;
-                padding-left: 10px;
-                padding-right: 20px;
-        }
-        .ui-element {
-                margin: 10px;
-        }
+    .automaton-controller-container {
+        display: inline-block;
+        margin-top: 0px;
+        background: $backgroundUltraLight;
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    .ui-element {
+        margin: 10px;
+    }
 
-        .desktop-divider {
-                display: none;
-        }
+    .desktop-divider {
+        display: none;
+    }
 
-        .mobile-divider {
-                display: block;
-        }
+    .mobile-divider {
+        display: block;
+    }
 }

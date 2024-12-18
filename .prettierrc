@@ -5,12 +5,7 @@
   "singleQuote": true,
   "useTabs": false,
   "printWidth": 100,
+  "bracketSameLine": true,
   "overrides": [
-    {
-      "files": "*.component.ts",
-      "options": {
-        "htmlWhitespaceSensitivity": "ignore"
-      }
-    }
   ]
 }

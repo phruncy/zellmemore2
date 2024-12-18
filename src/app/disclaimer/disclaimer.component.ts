@@ -7,6 +7,6 @@ import { CustomFooterComponent } from '../custom-footer/custom-footer.component'
     templateUrl: './disclaimer.component.html',
     styleUrls: ['./disclaimer.component.scss'],
     standalone: true,
-    imports: [HeaderComponent, CustomFooterComponent]
+    imports: [HeaderComponent, CustomFooterComponent],
 })
 export class DisclaimerComponent {}

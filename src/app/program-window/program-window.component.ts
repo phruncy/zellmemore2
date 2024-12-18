@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
-import {customTooltipDefaults } from '../utils/customTooltipDefaults';
+import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { WidgetFrameComponent } from '../app-canvas/app-canvas.component';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
@@ -10,14 +10,11 @@ import { VisualizationSelectionComponent } from '../visualization-selection/visu
     selector: 'app-program-window',
     templateUrl: './program-window.component.html',
     styleUrls: ['./program-window.component.scss'],
-    providers: [
-        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }
-    ],
+    providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent,]
+    imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent],
 })
-export class ProgramWindowComponent
-{
+export class ProgramWindowComponent {
     selectionActive = false;
     readonly faTimes = faTimes;
     readonly faHome = faHome;
@@ -25,15 +22,13 @@ export class ProgramWindowComponent
     @HostListener('window:keydown.escape', ['$event'])
     handleKeydown() {
         this.closeSelection();
-    } 
+    }
 
-    openSelection()
-    {
+    openSelection() {
         this.selectionActive = !this.selectionActive;
     }
 
-    closeSelection()
-    {
+    closeSelection() {
         this.selectionActive = false;
     }
 }

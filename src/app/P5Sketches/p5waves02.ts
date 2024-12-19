@@ -52,6 +52,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
         p5.background(255);
         p5.push();
         if (this.automaton.isCircular) {
+            p5.fill(0);
             p5.translate(centerX, centerY);
             p5.beginShape();
             p5.curveVertex(radius + agents[0].pos, 0);
@@ -66,6 +67,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
             p5.endShape();
         } else {
             // linear rendering
+            p5.noFill();
             p5.translate(margin, p5.height / 2);
             p5.beginShape();
             agents.forEach((agent) => {

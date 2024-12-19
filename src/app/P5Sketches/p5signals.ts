@@ -4,14 +4,14 @@ import { Agent } from 'src/app/utils/agent';
 import { sketchColors } from 'src/app/utils/colors';
 
 export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widgetP5): void {
-    let amplitude: number; // absolute spatial difference between 0 and 1 states
+    let amplitude: number;
     let dotSize: number; // size of the dots representing the cells
     let radius: number; // radius of the 0 state position in circular mode
     let margin: number;
-    let gap: number; // gap between the dots
-    let angle: number; // angle between the dots in circular mode
+    let gap: number;
+    let angle: number;
     let agents: Agent[] = [];
-    let colorIndex: number; // the current rendering color
+    let colorIndex: number;
 
     const getTargetPosition = (state) => (state === 1 ? amplitude : -amplitude);
 
@@ -54,7 +54,7 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
     };
 
     p5.setup = () => {
-        p5.createCanvas(this.componentWidth, this.componentWidth);
+        p5.createCanvas(this.componentWidth, this.componentHeight);
         p5.noStroke();
         p5.fill(255);
         p5.background(0);
@@ -76,7 +76,7 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
     p5.automatonStateUpdate = () => {
         const color: number[] = sketchColors[colorIndex];
         colorIndex = (colorIndex + 1) % sketchColors.length;
-        this._p5.fill(color[0], color[1], color[2]);
+        p5.fill(color[0], color[1], color[2]);
         this.automaton.states.forEach((state, index) => {
             agents[index].target = getTargetPosition(state);
         });
@@ -84,7 +84,8 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
 
     p5.componentResize = (w: number, h: number) => {
         p5.resizeCanvas(w, h);
-        p5.automatonReset();
+        p5.background(0);
+        initValues();
     };
 
     p5.automatonReset = () => {

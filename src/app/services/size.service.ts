@@ -37,12 +37,15 @@ export class SizeService {
     get addAreaWidth(): number {
         return this.isSmallMobile ? this._config.widgetSize : this._config.addAreaSmallSide;
     }
+
     get addAreaHeight(): number {
         return this.isSmallMobile ? this._config.addAreaSmallSide : this.widgetSize;
     }
+
     get widgetSize(): number {
         return this._config.widgetSize;
     }
+
     get widgetNumber(): number {
         return this._config.widgetNumber;
     }
@@ -50,6 +53,7 @@ export class SizeService {
     get canvasHeight(): number {
         return this._config.appCanvasHeight;
     }
+
     get canvasWidth(): number {
         return this._config.appCanvasWidth;
     }

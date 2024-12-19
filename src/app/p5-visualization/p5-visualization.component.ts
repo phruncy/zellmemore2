@@ -11,7 +11,7 @@ import {
 import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { Subscription, Subject } from 'rxjs';
-import * as p5 from 'p5';
+import { widgetP5 } from '../P5Sketches/p5Widget';
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
 
 @Component({
@@ -34,7 +34,7 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
     private _onDestroy = new Subject<void>();
     public $onDestroy = this._onDestroy.asObservable();
 
-    private _p5: p5;
+    private _p5: widgetP5;
 
     constructor(
         private automaton: AutomatonService,
@@ -60,7 +60,7 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
 
     ngAfterContentInit(): void {
         this.p5sketch().sketch = this.p5sketch().sketch.bind(this);
-        this._p5 = new p5(this.p5sketch().sketch, this.p5container().nativeElement);
+        this._p5 = new widgetP5(this.p5sketch().sketch, this.p5container().nativeElement);
     }
 
     ngOnDestroy() {

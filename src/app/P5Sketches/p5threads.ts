@@ -1,7 +1,7 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 
-export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): void {
+export const p5threads = new P5Sketch('threads', function p5threads(p5: widgetP5): void {
     const contrastColor = [86, 239, 185];
 
     let dotSize = 10;
@@ -32,6 +32,16 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): voi
         circularModeRadius = (p5.width - 2 * edge - dotSize - 2 * amplitude) / 4;
     };
 
+    const defineColor = (state: number) => {
+        if (state === 1) {
+            p5.stroke(contrastColor[0], contrastColor[1], contrastColor[2]);
+            p5.fill(contrastColor[0], contrastColor[1], contrastColor[2]);
+        } else {
+            p5.stroke(0);
+            p5.fill(0);
+        }
+    };
+
     p5.setup = () => {
         p5.createCanvas(this.componentWidth, this.componentHeight);
         initValues();
@@ -45,7 +55,7 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): voi
             p5.push();
             p5.translate(p5.width / 2, p5.height / 2);
             this.automaton.states.forEach((state, index) => {
-                p5.defineColor(state);
+                defineColor(state);
                 p5.push();
                 p5.rotate(angle * index);
                 //
@@ -57,7 +67,7 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): voi
             p5.pop();
         } else {
             this.automaton.states.forEach((state, index) => {
-                p5.defineColor(state);
+                defineColor(state);
                 p5.line(
                     getLinearX(index),
                     lineHeight - getAmplitude(state),
@@ -70,16 +80,6 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): voi
         }
     };
 
-    p5.defineColor = (state: number) => {
-        if (state === 1) {
-            p5.stroke(contrastColor[0], contrastColor[1], contrastColor[2]);
-            p5.fill(contrastColor[0], contrastColor[1], contrastColor[2]);
-        } else {
-            p5.stroke(0);
-            p5.fill(0);
-        }
-    };
-
     p5.automatonReset = () => {
         initValues();
     };
@@ -88,7 +88,4 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: p5): voi
         p5.resizeCanvas(w, h);
         initValues();
     };
-
-    p5.automatonModeChange = () => {};
-    p5.automatonStateUpdate = () => {};
 });

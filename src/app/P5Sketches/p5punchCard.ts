@@ -1,7 +1,7 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 
-export const p5punchCard = new P5Sketch('punchcard', function punchcardSketch(p5: p5): void {
+export const p5punchCard = new P5Sketch('punchcard', function punchcardSketch(p5: widgetP5): void {
     let edge: number = 0;
     let linePosition: number = 0;
     let dotSize: number = 1;
@@ -57,7 +57,4 @@ export const p5punchCard = new P5Sketch('punchcard', function punchcardSketch(p5
     p5.automatonReset = () => {
         initValues();
     };
-
-    p5.automatonStateUpdate = () => {};
-    p5.automatonModeChange = () => {};
 });

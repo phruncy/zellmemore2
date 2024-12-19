@@ -20,7 +20,7 @@ import { NgIf, NgFor } from '@angular/common';
     imports: [NgIf, NgFor],
 })
 export class Step02Component implements Step, OnInit {
-    private cells = [{ state: 'active' }];
+    public cells = [{ state: 'active' }];
     activeDescription = input.required<number>();
     readonly descriptions = [
         "Now let's align a bunch of them one-dimensionally in a row.",

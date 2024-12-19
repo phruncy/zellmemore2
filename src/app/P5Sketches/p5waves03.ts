@@ -1,9 +1,9 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 import { sketchColors } from 'src/app/utils/colors';
 import { Agent } from 'src/app/utils/agent';
 
-export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: p5): void {
+export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: widgetP5): void {
     let amplitude: number; // absolute spatial difference between 0 and 1 states
     let radius: number; // radius of the 0 state position in circular mode
     let baseline: number; // y coordinate of the 0 state in linear mode
@@ -84,7 +84,7 @@ export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: p5):
         p5.createCanvas(this.componentWidth, this.componentWidth);
         p5.noFill();
         p5.stroke(0);
-        p5.strokeWeight(0.5, 15);
+        p5.strokeWeight(0.5);
         p5.background(255);
         initValues();
     };

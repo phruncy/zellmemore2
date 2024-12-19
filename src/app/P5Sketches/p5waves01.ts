@@ -1,8 +1,8 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 import { Agent } from 'src/app/utils/agent';
 
-export const p5waves01 = new P5Sketch('waves01', function waves01Sketch(p5: p5): void {
+export const p5waves01 = new P5Sketch('waves01', function waves01Sketch(p5: widgetP5): void {
     let agents: Agent[] = [];
     let amplitude: number; // absolute spatial difference between 0 and 1 states
     let radius: number;
@@ -95,6 +95,4 @@ export const p5waves01 = new P5Sketch('waves01', function waves01Sketch(p5: p5):
         p5.resizeCanvas(w, h);
         p5.automatonReset();
     };
-
-    p5.automatonModeChange = () => {};
 });

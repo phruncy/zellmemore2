@@ -37,7 +37,7 @@ export class Step06Component implements Step, OnInit {
     ];
 
     cells = [{ state: 'active' }];
-    private edges = [{ state: 'inactive' }, { state: 'active' }];
+    readonly edges = [{ state: 'inactive' }, { state: 'active' }];
 
     get icon() {
         if (this.activeDescription() === 0) {

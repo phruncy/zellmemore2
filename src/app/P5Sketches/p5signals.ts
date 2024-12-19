@@ -1,9 +1,9 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 import { Agent } from 'src/app/utils/agent';
 import { sketchColors } from 'src/app/utils/colors';
 
-export const p5signals = new P5Sketch('signals', function signalsSketch(p5: p5): void {
+export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widgetP5): void {
     let amplitude: number; // absolute spatial difference between 0 and 1 states
     let dotSize: number; // size of the dots representing the cells
     let radius: number; // radius of the 0 state position in circular mode
@@ -91,6 +91,4 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: p5):
         p5.background(0);
         initValues();
     };
-
-    p5.automatonModeChange = () => {};
 });

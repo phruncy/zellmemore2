@@ -1,7 +1,7 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 
-export const p5barcode = new P5Sketch('barcode', function barcodeSketch(p5: p5): void {
+export const p5barcode = new P5Sketch('barcode', function barcodeSketch(p5: widgetP5): void {
     let cellSize: number;
 
     const initValues = () => {
@@ -30,9 +30,7 @@ export const p5barcode = new P5Sketch('barcode', function barcodeSketch(p5: p5):
         initValues();
     };
 
-    p5.automatonModeChange = () => {};
     p5.automatonReset = () => {
         initValues();
     };
-    p5.automatonStateUpdate = () => {};
 });

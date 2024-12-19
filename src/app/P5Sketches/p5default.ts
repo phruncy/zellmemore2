@@ -1,7 +1,7 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 
-export const p5default = new P5Sketch('default', function defaultSketch(p5: p5): void {
+export const p5default = new P5Sketch('default', function defaultSketch(p5: widgetP5): void {
     let blockSize: number;
     let maxDisplayableGenerations: number;
     let buffer: ImageData;
@@ -65,6 +65,4 @@ export const p5default = new P5Sketch('default', function defaultSketch(p5: p5):
         initValues();
         initFrameBuffer();
     };
-
-    p5.automatonModeChange = () => {};
 });

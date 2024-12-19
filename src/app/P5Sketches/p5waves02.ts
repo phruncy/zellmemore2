@@ -1,8 +1,8 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 import { Agent } from 'src/app/utils/agent';
 
-export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: p5): void {
+export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widgetP5): void {
     let amplitude: number; // absolute spatial difference between 0 and 1 states
     let radius: number; // radius of the 0 state position in circular mode
     let margin: number;
@@ -91,6 +91,4 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: p5):
             agents[index].target = getTargetPosition(state);
         });
     };
-
-    p5.automatonModeChange = () => {};
 });

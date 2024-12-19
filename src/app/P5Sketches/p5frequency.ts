@@ -1,7 +1,7 @@
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
-import * as p5 from 'p5';
+import { widgetP5 } from './p5Widget';
 
-export const p5frequency = new P5Sketch('frequency', function (p5: p5): void {
+export const p5frequency = new P5Sketch('frequency', function (p5: widgetP5): void {
     let barWidth: number;
     let history: number[];
 
@@ -49,6 +49,4 @@ export const p5frequency = new P5Sketch('frequency', function (p5: p5): void {
             history[index] += state;
         });
     };
-
-    p5.automatonModeChange = () => {};
 });

@@ -1,6 +1,13 @@
 import { Component, HostListener, model, OnInit } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
-import { faPlay, faUndo, faAngleLeft, faPause, faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+    faPlay,
+    faUndo,
+    faAngleLeft,
+    faPause,
+    faHome,
+    faGear,
+} from '@fortawesome/free-solid-svg-icons';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -19,6 +26,7 @@ export class ToolbarToprowComponent implements OnInit {
     readonly faUndo = faUndo;
     readonly faAngleLeft = faAngleLeft;
     readonly faHome = faHome;
+    readonly faGear = faGear;
     generation: number;
 
     displayController = model<boolean>(true);
@@ -28,6 +36,10 @@ export class ToolbarToprowComponent implements OnInit {
         this.update = this.update.bind(this);
         this.automaton.changed$.subscribe(this.update);
         this.automaton.cellsChanged$.subscribe(this.update);
+    }
+
+    get isMobileLayout() {
+        return window.innerWidth < 480;
     }
 
     @HostListener('window:keydown.space', ['$event'])

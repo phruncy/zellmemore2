@@ -6,7 +6,7 @@
 $tutorialOffsetMobile: 15px;
 $tutorialOffsetDesktop: 35px;
 $paddingSides: 3rem;
-$paddingSidesMobile: 2.5rem;
+$paddingSidesMobile: 2rem;
 $borderWidth: 2px;
 
 body {
@@ -17,7 +17,7 @@ body {
     margin: auto;
     margin-top: 0;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .header {
@@ -107,6 +107,7 @@ body {
     }
     .outer-container {
         margin-top: 40px;
+        line-height: 1.6;
     }
     .app-tutorial-container {
         height: 500px;

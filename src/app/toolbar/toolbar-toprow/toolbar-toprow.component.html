@@ -9,7 +9,11 @@
     <div class="stats">generation: {{ generation }}</div>
     <button class="btn-settings" mat-button (click)="toggleController()" matTooltip="show / hide">
         <div class="icon settings-label">
-            settings
+            <span class="menu-button-label" [class.active]="!isMobileLayout">settings</span>
+            <fa-icon
+                class="menu-button-label"
+                [icon]="faGear"
+                [class.active]="isMobileLayout"></fa-icon>
             <fa-icon
                 [icon]="faAngleLeft"
                 class="settings icon"

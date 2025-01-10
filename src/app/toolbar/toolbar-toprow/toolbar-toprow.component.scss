@@ -4,7 +4,7 @@
 @import '../toolbar.common.scss';
 
 .toprow-container {
-    min-width: 390px;
+    min-width: 360px;
     font-weight: $topbarFontWeight;
     margin-bottom: 7px;
     display: flex;
@@ -48,7 +48,7 @@
         display: inline-block;
         transform: rotate(0deg);
         transition: all 0.2s ease-out;
-        margin-left: 2px;
+        margin-left: 5px;
 
         &.active {
             transform: rotate(-90deg);
@@ -57,6 +57,13 @@
     }
 
     &.settings-label {
+        display: flex;
+    }
+}
+
+.menu-button-label {
+    display: none;
+    &.active {
         display: block;
     }
 }

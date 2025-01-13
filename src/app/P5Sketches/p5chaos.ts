@@ -26,7 +26,12 @@ export const p5chaos = new P5Sketch('chaos', function chaosSketch(p5: widgetP5):
 
     const addCurrentToFrameBuffer = () => {
         drawCurrentGeneration();
-        buffer = p5.drawingContext.getImageData(0, 0, p5.width, p5.height);
+        buffer = p5.drawingContext.getImageData(
+            0,
+            0,
+            p5.width * p5.pixelDensity(),
+            p5.height * p5.pixelDensity(),
+        );
     };
 
     const initFrameBuffer = () => {

@@ -25,7 +25,12 @@ export const p5default = new P5Sketch('default', function defaultSketch(p5: widg
 
     const addCurrentToFrameBuffer = () => {
         drawCurrentGeneration();
-        buffer = p5.drawingContext.getImageData(0, 0, p5.width, p5.height);
+        buffer = p5.drawingContext.getImageData(
+            0,
+            0,
+            p5.width * p5.pixelDensity(),
+            p5.height * p5.pixelDensity(),
+        );
     };
 
     const initFrameBuffer = () => {
@@ -45,7 +50,7 @@ export const p5default = new P5Sketch('default', function defaultSketch(p5: widg
     p5.draw = () => {
         p5.background(255);
         p5.drawingContext.putImageData(buffer, 0, 0);
-        buffer = p5.drawingContext.getImageData(0, 0, p5.width, p5.height);
+        //buffer = p5.drawingContext.getImageData(0, 0, p5.width, p5.height);
     };
 
     p5.automatonStateUpdate = () => {

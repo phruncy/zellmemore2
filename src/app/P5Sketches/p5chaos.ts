@@ -51,7 +51,12 @@ export const p5chaos = new P5Sketch('chaos', function chaosSketch(p5: widgetP5):
     p5.draw = () => {
         p5.background(255);
         p5.drawingContext.putImageData(buffer, 0, 0);
-        buffer = p5.drawingContext.getImageData(0, 0, p5.width, p5.height);
+        buffer = p5.drawingContext.getImageData(
+            0,
+            0,
+            p5.width * p5.pixelDensity(),
+            p5.height * p5.pixelDensity(),
+        );
     };
 
     p5.automatonStateUpdate = () => {

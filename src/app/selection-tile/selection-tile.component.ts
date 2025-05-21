@@ -1,10 +1,11 @@
-import { Component, OnInit, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationService } from '../services/visualization.service';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardImage } from '@angular/material/card';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatIconButton } from '@angular/material/button';
 import { MatRipple } from '@angular/material/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-selection-tile',
@@ -21,7 +22,7 @@ import { MatRipple } from '@angular/material/core';
         MatRipple,
     ],
 })
-export class SelectionTileComponent implements OnInit {
+export class SelectionTileComponent {
     id = input.required<string>();
     name = input.required<string>();
     thumbnail = input<any>();
@@ -34,13 +35,11 @@ export class SelectionTileComponent implements OnInit {
         return this._isActive;
     }
 
-    constructor(private visualizationService: VisualizationService) {}
-
-    ngOnInit() {
+    constructor(private visualizationService: VisualizationService) {
         this.onActiveVisualizationChange = this.onActiveVisualizationChange.bind(this);
-        this.visualizationService.$activeComponentsChanged.subscribe(
-            this.onActiveVisualizationChange,
-        );
+        this.visualizationService.$activeComponentsChanged
+            .pipe(takeUntilDestroyed())
+            .subscribe(this.onActiveVisualizationChange);
     }
 
     onActiveVisualizationChange() {

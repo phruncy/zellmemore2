@@ -1,56 +1,56 @@
 [
     {
-        "id": "v001",
+        "id": 0,
         "name": "Default",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00001.png"
     },
     {
-        "id": "v002",
+        "id": 1,
         "name": "Barcodes",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00002.png"
     },
     {
-        "id": "v003",
+        "id": 2,
         "name": "Frequency",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00003.png"
     },
     {
-        "id": "v004",
+        "id": 3,
         "name": "Punchcard",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00004.png"
     },
     {
-        "id": "v005",
+        "id": 4,
         "name": "Threads",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00005.png"
     },
     {
-        "id": "v006",
+        "id": 5,
         "name": "Signals",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00006.png"
     },
     {
-        "id": "v007",
+        "id": 6,
         "name": "Vortex",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00007.png"
     },
     {
-        "id": "v008",
+        "id": 7,
         "name": "Chaos",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00008.png"
     },
     {
-        "id": "v009",
+        "id": 8,
         "name": "Waves 1",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00009.png"
     },
     {
-        "id": "v010",
+        "id": 9,
         "name": "Waves 2",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00010.png"
     },
     {
-        "id": "v011",
+        "id": 10,
         "name": "Waves 3",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00011.png"
     }

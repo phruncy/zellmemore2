@@ -11,7 +11,7 @@ export class VisualizationDetailService {
 
     constructor(private _http: HttpClient) {}
 
-    async getName(id: string) {
+    async getName(id: number) {
         const data = await this._http.get<any>(this._source).toPromise();
         const name = data.find((obj) => obj.id === id).name;
         return name;

@@ -16,63 +16,54 @@ import { p5vortex } from '../P5Sketches/p5vortex';
 
 @Injectable({ providedIn: 'root' })
 export class VisualizationService {
-    private _visualizationToDisplay: string;
+    private _currentSelectionId: number;
     private _selectionChanged = new Subject<void>();
     public selectionChanged$ = this._selectionChanged.asObservable();
     private _activeComponentsChanged = new Subject<void>();
     public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
     private _activeComponents = [];
-
-    private p5Sketches = {
-        v001: p5default,
-        v002: p5barcode,
-        v003: p5frequency,
-        v004: p5punchCard,
-        v005: p5threads,
-        v006: p5signals,
-        v007: p5vortex,
-        v008: p5chaos,
-        v009: p5waves01,
-        v010: p5waves02,
-        v011: p5waves03,
-    };
+    private p5Sketches = [
+        p5default,
+        p5barcode,
+        p5frequency,
+        p5punchCard,
+        p5threads,
+        p5signals,
+        p5vortex,
+        p5chaos,
+        p5waves01,
+        p5waves02,
+        p5waves03,
+    ];
     constructor() {}
 
-    get visualizationToDisplay(): string {
-        return this._visualizationToDisplay;
-    }
-
-    set visualizationToDisplay(id: string) {
-        if (!(id in this.p5Sketches)) {
-            const unknownComponent = new Error("Oops, this component doesn't exist.");
-            throw unknownComponent;
-        }
-        try {
-            this._visualizationToDisplay = id;
-        } catch (error) {
-            console.log(error);
-        }
-        this._selectionChanged.next();
+    get visualizationToDisplay(): number {
+        return this._currentSelectionId;
     }
 
     get activeComponents() {
         return this._activeComponents;
     }
 
-    getComponentById(id) {
-        return this.p5Sketches[id];
+    public select(id: number) {
+        if (id < 0 || id >= this.p5Sketches.length) {
+            const unknownComponent = new Error("Oops, this component doesn't exist.");
+            throw unknownComponent;
+        }
+        try {
+            this._currentSelectionId = id;
+        } catch (error) {
+            console.log(error);
+        }
+        this._selectionChanged.next();
     }
 
     provideSketch(): P5Sketch {
-        return this.p5Sketches[this.visualizationToDisplay];
-    }
-
-    provideComponent(): P5Sketch {
-        return this.p5Sketches[this.visualizationToDisplay];
+        return this.p5Sketches[this._currentSelectionId];
     }
 
     addToActive(visualization: P5VisualizationComponent) {
-        const id = this.visualizationToDisplay;
+        const id = this._currentSelectionId;
         this._activeComponents.push(id);
         const sub = visualization.$onDestroy.subscribe(() => {
             this.removeFromActive(id);
@@ -81,13 +72,8 @@ export class VisualizationService {
         this._activeComponentsChanged.next();
     }
 
-    removeFromActive(id: string) {
-        const index = this._activeComponents.indexOf(id);
-        if (index === 0) {
-            this._activeComponents.shift();
-        } else {
-            this._activeComponents.splice(index, 1);
-        }
+    private removeFromActive(id: number) {
+        this._activeComponents.splice(id, 1);
         this._activeComponentsChanged.next();
     }
 }

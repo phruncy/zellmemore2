@@ -23,7 +23,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     ],
 })
 export class SelectionTileComponent {
-    id = input.required<string>();
+    id = input.required<number>();
     name = input.required<string>();
     thumbnail = input<any>();
 
@@ -46,7 +46,7 @@ export class SelectionTileComponent {
         this._isActive = this.visualizationService.activeComponents.includes(this.id());
     }
 
-    selectVisualizationToDisplay(id: string) {
-        this.visualizationService.visualizationToDisplay = id;
+    selectVisualizationToDisplay(id: number) {
+        this.visualizationService.select(id);
     }
 }

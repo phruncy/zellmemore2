@@ -16,6 +16,7 @@ import { VisualizationDetailService } from '../services/visualization-detail.ser
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
 
@@ -31,8 +32,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
     readonly faTimes = faTimes;
     readonly faPlayCircle = faPlayCircle;
     readonly faExpand = faExpand;
-
-    isRunning: boolean = false;
 
     widgetentry = viewChild('entry', { read: ViewContainerRef });
     fullscreenContainer = viewChild<ElementRef>('fullscreen');
@@ -51,9 +50,9 @@ export class WidgetComponent implements OnInit, OnDestroy {
         private sizeService: SizeService,
         private automaton: AutomatonService,
     ) {
-        this.automaton.ready$.subscribe(() => {
-            this.isRunning = this.automaton.isRunning;
-        });
+        this.updateSize = this.updateSize.bind(this);
+        this.sizeService.sizeChanged$.pipe(takeUntilDestroyed()).subscribe(this.updateSize);
+        this.sizeService.increaseWidgetNumber();
     }
 
     set self(self: ComponentRef<WidgetComponent>) {
@@ -65,9 +64,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
      * The size needs to be set before the component is loaded
      */
     ngOnInit() {
-        this.updateSize = this.updateSize.bind(this);
-        this.sizeService.sizeChanged$.subscribe(this.updateSize);
-        this.sizeService.increaseWidgetNumber();
         this.updateSize();
         this.fetchComponent();
     }

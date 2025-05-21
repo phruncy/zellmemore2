@@ -18,7 +18,7 @@ import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
     selector: 'app-p5-visualization',
     standalone: true,
     imports: [],
-    template: `<div #container id="container"></div>`,
+    template: `<div #container id="container" (click)="toggle()"></div>`,
 })
 export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContentInit {
     p5container = viewChild<ElementRef>('container');
@@ -90,5 +90,9 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
     fetchSize() {
         this.componentWidth = this.sizeService.widgetSize.toString();
         this.componentHeight = this.componentWidth;
+    }
+
+    toggle() {
+        this.automaton.toggleLoop();
     }
 }

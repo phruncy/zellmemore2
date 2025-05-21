@@ -9,7 +9,6 @@ import {
     ComponentRef,
 } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
-import { AutomatonService } from '../services/automaton.service';
 import { SizeService } from '../services/size.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { VisualizationDetailService } from '../services/visualization-detail.service';
@@ -48,7 +47,6 @@ export class WidgetComponent implements OnInit, OnDestroy {
         private visService: VisualizationService,
         private detailsService: VisualizationDetailService,
         private sizeService: SizeService,
-        private automaton: AutomatonService,
     ) {
         this.updateSize = this.updateSize.bind(this);
         this.sizeService.sizeChanged$.pipe(takeUntilDestroyed()).subscribe(this.updateSize);
@@ -72,22 +70,17 @@ export class WidgetComponent implements OnInit, OnDestroy {
         this.sizeService.decreaseWidgetNumber();
     }
 
-    onClick() {
-        this.automaton.toggleLoop();
-    }
-
     fetchComponent() {
         const visualization = this.visService.provideSketch();
         const component = this.widgetentry().createComponent(P5VisualizationComponent);
         this.visService.addToActive(component.instance);
         component.setInput('p5sketch', visualization);
-        component.location.nativeElement.addEventListener('click', this.onClick.bind(this));
         this.detailsService
             .getName(this.visService.visualizationToDisplay)
             .then((name) => (this.title = name));
     }
 
-    remove() {
+    destroy() {
         this._self.destroy();
     }
 

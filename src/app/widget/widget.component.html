@@ -1,7 +1,7 @@
 <div class="widget-container" #fullscreen>
     <div #entry></div>
     <div class="widget-overlay-header">
-        <fa-icon [icon]="faTimes" (click)="remove()" class="btn fade-in"></fa-icon>
+        <fa-icon [icon]="faTimes" (click)="destroy()" class="btn fade-in"></fa-icon>
         <div class="header-label fade-in">{{ title }}</div>
         <fa-icon [icon]="faExpand" (click)="enterFullscreen()" class="btn fade-in"></fa-icon>
     </div>

@@ -18,7 +18,7 @@ import { p5vortex } from '../P5Sketches/p5vortex';
 export class VisualizationService {
     private _currentSelectionId: number;
     private _selectionChanged = new Subject<void>();
-    public selectionChanged$ = this._selectionChanged.asObservable();
+    public visualizationRequested$ = this._selectionChanged.asObservable();
     private _activeComponentsChanged = new Subject<void>();
     public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
     private _activeComponents = [];
@@ -50,11 +50,7 @@ export class VisualizationService {
             const unknownComponent = new Error("Oops, this component doesn't exist.");
             throw unknownComponent;
         }
-        try {
-            this._currentSelectionId = id;
-        } catch (error) {
-            console.log(error);
-        }
+        this._currentSelectionId = id;
         this._selectionChanged.next();
     }
 

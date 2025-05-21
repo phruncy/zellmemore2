@@ -9,6 +9,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { VisualizationDescData } from 'src/VisualizationDescData';
 import { Observable } from 'rxjs';
+import { VisualizationService } from '../services/visualization.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-visualization-selection',
@@ -24,8 +26,20 @@ export class VisualizationSelectionComponent {
     public selectionTileData$: Observable<VisualizationDescData[]>;
     public shouldClose = output<boolean>();
 
-    constructor(private visualizationDetailService: VisualizationDetailService) {
-        this.selectionTileData$ = this.visualizationDetailService.provideVisualizations();
+    constructor(
+        private _visService: VisualizationService,
+        private _visualizationDetailService: VisualizationDetailService,
+    ) {
+        this.selectionTileData$ = this._visualizationDetailService.provideVisualizations();
+        this._visService.$activeComponentsChanged.pipe(takeUntilDestroyed()).subscribe();
+    }
+
+    isActive(id: number) {
+        return this._visService.activeComponents.includes(id);
+    }
+
+    requestWidgetCreation(contentId: number) {
+        this._visService.select(contentId);
     }
 
     close() {

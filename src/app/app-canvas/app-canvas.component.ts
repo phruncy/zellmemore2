@@ -44,8 +44,6 @@ export class WidgetFrameComponent implements OnInit {
     widgetAdded = output<boolean>();
     requestSelection = output<boolean>();
 
-    private _staticChildCounter = 0;
-
     constructor(
         private visualizationService: VisualizationService,
         public sizeService: SizeService,
@@ -58,7 +56,7 @@ export class WidgetFrameComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.visualizationService.selectionChanged$.subscribe(() => {
+        this.visualizationService.visualizationRequested$.subscribe(() => {
             this.addWidget();
         });
         this.sizeService.setFrameSize(

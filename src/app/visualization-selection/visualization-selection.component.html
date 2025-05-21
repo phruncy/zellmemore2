@@ -6,9 +6,10 @@
     <div class="selection-tiles-container">
         @for (tileData of selectionTileData$ | async; track tileData.id) {
             <app-selection-tile
-                [id]="tileData.id"
+                [active]="isActive(tileData.id)"
                 [name]="tileData.name"
-                [thumbnail]="tileData.thumbnail"></app-selection-tile>
+                [thumbnail]="tileData.thumbnail"
+                (selected)="requestWidgetCreation(tileData.id)"></app-selection-tile>
         }
     </div>
 </div>

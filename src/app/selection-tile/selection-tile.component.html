@@ -3,8 +3,8 @@
         <mat-card-title>{{ name() }}</mat-card-title>
     </mat-card-header>
     <div mat-card-image class="image-container">
-        <span class="overlay" (click)="selectVisualizationToDisplay(id())">
-            <fa-icon [icon]="faCheckCircle" class="check" [class.active]="isActive"></fa-icon>
+        <span class="overlay" (click)="onSelect()">
+            <fa-icon [icon]="faCheckCircle" class="check" [class.active]="active()"></fa-icon>
             <button
                 mat-icon-button
                 class="btn"

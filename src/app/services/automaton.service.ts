@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,8 +11,10 @@ export class AutomatonService {
         randomCells: 1,
     };
 
-    private _states: number[];
-    private _rule = 0;
+    private _states: number[] = [];
+    private readonly _rule = signal<number>(0);
+    readonly rule = this._rule.asReadonly();
+
     private _generation = 0;
     private _isRunning = false;
     private _isCircular: boolean;
@@ -85,16 +87,13 @@ export class AutomatonService {
         }
     }
 
-    get rule(): number {
-        return this._rule;
-    }
-    set rule(rule: number) {
-        this._rule = rule;
+    setRule(rule: number): void {
+        this._rule.set(rule);
         if (rule < 0) {
-            this._rule = 0;
+            this._rule.set(0);
         }
         if (rule > 255) {
-            this._rule = 255;
+            this._rule.set(255);
         }
     }
 
@@ -174,7 +173,7 @@ export class AutomatonService {
 
     private calculateState(left: number, middle: number, right: number): number {
         const ruleIndex = ((left << 2) | (middle << 1) | right) & 0b111;
-        const result = (this._rule >> ruleIndex) & 0b1;
+        const result = (this._rule() >> ruleIndex) & 0b1;
         return result;
     }
 
@@ -183,9 +182,8 @@ export class AutomatonService {
         this._fps = config.fps;
         this._initMode = parseInt(config.stateConfiguration);
         this._isCircular = config.circular;
-        this._rule = parseInt(
-            config.startRules[Math.floor(Math.random() * config.startRules.length)],
-            10,
+        this._rule.set(
+            parseInt(config.startRules[Math.floor(Math.random() * config.startRules.length)], 10),
         );
         const cellCount = parseInt(config.cellNumber);
         this.initCells(cellCount);

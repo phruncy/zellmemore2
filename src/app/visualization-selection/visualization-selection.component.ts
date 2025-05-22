@@ -3,7 +3,7 @@ import { VisualizationDetailService } from '../services/visualization-detail.ser
 import { AsyncPipe } from '@angular/common';
 import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
-import { SelectionTileComponent } from '../selection-tile/selection-tile.component';
+import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';

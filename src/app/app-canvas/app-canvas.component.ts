@@ -13,6 +13,7 @@ import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
 import { AnimatedTooltipComponent } from '../animated-tooltip/animated-tooltip.component';
 import { AddTileAreaComponent } from '../add-tile-area/add-tile-area.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-canvas',
@@ -49,16 +50,19 @@ export class WidgetFrameComponent implements OnInit {
         public sizeService: SizeService,
         private elRef: ElementRef,
         private cd: ChangeDetectorRef,
-    ) {}
+    ) {
+        this.visualizationService.visualizationRequested$
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => {
+                this.addWidget();
+            });
+    }
 
     get isEmpty(): boolean {
         return this.sizeService.widgetNumber === 0;
     }
 
     ngOnInit() {
-        this.visualizationService.visualizationRequested$.subscribe(() => {
-            this.addWidget();
-        });
         this.sizeService.setFrameSize(
             this.elRef.nativeElement.offsetWidth,
             this.elRef.nativeElement.offsetHeight,

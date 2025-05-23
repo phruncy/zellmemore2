@@ -7,7 +7,7 @@ import { SelectionTileComponent } from './selection-tile/selection-tile.componen
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
-import { VisualizationDescData } from 'src/VisualizationDescData';
+import { VisualizationDescData } from 'src/app/VisualizationDescData';
 import { Observable } from 'rxjs';
 import { VisualizationService } from '../services/visualization.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

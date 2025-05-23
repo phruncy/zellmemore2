@@ -7,12 +7,15 @@ import { StepDescription } from '../../step-description';
     standalone: true,
     imports: [NgComponentOutlet],
     template: `
-        <ng-container *ngComponentOutlet="content() ;inputs: { activeDescription: currentSection() }"></ng-container>
+        <ng-container
+            *ngComponentOutlet="
+                content();
+                inputs: { activeDescription: currentSection() }
+            "></ng-container>
     `,
     styles: [':host { height: 100%; display: inline-block; }'],
 })
-export class TutorialStepComponent 
-{
+export class TutorialStepComponent {
     content = input.required<StepDescription>();
     currentSection = input<number>(0);
 }

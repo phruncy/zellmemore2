@@ -9,7 +9,6 @@ import { Step06Component } from './step06/step06.component';
 import { StepFinalComponent } from './step-final/step-final.component';
 import { TutorialStepControlComponent } from './tutorial-step-control/tutorial-step-control.component';
 import { animations } from '../animations';
-import { NgIf } from '@angular/common';
 import { TutorialStepComponent } from './tutorial-step/tutorial-step.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StepDescription } from '../step-description';
@@ -20,7 +19,6 @@ import { MatButtonModule } from '@angular/material/button';
     selector: 'app-tutorial-animation',
     standalone: true,
     imports: [
-        NgIf,
         TutorialStepControlComponent,
         TutorialStepComponent,
         FontAwesomeModule,

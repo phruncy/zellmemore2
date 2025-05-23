@@ -1,12 +1,11 @@
 import { Component, model, input } from '@angular/core';
 import { animations } from 'src/app/home/animations';
-import { NgForOf } from '@angular/common';
 import { MatRipple } from '@angular/material/core';
 
 @Component({
     selector: 'app-tutorial-step-control',
     standalone: true,
-    imports: [NgForOf, MatRipple],
+    imports: [MatRipple],
     templateUrl: './tutorial-step-control.component.html',
     styleUrls: ['./tutorial-step-control.component.scss'],
     animations: [animations.slideInDescription],

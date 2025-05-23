@@ -4,6 +4,8 @@
 $stepMarkerWidth: 10px;
 
 .controls {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin: 0 8px;
     min-width: $stepMarkerWidth;
@@ -18,7 +20,7 @@ $stepMarkerWidth: 10px;
     cursor: pointer;
     opacity: 0.6;
     border: none;
-    margin: 0 5px;
+    margin: 5px;
 
     &.active {
         opacity: 1;

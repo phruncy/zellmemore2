@@ -15,16 +15,16 @@
             </div>
         </div>
         <div class="navigation">
-            <div *ngIf="activeStep > 0">
+            @if (activeStep > 0) {
                 <button mat-stroked-button color="accent" (click)="previous()">
                     <fa-icon [icon]="faAngleUp"></fa-icon>
                 </button>
-            </div>
-            <div *ngIf="activeStep < steps.length - 1">
+            }
+            @if (activeStep < steps.length - 1) {
                 <button mat-stroked-button color="accent" (click)="advance()">
                     <fa-icon [icon]="faAngleDown"></fa-icon>
                 </button>
-            </div>
+            }
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ import { Step } from '../step';
 import { animations } from 'src/app/home/animations';
 import { trigger, state, animate, style, transition } from '@angular/animations';
 import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
-import { NgIf, NgFor } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -21,7 +21,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
         animations.slideInOut,
     ],
     standalone: true,
-    imports: [NgIf, FaIconComponent, NgFor],
+    imports: [FaIconComponent, NgTemplateOutlet],
 })
 export class Step06Component implements Step, OnInit {
     activeDescription = input.required<number>();

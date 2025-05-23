@@ -2,7 +2,6 @@ import { Component, OnInit, input } from '@angular/core';
 import { Step } from '../step';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { animations } from 'src/app/home/animations';
-import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-step02',
@@ -17,7 +16,7 @@ import { NgIf, NgFor } from '@angular/common';
         animations.slideInDescription,
     ],
     standalone: true,
-    imports: [NgIf, NgFor],
+    imports: [],
 })
 export class Step02Component implements Step, OnInit {
     public cells = [{ state: 'active' }];

@@ -1,7 +1,6 @@
 import { Component, input } from '@angular/core';
 import { Step } from '../step';
 import { animations } from 'src/app/home/animations';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-step05',
@@ -9,7 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
     styleUrls: ['./step05.component.scss'],
     animations: [animations.slideInDescription, animations.dropdownCell],
     standalone: true,
-    imports: [NgFor, NgIf],
+    imports: [],
 })
 export class Step05Component implements Step {
     activeDescription = input.required<number>();

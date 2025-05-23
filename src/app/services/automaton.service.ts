@@ -2,9 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class AutomatonService {
     readonly initModes = {
         singeCell: 0,

@@ -5,12 +5,18 @@ import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { WidgetFrameComponent } from '../app-canvas/app-canvas.component';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
+import { SizeService } from '../services/size.service';
+import { AutomatonService } from '../services/automaton.service';
 
 @Component({
     selector: 'app-program-window',
     templateUrl: './program-window.component.html',
     styleUrls: ['./program-window.component.scss'],
-    providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
+    providers: [
+        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults },
+        SizeService,
+        AutomatonService,
+    ],
     standalone: true,
     imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent],
 })

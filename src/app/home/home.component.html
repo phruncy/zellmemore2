@@ -1,16 +1,12 @@
 <app-header class="header"></app-header>
 <div class="outer-container">
     <div class="section top">
-        <h1 class="landing-text colored">
-            One Algorithm, 12 depictions: Cellular automata are systems capable of producing
-            fascinating structures from simple rules.
-        </h1>
-        <h3 class="landing-text">
-            These mathematical models of self organizing systems evolve by repeatedly applying the
-            same algorithm on themselves. Despite – or due to ? – being so simple, their behaviour
-            is of intriguing complexity. This website invites you to visually explore the principle
-            of elementary cellular automata.
-        </h3>
+        @if (textContent$ | async; as content) {
+            <h1 class="landing-text colored">{{ content.landing }}</h1>
+            <h3 class="landing-text">
+                {{ content.about }}
+            </h3>
+        }
         <div class="landing-link-wrapper">
             <div class="landing-link">
                 <a routerLink="/program-window"

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { HeaderComponent } from './header/header.component';
 import { RouterLink } from '@angular/router';
@@ -6,6 +6,10 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
 import { CustomFooterComponent } from '../custom-footer/custom-footer.component';
 import { TutorialAnimationComponent } from './tutorial-animation/tutorial-animation.component';
+import { HomeContentService } from '../services/home-content.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { HomeContentData } from './HomeContentData';
 
 @Component({
     selector: 'app-home',
@@ -19,8 +23,16 @@ import { TutorialAnimationComponent } from './tutorial-animation/tutorial-animat
         MatDivider,
         CustomFooterComponent,
         TutorialAnimationComponent,
+        AsyncPipe,
     ],
 })
 export class HomeComponent {
+    private _contentService = inject(HomeContentService);
     readonly faArrowAltCircleRight = faChevronRight;
+
+    public textContent$: Observable<HomeContentData>;
+
+    constructor() {
+        this.textContent$ = this._contentService.fetchContent();
+    }
 }

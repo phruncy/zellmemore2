@@ -12,11 +12,11 @@ export const p5default = new P5Sketch('default', function defaultSketch(p5: widg
     };
 
     const getPositionY = (): number =>
-        Math.min(this.automaton.generation, maxDisplayableGenerations - 1) * blockSize;
+        Math.min(this.automaton.generation(), maxDisplayableGenerations - 1) * blockSize;
 
     const drawCurrentGeneration = () => {
         const positionY = getPositionY();
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             if (state === 1) {
                 p5.square(index * blockSize, positionY, blockSize);
             }
@@ -55,7 +55,8 @@ export const p5default = new P5Sketch('default', function defaultSketch(p5: widg
 
     p5.automatonStateUpdate = () => {
         p5.background(255);
-        const anchorY = this.automaton.generation <= maxDisplayableGenerations - 1 ? 0 : -blockSize;
+        const anchorY =
+            this.automaton.generation() <= maxDisplayableGenerations - 1 ? 0 : -blockSize;
         p5.drawingContext.putImageData(buffer, 0, anchorY);
         addCurrentToFrameBuffer();
     };

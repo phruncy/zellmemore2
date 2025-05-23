@@ -1,5 +1,5 @@
 <div class="automaton-controller-container">
-    <app-rule-control [rule]="automaton.rule" (ruleChanged)="changeRule($event)"></app-rule-control>
+    <app-rule-control [rule]="rule" (ruleChanged)="changeRule($event)"></app-rule-control>
     <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
     <mat-divider class="mobile-divider"></mat-divider>
     <app-controls-slider
@@ -7,13 +7,19 @@
         [(value)]="automaton.cellnumber"></app-controls-slider>
     <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
     <mat-divider class="mobile-divider"></mat-divider>
-    <app-edge-control [(checked)]="automaton.isCircular"></app-edge-control>
+    <app-edge-control
+        [checked]="isCircular()"
+        (checkedChange)="changeEdgeMode($event)"></app-edge-control>
     <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
     <mat-divider class="mobile-divider"></mat-divider>
     <app-state-control
         [options]="automatonStartOptions"
-        [(initState)]="automaton.initMode"></app-state-control>
+        [initState]="initMode()"
+        (initStateChange)="changeInitMode($event)"></app-state-control>
     <mat-divider class="desktop-divider" [vertical]="true"></mat-divider>
     <mat-divider class="mobile-divider"></mat-divider>
-    <app-controls-slider [settings]="speedSettings" [(value)]="automaton.fps"></app-controls-slider>
+    <app-controls-slider
+        [settings]="speedSettings"
+        [value]="fps()"
+        (valueChange)="changeFps($event)"></app-controls-slider>
 </div>

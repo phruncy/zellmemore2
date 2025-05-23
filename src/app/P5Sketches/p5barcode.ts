@@ -18,7 +18,7 @@ export const p5barcode = new P5Sketch('barcode', function barcodeSketch(p5: widg
 
     p5.draw = () => {
         p5.background(255);
-        this.automaton.states.forEach((element, i) => {
+        this.automaton.states().forEach((element, i) => {
             if (element === 1) {
                 p5.rect(i * cellSize, 0, cellSize, p5.height);
             }

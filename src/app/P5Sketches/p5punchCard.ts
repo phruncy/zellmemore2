@@ -30,10 +30,10 @@ export const p5punchCard = new P5Sketch('punchcard', function punchcardSketch(p5
 
     p5.draw = () => {
         p5.background(255);
-        if (this.automaton.isCircular) {
+        if (this.automaton.isCircular()) {
             p5.push();
             p5.translate(p5.width / 2, p5.height / 2);
-            this.automaton.states.forEach((state, index) => {
+            this.automaton.states().forEach((state, index) => {
                 p5.push();
                 p5.rotate(angle * index);
                 p5.translate(0, circularModeRadius + getAmplitude(state));
@@ -42,7 +42,7 @@ export const p5punchCard = new P5Sketch('punchcard', function punchcardSketch(p5
             });
             p5.pop();
         } else {
-            this.automaton.states.forEach((state, index) => {
+            this.automaton.states().forEach((state, index) => {
                 // amplitude has to be subtracted since the coordinate origin is at the top!
                 p5.circle(getLinearX(index), linePosition - getAmplitude(state), dotSize);
             });

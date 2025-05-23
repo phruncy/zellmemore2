@@ -27,7 +27,7 @@ export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: widg
         segment = (Math.PI * 2) / this.automaton.cellnumber;
         // initialize agents with current automaton state
         agents = [];
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents.push(new Agent(index, getTargetPosition(state)));
         });
         centerX = p5.width / 2;
@@ -36,7 +36,7 @@ export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: widg
     };
 
     const moveAgents = () => {
-        const speed = amplitude / (60 / this.automaton.fps);
+        const speed = amplitude / (60 / this.automaton.fps());
         agents.forEach((agent) => {
             const distanceRemaining = Math.abs(agent.target - agent.pos);
             if (distanceRemaining <= speed) {
@@ -96,7 +96,7 @@ export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: widg
             centerY += (p5.mouseY - centerY) * structureSpeed;
             baseline += (p5.mouseY - baseline) * structureSpeed;
         }
-        if (this.automaton.isCircular) {
+        if (this.automaton.isCircular()) {
             drawCircularShape();
         } else {
             drawLinearShape();
@@ -122,7 +122,7 @@ export const p5waves03 = new P5Sketch('waves03', function waves03Sketch(p5: widg
         const color: number[] = sketchColors[colorCounter];
         colorCounter = (colorCounter + 1) % sketchColors.length;
         p5.stroke(color[0], color[1], color[2]);
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents[index].target = getTargetPosition(state);
         });
     };

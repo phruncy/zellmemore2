@@ -9,40 +9,33 @@ export class AutomatonService {
         randomCells: 1,
     };
 
-    private _states: number[] = [];
+    private _states = signal<number[]>([]);
     private readonly _rule = signal<number>(0);
     readonly rule = this._rule.asReadonly();
 
-    private _generation = 0;
+    private _generation = signal<number>(0);
     private _isRunning = false;
-    private _isCircular: boolean;
-    private _fps: number;
+    private _isCircular = signal<boolean>(false);
+    private _fps = signal<number>(1);
     private _lastFrameTime = 0;
-    private _initMode: number;
+    private _initMode = signal<number>(0);
 
-    /* Communication with views */
-    private _changed = new Subject<void>();
-    public changed$ = this._changed.asObservable();
     private _cellsChanged = new Subject<void>();
     public cellsChanged$ = this._cellsChanged.asObservable();
-    private _ready = new Subject<void>();
-    public ready$ = this._ready.asObservable();
-    private _modeChanged = new Subject<void>();
-    public modeChanged$ = this._modeChanged.asObservable();
 
     constructor(private http: HttpClient) {
         this.loop = this.loop.bind(this);
-        this.generate = this.generate.bind(this);
         this.initCells = this.initCells.bind(this);
         this.configure = this.configure.bind(this);
         this.http.get('../assets/json/automaton-config.json').subscribe(this.configure);
     }
 
-    get states(): number[] {
-        return this._states;
+    get states() {
+        return this._states.asReadonly();
     }
-    get generation(): number {
-        return this._generation;
+
+    get generation() {
+        return this._generation.asReadonly();
     }
     get isRunning(): boolean {
         return this._isRunning;
@@ -54,24 +47,16 @@ export class AutomatonService {
         }
     }
 
-    get isCircular(): boolean {
-        return this._isCircular;
-    }
-    set isCircular(value: boolean) {
-        const previous = this._isCircular;
-        this._isCircular = value;
-        if (previous != value) this._modeChanged.next();
+    get isCircular() {
+        return this._isCircular.asReadonly();
     }
 
     get fps() {
-        return this._fps;
-    }
-    set fps(fps: number) {
-        this._fps = fps;
+        return this._fps.asReadonly();
     }
 
     get cellnumber() {
-        return this._states.length;
+        return this._states().length;
     }
     set cellnumber(cells: number) {
         try {
@@ -85,6 +70,10 @@ export class AutomatonService {
         }
     }
 
+    get initMode() {
+        return this._initMode.asReadonly();
+    }
+
     setRule(rule: number): void {
         this._rule.set(rule);
         if (rule < 0) {
@@ -95,15 +84,20 @@ export class AutomatonService {
         }
     }
 
-    get initMode(): number {
-        return this._initMode;
+    setEdgeConnection(value: boolean) {
+        this._isCircular.set(value);
     }
-    set initMode(mode: number) {
+
+    setFps(fps: number) {
+        this._fps.set(fps);
+    }
+
+    setInitMode(mode: number) {
         try {
             if (!(mode === this.initModes.singeCell || mode === this.initModes.randomCells)) {
                 throw new Error('Invalid State');
             }
-            this._initMode = mode;
+            this._initMode.set(mode);
             this.reset();
         } catch (error) {
             console.error(error);
@@ -111,52 +105,51 @@ export class AutomatonService {
     }
 
     reset(): void {
-        this.initCells(this._states.length);
+        this.initCells(this._states().length);
     }
 
-    toggleLoop() {
+    toggle() {
         this.isRunning = !this.isRunning;
     }
 
     private generate() {
-        const count = this._states.length;
-        const newGen: number[] = this._states.map((state, index, arr) => {
+        const count = this._states().length;
+        const newGen: number[] = this._states().map((state, index, arr) => {
             let left = arr[(index - 1 + count) % count];
-            if (index === 0 && !this._isCircular) {
+            if (index === 0 && !this._isCircular()) {
                 left = 0;
             }
             let right = arr[(index + 1) % count];
-            if (index === count - 1 && !this._isCircular) {
+            if (index === count - 1 && !this._isCircular()) {
                 right = 0;
             }
             const newState = this.calculateState(left, state, right);
             return newState;
         });
-        this._states = newGen;
-        this._generation++;
-        this._changed.next();
+        this._states.set(newGen);
+        this._generation.update((value) => value + 1);
     }
 
     private initCells(cellNumber: number) {
-        this._states = Array(cellNumber).fill(0);
+        this._states.set(Array(cellNumber).fill(0));
         this.initStates();
-        this._generation = 0;
+        this._generation.set(0);
         this._cellsChanged.next();
     }
 
     private initStates() {
-        if (this._initMode === 0) {
-            const i = Math.floor(this._states.length / 2);
-            this._states[i] = 1;
+        if (this._initMode() === 0) {
+            const i = Math.floor(this._states().length / 2);
+            this._states()[i] = 1;
         } else {
-            this._states = Array.from({ length: this._states.length }, () =>
-                Math.round(Math.random()),
+            this._states.set(
+                Array.from({ length: this._states().length }, () => Math.round(Math.random())),
             );
         }
     }
 
     private loop(timestamp) {
-        if (timestamp < this._lastFrameTime + 1000 / this._fps) {
+        if (timestamp < this._lastFrameTime + 1000 / this._fps()) {
             requestAnimationFrame(this.loop);
             return;
         }
@@ -177,14 +170,13 @@ export class AutomatonService {
 
     private configure(data): void {
         const config = data;
-        this._fps = config.fps;
-        this._initMode = parseInt(config.stateConfiguration);
-        this._isCircular = config.circular;
+        this._fps.set(config.fps);
+        this._initMode.set(parseInt(config.stateConfiguration));
+        this._isCircular.set(config.circular);
         this._rule.set(
             parseInt(config.startRules[Math.floor(Math.random() * config.startRules.length)], 10),
         );
         const cellCount = parseInt(config.cellNumber);
         this.initCells(cellCount);
-        this._ready.next();
     }
 }

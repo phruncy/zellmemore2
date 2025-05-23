@@ -21,7 +21,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
         radius = (p5.width / 2 - amplitude) * 0.5;
         linearGap = (p5.width - 2 * margin) / this.automaton.cellnumber;
         agents = [];
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents.push(new Agent(index, getTargetPosition(state)));
         });
     };
@@ -29,7 +29,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
     const getTargetPosition = (state) => (state === 1 ? amplitude : -amplitude);
 
     const moveAgents = () => {
-        const speed = 2 * amplitude * this.automaton.fps;
+        const speed = 2 * amplitude * this.automaton.fps();
         const movement = speed * (1 / p5.deltaTime);
         agents.forEach((agent) => {
             if (Math.abs(agent.pos - agent.target) < movement) agent.pos = agent.target;
@@ -51,7 +51,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
         centerY += (p5.mouseY - centerY) * 0.003;
         p5.background(255);
         p5.push();
-        if (this.automaton.isCircular) {
+        if (this.automaton.isCircular()) {
             p5.fill(0);
             p5.translate(centerX, centerY);
             p5.beginShape();
@@ -89,7 +89,7 @@ export const p5waves02 = new P5Sketch('waves02', function waves02Sketch(p5: widg
     };
 
     p5.automatonStateUpdate = () => {
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents[index].target = getTargetPosition(state);
         });
     };

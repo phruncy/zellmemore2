@@ -7,6 +7,7 @@ import {
     ElementRef,
     AfterContentInit,
     input,
+    effect,
 } from '@angular/core';
 import { AutomatonService } from '../services/automaton.service';
 import { Subscription, Subject } from 'rxjs';
@@ -26,25 +27,26 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
     @HostBinding('style.width.px') protected componentWidth;
     @HostBinding('style.height.px') protected componentHeight;
 
-    private _automatonChanged: Subscription;
     private _automatonReset: Subscription;
-    private _automatonModeChanged: Subscription;
     private _onDestroy = new Subject<void>();
     public $onDestroy = this._onDestroy.asObservable();
 
     private _p5: widgetP5;
 
-    constructor(private automaton: AutomatonService) {}
+    constructor(private automaton: AutomatonService) {
+        effect(() => {
+            this.automaton.states();
+            if (this._p5) this.update();
+        });
+        effect(() => {
+            this.automaton.isCircular();
+            if (this._p5) this.modeChanged();
+        });
+    }
 
     ngOnInit() {
-        this._automatonChanged = this.automaton.changed$.subscribe(() => {
-            this.update();
-        });
         this._automatonReset = this.automaton.cellsChanged$.subscribe(() => {
             this.reset();
-        });
-        this._automatonModeChanged = this.automaton.modeChanged$.subscribe(() => {
-            this.modeChanged();
         });
     }
 
@@ -54,14 +56,12 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
     }
 
     ngOnDestroy() {
-        this._automatonChanged.unsubscribe();
         this._automatonReset.unsubscribe();
-        this._automatonModeChanged.unsubscribe();
         this._onDestroy.next();
     }
 
     toggle() {
-        this.automaton.toggleLoop();
+        this.automaton.toggle();
     }
 
     resizeContent(size: number): void {

@@ -10,11 +10,11 @@ export const p5frequency = new P5Sketch('frequency', function (p5: widgetP5): vo
     };
 
     const resetHistory = () => {
-        history = this.automaton.states.slice(0);
+        history = this.automaton.states().slice(0);
     };
 
     const scale = (): number => {
-        const highest = this.automaton.generation * barWidth;
+        const highest = this.automaton.generation() * barWidth;
         if (highest > p5.height) return p5.height / highest;
         return 1.0;
     };
@@ -45,7 +45,7 @@ export const p5frequency = new P5Sketch('frequency', function (p5: widgetP5): vo
     };
 
     p5.automatonStateUpdate = () => {
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             history[index] += state;
         });
     };

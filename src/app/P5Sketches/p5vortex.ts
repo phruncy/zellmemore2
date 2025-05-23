@@ -12,7 +12,7 @@ export const p5vortex = new P5Sketch('vortex', function vortexSketch(p5: widgetP
         center = p5.width / 2;
         radiusMax = p5.height * 0.9;
         maxHistory = Math.floor(radiusMax * 0.5);
-        history = this.automaton.states.slice();
+        history = this.automaton.states().slice();
         arcLength = (Math.PI * 2) / this.automaton.cellnumber;
     };
 
@@ -49,7 +49,7 @@ export const p5vortex = new P5Sketch('vortex', function vortexSketch(p5: widgetP
     };
 
     p5.automatonStateUpdate = () => {
-        history = this.automaton.states.concat(history);
+        history = this.automaton.states().concat(history);
         if (history.length > maxHistory * this.automaton.cellnumber) {
             history.splice(-this.automaton.cellnumber);
         }

@@ -23,14 +23,14 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
         amplitude = p5.height * 0.05;
         radius = p5.width / 2 - margin - amplitude;
         agents = [];
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents.push(new Agent(index, getTargetPosition(state)));
         });
         colorIndex = Math.floor(Math.random() * 7);
     };
 
     const moveAgents = () => {
-        const speed = 2 * amplitude * this.automaton.fps;
+        const speed = 2 * amplitude * this.automaton.fps();
         const movement = speed * (1 / p5.deltaTime);
         agents.forEach((agent) => {
             if (Math.abs(agent.pos - agent.target) < movement) agent.pos = agent.target;
@@ -65,7 +65,7 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
         moveAgents();
         p5.background(0, 10);
         p5.push();
-        if (this.automaton.isCircular) {
+        if (this.automaton.isCircular()) {
             drawCircular();
         } else {
             drawLinear();
@@ -77,7 +77,7 @@ export const p5signals = new P5Sketch('signals', function signalsSketch(p5: widg
         const color: number[] = sketchColors[colorIndex];
         colorIndex = (colorIndex + 1) % sketchColors.length;
         p5.fill(color[0], color[1], color[2]);
-        this.automaton.states.forEach((state, index) => {
+        this.automaton.states().forEach((state, index) => {
             agents[index].target = getTargetPosition(state);
         });
     };

@@ -12,10 +12,13 @@ export const p5chaos = new P5Sketch('chaos', function chaosSketch(p5: widgetP5):
     };
 
     const getPositionY = (): number =>
-        Math.min(this.automaton.generation, maxDisplayableGenerations - 1) * blockSize;
+        Math.min(this.automaton.generation(), maxDisplayableGenerations - 1) * blockSize;
 
     const drawCurrentGeneration = () => {
-        const random: number[] = this.automaton.states.slice().sort(() => 0.5 - Math.random());
+        const random: number[] = this.automaton
+            .states()
+            .slice()
+            .sort(() => 0.5 - Math.random());
         const positionY = getPositionY();
         random.forEach((state, index) => {
             if (state === 1) {
@@ -61,7 +64,8 @@ export const p5chaos = new P5Sketch('chaos', function chaosSketch(p5: widgetP5):
 
     p5.automatonStateUpdate = () => {
         p5.background(255);
-        const anchorY = this.automaton.generation <= maxDisplayableGenerations - 1 ? 0 : -blockSize;
+        const anchorY =
+            this.automaton.generation() <= maxDisplayableGenerations - 1 ? 0 : -blockSize;
         p5.drawingContext.putImageData(buffer, 0, anchorY);
         addCurrentToFrameBuffer();
     };

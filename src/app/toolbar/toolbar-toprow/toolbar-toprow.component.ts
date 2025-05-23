@@ -1,4 +1,4 @@
-import { Component, HostListener, model, OnInit } from '@angular/core';
+import { Component, HostListener, model } from '@angular/core';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import {
     faPlay,
@@ -20,26 +20,23 @@ import { RouterLink } from '@angular/router';
     standalone: true,
     imports: [MatButton, MatTooltip, FaIconComponent, RouterLink],
 })
-export class ToolbarToprowComponent implements OnInit {
+export class ToolbarToprowComponent {
     readonly faPlay = faPlay;
     readonly faPause = faPause;
     readonly faUndo = faUndo;
     readonly faAngleLeft = faAngleLeft;
     readonly faHome = faHome;
     readonly faGear = faGear;
-    generation: number;
 
     displayController = model<boolean>(true);
     constructor(public automaton: AutomatonService) {}
 
-    ngOnInit() {
-        this.update = this.update.bind(this);
-        this.automaton.changed$.subscribe(this.update);
-        this.automaton.cellsChanged$.subscribe(this.update);
-    }
-
     get isMobileLayout() {
         return window.innerWidth < 480;
+    }
+
+    get generation() {
+        return this.automaton.generation;
     }
 
     @HostListener('window:keydown.space', ['$event'])
@@ -59,11 +56,7 @@ export class ToolbarToprowComponent implements OnInit {
         this.displayController.set(!this.displayController());
     }
 
-    private update() {
-        this.generation = this.automaton.generation;
-    }
-
     private toggleRunning() {
-        this.automaton.isRunning = !this.automaton.isRunning;
+        this.automaton.toggle();
     }
 }

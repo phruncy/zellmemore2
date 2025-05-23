@@ -51,10 +51,10 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: widgetP5
         p5.background(255);
         const stroke = getStrokeWeight(this.automaton.cellnumber);
         p5.strokeWeight(stroke);
-        if (this.automaton.isCircular) {
+        if (this.automaton.isCircular()) {
             p5.push();
             p5.translate(p5.width / 2, p5.height / 2);
-            this.automaton.states.forEach((state, index) => {
+            this.automaton.states().forEach((state, index) => {
                 defineColor(state);
                 p5.push();
                 p5.rotate(angle * index);
@@ -66,7 +66,7 @@ export const p5threads = new P5Sketch('threads', function p5threads(p5: widgetP5
             });
             p5.pop();
         } else {
-            this.automaton.states.forEach((state, index) => {
+            this.automaton.states().forEach((state, index) => {
                 defineColor(state);
                 p5.line(
                     getLinearX(index),

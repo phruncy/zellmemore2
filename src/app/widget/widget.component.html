@@ -1,7 +1,7 @@
 <div class="widget-container" #fullscreen>
-    <div #entry></div>
+    <app-p5-visualization [p5sketch]="p5sketch"></app-p5-visualization>
     <div class="widget-overlay-header">
-        <fa-icon [icon]="faTimes" (click)="destroy()" class="btn fade-in"></fa-icon>
+        <fa-icon [icon]="faTimes" (click)="requestDestruction()" class="btn fade-in"></fa-icon>
         <div class="header-label fade-in">{{ title }}</div>
         <fa-icon [icon]="faExpand" (click)="enterFullscreen()" class="btn fade-in"></fa-icon>
     </div>

@@ -4,9 +4,9 @@ import {
     viewChild,
     ViewContainerRef,
     ElementRef,
-    ChangeDetectorRef,
     HostListener,
     output,
+    ComponentRef,
 } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
@@ -45,11 +45,12 @@ export class WidgetFrameComponent implements OnInit {
     widgetAdded = output<boolean>();
     requestSelection = output<boolean>();
 
+    private _widgetRefs: ComponentRef<WidgetComponent>[] = [];
+
     constructor(
         private visualizationService: VisualizationService,
         public sizeService: SizeService,
         private elRef: ElementRef,
-        private cd: ChangeDetectorRef,
     ) {
         this.visualizationService.visualizationRequested$
             .pipe(takeUntilDestroyed())
@@ -59,7 +60,7 @@ export class WidgetFrameComponent implements OnInit {
     }
 
     get isEmpty(): boolean {
-        return this.sizeService.widgetNumber === 0;
+        return this._widgetRefs.length === 0;
     }
 
     ngOnInit() {
@@ -74,21 +75,44 @@ export class WidgetFrameComponent implements OnInit {
             this.elRef.nativeElement.offsetWidth,
             this.elRef.nativeElement.offsetHeight,
         );
+        this.resizeWidgets();
     }
 
     addWidget() {
+        this.sizeService.recalculateWidgetSize(this._widgetRefs.length + 1);
+
         const component = this.entry().createComponent(WidgetComponent);
-        component.instance.self = component;
-        this.cd.detectChanges();
+        const sub = component.instance.shouldDestroy.subscribe(() => {
+            this.destroyWidget(component);
+            sub.unsubscribe();
+        });
         this.widgetAdded.emit(true);
+        this._widgetRefs.push(component);
+        this.resizeWidgets();
         if (this.sizeService.isSmallMobile) {
             this.scrolltoLastWidget();
         }
     }
 
+    destroyWidget(component: ComponentRef<WidgetComponent>) {
+        const index = this._widgetRefs.indexOf(component);
+        this._widgetRefs.splice(index, 1);
+        component.destroy();
+        this.sizeService.recalculateWidgetSize(this._widgetRefs.length);
+        this.resizeWidgets();
+    }
+
+    private resizeWidgets() {
+        const sidelength = this.sizeService.widgetSize;
+        const margin = this.sizeService.margin;
+        this._widgetRefs.forEach((widget) => {
+            widget.instance.resize(sidelength, margin);
+        });
+    }
+
     private scrolltoLastWidget(): void {
         const newScrollingPosition =
-            this.sizeService.widgetNumber * (this.sizeService.margin + this.sizeService.widgetSize);
+            this._widgetRefs.length * (this.sizeService.margin + this.sizeService.widgetSize);
         this.elRef.nativeElement.scrollTop = newScrollingPosition;
     }
 }

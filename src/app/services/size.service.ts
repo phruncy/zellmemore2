@@ -6,9 +6,7 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root',
 })
 export class SizeService {
-    public margin;
-    private _sizeChanged = new Subject<void>();
-    public sizeChanged$ = this._sizeChanged.asObservable();
+    public margin: number;
 
     private _config = {
         appCanvasWidth: 0,
@@ -39,23 +37,11 @@ export class SizeService {
     }
 
     get addAreaHeight(): number {
-        return this.isSmallMobile ? this._config.addAreaSmallSide : this.widgetSize;
+        return this.isSmallMobile ? this._config.addAreaSmallSide : this._config.widgetSize;
     }
 
     get widgetSize(): number {
         return this._config.widgetSize;
-    }
-
-    get widgetNumber(): number {
-        return this._config.widgetNumber;
-    }
-
-    get canvasHeight(): number {
-        return this._config.appCanvasHeight;
-    }
-
-    get canvasWidth(): number {
-        return this._config.appCanvasWidth;
     }
 
     public setFrameSize(width: number, height: number) {
@@ -64,14 +50,26 @@ export class SizeService {
         this.setWidgetSize();
     }
 
-    public decreaseWidgetNumber() {
-        this._config.widgetNumber--;
+    recalculateWidgetSize(numWidgets: number) {
+        this._config.widgetNumber = numWidgets;
         this.setWidgetSize();
     }
 
-    public increaseWidgetNumber() {
-        this._config.widgetNumber++;
-        this.setWidgetSize();
+    private setWidgetSize() {
+        if (this._config.appCanvasHeight > this._config.appCanvasWidth && this.isSmallMobile) {
+            this._config.widgetSize = this._config.appCanvasWidth - this.margin;
+        } else {
+            this._config.widgetSize = this.calculateForLargeLayout();
+        }
+    }
+
+    private calculateForLargeLayout(): number {
+        let rows = 1;
+        let sidelength = 0;
+        while ((sidelength = this.calculateWidgetSize(rows)) < this.calculateWidgetSize(rows + 1)) {
+            rows++;
+        }
+        return sidelength;
     }
 
     /**
@@ -87,23 +85,5 @@ export class SizeService {
         const maxWidth = netWidth / maxWidgetsPerRow;
         const maxHeight = netHeight / rows;
         return Math.min(maxWidth, maxHeight);
-    }
-
-    private calculateForLargeLayout(): number {
-        let rows = 1;
-        let sidelength = 0;
-        while ((sidelength = this.calculateWidgetSize(rows)) < this.calculateWidgetSize(rows + 1)) {
-            rows++;
-        }
-        return sidelength;
-    }
-
-    private setWidgetSize() {
-        if (this._config.appCanvasHeight > this._config.appCanvasWidth && this.isSmallMobile) {
-            this._config.widgetSize = this._config.appCanvasWidth - this.margin;
-        } else {
-            this._config.widgetSize = this.calculateForLargeLayout();
-        }
-        this._sizeChanged.next();
     }
 }

@@ -9,7 +9,6 @@ import {
     input,
 } from '@angular/core';
 import { AutomatonService } from '../services/automaton.service';
-import { SizeService } from '../services/size.service';
 import { Subscription, Subject } from 'rxjs';
 import { widgetP5 } from '../P5Sketches/p5Widget';
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
@@ -29,17 +28,13 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
 
     private _automatonChanged: Subscription;
     private _automatonReset: Subscription;
-    private _sizeChange: Subscription;
     private _automatonModeChanged: Subscription;
     private _onDestroy = new Subject<void>();
     public $onDestroy = this._onDestroy.asObservable();
 
     private _p5: widgetP5;
 
-    constructor(
-        private automaton: AutomatonService,
-        private sizeService: SizeService,
-    ) {}
+    constructor(private automaton: AutomatonService) {}
 
     ngOnInit() {
         this._automatonChanged = this.automaton.changed$.subscribe(() => {
@@ -51,11 +46,6 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
         this._automatonModeChanged = this.automaton.modeChanged$.subscribe(() => {
             this.modeChanged();
         });
-        this._sizeChange = this.sizeService.sizeChanged$.subscribe(() => {
-            this.fetchSize();
-            this.resizeContent();
-        });
-        this.fetchSize();
     }
 
     ngAfterContentInit(): void {
@@ -67,32 +57,28 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
         this._automatonChanged.unsubscribe();
         this._automatonReset.unsubscribe();
         this._automatonModeChanged.unsubscribe();
-        this._sizeChange.unsubscribe();
         this._onDestroy.next();
-    }
-
-    update(): void {
-        this._p5.automatonStateUpdate();
-    }
-
-    reset(): void {
-        this._p5.automatonReset();
-    }
-
-    modeChanged(): void {
-        this._p5.automatonModeChange();
-    }
-
-    resizeContent(): void {
-        this._p5.componentResize(this.componentWidth, this.componentHeight);
-    }
-
-    fetchSize() {
-        this.componentWidth = this.sizeService.widgetSize.toString();
-        this.componentHeight = this.componentWidth;
     }
 
     toggle() {
         this.automaton.toggleLoop();
+    }
+
+    resizeContent(size: number): void {
+        this.componentWidth = size.toString();
+        this.componentHeight = this.componentWidth;
+        this._p5?.componentResize(size, size);
+    }
+
+    private update(): void {
+        this._p5.automatonStateUpdate();
+    }
+
+    private reset(): void {
+        this._p5.automatonReset();
+    }
+
+    private modeChanged(): void {
+        this._p5.automatonModeChange();
     }
 }

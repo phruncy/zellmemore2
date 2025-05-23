@@ -54,7 +54,7 @@ $strokeWidth: 4px;
 }
 
 .connector-circular-container {
-    width: 90%;
+    width: 100%;
     position: absolute;
     display: inline-block;
     left: 50%;
@@ -71,10 +71,6 @@ $strokeWidth: 4px;
     animation: dash 1s ease-in-out;
 }
 
-.tutorialText {
-    @include tutorialText();
-}
-
 #connector02 {
     overflow: visible;
 }
@@ -84,7 +80,7 @@ $strokeWidth: 4px;
         width: 0%;
     }
     to {
-        width: 77%;
+        width: 95%;
     }
 }
 

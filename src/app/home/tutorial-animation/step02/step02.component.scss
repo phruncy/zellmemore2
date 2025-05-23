@@ -26,10 +26,6 @@
     align-content: center;
 }
 
-.tutorialText {
-    @include tutorialText();
-}
-
 @media only screen and (max-width: $breakpointSmallAnimations) {
     .cell {
         width: $smallCellSizeMobile;

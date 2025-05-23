@@ -1,7 +1,5 @@
-import { Component, OnInit, input } from '@angular/core';
-import { Step } from '../step';
+import { Component, input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { animations } from 'src/app/home/animations';
 
 @Component({
     selector: 'app-step02',
@@ -11,22 +9,17 @@ import { animations } from 'src/app/home/animations';
         trigger('changeState', [
             state('active', style({ background: 'black' })),
             state('inactive', style({ background: 'white' })),
-            transition('active <=> inactive', [animate('0.2s 1s ease-in-out')]),
+            transition('active <=> inactive', [animate('0.1s 1s ease-in-out')]),
         ]),
-        animations.slideInDescription,
     ],
     standalone: true,
     imports: [],
 })
-export class Step02Component implements Step, OnInit {
+export class Step02Component {
     public cells = [{ state: 'active' }];
     activeDescription = input.required<number>();
-    readonly descriptions = [
-        "Now let's align a bunch of them one-dimensionally in a row.",
-        "In discrete time intervals, the cells all change their state. Each time step is a new generation in the automaton's lifecyle.",
-    ];
 
-    ngOnInit() {
+    constructor() {
         for (let i = 0; i < 15; i++) {
             this.cells.push({ state: this.provideRandomState() });
         }

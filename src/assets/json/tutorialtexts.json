@@ -1,0 +1,66 @@
+[
+    {
+        "id": 0,
+        "name": "intro",
+        "steps": [
+            "Of all self-organizing structures, elementary Cellular Automata are the simplest possible realization of that concept. Click the button below for a short introduction on their mechanics."
+        ]
+    },
+    {
+        "id": 1,
+        "name": "step 1",
+        "steps": [
+            "A cellular automaton consists of identical elements that are called cells.",
+            "In an elementary cellular automaton, a cell may have one of two distinguishable states: black or white, 1 or 0, active or inactive – anything is possible. Let's go for the black and white example here."
+        ]
+    },
+    {
+        "id": 2,
+        "name": "step 2",
+        "steps": [
+            "Now let's align a bunch of them one-dimensionally in a row.",
+            "In discrete time intervals, the cells all change their state. Each time step is a new generation in the automaton's lifecyle."
+        ]
+    },
+    {
+        "id": 3,
+        "name": "step 3",
+        "steps": [
+            "To understand the ruleset, pick out a trio of three cells. The middle cell has one direct neighbour both to the left and to the right.",
+            "In an elementary cellular automaton, a cell determines its next state solely by its own current state and the states of its neighbourhood.",
+            "The ruleset defines which state the middle cell is going to have for any combination of neighbourhood states."
+        ]
+    },
+    {
+        "id": 4,
+        "name": "step 4",
+        "steps": [
+            "This change does not happen randomly, but follows a specific ruleset."
+        ]
+    },
+    {
+        "id": 5,
+        "name": "step 5",
+        "steps": [
+            "Fortunately, there are only eight possible configurations for a set of three cells: ",
+            "A complete ruleset contains a total of eight instructions: one for each possible neighbourhood state."
+        ]
+    },
+    {
+        "id": 6,
+        "name": "step 6",
+        "steps": [
+            "In theory, cellular automata may have an infinite width, so that each cell will always have two adjacent neighbours.",
+            "Practically, there are two ways to deal with a finite number of cells. ",
+            "The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.",
+            "The second version connects the two marginal cells with each other and treats them as neighbours, thus creating a boundless ring-like structure."
+        ]
+    },
+    {
+        "id": 7,
+        "name": "final step",
+        "steps": [
+            "The program on this website provides visualizations of one dimensional cellular automata that depict the cells and their states in multiple ways. Feel free to experiment with different rules, cell numbers and edge behaviours!"
+        ]
+    }
+]

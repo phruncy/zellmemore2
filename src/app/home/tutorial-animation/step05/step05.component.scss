@@ -102,10 +102,6 @@ $arrowSizeMobile: 30px;
     }
 }
 
-.tutorialText {
-    @include tutorialText();
-}
-
 @media only screen and (min-width: $breakpointMobile) {
     .cell {
         width: $smallCellSizeDesktop;

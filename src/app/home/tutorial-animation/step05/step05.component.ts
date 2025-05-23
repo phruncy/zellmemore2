@@ -1,16 +1,15 @@
 import { Component, input } from '@angular/core';
-import { Step } from '../step';
 import { animations } from 'src/app/home/animations';
 
 @Component({
     selector: 'app-step05',
     templateUrl: './step05.component.html',
     styleUrls: ['./step05.component.scss'],
-    animations: [animations.slideInDescription, animations.dropdownCell],
+    animations: [animations.dropdownCell],
     standalone: true,
     imports: [],
 })
-export class Step05Component implements Step {
+export class Step05Component {
     activeDescription = input.required<number>();
 
     trios = [
@@ -22,10 +21,5 @@ export class Step05Component implements Step {
         { id: 6, left: 0, middle: 1, right: 0 },
         { id: 7, left: 0, middle: 0, right: 1 },
         { id: 8, left: 0, middle: 0, right: 0 },
-    ];
-
-    readonly descriptions = [
-        'Fortunately, there are only eight possible configurations for a set of three cells: ',
-        'A complete ruleset contains a total of eight instruction: one for each possible neighbourhood state.',
     ];
 }

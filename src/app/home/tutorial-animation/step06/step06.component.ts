@@ -1,5 +1,4 @@
-import { Component, OnInit, input } from '@angular/core';
-import { Step } from '../step';
+import { Component, input } from '@angular/core';
 import { animations } from 'src/app/home/animations';
 import { trigger, state, animate, style, transition } from '@angular/animations';
 import { faInfinity, faQuestion } from '@fortawesome/free-solid-svg-icons';
@@ -11,45 +10,33 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
     templateUrl: './step06.component.html',
     styleUrls: ['./step06.component.scss'],
     animations: [
-        animations.slideInDescription,
         trigger('changeState', [
             state('active', style({ background: 'black' })),
             state('inactive', style({ background: 'white' })),
             transition('active <=> inactive', [animate('0.3s 1s ease-in-out')]),
         ]),
-        animations.slideInDescription,
         animations.slideInOut,
     ],
     standalone: true,
     imports: [FaIconComponent, NgTemplateOutlet],
 })
-export class Step06Component implements Step, OnInit {
+export class Step06Component {
     activeDescription = input.required<number>();
 
     readonly faInfinity = faInfinity;
     readonly faQuestion = faQuestion;
-
-    readonly descriptions = [
-        'In theory, cellular automata may have an infinite width, so that each cell will always have two adjacent neighbours.',
-        'Practically, there are two ways to deal with a finite number of cells. ',
-        'The first option treats the first and last cells as edges with only one neighbour. They remain forever static and will always keep the same state.',
-        'The second version connects the two marginal cells with each other and treats them as nieghbours, thus creating a boundless ring-like structure.',
-    ];
-
-    cells = [{ state: 'active' }];
     readonly edges = [{ state: 'inactive' }, { state: 'active' }];
 
-    get icon() {
-        if (this.activeDescription() === 0) {
-            return this.faInfinity;
-        }
-        return this.faQuestion;
-    }
+    cells = [{ state: 'active' }];
 
-    ngOnInit() {
+    constructor() {
         for (let i = 0; i < 15; i++) {
             this.cells.push({ state: this.provideRandomState() });
         }
+    }
+
+    get icon() {
+        return this.activeDescription() === 0 ? this.faInfinity : this.faQuestion;
     }
 
     provideRandomState(): string {

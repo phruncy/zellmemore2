@@ -1,26 +1,13 @@
 @import 'src/styles/global/colors';
 @import '../tutorial-animation-mixins.scss';
 
-:host {
-    height: 100%;
-}
-
 .container {
     width: 100%;
-    height: 100%;
-
     display: flex;
     flex-direction: column;
     align-content: center;
 }
 
 .headline {
-    margin-top: auto;
-}
-
-.text {
-    display: inline-block;
-    @include tutorialText();
-    max-width: $maxDescriptionWidth;
-    margin-bottom: 3em;
+    margin: auto;
 }

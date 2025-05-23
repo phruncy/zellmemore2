@@ -9,6 +9,7 @@
             <div class="step-element-wrapper" [@slideInOut]>
                 <app-tutorial-step
                     [content]="activeStepDescription.component"
+                    [currentStep]="activeStep"
                     [currentSection]="currentSection"
                     (completed)="addStep()">
                 </app-tutorial-step>

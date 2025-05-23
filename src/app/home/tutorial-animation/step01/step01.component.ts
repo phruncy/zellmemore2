@@ -1,18 +1,15 @@
 import { Component, InputSignal, input } from '@angular/core';
-import { Step } from '../step';
-import { animations } from 'src/app/home/animations';
 
 @Component({
     selector: 'app-step01',
-    templateUrl: './step01.component.html',
+    template: `<div
+        class="cell"
+        [style.background]="'black'"
+        [class.animated]="activeDescription() >= 1"></div>`,
     styleUrls: ['./step01.component.scss'],
-    animations: [animations.slideInDescription],
     standalone: true,
+    imports: [],
 })
-export class Step01Component implements Step {
+export class Step01Component {
     activeDescription: InputSignal<number> = input.required<number>();
-    readonly descriptions = [
-        'A cellular automaton consists of identical elements that are called cells.',
-        "In an elementary cellular automaton, a cell may have one of two distinguishable state: black or white, 1 or 0, active or inactive – anything is possible. Let's go for the black and white example here.",
-    ];
 }

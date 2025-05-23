@@ -11,14 +11,3 @@
     color: $fontNegative;
     display: inline-block;
 }
-
-.container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.tutorialText {
-    @include tutorialText();
-    margin-top: auto;
-}

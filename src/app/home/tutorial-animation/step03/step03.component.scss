@@ -115,10 +115,6 @@ $stateChangeDuration: 1.5s;
     }
 }
 
-.tutorialText {
-    @include tutorialText();
-}
-
 @keyframes expand-connector {
     from {
         width: 0px;

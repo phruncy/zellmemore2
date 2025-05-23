@@ -13,9 +13,6 @@
         <ng-container *ngTemplateOutlet="edgeBehavior"></ng-container>
     </div>
 </div>
-<div class="tutorialText" [@slideInDescription]="activeDescription()">
-    {{ descriptions[activeDescription()] }}
-</div>
 
 <ng-template #edgeBehavior>
     @switch (activeDescription()) {

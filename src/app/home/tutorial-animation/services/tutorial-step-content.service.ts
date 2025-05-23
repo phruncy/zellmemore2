@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
-import { TutorialStepData } from '../home/tutorial-animation/TutorialStepData';
+import { TutorialStepData } from '../TutorialStepData';
 
 @Injectable()
 export class TutorialStepContentService {
@@ -16,10 +16,6 @@ export class TutorialStepContentService {
 
     fetchStepsData(): Observable<TutorialStepData[]> {
         return this._data$;
-    }
-
-    fetchStepData(stepIndex: number): Observable<TutorialStepData> {
-        return this._data$.pipe(map((data) => data[stepIndex]));
     }
 
     private fetchData(): Observable<TutorialStepData[]> {

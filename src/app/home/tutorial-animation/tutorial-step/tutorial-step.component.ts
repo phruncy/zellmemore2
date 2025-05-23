@@ -1,7 +1,7 @@
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { StepDescription } from '../../step-description';
-import { TutorialStepContentService } from 'src/app/services/tutorial-step-content.service';
+import { TutorialStepContentService } from 'src/app/home/tutorial-animation/services/tutorial-step-content.service';
 import { TutorialStepData } from '../TutorialStepData';
 import { Observable } from 'rxjs';
 import { animations } from '../../animations';

@@ -11,16 +11,13 @@ import { p5signals } from 'src/app/P5Sketches/p5signals';
 import { p5waves02 } from 'src/app/P5Sketches/p5waves02';
 import { p5waves03 } from 'src/app/P5Sketches/p5waves03';
 import { p5chaos } from 'src/app/P5Sketches/p5chaos';
-import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
 import { p5vortex } from '../P5Sketches/p5vortex';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class VisualizationService {
     private _currentSelectionId: number;
     private _selectionChanged = new Subject<void>();
     public visualizationRequested$ = this._selectionChanged.asObservable();
-    private _activeComponentsChanged = new Subject<void>();
-    public $activeComponentsChanged = this._activeComponentsChanged.asObservable();
     private _activeComponents = [];
     private p5Sketches = [
         p5default,
@@ -35,7 +32,6 @@ export class VisualizationService {
         p5waves02,
         p5waves03,
     ];
-    constructor() {}
 
     get visualizationToDisplay(): number {
         return this._currentSelectionId;
@@ -45,7 +41,7 @@ export class VisualizationService {
         return this._activeComponents;
     }
 
-    public select(id: number) {
+    select(id: number) {
         if (id < 0 || id >= this.p5Sketches.length) {
             const unknownComponent = new Error("Oops, this component doesn't exist.");
             throw unknownComponent;
@@ -58,18 +54,11 @@ export class VisualizationService {
         return this.p5Sketches[this._currentSelectionId];
     }
 
-    addToActive(visualization: P5VisualizationComponent) {
-        const id = this._currentSelectionId;
+    addToActive(id: number) {
         this._activeComponents.push(id);
-        const sub = visualization.$onDestroy.subscribe(() => {
-            this.removeFromActive(id);
-            sub.unsubscribe();
-        });
-        this._activeComponentsChanged.next();
     }
 
-    private removeFromActive(id: number) {
+    removeFromActive(id: number) {
         this._activeComponents.splice(id, 1);
-        this._activeComponentsChanged.next();
     }
 }

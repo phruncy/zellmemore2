@@ -31,7 +31,6 @@ export class VisualizationSelectionComponent {
         private _visualizationDetailService: VisualizationDetailService,
     ) {
         this.selectionTileData$ = this._visualizationDetailService.provideVisualizations();
-        this._visService.$activeComponentsChanged.pipe(takeUntilDestroyed()).subscribe();
     }
 
     isActive(id: number) {

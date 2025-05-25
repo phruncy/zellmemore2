@@ -6,6 +6,7 @@ import {
     ElementRef,
     output,
     ComponentRef,
+    OnDestroy,
 } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +25,7 @@ import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.c
     standalone: true,
     imports: [FaIconComponent, P5VisualizationComponent],
 })
-export class WidgetComponent {
+export class WidgetComponent implements OnInit, OnDestroy {
     readonly faTimes = faTimes;
     readonly faPlayCircle = faPlayCircle;
     readonly faExpand = faExpand;
@@ -40,6 +41,8 @@ export class WidgetComponent {
     title: string = 'widget name';
     shouldDestroy = output();
 
+    private _sketchId = -1;
+
     constructor(
         private visService: VisualizationService,
         private detailsService: VisualizationDetailService,
@@ -51,6 +54,10 @@ export class WidgetComponent {
 
     ngOnInit() {
         this.fetchComponent();
+    }
+
+    ngOnDestroy() {
+        this.visService.removeFromActive(this._sketchId);
     }
 
     resize(sidelength: number, margin: number) {
@@ -77,7 +84,8 @@ export class WidgetComponent {
     }
 
     private fetchComponent() {
-        this.visService.addToActive(this.p5Component());
+        this._sketchId = this.visService.visualizationToDisplay;
+        this.visService.addToActive(this._sketchId);
         this.detailsService
             .getName(this.visService.visualizationToDisplay)
             .then((name) => (this.title = name));

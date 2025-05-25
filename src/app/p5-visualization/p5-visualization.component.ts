@@ -1,8 +1,6 @@
 import {
     Component,
     HostBinding,
-    OnInit,
-    OnDestroy,
     viewChild,
     ElementRef,
     AfterContentInit,
@@ -10,9 +8,10 @@ import {
     effect,
 } from '@angular/core';
 import { AutomatonService } from '../services/automaton.service';
-import { Subscription, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { widgetP5 } from '../P5Sketches/p5Widget';
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-p5-visualization',
@@ -20,16 +19,12 @@ import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
     imports: [],
     template: `<div #container id="container" (click)="toggle()"></div>`,
 })
-export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContentInit {
+export class P5VisualizationComponent implements AfterContentInit {
     p5container = viewChild<ElementRef>('container');
     p5sketch = input.required<P5Sketch>();
 
     @HostBinding('style.width.px') protected componentWidth;
     @HostBinding('style.height.px') protected componentHeight;
-
-    private _automatonReset: Subscription;
-    private _onDestroy = new Subject<void>();
-    public $onDestroy = this._onDestroy.asObservable();
 
     private _p5: widgetP5;
 
@@ -42,10 +37,7 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
             this.automaton.isCircular();
             if (this._p5) this.modeChanged();
         });
-    }
-
-    ngOnInit() {
-        this._automatonReset = this.automaton.cellsChanged$.subscribe(() => {
+        this.automaton.cellsChanged$.pipe(takeUntilDestroyed()).subscribe(() => {
             this.reset();
         });
     }
@@ -53,11 +45,6 @@ export class P5VisualizationComponent implements OnInit, OnDestroy, AfterContent
     ngAfterContentInit(): void {
         this.p5sketch().sketch = this.p5sketch().sketch.bind(this);
         this._p5 = new widgetP5(this.p5sketch().sketch, this.p5container().nativeElement);
-    }
-
-    ngOnDestroy() {
-        this._automatonReset.unsubscribe();
-        this._onDestroy.next();
     }
 
     toggle() {

@@ -7,6 +7,7 @@ import { WidgetFrameComponent } from '../app-canvas/app-canvas.component';
 import { VisualizationSelectionComponent } from '../visualization-selection/visualization-selection.component';
 import { SizeService } from '../services/size.service';
 import { AutomatonService } from '../services/automaton.service';
+import { VisualizationService } from '../services/visualization.service';
 
 @Component({
     selector: 'app-program-window',
@@ -15,6 +16,7 @@ import { AutomatonService } from '../services/automaton.service';
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults },
         SizeService,
         AutomatonService,
+        VisualizationService,
     ],
     standalone: true,
     imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent],

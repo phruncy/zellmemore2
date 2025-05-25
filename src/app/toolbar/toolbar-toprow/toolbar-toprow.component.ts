@@ -27,6 +27,7 @@ export class ToolbarToprowComponent {
     readonly faAngleLeft = faAngleLeft;
     readonly faHome = faHome;
     readonly faGear = faGear;
+    readonly settingsTooltip = 'show / hide automaton settings';
 
     displayController = model<boolean>(true);
     constructor(public automaton: AutomatonService) {}

@@ -7,13 +7,17 @@
         <fa-icon [icon]="faUndo" class="reset icon"></fa-icon>
     </button>
     <div class="stats">generation: {{ generation() }}</div>
-    <button class="btn-settings" mat-button (click)="toggleController()" matTooltip="show / hide">
+    <button
+        mat-button
+        class="btn-settings"
+        (click)="toggleController()"
+        matTooltip="{{ settingsTooltip }}">
         <div class="icon settings-label">
-            <span class="menu-button-label" [class.active]="!isMobileLayout">settings</span>
-            <fa-icon
-                class="menu-button-label"
-                [icon]="faGear"
-                [class.active]="isMobileLayout"></fa-icon>
+            @if (isMobileLayout) {
+                <fa-icon [icon]="faGear"></fa-icon>
+            } @else {
+                <span>settings</span>
+            }
             <fa-icon
                 [icon]="faAngleLeft"
                 class="settings icon"

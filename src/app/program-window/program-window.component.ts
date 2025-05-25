@@ -10,7 +10,6 @@ import { AutomatonService } from '../services/automaton.service';
 
 @Component({
     selector: 'app-program-window',
-    templateUrl: './program-window.component.html',
     styleUrls: ['./program-window.component.scss'],
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults },
@@ -19,6 +18,20 @@ import { AutomatonService } from '../services/automaton.service';
     ],
     standalone: true,
     imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent],
+    template: `
+        <div class="window-overlay" [class.active]="selectionActive" (click)="closeSelection()">
+            <app-visualization-selection
+                (shouldClose)="closeSelection()"></app-visualization-selection>
+        </div>
+        <div class="program-window">
+            <app-toolbar></app-toolbar>
+            <div class="program-window-canvas">
+                <app-canvas
+                    (requestSelection)="openSelection()"
+                    (widgetAdded)="closeSelection()"></app-canvas>
+            </div>
+        </div>
+    `,
 })
 export class ProgramWindowComponent {
     selectionActive = false;

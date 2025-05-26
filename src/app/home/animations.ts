@@ -1,22 +1,24 @@
-import { trigger, style, transition, animate } from '@angular/animations';
+import { trigger, style, transition, animate, state } from '@angular/animations';
 
 export const animations = {
     slideInDescription: trigger('slideInDescription', [
-        transition(':increment', [
+        state(
+            'void',
             style({
                 transform: 'translateX(20%)',
                 opacity: 0,
             }),
-            animate(
-                '600ms ease-in-out',
-                style({
-                    transform: 'translateX(0%)',
-                    opacity: 1,
-                    maxHeight: '100%',
-                }),
-            ),
-        ]),
-        transition(':enter', [
+        ),
+        state(
+            'in',
+            style({
+                transform: 'translateX(0%)',
+                opacity: 1,
+                maxHeight: '100%',
+            }),
+        ),
+        transition('void => in', animate('600ms ease-in-out')),
+        transition('* => *', [
             style({
                 transform: 'translateX(20%)',
                 opacity: 0,

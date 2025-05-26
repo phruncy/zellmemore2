@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -6,9 +6,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     styleUrls: ['./step02.component.scss'],
     animations: [
         trigger('changeState', [
-            state('active', style({ background: 'black' })),
-            state('inactive', style({ background: 'white' })),
-            transition('active <=> inactive', [animate('0.1s 1s ease-in-out')]),
+            state('1', style({ background: 'black' })),
+            state('0', style({ background: 'white' })),
+            transition('1 <=> 0', [animate('0.15s 0.85s ease-in-out')]),
         ]),
     ],
     standalone: true,
@@ -16,40 +16,37 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     template: `
         <div class="graphics-container">
             <div class="multiple-cells-wrapper">
-                @if (activeDescription() === 0) {
-                    @for (cell of cells; track $index) {
-                        <div
-                            class="cell"
-                            [@changeState]="cell.state"
-                            (@changeState.done)="toggleState($index)"></div>
-                    }
-                } @else {
-                    @for (cell of cells; track $index) {
-                        <div
-                            class="cell"
-                            [style.background]="cell.state === 'active' ? 'black' : 'white'"></div>
-                    }
+                @for (state of cells; track $index) {
+                    <div class="cell" [@changeState]="state"></div>
                 }
             </div>
         </div>
     `,
 })
-export class Step02Component {
-    public cells = [{ state: 'active' }];
+export class Step02Component implements OnDestroy {
+    public cells: string[] = [];
     activeDescription = input.required<number>();
 
+    private _interval;
+    private readonly _frequency = 1000;
+    private readonly _cellnumber = 15;
+
     constructor() {
-        for (let i = 0; i < 15; i++) {
-            this.cells.push({ state: this.provideRandomState() });
+        for (let i = 0; i < this._cellnumber; i++) {
+            this.cells.push(this.provideRandomState());
         }
+        this._interval = setInterval(() => {
+            for (let i = 0; i < this.cells.length; i++) {
+                this.cells[i] = this.provideRandomState();
+            }
+        }, this._frequency);
     }
 
-    toggleState(i: number) {
-        this.cells[i].state = this.cells[i].state === 'active' ? 'inactive' : 'active';
+    ngOnDestroy() {
+        clearInterval(this._interval);
     }
 
-    provideRandomState(): string {
-        const random = Math.round(Math.random());
-        return random === 1 ? 'active' : 'inactive';
+    private provideRandomState(): string {
+        return Math.round(Math.random()).toString();
     }
 }

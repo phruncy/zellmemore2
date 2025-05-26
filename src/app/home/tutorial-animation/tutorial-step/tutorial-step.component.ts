@@ -1,11 +1,10 @@
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { StepDescription } from '../../step-description';
 import { TutorialStepContentService } from 'src/app/home/tutorial-animation/services/tutorial-step-content.service';
 import { TutorialStepData } from '../TutorialStepData';
 import { Observable } from 'rxjs';
 import { animations } from '../../animations';
-import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-tutorial-step',

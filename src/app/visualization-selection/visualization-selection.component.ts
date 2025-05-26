@@ -14,11 +14,27 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-visualization-selection',
-    templateUrl: './visualization-selection.component.html',
     styleUrls: ['./visualization-selection.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
     imports: [SelectionTileComponent, FaIconComponent, MatButtonModule, AsyncPipe],
+    template: `
+        <div class="selection-frame">
+            <div class="header">
+                <h2>Select a visualization:</h2>
+                <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
+            </div>
+            <div class="selection-tiles-container">
+                @for (tileData of selectionTileData$ | async; track tileData.id) {
+                    <app-selection-tile
+                        [active]="isActive(tileData.id)"
+                        [name]="tileData.name"
+                        [thumbnail]="tileData.thumbnail"
+                        (selected)="requestWidgetCreation(tileData.id)"></app-selection-tile>
+                }
+            </div>
+        </div>
+    `,
 })
 export class VisualizationSelectionComponent {
     readonly faTimes = faTimes;

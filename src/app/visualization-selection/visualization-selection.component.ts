@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { VisualizationDescData } from 'src/app/VisualizationDescData';
 import { Observable } from 'rxjs';
 import { VisualizationService } from '../services/visualization.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-visualization-selection',
@@ -27,7 +26,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
             <div class="selection-tiles-container">
                 @for (tileData of selectionTileData$ | async; track tileData.id) {
                     <app-selection-tile
-                        [active]="isActive(tileData.id)"
+                        [active]="activeMap()[tileData.id] ?? false"
                         [name]="tileData.name"
                         [thumbnail]="tileData.thumbnail"
                         (selected)="requestWidgetCreation(tileData.id)"></app-selection-tile>
@@ -41,16 +40,13 @@ export class VisualizationSelectionComponent {
 
     public selectionTileData$: Observable<VisualizationDescData[]>;
     public shouldClose = output<boolean>();
+    public activeMap = this._visService.isActiveMap;
 
     constructor(
         private _visService: VisualizationService,
         private _visualizationDetailService: VisualizationDetailService,
     ) {
         this.selectionTileData$ = this._visualizationDetailService.provideVisualizations();
-    }
-
-    isActive(id: number) {
-        return this._visService.activeComponents.includes(id);
     }
 
     requestWidgetCreation(contentId: number) {

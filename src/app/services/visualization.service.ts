@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { p5barcode } from 'src/app/P5Sketches/p5barcode';
 import { p5punchCard } from 'src/app/P5Sketches/p5punchCard';
@@ -18,7 +18,10 @@ export class VisualizationService {
     private _currentSelectionId: number;
     private _selectionChanged = new Subject<void>();
     public visualizationRequested$ = this._selectionChanged.asObservable();
-    private _activeComponents = [];
+
+    private _numComponentInstances: WritableSignal<number[]>;
+    readonly isActiveMap: Signal<boolean[]>;
+
     private p5Sketches = [
         p5default,
         p5barcode,
@@ -33,12 +36,15 @@ export class VisualizationService {
         p5waves03,
     ];
 
-    get visualizationToDisplay(): number {
-        return this._currentSelectionId;
+    constructor() {
+        this._numComponentInstances = signal(new Array(this.p5Sketches.length).fill(0));
+        this.isActiveMap = computed(() =>
+            this._numComponentInstances().map((element) => element > 0),
+        );
     }
 
-    get activeComponents() {
-        return this._activeComponents;
+    get visualizationToDisplay(): number {
+        return this._currentSelectionId;
     }
 
     select(id: number) {
@@ -55,10 +61,21 @@ export class VisualizationService {
     }
 
     addToActive(id: number) {
-        this._activeComponents.push(id);
+        this._numComponentInstances.update((data) => {
+            const current = [...data];
+            current[id]++;
+            return current;
+        });
     }
 
     removeFromActive(id: number) {
-        this._activeComponents.splice(id, 1);
+        this._numComponentInstances.update((data) => {
+            if (data[id] > 0) {
+                const current = [...data];
+                current[id]--;
+                return current;
+            }
+            return data;
+        });
     }
 }

@@ -3,7 +3,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 
 @Component({
     selector: 'app-step02',
-    templateUrl: './step02.component.html',
     styleUrls: ['./step02.component.scss'],
     animations: [
         trigger('changeState', [
@@ -14,6 +13,26 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ],
     standalone: true,
     imports: [],
+    template: `
+        <div class="graphics-container">
+            <div class="multiple-cells-wrapper">
+                @if (activeDescription() === 0) {
+                    @for (cell of cells; track $index) {
+                        <div
+                            class="cell"
+                            [@changeState]="cell.state"
+                            (@changeState.done)="toggleState($index)"></div>
+                    }
+                } @else {
+                    @for (cell of cells; track $index) {
+                        <div
+                            class="cell"
+                            [style.background]="cell.state === 'active' ? 'black' : 'white'"></div>
+                    }
+                }
+            </div>
+        </div>
+    `,
 })
 export class Step02Component {
     public cells = [{ state: 'active' }];

@@ -42,8 +42,9 @@ export class P5VisualizationComponent implements AfterContentInit {
     }
 
     ngAfterContentInit(): void {
-        this.p5sketch().sketch = this.p5sketch().sketch.bind(this);
-        this._p5 = new widgetP5(this.p5sketch().sketch, this.p5container().nativeElement);
+        const dimensions = { w: this.componentWidth, h: this.componentHeight };
+        const sketch = this.p5sketch().sketch.bind(this);
+        this._p5 = new widgetP5(sketch, dimensions, this.p5container().nativeElement);
     }
 
     toggle() {

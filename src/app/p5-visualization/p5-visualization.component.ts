@@ -8,7 +8,6 @@ import {
     effect,
 } from '@angular/core';
 import { AutomatonService } from '../services/automaton.service';
-import { Subject } from 'rxjs';
 import { widgetP5 } from '../P5Sketches/p5Widget';
 import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

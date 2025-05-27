@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class AutomatonService {
@@ -27,7 +28,10 @@ export class AutomatonService {
         this.loop = this.loop.bind(this);
         this.initCells = this.initCells.bind(this);
         this.configure = this.configure.bind(this);
-        this.http.get('../assets/json/automaton-config.json').subscribe(this.configure);
+        this.http
+            .get('../assets/json/automaton-config.json')
+            .pipe(takeUntilDestroyed())
+            .subscribe(this.configure);
     }
 
     get states() {

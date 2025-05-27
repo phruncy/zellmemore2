@@ -2,6 +2,7 @@ import { Component, model, input } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
+import { Option } from '../Option';
 
 @Component({
     selector: 'app-state-control',

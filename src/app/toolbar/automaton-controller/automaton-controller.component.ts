@@ -6,6 +6,7 @@ import { EdgeControlComponent } from './edge-control/edge-control.component';
 import { StateControlComponent } from './state-control/state-control.component';
 import { ControlsSliderComponent } from 'src/app/toolbar/automaton-controller/slider/controls-slider.component';
 import { SliderSettings } from './SliderSettings';
+import { Option } from './Option';
 
 @Component({
     selector: 'app-automaton-controller',

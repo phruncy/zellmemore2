@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SizeService {
-    public margin: number;
-
     private _config = {
-        appCanvasWidth: 0,
-        appCanvasHeight: 0,
+        canvasWidth: 0,
+        canvasHeight: 0,
         widgetNumber: 0,
         widgetSize: 0,
-        minWidgetSize: 0,
+        minWidgetSize: 250,
         addAreaSmallSide: 35,
+        margin: 8,
     };
-
-    constructor(private http: HttpClient) {
-        this.http.get('../assets/json/ui.json').subscribe((data: any) => {
-            const config = data;
-            this.margin = config.widgetMargin;
-            this._config.minWidgetSize = config.minWidgetSize;
-        });
-    }
 
     get isSmallMobile(): boolean {
         return (
-            this._config.appCanvasWidth - this.margin - this._config.addAreaSmallSide <
+            this._config.canvasWidth - this._config.margin - this._config.addAreaSmallSide <
             this._config.minWidgetSize * 2
         );
     }
@@ -41,9 +31,13 @@ export class SizeService {
         return this._config.widgetSize;
     }
 
+    get margin(): number {
+        return this._config.margin;
+    }
+
     public setFrameSize(width: number, height: number) {
-        this._config.appCanvasWidth = width;
-        this._config.appCanvasHeight = height;
+        this._config.canvasWidth = width;
+        this._config.canvasHeight = height;
         this.setWidgetSize();
     }
 
@@ -53,8 +47,8 @@ export class SizeService {
     }
 
     private setWidgetSize() {
-        if (this._config.appCanvasHeight > this._config.appCanvasWidth && this.isSmallMobile) {
-            this._config.widgetSize = this._config.appCanvasWidth - this.margin;
+        if (this._config.canvasHeight > this._config.canvasWidth && this.isSmallMobile) {
+            this._config.widgetSize = this._config.canvasWidth - this._config.margin;
         } else {
             this._config.widgetSize = this.calculateForLargeLayout();
         }
@@ -77,8 +71,8 @@ export class SizeService {
     private calculateWidgetSize(rows: number): number {
         const maxWidgetsPerRow = Math.ceil(this._config.widgetNumber / rows);
         const netWidth =
-            this._config.appCanvasWidth - maxWidgetsPerRow * this.margin - this.addAreaWidth;
-        const netHeight = this._config.appCanvasHeight - rows * this.margin;
+            this._config.canvasWidth - maxWidgetsPerRow * this._config.margin - this.addAreaWidth;
+        const netHeight = this._config.canvasHeight - rows * this._config.margin;
         const maxWidth = netWidth / maxWidgetsPerRow;
         const maxHeight = netHeight / rows;
         return Math.min(maxWidth, maxHeight);

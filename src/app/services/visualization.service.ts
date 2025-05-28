@@ -13,6 +13,12 @@ import { chaosFactory } from '../P5Sketches/p5chaos';
 import { waves01Factory } from '../P5Sketches/p5waves01';
 import { waves02Factory } from '../P5Sketches/p5waves02';
 import { waves03Factory } from '../P5Sketches/p5waves03';
+import { widgetP5 } from '../P5Sketches/p5Widget';
+
+interface SketchWithId {
+    id: string;
+    factory: (automaton: AutomatonService) => (p5: widgetP5) => void;
+}
 
 @Injectable()
 export class VisualizationService {
@@ -23,23 +29,18 @@ export class VisualizationService {
     private _numComponentInstances: WritableSignal<number[]>;
     readonly isActiveMap: Signal<boolean[]>;
 
-    /*private p5Sketches = [
-        p5waves02,
-        p5waves03,
-    ];*/
-
-    private sketchfactories = [
-        defaultFactory,
-        barCodeFactory,
-        frequencyFactory,
-        punchCardFactory,
-        threadFactory,
-        signalFactory,
-        vortexFactory,
-        chaosFactory,
-        waves01Factory,
-        waves02Factory,
-        waves03Factory,
+    private readonly sketchfactories: SketchWithId[] = [
+        { id: 'p5default', factory: defaultFactory },
+        { id: 'p5barcodes', factory: barCodeFactory },
+        { id: 'p5frequency', factory: frequencyFactory },
+        { id: 'p5punchcard', factory: punchCardFactory },
+        { id: 'p5threads', factory: threadFactory },
+        { id: 'p5signals', factory: signalFactory },
+        { id: 'p5vortex', factory: vortexFactory },
+        { id: 'p5chaos', factory: chaosFactory },
+        { id: 'p5waves01', factory: waves01Factory },
+        { id: 'p5waves02', factory: waves02Factory },
+        { id: 'p5waves03', factory: waves03Factory },
     ];
 
     constructor(private automaton: AutomatonService) {
@@ -53,6 +54,10 @@ export class VisualizationService {
         return this._currentSelectionId;
     }
 
+    get sketchList(): SketchWithId[] {
+        return this.sketchfactories;
+    }
+
     select(id: number) {
         if (id < 0 || id >= this.sketchfactories.length) {
             const unknownComponent = new Error("Oops, this component doesn't exist.");
@@ -63,8 +68,8 @@ export class VisualizationService {
     }
 
     provideSketch(): P5Sketch {
-        const factory = this.sketchfactories[this._currentSelectionId];
-        const sketch = new P5Sketch(factory, this.automaton);
+        const factoryWithId = this.sketchfactories[this._currentSelectionId];
+        const sketch = new P5Sketch(factoryWithId.factory, this.automaton);
         return sketch;
     }
 

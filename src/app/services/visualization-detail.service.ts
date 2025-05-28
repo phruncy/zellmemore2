@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { firstValueFrom, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { VisualizationDescData } from 'src/app/VisualizationDescData';
+
+interface VisualizationDescWithId {
+    id: string;
+    value: VisualizationDescData;
+}
 
 @Injectable({
     providedIn: 'root',
@@ -11,13 +16,17 @@ export class VisualizationDetailService {
 
     constructor(private _http: HttpClient) {}
 
-    async getName(id: number) {
-        const data = await this._http.get<any>(this._source).toPromise();
-        const name = data.find((obj) => obj.id === id).name;
+    async getName(index: number) {
+        const data = await firstValueFrom(this._http.get<any>(this._source));
+        const name = data[index].value.name;
         return name;
     }
 
     provideVisualizations(): Observable<VisualizationDescData[]> {
-        return this._http.get<VisualizationDescData[]>(this._source);
+        return this._http.get<VisualizationDescWithId[]>(this._source).pipe(
+            map((data) => {
+                return data.map((element) => element.value);
+            }),
+        );
     }
 }

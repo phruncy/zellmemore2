@@ -1,7 +1,7 @@
 import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { defaultFactory } from 'src/app/P5Sketches/p5default';
-import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
+import { p5sketch } from 'src/app/P5Sketches/P5Sketch';
 import { AutomatonService } from './automaton.service';
 import { barCodeFactory } from '../P5Sketches/p5barcode';
 import { frequencyFactory } from '../P5Sketches/p5frequency';
@@ -17,7 +17,7 @@ import { widgetP5 } from '../P5Sketches/p5Widget';
 
 interface SketchWithId {
     id: string;
-    factory: (automaton: AutomatonService) => (p5: widgetP5) => void;
+    factory: (automaton: AutomatonService) => p5sketch;
 }
 
 @Injectable()
@@ -67,10 +67,9 @@ export class VisualizationService {
         this._selectionChanged.next();
     }
 
-    provideSketch(): P5Sketch {
-        const factoryWithId = this.sketchfactories[this._currentSelectionId];
-        const sketch = new P5Sketch(factoryWithId.factory, this.automaton);
-        return sketch;
+    provideSketch(): p5sketch {
+        const factory = this.sketchfactories[this._currentSelectionId].factory;
+        return factory(this.automaton);
     }
 
     addToActive(id: number) {

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { AutomatonService } from '../services/automaton.service';
 import { widgetP5 } from '../P5Sketches/p5Widget';
-import { P5Sketch } from 'src/app/P5Sketches/P5Sketch';
+import { p5sketch } from 'src/app/P5Sketches/P5Sketch';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -20,7 +20,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class P5VisualizationComponent implements AfterContentInit {
     p5container = viewChild<ElementRef>('container');
-    p5sketch = input.required<P5Sketch>();
+    p5sketch = input.required<p5sketch>();
 
     @HostBinding('style.width.px') protected componentWidth;
     @HostBinding('style.height.px') protected componentHeight;
@@ -43,11 +43,7 @@ export class P5VisualizationComponent implements AfterContentInit {
 
     ngAfterContentInit(): void {
         const dimensions = { w: this.componentWidth, h: this.componentHeight };
-        this._p5 = new widgetP5(
-            this.p5sketch().sketch,
-            dimensions,
-            this.p5container().nativeElement,
-        );
+        this._p5 = new widgetP5(this.p5sketch(), dimensions, this.p5container().nativeElement);
     }
 
     toggle() {

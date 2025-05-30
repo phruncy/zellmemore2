@@ -5,7 +5,6 @@ import {
     viewChild,
     ElementRef,
     output,
-    ComponentRef,
     OnDestroy,
 } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
@@ -48,8 +47,8 @@ export class WidgetComponent implements OnInit, OnDestroy {
         private detailsService: VisualizationDetailService,
     ) {}
 
-    get p5sketch() {
-        return this.visService.provideSketch();
+    get sketchId() {
+        return this.visService.visualizationToDisplay;
     }
 
     ngOnInit() {

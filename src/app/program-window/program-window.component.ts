@@ -8,6 +8,7 @@ import { VisualizationSelectionComponent } from '../visualization-selection/visu
 import { SizeService } from '../services/size.service';
 import { AutomatonService } from '../services/automaton.service';
 import { VisualizationService } from '../services/visualization.service';
+import { VisualizationContextService } from '../services/visualization-context.service';
 
 @Component({
     selector: 'app-program-window',
@@ -17,6 +18,7 @@ import { VisualizationService } from '../services/visualization.service';
         SizeService,
         AutomatonService,
         VisualizationService,
+        VisualizationContextService,
     ],
     standalone: true,
     imports: [ToolbarComponent, WidgetFrameComponent, VisualizationSelectionComponent],

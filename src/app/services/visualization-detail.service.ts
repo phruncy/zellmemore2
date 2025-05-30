@@ -29,4 +29,8 @@ export class VisualizationDetailService {
             }),
         );
     }
+
+    fetchDescriptionData(): Observable<VisualizationDescWithId[]> {
+        return this._http.get<VisualizationDescWithId[]>(this._source);
+    }
 }

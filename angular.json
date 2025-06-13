@@ -97,6 +97,9 @@
           },
           "configurations": {
             "production": {
+              "buildTarget": "zellmemore:build:production"
+            },
+            "development": {
               "buildTarget": "zellmemore:build:development"
             }
           }

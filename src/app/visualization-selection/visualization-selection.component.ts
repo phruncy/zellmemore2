@@ -6,7 +6,7 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { VisualizationDescData } from 'src/app/VisualizationDescData';
 import { Observable } from 'rxjs';
 import { VisualizationService } from '../services/visualization.service';
@@ -16,7 +16,7 @@ import { VisualizationService } from '../services/visualization.service';
     styleUrls: ['./visualization-selection.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [SelectionTileComponent, FaIconComponent, MatButtonModule, AsyncPipe],
+    imports: [SelectionTileComponent, FaIconComponent, MatButton, AsyncPipe],
     template: `
         <div class="selection-frame">
             <div class="header">

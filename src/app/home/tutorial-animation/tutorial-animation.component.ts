@@ -13,17 +13,12 @@ import { TutorialStepComponent } from './tutorial-step/tutorial-step.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StepDescription } from '../step-description';
 import { StepIntroComponent } from './step-intro/step-intro.component';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-tutorial-animation',
     standalone: true,
-    imports: [
-        TutorialStepControlComponent,
-        TutorialStepComponent,
-        FontAwesomeModule,
-        MatButtonModule,
-    ],
+    imports: [TutorialStepControlComponent, TutorialStepComponent, FontAwesomeModule, MatButton],
     templateUrl: './tutorial-animation.component.html',
     styleUrls: ['./tutorial-animation.component.scss'],
     animations: [animations.slideInOut],

@@ -6,7 +6,6 @@ import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app/app-routing.module';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app/app.component';
 
 if (environment.production) {
@@ -15,13 +14,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(
-            BrowserModule,
-            FormsModule,
-            ReactiveFormsModule,
-            AppRoutingModule,
-            FontAwesomeModule,
-        ),
+        importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule),
         provideHttpClient(withInterceptorsFromDi()),
         provideAnimations(),
     ],

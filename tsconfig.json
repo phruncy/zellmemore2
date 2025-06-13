@@ -17,6 +17,9 @@
       "es2017",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
   }
 }

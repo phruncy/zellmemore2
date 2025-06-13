@@ -6,7 +6,13 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'program-window', component: ProgramWindowComponent },
+    {
+        path: 'program-window',
+        loadComponent: () =>
+            import('./program-window/program-window.component').then(
+                (m) => m.ProgramWindowComponent,
+            ),
+    },
     { path: 'data-disclaimer', component: DisclaimerComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

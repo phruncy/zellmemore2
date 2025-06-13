@@ -1,13 +1,13 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
+@use '../../../styles/global/colors';
+@use '../../../styles/global/typo';
+@use '../../../styles/global/limits';
 
 .container-outer {
     display: flex;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
-    font-size: $menuItemsFontSize;
-    font-weight: $topbarFontWeight;
+    font-size: typo.$menuItemsFontSize;
+    font-weight: typo.$topbarFontWeight;
     text-align: center;
     font-family: 'Nunito Sans';
 }
@@ -19,13 +19,13 @@
 
 .btn {
     font-family: 'Nunito Sans';
-    font-size: $fontsize_default;
+    font-size: typo.$fontsize_default;
     &.left {
         margin-right: auto;
     }
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (min-width: limits.$breakpointMobile) {
     .container-outer {
         background: none;
         margin: 0;

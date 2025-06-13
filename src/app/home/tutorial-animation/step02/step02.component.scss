@@ -1,22 +1,22 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
-@import 'src/styles/global/limits';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
+@use '../../../../styles/global/limits';
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .graphics-container {
-    @include graphicsContent();
+    @include animation.graphicsContent();
 }
 
 .cell {
-    @include roundShape(black);
-    width: $smallCellSizeDesktop;
-    height: $smallCellSizeDesktop;
+    @include animation.roundShape(black);
+    width: animation.$smallCellSizeDesktop;
+    height: animation.$smallCellSizeDesktop;
     margin: 4px;
     display: inline-flex;
-    border-width: $cellBorder;
+    border-width: animation.$cellBorder;
 }
 
 .multiple-cells-wrapper {
@@ -26,10 +26,10 @@
     align-content: center;
 }
 
-@media only screen and (max-width: $breakpointSmallAnimations) {
+@media only screen and (max-width: limits.$breakpointSmallAnimations) {
     .cell {
-        width: $smallCellSizeMobile;
-        height: $smallCellSizeMobile;
+        width: animation.$smallCellSizeMobile;
+        height: animation.$smallCellSizeMobile;
         margin: 3px;
     }
 }

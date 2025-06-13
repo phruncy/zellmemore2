@@ -1,27 +1,28 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
+@use '../../../../styles/global/colors';
+@use '../../../../styles/global/limits';
+@use '../tutorial-animation-mixins.scss' as animation;
 
 $strokeWidth: 4px;
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .graphics-container {
-    @include graphicsContent();
+    @include animation.graphicsContent();
 }
 
 .cell {
-    @include roundShape(black);
-    width: $smallCellSizeMobile;
-    height: $smallCellSizeMobile;
+    @include animation.roundShape(black);
+    width: animation.$smallCellSizeMobile;
+    height: animation.$smallCellSizeMobile;
     margin: 3px;
     display: inline-flex;
     z-index: 2;
 
     &.edges {
-        background: $accent;
-        border-color: $accent;
+        background: colors.$accent;
+        border-color: colors.$accent;
     }
 }
 
@@ -35,7 +36,7 @@ $strokeWidth: 4px;
 
 .edge-illustration {
     align-content: center;
-    color: $accent;
+    color: colors.$accent;
     font-size: 18px;
     margin-left: 5px;
     margin-right: 5px;
@@ -43,10 +44,10 @@ $strokeWidth: 4px;
 
 .connector {
     width: 0%;
-    @include absolute-centered();
+    @include animation.absolute-centered();
     height: $strokeWidth;
     border-radius: 2px;
-    background: $accent;
+    background: colors.$accent;
     z-index: 0;
     &.animated {
         animation: expand-line 0.5s ease-out forwards;
@@ -65,7 +66,7 @@ $strokeWidth: 4px;
 
 .connector-circular {
     fill: none;
-    stroke: $accent;
+    stroke: colors.$accent;
     stroke-width: 6px;
     stroke-dasharray: 1200px;
     animation: dash 1s ease-in-out;
@@ -105,16 +106,16 @@ $strokeWidth: 4px;
     }
 }
 
-@media only screen and (min-width: $breakpointLargeDesktop) {
+@media only screen and (min-width: limits.$breakpointLargeDesktop) {
     .cell {
-        width: $smallCellSizeDesktop;
-        height: $smallCellSizeDesktop;
+        width: animation.$smallCellSizeDesktop;
+        height: animation.$smallCellSizeDesktop;
         margin: 4px;
     }
 
     .cell-edge-container {
         position: relative;
-        width: $smallCellSizeDesktop;
-        height: $smallCellSizeDesktop;
+        width: animation.$smallCellSizeDesktop;
+        height: animation.$smallCellSizeDesktop;
     }
 }

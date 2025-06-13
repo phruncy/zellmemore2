@@ -1,31 +1,35 @@
 /* Custom Angular Material Color Theme */
-@import "./styles/global/fonts.css";
-@import "./styles/global/zellmemore-mat-theme";
-@import "./styles/global/typo";
-@import 'src/styles/global/limits';
+@use './styles/global/fonts.css';
+@use './styles/global/zellmemore-mat-theme';
+@use './styles/global/typo';
+@use './styles/global/limits';
 
 body {
-        font-family: 'Nunito Sans';
-        font-size: $defaultMobile;
-        margin: 0;
+    font-family: 'Nunito Sans';
+    font-size: typo.$defaultMobile;
+    margin: 0;
 }
 
 html {
-        /* prevents the scrollbar from adding up to the page width */
-        overflow-y: scroll;
+    /* prevents the scrollbar from adding up to the page width */
+    overflow-y: scroll;
 }
 
 footer {
-        margin: 0;
+    margin: 0;
 }
 
-a:hover, a:visited, a:link, a:active, a:any-link {
-        text-decoration: none;
-        color: inherit;
+a:hover,
+a:visited,
+a:link,
+a:active,
+a:any-link {
+    text-decoration: none;
+    color: inherit;
 }
 
-@media only screen and (min-width: $breakpointMobile) {
-        body {
-                font-size: $fontsize_default;
-        }
+@media only screen and (min-width: limits.$breakpointMobile) {
+    body {
+        font-size: typo.$fontsize_default;
+    }
 }

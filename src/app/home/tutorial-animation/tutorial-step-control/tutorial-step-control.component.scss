@@ -1,5 +1,5 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
 
 $stepMarkerWidth: 10px;
 
@@ -12,11 +12,11 @@ $stepMarkerWidth: 10px;
 }
 
 .step-marker {
-    @include roundShape(white);
+    @include animation.roundShape(white);
     display: inline-block;
     height: 10px;
     width: $stepMarkerWidth;
-    background: $accent;
+    background: colors.$accent;
     cursor: pointer;
     opacity: 0.6;
     border: none;
@@ -30,7 +30,7 @@ $stepMarkerWidth: 10px;
 .btn {
     border-radius: 10px;
     border: none;
-    background: $accent;
-    color: $fontNegative;
+    background: colors.$accent;
+    color: colors.$fontNegative;
     cursor: pointer;
 }

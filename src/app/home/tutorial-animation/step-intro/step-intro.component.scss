@@ -1,5 +1,5 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
 
 .container {
     width: 100%;

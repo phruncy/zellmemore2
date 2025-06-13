@@ -1,5 +1,5 @@
-@import 'src/styles/global/typo';
-@import 'src/styles/global/colors';
+@use '../../../styles/global/typo';
+@use '../../../styles/global/colors';
 
 $selectionTileMargin: 2px;
 $matCardMaxWidth: 150px;
@@ -18,7 +18,7 @@ $matCardMaxWidth: 150px;
     display: grid;
     align-items: center;
     justify-content: center;
-    background: $overlay;
+    background: colors.$overlay;
     position: absolute;
     top: 0;
     bottom: 5px;
@@ -40,7 +40,7 @@ $matCardMaxWidth: 150px;
 
 .btn {
     z-index: 1;
-    color: $highlight;
+    color: colors.$highlight;
 }
 
 .check {
@@ -48,7 +48,7 @@ $matCardMaxWidth: 150px;
     top: 0;
     left: 0;
     visibility: hidden;
-    color: $highlight;
+    color: colors.$highlight;
     margin: 5px 8px;
     display: inline-block;
 

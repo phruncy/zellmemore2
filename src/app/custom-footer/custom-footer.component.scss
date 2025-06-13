@@ -1,4 +1,4 @@
-@import 'src/styles/global/colors';
+@use '../../styles/global/colors' as colors;
 
 .container {
     display: block;
@@ -10,6 +10,6 @@
 }
 
 .link {
-    color: $fontLight;
+    color: colors.$fontLight;
     margin: 0 10px 5px 0;
 }

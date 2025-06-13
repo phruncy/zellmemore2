@@ -1,6 +1,6 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
+@use '../../styles/global/colors';
+@use '../../styles/global/typo';
+@use '../../styles/global/limits';
 
 $programWindowPadding: 30px;
 $programWindowPadding_Mobile: 5px;
@@ -30,8 +30,8 @@ $toprowHeight: 44px;
     width: 100%;
     box-sizing: border-box;
     flex-grow: 1;
-    min-width: $minCanvasWidth;
-    min-height: $minCanvasHeight;
+    min-width: limits.$minCanvasWidth;
+    min-height: limits.$minCanvasHeight;
     padding: 10px 0;
     display: flex;
     align-items: center;
@@ -39,7 +39,7 @@ $toprowHeight: 44px;
 
 .window-overlay {
     visibility: hidden;
-    background: $overlay;
+    background: colors.$overlay;
     opacity: 0;
     transition: opacity 0.2s ease-out;
     position: absolute;
@@ -61,7 +61,7 @@ $toprowHeight: 44px;
     }
 }
 
-@media only screen and (max-width: $breakpointSmallMenu) {
+@media only screen and (max-width: limits.$breakpointSmallMenu) {
     .program-window {
         padding: $programWindowPadding_Mobile;
     }

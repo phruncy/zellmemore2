@@ -1,4 +1,4 @@
-@import 'src/styles/global/limits';
+@use './limits';
 
 $fontsize_default: 15px;
 $mainDesktop: 18px;
@@ -36,7 +36,7 @@ h3 {
     font-size: $h3;
 }
 
-@media only screen and (max-width: $breakpointMobile) {
+@media only screen and (max-width: limits.$breakpointMobile) {
     h1 {
         font-size: $h1mobile;
         margin-top: $sectionGapMobile;

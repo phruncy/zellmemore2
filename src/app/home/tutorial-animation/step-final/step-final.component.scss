@@ -1,6 +1,6 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
-@import 'src/styles/global/limits';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
+@use '../../../../styles/global/limits';
 
 .btn-container {
     margin-top: 4em;
@@ -8,6 +8,6 @@
 }
 
 .btn {
-    color: $fontNegative;
+    color: colors.$fontNegative;
     display: inline-block;
 }

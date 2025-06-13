@@ -1,6 +1,6 @@
-@import 'src/styles/global/colors';
-@import './tutorial-animation-mixins.scss';
-@import 'src/styles/global/limits';
+@use '../../../styles/global/colors';
+@use './tutorial-animation-mixins.scss' as animation;
+@use '../../../styles/global/limits';
 
 :host {
     height: 100%;
@@ -10,7 +10,7 @@
     display: flex;
     height: 100%;
     align-items: center;
-    background: $backgroundUltraLight;
+    background: colors.$backgroundUltraLight;
     z-index: -1;
 }
 

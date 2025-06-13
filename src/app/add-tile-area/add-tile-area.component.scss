@@ -1,26 +1,26 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
+@use '../../styles/global/colors';
+@use '../../styles/global/typo';
 
 .clickable-area {
-    background-color: $backgroundUltraLight;
+    background-color: colors.$backgroundUltraLight;
     display: grid;
     align-content: center;
     justify-content: center;
 
     // 'border-box' setting includes the padding in the total height
     box-sizing: border-box;
-    border-radius: $globalCornerRadius;
+    border-radius: typo.$globalCornerRadius;
     padding: 5px;
     height: inherit;
     width: inherit;
 
     cursor: pointer;
 
-    color: $fontLight;
+    color: colors.$fontLight;
 
     &:hover {
-        background-color: $backgroundLight;
-        color: $fontNegative;
+        background-color: colors.$backgroundLight;
+        color: colors.$fontNegative;
         transition: background-color 0.2s;
     }
 }
@@ -31,7 +31,7 @@
     justify-items: center;
     justify-content: center;
     align-content: center;
-    font-weight: $fontweight_default;
+    font-weight: typo.$fontweight_default;
 }
 
 .icon {

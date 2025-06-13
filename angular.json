@@ -11,7 +11,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/zellmemore",
             "index": "src/index.html",
@@ -25,11 +25,6 @@
             "styles": [
               "src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-                    "includePaths": [
-                            "./styles/"
-                    ]
-            },
             "aot": false,
             "vendorChunk": false,
             "extractLicenses": false,

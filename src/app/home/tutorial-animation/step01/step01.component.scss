@@ -1,14 +1,14 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
 
 $largeCellSize: 100px;
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .cell {
-    @include roundShape(black);
+    @include animation.roundShape(black);
     width: $largeCellSize;
     height: $largeCellSize;
     margin-top: auto;

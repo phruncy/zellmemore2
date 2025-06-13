@@ -1,12 +1,12 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
-@import '../toolbar.common.scss';
+@use '../../../styles/global/colors';
+@use '../../../styles/global/typo';
+@use '../../../styles/global/limits';
+@use '../toolbar.common.scss';
 
 .automaton-controller-container {
     box-sizing: border-box;
     margin: 8px 8px 8px 0px;
-    color: $fontDefault;
+    color: colors.$fontDefault;
     display: flex;
     align-items: center;
 }
@@ -21,11 +21,11 @@
     margin: 7px 0;
 }
 
-@media only screen and (max-width: $breakpointSmallMenu) {
+@media only screen and (max-width: limits.$breakpointSmallMenu) {
     .automaton-controller-container {
         display: inline-block;
         margin-top: 0px;
-        background: $backgroundUltraLight;
+        background: colors.$backgroundUltraLight;
         border-radius: 0 0 5px 5px;
         width: 100%;
         padding-left: 20px;

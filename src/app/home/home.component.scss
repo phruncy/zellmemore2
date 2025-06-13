@@ -1,7 +1,7 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
+@use '../../styles/global/colors';
+@use '../../styles/global/typo';
 
-@import 'src/styles/global/limits';
+@use '../../styles/global/limits';
 
 $tutorialOffsetMobile: 15px;
 $tutorialOffsetDesktop: 35px;
@@ -10,7 +10,7 @@ $paddingSidesMobile: 2rem;
 $borderWidth: 2px;
 
 body {
-    font-size: $defaultMobile;
+    font-size: typo.$defaultMobile;
 }
 
 .outer-container {
@@ -23,7 +23,7 @@ body {
 .header {
     display: block;
     margin: auto;
-    max-width: $maxContentWidth;
+    max-width: limits.$maxContentWidth;
 }
 
 .landing-text {
@@ -32,12 +32,12 @@ body {
     margin-bottom: 0px;
 
     &.colored {
-        color: $accent;
+        color: colors.$accent;
     }
 }
 
 .landing-link {
-    font-size: $homepageLinksMobile;
+    font-size: typo.$homepageLinksMobile;
     font-weight: bold;
     margin-top: 7px;
 }
@@ -64,18 +64,18 @@ body {
 }
 
 .content {
-    background: $accent;
+    background: colors.$accent;
     overflow: scroll;
 }
 
 .section {
-    padding-bottom: $sectionGap;
+    padding-bottom: typo.$sectionGap;
     padding-left: $paddingSidesMobile;
     padding-right: $paddingSidesMobile;
     border-bottom-style: solid;
     border-bottom-width: $borderWidth;
     box-sizing: border-box;
-    max-width: $maxContentWidth;
+    max-width: limits.$maxContentWidth;
     width: 100%;
     text-align: left;
     display: block;
@@ -91,7 +91,7 @@ body {
     }
 }
 
-@media only screen and (min-width: $breakpointSmallMenu) {
+@media only screen and (min-width: limits.$breakpointSmallMenu) {
     .section {
         padding-left: $paddingSides;
         padding-right: $paddingSides;
@@ -100,7 +100,7 @@ body {
         margin-top: 50px;
     }
     .landing-link {
-        font-size: $homepageLinks;
+        font-size: typo.$homepageLinks;
     }
     .landing-link-wrapper {
         margin-top: 30px;

@@ -1,18 +1,18 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
-@import '../toolbar.common.scss';
+@use '../../../styles/global/colors';
+@use '../../../styles/global/typo';
+@use '../../../styles/global/limits';
+@use '../toolbar.common.scss';
 
 .toprow-container {
     min-width: 360px;
-    font-weight: $topbarFontWeight;
+    font-weight: typo.$topbarFontWeight;
     margin-bottom: 7px;
     display: flex;
     justify-content: start;
 }
 
 .btn-settings {
-    font-size: $fontsize_default;
+    font-size: typo.$fontsize_default;
     --mdc-text-button-label-text-weight: $fontweight_default;
     --mdc-text-button-label-text-tracking: 0;
 }
@@ -27,7 +27,7 @@
 }
 
 .icon {
-    color: $fontDefault;
+    color: colors.$fontDefault;
     display: none;
 
     &.active {

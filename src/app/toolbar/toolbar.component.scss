@@ -1,5 +1,5 @@
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
+@use '../../styles/global/typo';
+@use '../../styles/global/limits';
 
 .controller {
     display: inline-block;
@@ -7,20 +7,20 @@
     transition: max-height 0.2s;
     overflow: hidden;
     z-index: 1;
-    font-weight: $topbarFontWeight;
+    font-weight: typo.$topbarFontWeight;
 
     &.active {
-        max-height: $controllerHeight;
+        max-height: limits.$controllerHeight;
         transition: max-height 0.2s ease-out;
     }
 }
 
-@media only screen and (max-width: $breakpointSmallMenu) {
+@media only screen and (max-width: limits.$breakpointSmallMenu) {
     .controller {
         width: 100%;
         max-height: 0;
         &.active {
-            max-height: $controllerHeightMobile;
+            max-height: limits.$controllerHeightMobile;
             max-width: 100%;
         }
     }

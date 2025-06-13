@@ -1,6 +1,6 @@
-@import 'src/styles/global/colors';
-@import 'src/styles/global/typo';
-@import 'src/styles/global/limits';
+@use '../../styles/global/colors';
+@use '../../styles/global/typo';
+@use '../../styles/global/limits';
 
 $selectionFrameMaxWidth: 860px;
 $selectionPaddingDesktop: 20px;
@@ -23,10 +23,10 @@ $gridColumns_mobile: 2;
 }
 
 .close-icon {
-    font-size: $fontsize_default;
+    font-size: typo.$fontsize_default;
     margin-right: 5px;
     margin-left: auto;
-    color: $fontLight;
+    color: colors.$fontLight;
     cursor: pointer;
 
     &:hover {
@@ -49,7 +49,7 @@ h2 {
     margin-top: 16px;
 }
 
-@media only screen and (max-width: $breakpointSmallMenu) {
+@media only screen and (max-width: limits.$breakpointSmallMenu) {
     .selection-tiles-container {
         grid-template-columns: repeat($gridColumns_mobile, 1fr);
     }

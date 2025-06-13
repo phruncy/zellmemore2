@@ -1,18 +1,18 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
-@import 'src/styles/global/limits';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
+@use '../../../../styles/global/limits';
 
-$smallCellContainerSizeDesktop: $smallCellSizeDesktop + 4px;
-$smallCellContainerSizeMobile: $smallCellSizeMobile + 4px;
+$smallCellContainerSizeDesktop: animation.$smallCellSizeDesktop + 4px;
+$smallCellContainerSizeMobile: animation.$smallCellSizeMobile + 4px;
 $arrowSizeDesktop: 40px;
 $arrowSizeMobile: 30px;
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .graphics-container {
-    @include graphicsContent();
+    @include animation.graphicsContent();
 }
 
 .container-inner {
@@ -20,16 +20,16 @@ $arrowSizeMobile: 30px;
 }
 
 .cell {
-    @include roundShape('black');
+    @include animation.roundShape('black');
     display: inline-block;
-    width: $smallCellSizeMobile;
-    height: $smallCellSizeMobile;
+    width: animation.$smallCellSizeMobile;
+    height: animation.$smallCellSizeMobile;
     z-index: 10;
     position: relative;
 
     &.target {
         background: white;
-        @include absolute-centered();
+        @include animation.absolute-centered();
     }
     &.animated-middle {
         transform: translateY(0%);
@@ -39,7 +39,7 @@ $arrowSizeMobile: 30px;
 
 .foreground.cell.target {
     background: none;
-    color: $accent;
+    color: colors.$accent;
     line-height: 100%;
     vertical-align: middle;
     border-style: none;
@@ -64,10 +64,10 @@ $arrowSizeMobile: 30px;
 }
 
 .cell.target.background {
-    background: $accent;
+    background: colors.$accent;
     width: 0%;
     height: 0%;
-    @include absolute-centered();
+    @include animation.absolute-centered();
     border-style: none;
     &.animated {
         animation: grow 0.5s ease-out 0.3s forwards;
@@ -91,7 +91,7 @@ $arrowSizeMobile: 30px;
 .arrow {
     display: inline-block;
     border-radius: 3px;
-    background: $accent;
+    background: colors.$accent;
     width: 4px;
     height: 0px;
     position: absolute;
@@ -102,10 +102,10 @@ $arrowSizeMobile: 30px;
     }
 }
 
-@media only screen and (min-width: $breakpointMobile) {
+@media only screen and (min-width: limits.$breakpointMobile) {
     .cell {
-        width: $smallCellSizeDesktop;
-        height: $smallCellSizeDesktop;
+        width: animation.$smallCellSizeDesktop;
+        height: animation.$smallCellSizeDesktop;
     }
     .trio.target {
         width: $smallCellContainerSizeDesktop;

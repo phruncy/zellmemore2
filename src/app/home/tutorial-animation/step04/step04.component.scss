@@ -1,8 +1,8 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .container {

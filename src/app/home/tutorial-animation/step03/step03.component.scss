@@ -1,6 +1,6 @@
-@import 'src/styles/global/colors';
-@import '../tutorial-animation-mixins.scss';
-@import 'src/styles/global/limits';
+@use '../../../../styles/global/colors';
+@use '../tutorial-animation-mixins.scss' as animation;
+@use '../../../../styles/global/limits';
 
 $gapMobile: 8px;
 $gapDesktop: 20px;
@@ -10,11 +10,11 @@ $expandingCircleDuration: 0.3s;
 $stateChangeDuration: 1.5s;
 
 :host {
-    @include tutorialStepContent();
+    @include animation.tutorialStepContent();
 }
 
 .graphics-container {
-    @include graphicsContent();
+    @include animation.graphicsContent();
 }
 
 .cell-row {
@@ -34,8 +34,8 @@ $stateChangeDuration: 1.5s;
 }
 
 .cell {
-    @include roundShape('black');
-    @include absolute-centered();
+    @include animation.roundShape('black');
+    @include animation.absolute-centered();
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -52,11 +52,11 @@ $stateChangeDuration: 1.5s;
 }
 
 .background-circle {
-    @include absolute-centered();
+    @include animation.absolute-centered();
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background: $accent;
+    background: colors.$accent;
     &.animate-step01 {
         animation: expanding-circle $expandingCircleDuration ease-out forwards;
     }
@@ -76,7 +76,7 @@ $stateChangeDuration: 1.5s;
     height: 10%;
     width: 0px;
     border-radius: 5px;
-    background: $accent;
+    background: colors.$accent;
     position: absolute;
     top: 50%;
     &.left {
@@ -98,7 +98,7 @@ $stateChangeDuration: 1.5s;
     top: 50%;
     border-radius: 5px;
     position: absolute;
-    background: $accent;
+    background: colors.$accent;
     &.right {
         left: 0;
         transform: translate(0%, -50%);
@@ -148,7 +148,7 @@ $stateChangeDuration: 1.5s;
     }
 }
 
-@media only screen and (min-width: $breakpointSmallMenu) {
+@media only screen and (min-width: limits.$breakpointSmallMenu) {
     .cell-container {
         width: $cellContainerDesktop;
         height: $cellContainerDesktop;

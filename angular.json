@@ -31,7 +31,8 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies": [ "p5"]
           },
           "configurations": {
             "production": {
@@ -54,6 +55,10 @@
                   "type": "initial",
                   "maximumWarning": "1mb",
                   "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },

@@ -1,5 +1,4 @@
-import * as p5 from 'p5';
-import { AutomatonService } from '../services/automaton.service';
+import p5 from 'p5';
 
 /**
  * @class widgetP5 Expands the p5  class by custom methods to handle events related to the Automaton object and application environment.

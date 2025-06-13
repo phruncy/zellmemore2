@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { P5VisualizationComponent } from './p5-visualization.component';
 import { AutomatonService } from '../services/automaton.service';
-import { P5Sketch } from '../P5Sketches/P5Sketch';
+import { p5sketch } from '../P5Sketches/P5Sketch';
 
 describe('P5VisualizationComponent', () => {
     let component: P5VisualizationComponent;
@@ -19,7 +19,7 @@ describe('P5VisualizationComponent', () => {
         fixture = TestBed.createComponent(P5VisualizationComponent);
         component = fixture.componentInstance;
 
-        const dummyP5: P5Sketch = { name: 'dummy', sketch: () => {} };
+        const dummyP5: p5sketch = () => {};
         fixture.componentRef.setInput('p5sketch', dummyP5);
         fixture.detectChanges();
     });

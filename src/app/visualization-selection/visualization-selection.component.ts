@@ -24,12 +24,12 @@ import { VisualizationService } from '../services/visualization.service';
                 <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
             </div>
             <div class="selection-tiles-container">
-                @for (tileData of selectionTileData$ | async; track tileData.id) {
+                @for (tileData of selectionTileData$ | async; track $index) {
                     <app-selection-tile
-                        [active]="activeMap()[tileData.id] ?? false"
+                        [active]="activeMap()[$index] ?? false"
                         [name]="tileData.name"
                         [thumbnail]="tileData.thumbnail"
-                        (selected)="requestWidgetCreation(tileData.id)"></app-selection-tile>
+                        (selected)="requestWidgetCreation($index)"></app-selection-tile>
                 }
             </div>
         </div>

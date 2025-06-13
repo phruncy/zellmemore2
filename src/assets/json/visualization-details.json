@@ -1,57 +1,79 @@
 [
     {
-        "id": 0,
+      "id": "p5default",
+      "value": {
         "name": "Default",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00001.png"
+      }
     },
     {
-        "id": 1,
+      "id": "p5barcodes",
+      "value": {
         "name": "Barcodes",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00002.png"
+      }
     },
     {
-        "id": 2,
+      "id": "p5frequency",
+      "value": {
         "name": "Frequency",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00003.png"
+      }
     },
     {
-        "id": 3,
+      "id": "p5punchcard",
+      "value": {
         "name": "Punchcard",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00004.png"
+      }
     },
     {
-        "id": 4,
+      "id": "p5threads",
+      "value": {
         "name": "Threads",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00005.png"
+      }
     },
     {
-        "id": 5,
+      "id": "p5signals",
+      "value": {
         "name": "Signals",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00006.png"
+      }
     },
     {
-        "id": 6,
+      "id": "p5vortex",
+      "value": {
         "name": "Vortex",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00007.png"
+      }
     },
     {
-        "id": 7,
+      "id": "p5chaos",
+      "value": {
         "name": "Chaos",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00008.png"
+      }
     },
     {
-        "id": 8,
+      "id": "p5waves01",
+      "value": {
         "name": "Waves 1",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00009.png"
+      }
     },
     {
-        "id": 9,
+      "id": "p5waves02",
+      "value": {
         "name": "Waves 2",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00010.png"
+      }
     },
     {
-        "id": 10,
+      "id": "p5waves03",
+      "value": {
         "name": "Waves 3",
         "thumbnail": "assets/images/thumbnails/viz_thumbnail00011.png"
+      }
     }
-]
+  ]

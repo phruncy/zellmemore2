@@ -47,6 +47,7 @@ export class P5VisualizationComponent implements AfterContentInit {
 
     ngAfterContentInit(): void {
         const dimensions = { w: this.componentWidth, h: this.componentHeight };
+        const index = this.sketchIndex();
         const factory = this.ctxService.getFactoryByIndex(this.sketchIndex());
         this._p5 = new widgetP5(
             factory(this.automaton),

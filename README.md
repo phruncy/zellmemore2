@@ -11,14 +11,14 @@ For further information, visit [the documentation](https://franziskaschneider.ji
 ## Angular version
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
-It is currently built with Angular v18.2.12.
+It is currently built with Angular v20.0.1.
 
 ## Building / Running Locally
 
 To run this project locally on your computer:
 
 - clone this repository
-- npm v10.9.0 and Angular CLI v18.2.12 or higher are required
+- npm v10.9.0 and Angular CLI v20.0.1 or higher are required
 
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 - Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

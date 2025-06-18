@@ -7,13 +7,14 @@ import {
     HostListener,
     output,
     ComponentRef,
+    effect,
 } from '@angular/core';
-import { VisualizationService } from '../services/visualization.service';
 import { WidgetComponent } from '../widget/widget.component';
 import { SizeService } from '../services/size.service';
 import { AnimatedTooltipComponent } from '../animated-tooltip/animated-tooltip.component';
 import { AddTileAreaComponent } from '../add-tile-area/add-tile-area.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { VisualizationContextService } from '../services/visualization-context.service';
 
 @Component({
     selector: 'app-canvas',
@@ -48,14 +49,14 @@ export class WidgetFrameComponent implements OnInit {
     private _widgetRefs: ComponentRef<WidgetComponent>[] = [];
 
     constructor(
-        private visualizationService: VisualizationService,
+        private visualizationService: VisualizationContextService,
         public sizeService: SizeService,
         private elRef: ElementRef,
     ) {
-        this.visualizationService.visualizationRequested$
+        this.visualizationService.creationRequested$
             .pipe(takeUntilDestroyed())
-            .subscribe(() => {
-                this.addWidget();
+            .subscribe((contentId) => {
+                this.addWidget(contentId);
             });
     }
 
@@ -78,11 +79,14 @@ export class WidgetFrameComponent implements OnInit {
         this.resizeWidgets();
     }
 
-    addWidget() {
+    addWidget(contentId: number) {
         this.sizeService.recalculateWidgetSize(this._widgetRefs.length + 1);
 
         const component = this.entry().createComponent(WidgetComponent);
+        component.setInput('contentId', contentId);
+
         const sub = component.instance.shouldDestroy.subscribe(() => {
+            this.visualizationService.removeFromeActives(contentId);
             this.destroyWidget(component);
             sub.unsubscribe();
         });

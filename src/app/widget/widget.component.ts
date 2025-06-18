@@ -5,16 +5,20 @@ import {
     viewChild,
     ElementRef,
     output,
-    OnDestroy,
+    input,
 } from '@angular/core';
-import { VisualizationService } from '../services/visualization.service';
 import { faTimes, faPlayCircle, faExpand } from '@fortawesome/free-solid-svg-icons';
-import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.component';
+import {
+    VisualizationContext,
+    VisualizationContextService,
+} from '../services/visualization-context.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-widget',
@@ -22,9 +26,9 @@ import { P5VisualizationComponent } from '../p5-visualization/p5-visualization.c
     styleUrls: ['./widget.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [FaIconComponent, P5VisualizationComponent],
+    imports: [FaIconComponent, P5VisualizationComponent, AsyncPipe],
 })
-export class WidgetComponent implements OnInit, OnDestroy {
+export class WidgetComponent implements OnInit {
     readonly faTimes = faTimes;
     readonly faPlayCircle = faPlayCircle;
     readonly faExpand = faExpand;
@@ -40,23 +44,13 @@ export class WidgetComponent implements OnInit, OnDestroy {
     title: string = 'widget name';
     shouldDestroy = output();
 
-    private _sketchId = -1;
+    contentId = input.required<number>();
+    context$: Observable<VisualizationContext>;
 
-    constructor(
-        private visService: VisualizationService,
-        private detailsService: VisualizationDetailService,
-    ) {}
-
-    get sketchId() {
-        return this.visService.visualizationToDisplay;
-    }
+    constructor(private visualizationService: VisualizationContextService) {}
 
     ngOnInit() {
         this.fetchComponent();
-    }
-
-    ngOnDestroy() {
-        this.visService.removeFromActive(this._sketchId);
     }
 
     resize(sidelength: number, margin: number) {
@@ -83,10 +77,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
     }
 
     private fetchComponent() {
-        this._sketchId = this.visService.visualizationToDisplay;
-        this.visService.addToActive(this._sketchId);
-        this.detailsService
-            .getName(this.visService.visualizationToDisplay)
-            .then((name) => (this.title = name));
+        this.visualizationService.addToActives(this.contentId());
+        this.context$ = this.visualizationService.getContextByIndex(this.contentId());
     }
 }

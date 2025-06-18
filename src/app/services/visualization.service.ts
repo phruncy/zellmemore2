@@ -23,8 +23,6 @@ interface SketchWithId {
 @Injectable()
 export class VisualizationService {
     private _currentSelectionId: number;
-    private _selectionChanged = new Subject<void>();
-    public visualizationRequested$ = this._selectionChanged.asObservable();
 
     private _numComponentInstances: WritableSignal<number[]>;
     readonly isActiveMap: Signal<boolean[]>;
@@ -64,7 +62,6 @@ export class VisualizationService {
             throw unknownComponent;
         }
         this._currentSelectionId = id;
-        this._selectionChanged.next();
     }
 
     provideSketch(): p5sketch {

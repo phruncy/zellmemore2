@@ -1,8 +1,10 @@
 <div class="widget-container" #fullscreen>
-    <app-p5-visualization [sketchIndex]="sketchId"></app-p5-visualization>
+    <app-p5-visualization [sketchIndex]="contentId()"></app-p5-visualization>
     <div class="widget-overlay-header">
         <fa-icon [icon]="faTimes" (click)="requestDestruction()" class="btn fade-in"></fa-icon>
-        <div class="header-label fade-in">{{ title }}</div>
+        @if (context$ | async; as context) {
+            <div class="header-label fade-in">{{ context.data.name }}</div>
+        }
         <fa-icon [icon]="faExpand" (click)="enterFullscreen()" class="btn fade-in"></fa-icon>
     </div>
 </div>

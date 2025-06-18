@@ -1,22 +1,22 @@
 import { Component, output } from '@angular/core';
-import { VisualizationDetailService } from '../services/visualization-detail.service';
 import { AsyncPipe } from '@angular/common';
 import { customTooltipDefaults } from '../utils/customTooltipDefaults';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { SelectionTileComponent } from './selection-tile/selection-tile.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MatButton } from '@angular/material/button';
-import { VisualizationDescData } from 'src/app/VisualizationDescData';
 import { Observable } from 'rxjs';
-import { VisualizationService } from '../services/visualization.service';
+import {
+    VisualizationContext,
+    VisualizationContextService,
+} from '../services/visualization-context.service';
 
 @Component({
     selector: 'app-visualization-selection',
     styleUrls: ['./visualization-selection.component.scss'],
     providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults }],
     standalone: true,
-    imports: [SelectionTileComponent, FaIconComponent, MatButton, AsyncPipe],
+    imports: [SelectionTileComponent, FaIconComponent, AsyncPipe],
     template: `
         <div class="selection-frame">
             <div class="header">
@@ -24,11 +24,11 @@ import { VisualizationService } from '../services/visualization.service';
                 <fa-icon [icon]="faTimes" class="close-icon" (close)="close()"></fa-icon>
             </div>
             <div class="selection-tiles-container">
-                @for (tileData of selectionTileData$ | async; track $index) {
+                @for (ctx of contexts$ | async; track $index) {
                     <app-selection-tile
                         [active]="activeMap()[$index] ?? false"
-                        [name]="tileData.name"
-                        [thumbnail]="tileData.thumbnail"
+                        [name]="ctx.data.name"
+                        [thumbnail]="ctx.data.thumbnail"
                         (selected)="requestWidgetCreation($index)"></app-selection-tile>
                 }
             </div>
@@ -37,20 +37,16 @@ import { VisualizationService } from '../services/visualization.service';
 })
 export class VisualizationSelectionComponent {
     readonly faTimes = faTimes;
-
-    public selectionTileData$: Observable<VisualizationDescData[]>;
+    public contexts$: Observable<VisualizationContext[]>;
     public shouldClose = output<boolean>();
-    public activeMap = this._visService.isActiveMap;
+    public activeMap = this._visService.activeSketches;
 
-    constructor(
-        private _visService: VisualizationService,
-        private _visualizationDetailService: VisualizationDetailService,
-    ) {
-        this.selectionTileData$ = this._visualizationDetailService.provideVisualizations();
+    constructor(private _visService: VisualizationContextService) {
+        this.contexts$ = this._visService.getContexts();
     }
 
     requestWidgetCreation(contentId: number) {
-        this._visService.select(contentId);
+        this._visService.requestCreation(contentId);
     }
 
     close() {

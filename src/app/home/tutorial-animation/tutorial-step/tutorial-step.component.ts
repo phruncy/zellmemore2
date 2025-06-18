@@ -1,5 +1,5 @@
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, Type } from '@angular/core';
 import { StepDescription } from '../../step-description';
 import { TutorialStepContentService } from 'src/app/home/tutorial-animation/services/tutorial-step-content.service';
 import { TutorialStepData } from '../TutorialStepData';
@@ -29,7 +29,7 @@ import { animations } from '../../animations';
     `,
 })
 export class TutorialStepComponent {
-    content = input.required<StepDescription>();
+    content = input.required<Type<StepDescription>>();
     currentSection = input<number>(0);
     currentStep = input<number>(0);
     animationState = computed(() => `${this.currentStep()}-${this.currentSection()}`);

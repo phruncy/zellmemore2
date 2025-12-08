@@ -29,7 +29,7 @@ export class AutomatonService {
         this.initCells = this.initCells.bind(this);
         this.configure = this.configure.bind(this);
         this.http
-            .get('../assets/json/automaton-config.json')
+            .get('assets/json/automaton-config.json')
             .pipe(takeUntilDestroyed())
             .subscribe(this.configure);
     }

@@ -34,7 +34,11 @@ jobs:
       - name: Build Angular app (browser-esbuild)
         run: |
           npx ng build --configuration production
-
+      - name: Debug dist folder
+        run: |
+          echo "Listing dist directory"
+          ls -R dist
+    
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

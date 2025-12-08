@@ -14,8 +14,8 @@
           "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/zellmemore",
-            "baseHref": "/zellmemore2",
-            "deployUrl": "/zellmemore2",
+            "baseHref": "/zellmemore2/",
+            "deployUrl": "/zellmemore2/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

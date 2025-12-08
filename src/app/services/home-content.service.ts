@@ -9,6 +9,6 @@ import { HomeContentData } from '../home/HomeContentData';
 export class HomeContentService {
     private readonly _http = inject(HttpClient);
     fetchContent(): Observable<HomeContentData> {
-        return this._http.get<HomeContentData>('/assets/json/homepage-text.json');
+        return this._http.get<HomeContentData>('assets/json/homepage-text.json');
     }
 }

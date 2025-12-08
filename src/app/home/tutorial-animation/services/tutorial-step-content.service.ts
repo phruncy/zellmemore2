@@ -7,7 +7,7 @@ import { TutorialStepData } from '../TutorialStepData';
 @Injectable()
 export class TutorialStepContentService {
     private _http = inject(HttpClient);
-    private readonly dataPath = '/assets/json/tutorialtexts.json';
+    private readonly dataPath = 'assets/json/tutorialtexts.json';
     private _data$: Observable<TutorialStepData[]>;
 
     constructor() {

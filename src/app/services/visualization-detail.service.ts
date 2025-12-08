@@ -12,7 +12,7 @@ interface VisualizationDescWithId {
     providedIn: 'root',
 })
 export class VisualizationDetailService {
-    private _source: string = '../assets/json/visualization-details.json';
+    private _source: string = 'assets/json/visualization-details.json';
 
     constructor(private _http: HttpClient) {}
 

@@ -15,6 +15,10 @@ const routes: Routes = [
     },
     { path: 'data-disclaimer', component: DisclaimerComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    {
+        path: '**',
+        component: HomeComponent,
+    },
 ];
 
 @NgModule({
